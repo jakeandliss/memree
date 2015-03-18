@@ -1,0 +1,14 @@
+<h1>Welcome To Your Journal!"</h1>
+
+<h3>Go ahead and make a new Journal Entry. Just give a quick title, and start typing...</h3>
+
+	<%= render 'form' %>
+
+<h3>Past Entries</h3>
+
+<% @titles.each do |title| %>
+	<h3><%= title.title %></h3>
+	<p><%= title.title_date %></p>
+	<p><%= link_to 'View Entry', title_path(title) %> <%= link_to 'Delete', title_path(title), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+	<% end %>
+	
