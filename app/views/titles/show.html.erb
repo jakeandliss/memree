@@ -2,3 +2,8 @@
 
 <h4> Entry Date </h4>
 <%= @title.title_date %>
+
+<% @title.entries.each do |e| %>
+	<h3><%= e.entry %></h3>
+	<p><%= link_to 'View Entry', titles_path(e) %> <%= link_to 'Delete',  titles_path(e), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+	<% end %>

@@ -3,22 +3,23 @@ class TitlesController < ApplicationController
 	def index
 		@titles = Title.all
 		@title = Title.new
+		@title.entries.build
 	end
 
 	def show
 		@title = Title.find(params[:id])
+
 	end
 
 	def edit
 		@title = Title.find(params[:id])
 	end
 
-
 	def create
   		@title = Title.new(title_params)
   		if @title.save  
   			flash[:notice] = "Entry was created succesfully" 
-  			redirect_to @title 
+  			redirect_to @title
   		else 
   			flash[:alert] = "Entry has not been created"
   		end
@@ -39,6 +40,6 @@ class TitlesController < ApplicationController
 
 private
 	def title_params
-		params.require(:title).permit(:title, :title_date)
+		params.require(:title).permit(:title, :title_date, entries_attributes: [:entry, :id, :title_id])
 	end
 end
