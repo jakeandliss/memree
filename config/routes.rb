@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :titles
+  resources :titles do
+    resources :entries
+  end
+  
 
   %w[home about].each do |page|
     get page, controller: "pages", action: page

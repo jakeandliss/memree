@@ -4,10 +4,6 @@ class TitlesController < ApplicationController
 		@titles = Title.all
 		@title = Title.new
 		@title.entries.build
-	end
-
-	def show
-		@title = Title.find(params[:id])
 
 	end
 
@@ -19,7 +15,7 @@ class TitlesController < ApplicationController
   		@title = Title.new(title_params)
   		if @title.save  
   			flash[:notice] = "Entry was created succesfully" 
-  			redirect_to @title
+  			redirect_to title_entries_path(@title)
   		else 
   			flash[:alert] = "Entry has not been created"
   		end
@@ -27,14 +23,20 @@ class TitlesController < ApplicationController
 
 	def update
 		@title = Title.find(params[:id])
-		@title.update_attributes!(params[:id])
+		@title.update_attributes!(title_params)
+		if @title.save  
+  			flash[:notice] = "Entry was updated succesfully" 
+  			redirect_to title_entries_path(@title)
+  		else 
+  			flash[:alert] = "Entry has not been updated"
+  		end
 
 	end
 
 	def destroy
 		@title = Title.find(params[:id])
 		@title.destroy
-		flash[:alert] = "Entry has been deleted"
+		flash[:notice] = "Entry has been deleted"
 		redirect_to titles_path
 	end
 

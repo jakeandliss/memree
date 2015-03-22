@@ -1,3 +1,5 @@
+<div id="notice"><%= notice %></div>
+
 <h1>Welcome To Your Journal!"</h1>
 
 <h3>Go ahead and make a new Journal Entry. Just give a quick title, and start typing...</h3>
@@ -9,6 +11,6 @@
 <% @titles.each do |t| %>
 	<h3><%= t.title %></h3>
 	<p><%= t.title_date %></p>
-	<p><%= link_to 'View Entry', title_path(t) %> <%= link_to 'Delete', title_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+	<p><%= link_to 'View Entry', title_entries_path(t) %> <%= link_to 'Delete', title_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
 	<% end %>
 	
