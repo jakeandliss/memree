@@ -1,0 +1,16 @@
+<div id="notice"><%= notice %></div>
+
+<h2><%= @title.title %></h2>
+
+<h4> Entry Date </h4>
+<p>
+	<%= @title.title_date %>
+<%= link_to 'Delete', title_path(@title), method: :delete, data: {confirm: 'Are you sure?' } %>
+</p>
+
+<p><%= link_to "New Entry", new_title_entry_path(@title) %></p>
+
+<% @title.entries.each do |e| %>
+	<h3><%= e.entry %></h3>	
+	<p><%= link_to "Edit", edit_title_entry_path(@title, e) %> <%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+	<% end %>
