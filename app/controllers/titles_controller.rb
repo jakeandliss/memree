@@ -15,6 +15,7 @@ class TitlesController < ApplicationController
   		@title = Title.new(title_params)
   		if @title.save  
   			flash[:notice] = "Entry was created succesfully" 
+  			#render plain: params[:title].inspect
   			redirect_to title_entries_path(@title)
   		else 
   			flash[:alert] = "Entry has not been created"
@@ -27,6 +28,7 @@ class TitlesController < ApplicationController
 		if @title.save  
   			flash[:notice] = "Entry was updated succesfully" 
   			redirect_to title_entries_path(@title)
+
   		else 
   			flash[:alert] = "Entry has not been updated"
   		end
