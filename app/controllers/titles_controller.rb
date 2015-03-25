@@ -1,42 +1,45 @@
 class TitlesController < ApplicationController
-
+	before_action :require_user
+	
 	def index
-		@titles = Title.all
-		@title = Title.new
+		@titles = current_user.titles.all
+		@title = current_user.titles.new
 		@title.entries.build
 
 	end
 
 	def edit
-		@title = Title.find(params[:id])
+		@title = current_user.titles.find(params[:id])
 	end
 
 	def create
-  		@title = Title.new(title_params)
+  		@title = current_user.titles.new(title_params)
   		if @title.save  
   			flash[:notice] = "Entry was created succesfully" 
   			#render plain: params[:title].inspect
   			redirect_to title_entries_path(@title)
   		else 
-  			flash[:alert] = "Entry has not been created"
+  			flash[:error] = "There was a problem adding your entry."
+  			render action: 'new'
   		end
 	end
 
 	def update
-		@title = Title.find(params[:id])
+		@title = current_user.titles.find(params[:id])
 		@title.update_attributes!(title_params)
 		if @title.save  
   			flash[:notice] = "Entry was updated succesfully" 
   			redirect_to title_entries_path(@title)
 
   		else 
-  			flash[:alert] = "Entry has not been updated"
+  			flash[:error] = "Entry has not been updated"
+  			render action: 'edit'
   		end
 
 	end
 
 	def destroy
-		@title = Title.find(params[:id])
+		@title = current_user.titles.find(params[:id])
 		@title.destroy
 		flash[:notice] = "Entry has been deleted"
 		redirect_to titles_path

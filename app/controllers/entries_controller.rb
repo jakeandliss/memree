@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  before_action :require_user
+
   def index
     @title = Title.find(params[:title_id])
   end
@@ -12,10 +14,10 @@ class EntriesController < ApplicationController
     @title = Title.find(params[:title_id])
     @entry = @title.entries.new(entry_params)
     if @entry.save
-      flash[:success] = "Added todo list item."
+      flash[:success] = "Entry added successfully."
       redirect_to title_entries_path
     else
-      flash[:error] = "There was a problem adding that todo list item."
+      flash[:error] = "There was a problem adding your entry."
       render action: :new
     end
   end
@@ -32,7 +34,7 @@ class EntriesController < ApplicationController
       flash[:success] = "Entry updated successfully."
       redirect_to title_entries_path
     else
-      flash[:error] = "That Entry could not be saved."
+      flash[:error] = "Your entry could not be saved."
       render action: :edit
     end
   end
