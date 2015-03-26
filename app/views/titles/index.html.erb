@@ -1,6 +1,4 @@
-<h1>Welcome To Your Journal!"</h1>
-
-<h3>Go ahead and make a new Journal Entry. Just give a quick title, and start typing...</h3>
+<h1>Create a New Entry</h1>
 
 	<%= render 'form' %>
 
@@ -10,7 +8,7 @@
 	<div class="title" id="<%= dom_id(t) %>">
 		<h3><%= t.title %></h3>
 		<p><%= t.title_date %></p>
-		<p><%= link_to 'View Entry', title_entries_path(t) %> <%= link_to 'Delete', title_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+		<p><%= link_to 'View Entry', title_entries_path(t) %> <%= link_to 'Delete', title_path(t), method: :delete, data: {confirm: 'Are you sure?' } %> </p>
+		<p>Tags: <%= raw tag_links(t.all_tags) %></p>
 		</div>
 	<% end %>
-	

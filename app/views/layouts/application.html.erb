@@ -1,32 +1,49 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Journalesk</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<div class="nav">
-	<ul>
-		<li><%= link_to 'Journal', controller: 'titles' %></li>
-		<li><a href="/home">Home</a></li>
-		<li><a href="/about">About</a></li>
-		<% if logged_in? %>
-       		<li><%= link_to "Log Out", logout_path, method: :delete %></li>
-      	<% else %>
-       		<li><%= link_to "Log In", new_user_session_path %></li>
-        	<li><%= link_to "Register", new_user_path %></li>
-        	<% end %>
-	</div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<% flash.each do |type, message| %>
-		<div class="alert flash <%= type %>">
-		   <%= message %>
-		</div>
-  	<% end %>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-<%= yield %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+
+   <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+          <li class="name"><h1><%= link_to "Life Leaf", root_path %></h1></li>
+      </ul>
+    <section class="top-bar-section">
+        <ul class="right">
+            <li class="active"><a href="/about">About</a></li>
+            <% if logged_in? %>
+                <li class="active"> <%= link_to 'My Journal', controller: 'titles' %></li>
+                <li class="active"><%= link_to "Log Out", logout_path, method: :delete %></li>
+            <% else %>
+                <li class="active"><%= link_to "Log In", new_user_session_path %></li>
+                <li class="active"><%= link_to "Register", new_user_path %></li>
+                <% end %>
+          </ul>
+        </section>
+    </nav>
+    <div class="row">
+      <div class="columns">
+        <% flash.each do |type, message| %>
+          <div class="alert flash <%= type %>">
+             <%= message %>
+          </div>
+          <% end %>
+
+        <%= yield %>
+      </div>
+    </div>
+  </body>
 </html>
+
+
+ 

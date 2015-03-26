@@ -1,4 +1,11 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :tagging do
+    title nil
+tag nil
+  end
+  factory :tag do
+    name "MyString"
+  end
+
 	factory :user do
 		first_name  "First"
 		last_name "Last"

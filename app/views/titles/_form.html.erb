@@ -1,17 +1,25 @@
-<%= form_for @title do |f| %>
-	<p><%= f.label :title %></p>
-	<p><%= f.text_field :title %></p>
-	<p><%= f.label :title_date %></p>
-	<p><%= f.date_select :title_date %></p>
-	
-	<%= f.fields_for :entries, @entries do |p| %>
-		<%= p.label :entry %><br>
-		<%= p.text_area :entry %>
-
-		<% end %>
-
-
-	<div class="action">
-		<%= f.submit 'Save Entry' %>
+<div class="row">
+	<%= form_for @title do |f| %>
+		<div class="large-10 large-centered columns">
+			<p><%= f.label :title %></p>
+			<p><%= f.text_field :title, placeholder: "Entry Title" %></p>
+		</div>
+		<div class="large-10 large-centered columns">
+			<%= f.text_field :all_tags, :value => params[:tag], placeholder: "Separate Journals with a comma" %>	
+		</div>
+		<div class="large-10 large-centered columns" style="clear:both;">
+			<p><%= f.date_select :title_date, :order => [:day, :month, :year] %></p>
+		</div>
+		<div class="large-10 large-centered columns">	
+			<%= f.fields_for :entries, @entries do |p| %>
+				<%= p.label :entry %></p>
+				<%= p.text_area :entry, placeholder: "Start typing here..." %>
+				<% end %>
+		</div>
+		<div class="large-10 large-centered columns">
+			<div class="action">
+				<%= f.submit 'Save Entry', class: "button" %>
+			</div>
 		</div>
 	<% end %>
+</div>

@@ -8,7 +8,7 @@ describe "Creating Journal Titles" do
     options[:entry] ||= "This is my Journal Entry."
 
     visit "/titles"
-    expect(page).to have_content("new Journal Entry")
+    expect(page).to have_content("Create a New Entry")
 
     fill_in "Title", with: options[:title]
     fill_in "Entry", with: options[:entry]

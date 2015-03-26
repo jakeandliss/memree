@@ -5,7 +5,11 @@ class TitlesController < ApplicationController
 		@titles = current_user.titles.all
 		@title = current_user.titles.new
 		@title.entries.build
-
+		if params[:tag]
+			@titles = current_user.titles.tagged_with(params[:tag])
+		else
+			@titles = current_user.titles.all
+		end
 	end
 
 	def edit
@@ -47,6 +51,6 @@ class TitlesController < ApplicationController
 
 private
 	def title_params
-		params.require(:title).permit(:title, :title_date, entries_attributes: [:entry, :id, :title_id])
+		params.require(:title).permit(:title, :title_date, :all_tags, entries_attributes: [:entry, :id, :title_id])
 	end
 end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'tags/:tag', to: 'titles#index', as: "tag"
+
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
 

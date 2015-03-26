@@ -1,9 +1,0 @@
-<%= form_for @title do |f| %>
-	<%= f.fields_for :entries do |e| %>
-		<%= e.text_area :entry %>
-		<% end %>
-	<div class="action">
-		<%= f.submit 'Save Entry' %>
-	</div>
-	<% end %>
-	
