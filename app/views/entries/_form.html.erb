@@ -1,8 +1,7 @@
 <%= form_for [@title, @entry] do |f| %>
-	<p><%= f.label :entry %></p>
-	<p><%= f.text_area :entry %></p>
+	<p><%= f.text_area :entry, placeholder: "Your entry goes here..."  %></p>
 
 	<div class="action">
-		<%= f.submit 'Save Entry' %>
+		<%= f.submit 'Save Entry', class: "button" %>
 		</div>
 	<% end %>

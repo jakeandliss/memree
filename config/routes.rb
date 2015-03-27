@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'tags/:tag', to: 'titles#index', as: "tag"
+  get 'tags/index'
+
+  get 'journals/:tag', to: 'titles#index', as: "journal"
 
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
   %w[home about].each do |page|
     get page, controller: "pages", action: page
   end
+
+  resources :tags, :path => "journals"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="center columns">
+		<h1>My Journals</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="center columns">
+		<%= render 'form' %>
+	</div>
+</div>
+<div class="row">
+	<div class="center columns">
+		<% @tags.each do |t| %>
+			<div class="tag" id="<%= dom_id(t) %>">
+				<h3><%= t.name %></h3><p> <%= link_to "View Journal", tag_path(t.name) %> | <%= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+			</div>
+			<% end %>
+	</div>
+</div>
