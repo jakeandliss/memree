@@ -10,8 +10,8 @@ describe "Creating Journal Titles" do
     visit "/titles"
     expect(page).to have_content("Create a New Entry")
 
-    fill_in "Title", with: options[:title]
-    fill_in "Entry", with: options[:entry]
+    fill_in "Entry Title", with: options[:title]
+    fill_in "Your first entry goes here...", with: options[:entry]
     click_button "Save Entry"
   end
 

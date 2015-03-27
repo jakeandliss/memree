@@ -1,7 +1,6 @@
 <div class="row">
 	<%= form_for @title do |f| %>
 		<div class="large-10 large-centered columns">
-			<p><%= f.label :title %></p>
 			<p><%= f.text_field :title, placeholder: "Entry Title" %></p>
 		</div>
 		<div class="large-10 large-centered columns">
@@ -12,8 +11,7 @@
 		</div>
 		<div class="large-10 large-centered columns">	
 			<%= f.fields_for :entries, @entries do |p| %>
-				<%= p.label :entry %></p>
-				<%= p.text_area :entry, placeholder: "Start typing here..." %>
+				<%= p.text_area :entry, placeholder: "Your first entry goes here..." %>
 				<% end %>
 		</div>
 		<div class="large-10 large-centered columns">
