@@ -1,8 +1,8 @@
-<h2><%= @title.title %></h2>
+<h2><%= best_in_place @title, :title, :ok_button => 'Save', :ok_button_class => "button tiny", :cancel_button => 'Cancel' %></h2>
 
 <h4>Event Date</h4>
 <p>
-	<%= @title.title_date %>
+	<%= best_in_place @title, :title_date, :ok_button => 'Save', :cancel_button => 'Cancel' %>
 <%= link_to 'Delete Event', title_path(@title), method: :delete, data: {confirm: 'Are you sure?' } %>
 </p>
 
@@ -16,3 +16,4 @@
 		<p><%= link_to "Edit", edit_title_entry_path(@title, e) %> | <%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p>
 </div>
 	<% end %>
+
