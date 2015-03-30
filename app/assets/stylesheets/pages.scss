@@ -1,3 +1,80 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#home {
+	background: url("dad.jpg") center;
+	background-size: cover;
+	height: 100%;
+	padding-top: 10em;
+}
+
+#wrapper{
+  width: 30em;
+  margin-left: auto ;
+ 	margin-right: auto ;
+ 	margin-top: auto;
+ 	margin-bottom: auto;
+ 	border-radius: 8px;
+}
+
+#wrapper .header {
+  background:#FD9781;
+  opacity:.87; 
+  padding: 1.5em;
+}
+
+#wrapper .header h1 {
+  text-align: center;
+  color: #fff;
+  margin: 0;
+}
+
+#wrapper .content {
+  text-align: center;
+  background: #fff;
+  padding: 1.5em;
+}
+
+#wrapper .footer {
+  text-align: center;
+  background: #EBE5CD;
+  padding: 1em;
+}
+
+.social ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social ul li {   
+  margin: 2px 0 6px 0; 
+  padding: 15px;
+  font-weight: bold;
+  background-position: 0 50%;
+  display: inline;
+  opacity: .8;
+
+}
+
+.social ul li:hover {
+    opacity: 1;
+}
+
+
+.social ul li a {
+  padding-left: 30px;
+}
+
+li#facebook {
+  background: url("facebook.png") no-repeat;
+
+}
+
+li#twitter {
+  background: url("twitter.png") no-repeat;
+}
+
+li#instagram {
+  background: url("instagram.png") no-repeat;
+}
