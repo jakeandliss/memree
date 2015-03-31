@@ -9,17 +9,43 @@
   }
 
 label.right {
-	padding-right: 10px; 
+	padding-right: 5rem; 
 }
 
-.title{
+#titles {
+  background: #f2f2f2;
+}
+
+#titles .wrapper {
+  padding-top: 1em;
+}
+
+#titles .user_info {
+  text-align: center;
+}
+
+#titles .user_journals {
+  text-align: right;
+}
+
+#titles .form {
+  background: #fff;
+  padding: 25px;
+  border-radius: .5rem;
+}
+
+#titles .form input[type="text"], #titles .form input[type="password"], #titles .form input[type="date"], #titles .form input[type="datetime"], #titles .form input[type="datetime-local"], #titles .form input[type="month"], #titles .form input[type="week"], #titles .form input[type="email"], #titles .form input[type="number"], #titles .form input[type="search"], #titles .form input[type="tel"], #titles .form input[type="time"], #titles .form input[type="url"], #titles .form input[type="color"], textarea {
+  margin: 0 0 .2px 0;
+}
+
+#titles .form .button {
+  align: right;
+}
+
+#titles .entry{
   box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.15);
   background: white;
-  border-radius: 4px;
-  padding-bottom: 12px;
-  margin: 25px;
-  padding: 25px;
-}
-
-.top-pad {
+  border-radius: .5rem;
+  margin: 1rem 0;
+  padding: 1rem;
 }
