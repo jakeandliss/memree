@@ -122,15 +122,15 @@ $font-family-Open-Sans: 'Helam Slab', 'Roboto Slab', Calibri, Helvetica, Arial, 
    $salmon	 	: #FD9781;
 
 // We use these as default colors throughout
-   $primary-color: #FD9781;
-// $secondary-color: #e7e7e7;
+   $primary-color: $salmon;
+   $secondary-color: $greendew;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
 // We use these to control various global styles
-$body-bg: $white;
+$body-bg: #f2f2f2;
 $body-font-color: $tuatara;
 $body-font-family: $font-family-Open-Sans;
 // $body-font-weight: $font-weight-normal;

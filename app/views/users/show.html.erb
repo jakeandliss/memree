@@ -1,24 +1,17 @@
-<p id="notice"><%= notice %></p>
+	<h3>Hey <%= @user.first_name %>, Here's your profile page. You can change or update anything at any time.</h3>
+	<p>
+	  <strong>First name:</strong>
+	  <%= @user.first_name %>
+	</p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+	<p>
+	  <strong>Last name:</strong>
+	  <%= @user.last_name %>
+	</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+	<p>
+	  <strong>Email:</strong>
+	  <%= @user.email %>
+	</p>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+	<%= link_to 'Edit', edit_user_path(@user), class: "button" %>

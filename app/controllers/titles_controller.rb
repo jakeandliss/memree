@@ -11,6 +11,7 @@ class TitlesController < ApplicationController
 		else
 			@titles = current_user.titles.all
 		end
+		render layout: "application_index"
 	end
 
 	def edit
