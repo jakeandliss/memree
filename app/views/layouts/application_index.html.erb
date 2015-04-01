@@ -12,21 +12,15 @@
         <%= csrf_meta_tags %>
     </head>
     <body>   
-
-        <%= render 'layouts/nav' %>
         
-        <div class="row">
-            <div class="medium-10 medium-centered columns">
-                <div class="pages">
-                    <% flash.each do |type, message| %>
-                    <div class="alert flash <%= type %>">
-                        <%= message %>
-                    </div>
-                        <% end %>
-                    <%= yield %> 
-                </div>
+        <%= render 'layouts/nav' %>
+
+        <% flash.each do |type, message| %>
+            <div class="alert flash <%= type %>">
+                <%= message %>
             </div>
-        </div>
+            <% end %>
+        <%= yield %> 
     </body>
 </html>
 

@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
 
   def index
     @title = Title.find(params[:title_id])
+    render layout: "application_index"
   end
 
   def new
