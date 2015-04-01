@@ -4,8 +4,8 @@
 	<div class="row wrapper">
 		<div class="medium-2 columns">
 			<div class="user_info">
-				<%= image_tag "blank_avatar.png" %>
-				<p><%= current_user.first_name  %> <%= current_user.last_name  %></p>
+				<%= image_tag current_user.gravatar_url %>
+				<p><%= current_user.full_name  %></p>
 			</div>
 			<div class="user_journals">
 				<p>Journals</p>

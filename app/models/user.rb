@@ -18,5 +18,18 @@ class User < ActiveRecord::Base
 	def generate_password_reset_token! 
 		update_attribute(:password_reset_token, SecureRandom.urlsafe_base64(48))
 	end
+
+	def full_name
+		first_name + " " + last_name
+	end
+
+	def gravatar_url
+		stripped_email = email.strip 
+		downcase_email = stripped_email.downcase
+		hash = Digest::MD5.hexdigest(downcase_email)
+
+		"http://gravatar.com/avatar/#{hash}"
+	end
+
 end
 
