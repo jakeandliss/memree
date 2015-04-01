@@ -23,16 +23,19 @@
 				<h4><%= link_to "New Entry", new_title_entry_path(@title) %></h4>
 			</div>
 		<% @title.entries.each do |e| %>
-			<div id="entry">
+			<div class="entry">
 				<div id="<%= dom_id(e) %>">
 					<div class="content">
 							<p><%= e.entry %></p>	
+						<div class="footer">
 							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e) %></p>
 							<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
+						</div>
 					</div>
 				</div>
 			</div>
 		<% end %>
+		</div>
 	</div>
 </div>
  <div class="row">

@@ -59,15 +59,25 @@
   margin: 0 0 .2px 0;
 }
 
-#entries #entry {
+#entries .entry {
   box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.15);
   background: white;
   border-radius: .2rem;
   margin: 1rem 0;
 }
 
-#entries #entry .content {
+#entries .entry .content {
   padding: .7rem;
 }
 
+#entries .entry .content p {
+  margin-bottom: .1rem;
+}
 
+#entries .entry .footer p {
+  display: none;
+}
+
+#entries .entry.hover .footer p {
+  display: inline;
+}
