@@ -31,7 +31,7 @@ label.right {
 #titles .form {
   background: #fff;
   padding: 25px;
-  border-radius: .5rem;
+  border-radius: .2rem;
 }
 
 #titles .form input[type="text"], #titles .form input[type="password"], #titles .form input[type="date"], #titles .form input[type="datetime"], #titles .form input[type="datetime-local"], #titles .form input[type="month"], #titles .form input[type="week"], #titles .form input[type="email"], #titles .form input[type="number"], #titles .form input[type="search"], #titles .form input[type="tel"], #titles .form input[type="time"], #titles .form input[type="url"], #titles .form input[type="color"], textarea {
@@ -39,13 +39,46 @@ label.right {
 }
 
 #titles .form .button {
-  align: right;
+  
 }
 
-#titles .entry{
+#titles #title {
   box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.15);
   background: white;
-  border-radius: .5rem;
+  border-radius: .2rem;
   margin: 1rem 0;
-  padding: 1rem;
 }
+
+#titles #title h3 {
+  font-size: 1.3rem;
+  margin-bottom: .1rem;
+  display: inline;
+}
+
+#titles #title h5 a {
+  background: #A9D5C6;
+  color: #241616;
+  padding: 3px 4px;
+  border-radius: 3px;
+}
+
+#titles #title p {
+   display:inline;
+   float:right;
+}
+
+#titles #title .header {
+  background: #f8fcfa;
+  padding: 5px 10px;
+}
+
+#titles #title .content {
+  padding: .7rem;
+}
+
+#titles #title .footer {
+  background: #f8fcfa;
+  padding: 5px 10px;
+}
+
+

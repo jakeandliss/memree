@@ -8,7 +8,7 @@
 	padding-top: 10em;
 }
 
-#wrapper{
+#home #wrapper{
   width: 30em;
   margin-left: auto ;
  	margin-right: auto ;
@@ -17,37 +17,37 @@
  	border-radius: 8px;
 }
 
-#wrapper .header {
+#home #wrapper .header {
   background:#FD9781;
   opacity:.87; 
   padding: 1.5em;
 }
 
-#wrapper .header h1 {
+#home #wrapper .header h1 {
   text-align: center;
   color: #fff;
   margin: 0;
 }
 
-#wrapper .content {
+#home #wrapper .content {
   text-align: center;
   background: #fff;
   padding: 1.5em;
 }
 
-#wrapper .footer {
+#home #wrapper .footer {
   text-align: center;
   background: #EBE5CD;
   padding: 1em;
 }
 
-.social ul {
+#home .social ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.social ul li {   
+#home .social ul li {   
   margin: 2px 0 6px 0; 
   padding: 15px;
   font-weight: bold;
@@ -57,24 +57,24 @@
 
 }
 
-.social ul li:hover {
+#home .social ul li:hover {
     opacity: 1;
 }
 
 
-.social ul li a {
+#home .social ul li a {
   padding-left: 30px;
 }
 
-li#facebook {
-  background: url("facebook.png") no-repeat;
+#home li#facebook {
+  background: url("social/facebook.png") no-repeat;
 
 }
 
-li#twitter {
-  background: url("twitter.png") no-repeat;
+#home li#twitter {
+  background: url("social/twitter.png") no-repeat;
 }
 
-li#instagram {
-  background: url("instagram.png") no-repeat;
+#home li#instagram {
+  background: url("social/instagram.png") no-repeat;
 }

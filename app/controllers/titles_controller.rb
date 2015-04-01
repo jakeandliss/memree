@@ -5,6 +5,7 @@ class TitlesController < ApplicationController
 		@titles = current_user.titles.all
 		@title = current_user.titles.new
 		@title.entries.build
+		@entries = @title.entries
 		if params[:tag]
 			@titles = current_user.titles.tagged_with(params[:tag])
 		else
@@ -32,9 +33,11 @@ class TitlesController < ApplicationController
 		@title = current_user.titles.find(params[:id])
 		@title.update_attributes!(title_params)
 		if @title.save  
-  			flash[:notice] = "Entry was updated succesfully" 
-  			redirect_to title_entries_path(@title)
-
+			respond_to do |format|
+    			format.html { flash[:notice] = "Entry was updated succesfully" 
+  							redirect_to title_entries_path(@title) }
+    			format.json { render json: title_entries_path(@title) }
+    		end
   		else 
   			flash[:error] = "Entry has not been updated"
   			render action: 'edit'

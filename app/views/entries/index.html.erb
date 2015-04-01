@@ -1,19 +1,39 @@
-<h2><%= best_in_place @title, :title, :ok_button => 'Save', :ok_button_class => "button tiny", :cancel_button => 'Cancel' %></h2>
+	</div>
+</div>	
+<div id="entries">
+	<div class="row wrapper">
+		<div class="medium-2 columns">
+			<div class="user_info">
+				<%= image_tag "blank_avatar.png" %>
+				<p><%= current_user.first_name  %> <%= current_user.last_name  %></p>
+			</div>
+			<div class="user_journals">
+				<p>Journals</p>
+				<p><%= link_to 'All', titles_path %></p>
+			</div>
 
-<h4>Event Date</h4>
-<p>
-	<%= best_in_place @title, :title_date, :ok_button => 'Save', :cancel_button => 'Cancel' %>
-<%= link_to 'Delete Event', title_path(@title), method: :delete, data: {confirm: 'Are you sure?' } %>
-</p>
-
-<h4><%= link_to "New Entry", new_title_entry_path(@title) %></h4>
-
-<h3>Entries</h3>
-
-<% @title.entries.each do |e| %>
-	<div class="entry" id="<%= dom_id(e) %>">
-		<p><%= e.entry %></p>	
-		<p><%= link_to "Edit", edit_title_entry_path(@title, e) %> | <%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+		</div>
+		<div class="medium-10 columns">
+			<div class="header clearfix">	
+				
+				<h2><%= best_in_place @title, :title %></h2>
+				<p style="float:left;margin-bottom:0;"><%= best_in_place @title, :title_date %></p>		
+				<p style="float:right;"><%= link_to 'Delete Event', title_path(@title), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
+			<div class="form">		
+				<h4><%= link_to "New Entry", new_title_entry_path(@title) %></h4>
+			</div>
+		<% @title.entries.each do |e| %>
+			<div id="entry">
+				<div id="<%= dom_id(e) %>">
+					<div class="content">
+							<p><%= e.entry %></p>	
+							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e) %></p>
+							<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
 </div>
-	<% end %>
-
+ <div class="row">
+      <div class="columns">
