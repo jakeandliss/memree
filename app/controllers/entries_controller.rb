@@ -50,7 +50,7 @@ class EntriesController < ApplicationController
 
   private
   def entry_params
-    params[:entry].permit(:entry, :id, :title_id, :entry_id)
+    params[:entry].permit(:entry, :id, :title_id, :entry_id, :image)
   end
 
 end

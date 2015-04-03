@@ -24,7 +24,8 @@
 			<div class="entry">
 				<div id="<%= dom_id(e) %>">
 					<div class="content">
-							<p><%= e.entry %></p>	
+							<p><%= e.entry %></p>
+							<p><%= image_tag e.image.url(:medium) %></p>		
 						<div class="footer">
 							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e) %></p>
 							<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
