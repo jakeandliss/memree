@@ -1,7 +1,7 @@
 class Title < ActiveRecord::Base
 	belongs_to :user
 	has_many :entries, :dependent => :destroy
-	accepts_nested_attributes_for :entries
+	accepts_nested_attributes_for :entries, reject_if: :all_blank
 	validates :title, presence: true
 	has_many :taggings
 	has_many :tags, -> { uniq }, through: :taggings
