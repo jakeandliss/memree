@@ -243,7 +243,7 @@
     },
 
     displayText: function(item) {
-      return item.name || item;
+      return item;
     },
 
     next: function (event) {
