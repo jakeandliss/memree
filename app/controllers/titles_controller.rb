@@ -53,6 +53,15 @@ class TitlesController < ApplicationController
 		redirect_to titles_path
 	end
 
+  def tag_list
+    tags = if params[:query].present?
+      Tag.where("name LIKE '%?%'", params[:query]).map(&:name)
+    else
+      Tag.all.map(&:name)
+    end
+    render json: tags
+  end
+
 private
 	def title_params
 		params.require(:title).permit(:title, :title_date, :all_tags, entries_attributes: [:entry, :id, :title_id, :image])
