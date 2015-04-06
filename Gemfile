@@ -56,6 +56,8 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 
+  gem 'quiet_assets'
+
 end
 
 group :test do
@@ -64,3 +66,4 @@ group :test do
 
 end
 
+gem "twitter-bootstrap-rails"

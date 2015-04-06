@@ -4,7 +4,7 @@
 			<%= e.text_area :entry, placeholder: "Your entry goes here..." %>
 			<%= e.file_field :image %>
 		<% end %>
-	<%= f.text_field :all_tags, :value => params[:tag], placeholder: "Separate Journals with a comma" %>	
+	<%= f.text_field :all_tags, class: "typeahead" %>	
 	<%= f.date_select :title_date, :order => [:day, :month, :year] %>
 	<div class="action">
 		<%= f.submit 'Save Entry', class: "button small right" %>

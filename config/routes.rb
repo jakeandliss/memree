@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   resources :titles do
+    get :tag_list, on: :collection
     resources :entries
   end
   
