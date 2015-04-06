@@ -1,13 +1,4 @@
-<div class="row">
-    <div class="medium-3 columns">
-      <div class="avatar">
-        <%= form_for(@user) do |f| %>
-            <%= image_tag @user.avatar.url(:avatar) %>
-            <p> Current photo </p>
-             <%= f.file_field :avatar %>
-          </div>  
-        </div>   
-        <div class="medium-9 columns">  
+        <%= form_for(@user) do |f| %>    
           <% if @user.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -19,13 +10,12 @@
               </ul>
             </div>
           <% end %>
-
           <div class="field">
-            <%= f.label :first_name %><br>
+            <%= f.label :first_name, "First Name" %><br>
             <%= f.text_field :first_name %>
           </div>
           <div class="field">
-            <%= f.label :last_name %><br>
+            <%= f.label :last_name, "Last Name" %><br>
             <%= f.text_field :last_name %>
           </div>
           <div class="field">
@@ -40,6 +30,8 @@
             <%= f.label :password_confirmation %><br>
             <%= f.password_field :password_confirmation %>
           </div>
+             <%= f.label :avatar, "Add Profile Photo" %><br>
+             <%= f.file_field :avatar %> 
           <div class="actions">
             <%= f.submit "Register", class: "button" %>
           </div>

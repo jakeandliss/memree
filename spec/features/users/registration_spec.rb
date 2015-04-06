@@ -9,8 +9,8 @@ describe "Signing Up" do
 		expect(page).to have_content("Register")
 		click_link "Register"
 
-		fill_in "First name", with: "Test"
-		fill_in "Last name", with: "Test"
+		fill_in "First Name", with: "Test"
+		fill_in "Last Name", with: "Test"
 		fill_in "Email", with: "Test@Test.com"
 		fill_in "Password", with: "Test123"
 		fill_in "Password confirmation", with: "Test123"

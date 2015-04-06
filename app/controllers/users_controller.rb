@@ -8,6 +8,14 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    case params[:form]
+        when "profile"
+          render  "update_profile"
+        when "password"
+          render "update_password"
+        else
+          render :action => :edit
+        end
   end
 
   # POST /users
