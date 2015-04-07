@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
 
   def home
-    render layout: "capture"
     @user = User.new
+    render layout: "capture"
   end
 
   def about
