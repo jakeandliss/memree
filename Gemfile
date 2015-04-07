@@ -65,4 +65,3 @@ group :test do
   gem 'capybara-email', "~> 2.4.0"
 
 end
-

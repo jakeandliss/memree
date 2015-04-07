@@ -5,6 +5,8 @@ class EntriesController < ApplicationController
   def index
     @title = Title.find(params[:title_id])
     @user = User.find_by(params[:user_id])
+    @entry = Entry.new
+    @entries = @title.entries
   end
 
   def new

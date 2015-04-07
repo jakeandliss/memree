@@ -20,7 +20,7 @@
 				<p style="float:left;margin-bottom:0;"><%= best_in_place @title, :title_date %></p>		
 				<p style="float:right;"><%= link_to 'Delete Event', title_path(@title), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
 			<div class="form">		
-				<h4><%= link_to "New Entry", new_title_entry_path(@title) %></h4>
+				<%= render 'form' %>
 			</div>
 		<% @title.entries.each do |e| %>
 			<div class="entry">
