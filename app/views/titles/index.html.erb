@@ -2,7 +2,10 @@
 	<div class="row wrapper">
 		<div class="medium-2 columns">
 			<div class="user_info">
-				<%= image_tag current_user.gravatar_url %>
+				<div class="avatar">
+					<%= image_tag @user.avatar.url(:avatar) %>
+					<%#= image_tag current_user.gravatar_url %>
+				</div>
 				<p><%= current_user.full_name  %></p>
 			</div>
 			<div class="user_journals">

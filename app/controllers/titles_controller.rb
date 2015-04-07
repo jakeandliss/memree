@@ -1,17 +1,18 @@
 class TitlesController < ApplicationController
 	before_action :require_user
+	layout "application_index", only: :index
 	
 	def index
 		@titles = current_user.titles.all
 		@title = current_user.titles.new
 		@title.entries.build
 		@entries = @title.entries
+		@user = current_user
 		if params[:tag]
 			@titles = current_user.titles.tagged_with(params[:tag])
 		else
 			@titles = current_user.titles.all
 		end
-		render layout: "application_index"
 	end
 
 	def edit

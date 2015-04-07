@@ -1,9 +1,10 @@
 class EntriesController < ApplicationController
   before_action :require_user
+  layout "application_index", only: :index
 
   def index
     @title = Title.find(params[:title_id])
-    render layout: "application_index"
+    @user = User.find_by(params[:user_id])
   end
 
   def new
