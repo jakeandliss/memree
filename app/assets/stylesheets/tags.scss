@@ -1,3 +1,79 @@
 .tag h3, .tag p {
     display: inline;
 }
+
+#titles .tag_list #journal_titles {
+	margin: 5px 0;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#titles .tag_list a {
+	color: #fff;
+}
+
+#titles #journal_titles:nth-child(5n+1) { background: #FD9781; }
+#titles #journal_titles:nth-child(5n+2) { background: #A9D5C6; }
+#titles #journal_titles:nth-child(5n+3) { background: #9EB69F; }
+#titles #journal_titles:nth-child(5n+4) { background: #90948D; }
+#titles #journal_titles:nth-child(5n+5) { background: #8F7274; }
+
+
+#journals_page ul.tag_list {
+	margin-left: 1.1rem;
+	float: left;
+	display: inline;
+	width: 13rem;
+	margin: 1.5%;
+	text-align: center;
+	list-style: none;
+	height: 21rem;
+}
+
+#journals_page .tag_front {
+	height: 18rem;
+	box-shadow: -3px 10px 30px rgba(0, 0, 0, 0.25);
+	background: radial-gradient(black 15%, transparent 16%) 0 0,
+radial-gradient(black 15%, transparent 16%) 8px 8px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+background-color:#5C4033;
+background-size:14px 8px;
+}
+
+#journals_page .tag_bind {
+  	content: '';
+	position: relative;
+	top: 0;
+	left: 13px;
+	bottom: 0;
+	width: 3px;
+	background: rgba(0,0,0,0.06);
+	box-shadow: 1px 0 3px rgba(255, 255, 255, 0.25);
+	  height: 100%;
+}
+
+#journals_page .tag_list h2 {
+	font-family: 'Droid Serif', serif;
+  	padding: 1rem;
+  	color: #fff;
+  	font-size:	2rem;
+}
+
+#journals_page .tag_list a {
+  background: #F2EAAB;
+  color: #241616;
+  padding: 4px 5px;
+  border-radius: 3px;
+}
+
+#journals_page .tag_back {
+	height: 18rem;
+	box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.25);
+}
+
+#journals_page .tag_list p {
+	text-align: right;
+	margin: .5rem 0;
+	padding: .3rem;
+}

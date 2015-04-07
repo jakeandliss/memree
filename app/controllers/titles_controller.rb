@@ -8,6 +8,7 @@ class TitlesController < ApplicationController
 		@title.entries.build
 		@entries = @title.entries
 		@user = current_user
+		@tags = Tag.all
 		if params[:tag]
 			@titles = current_user.titles.tagged_with(params[:tag])
 		else

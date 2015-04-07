@@ -6,8 +6,8 @@ describe "Signing Up" do
 		expect(User.count).to eq(0)
 
 		visit "/"
-		expect(page).to have_content("Register")
-		click_link "Register"
+		expect(page).to have_content("Get Started")
+		click_link "Get Started"
 
 		fill_in "First Name", with: "Test"
 		fill_in "Last Name", with: "Test"

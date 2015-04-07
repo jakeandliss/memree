@@ -1,19 +1,30 @@
-<div class="row">
-	<div class="center columns">
-		<h1>My Journals</h1>
+<div id="journals_page">
+	<div class="row">
+		<div class="center columns">
+			<h1>My Journals</h1>
+		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="center columns">
-		<%= render 'form' %>
+	<div class="row">
+		<div class="center columns">
+			<%= render 'form' %>
+		</div>
 	</div>
-</div>
-<div class="row">
-	<div class="center columns">
-		<% @tags.each do |t| %>
-			<div class="tag" id="<%= dom_id(t) %>">
-				<h3><%= t.name %></h3><p> <%= link_to "View Journal", tag_path(t.name) %> | <%= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
-			</div>
-			<% end %>
+	<div class="row">
+		<div class="center columns">
+			<% @tags.each do |t| %>
+				<ul class="tag_list clearfix">
+					<li>
+							<div class="tag_front">
+								<div class="tag_back">
+									<div class="tag_bind"><h2><i><%= t.name %></i></h2>
+									</div>
+								</div>
+							</div>
+						
+						<p><%= link_to "View Journal", tag_path(t.name) %> <%= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+					</li>
+				</ul>
+				<% end %>
+		</div>
 	</div>
 </div>

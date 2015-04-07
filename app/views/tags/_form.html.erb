@@ -1,8 +1,10 @@
 <%= form_for @tag do |f| %>
-	<p><%= f.label :name %></p>
-	<p><%= f.text_field :name %></p>
-
-	<div class="action">
-		<%= f.submit 'Save Journal', class: "button"  %>
+	<div class="row">
+		<div class="small-9 columns">
+			<p><%= f.text_field :name, placeholder: "Enter new MemryBook names (separated by commas)" %></p>
+		</div>
+		<div class="action small-3 columns">
+			<%= f.submit 'Save Journal', class: "button sml"  %>
+		</div>
 	</div>
-	<% end %>
+<% end %>

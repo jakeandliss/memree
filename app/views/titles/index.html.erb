@@ -1,6 +1,6 @@
 <div id="titles">
 	<div class="row wrapper">
-		<div class="medium-2 columns">
+		<div class="medium-3 columns">
 			<div class="user_info">
 				<div class="avatar">
 					<%= image_tag @user.avatar.url(:avatar) %>
@@ -10,11 +10,16 @@
 			</div>
 			<div class="user_journals">
 				<p>Journals</p>
-				<p><%= link_to 'All', titles_path %></p>
+				<div class="tag_list">
+					<div id="journal_titles"><%= link_to 'All Journals', titles_path %></div>
+					<% @tags.each do |t| %>
+						 <div id="journal_titles"><%= link_to t.name, tag_path(t.name) %></div>
+				<% end %>
+				</div>
 			</div>
 
 		</div>
-		<div class="medium-10 columns">
+		<div class="medium-9 columns">
 			<div class="form clearfix">
 				<%= render 'form' %>
 			</div>
