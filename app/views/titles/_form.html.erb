@@ -1,9 +1,13 @@
-<%= form_for @title do |f| %>
+<%= form_for @title, html: {class: "dropzone", id: "media-dropzone"}, remote: true do |f| %>
 	<%= f.text_field :title, placeholder: "Entry Title" %>
 		<%= f.fields_for :entries, @entries do |e| %>
 			<%= e.text_area :entry, placeholder: "Your entry goes here..." %>
-			<%= e.file_field :image %>
+			<div class="fallback">
+			  <%= e.file_field :image, multiple: true, id: "media" %>
+			</div>
 		<% end %>
+	<div class="clear"></div>
+	<div class="clear"></div>
 	<%= f.text_field :all_tags, class: "typeahead" %>	
 	<%= f.date_select :title_date, :order => [:day, :month, :year] %>
 	<div class="action">

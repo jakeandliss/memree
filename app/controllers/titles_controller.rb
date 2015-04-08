@@ -21,15 +21,16 @@ class TitlesController < ApplicationController
 	end
 
 	def create
-  		@title = current_user.titles.new(title_params)
-  		if @title.save  
-  			flash[:notice] = "Entry was created succesfully" 
-  			#render plain: params[:title].inspect
-  			redirect_to title_entries_path(@title)
-  		else 
-  			flash[:error] = "There was a problem adding your entry."
-  			render action: 'new'
-  		end
+		@title = current_user.titles.new(title_params)
+		if @title.save
+      @title.entries.first.update_attributes(image: params[:file]) 
+			flash[:notice] = "Entry was created succesfully" 
+			#render plain: params[:title].inspect
+			#redirect_to title_entries_path(@title)
+		else 
+			flash[:error] = "There was a problem adding your entry."
+			#render action: 'new'
+		end
 	end
 
 	def update
