@@ -31,9 +31,9 @@
 							<p><%= t.title_date %></p>
 						</div>
 						<div class="content">
-							<% @title.entries.each do |e| %>
-								<%= e.entry %>
-								<% end %>
+							<% t.entries.each do |e| %>
+								<%= e.entry  %>
+							<% end %>
 						</div>
 						<div class="footer">
 							<span style="float:right;"><%= link_to 'Delete', title_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></span>
