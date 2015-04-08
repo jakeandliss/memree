@@ -9,12 +9,15 @@
 				<p><%= current_user.full_name  %></p>
 			</div>
 			<div class="user_journals">
-				<p>Journals</p>
 				<div class="tag_list">
-					<div id="journal_titles"><%= link_to 'All Journals', titles_path %></div>
-					<% @tags.each do |t| %>
-						 <div id="journal_titles"><%= link_to t.name, tag_path(t.name) %></div>
-				<% end %>
+					<div id="journal_titles">
+						<ul>
+							<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
+						 		<% @tags.each do |t| %>
+						 			<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
+								<% end %>
+						</ul>
+					</div>
 				</div>
 			</div>
 
@@ -30,9 +33,12 @@
 							<h3><%= link_to t.title, title_entries_path(t) %></h3>
 							<p><%= t.title_date %></p>
 						</div>
-						<div class="content">
-							<% t.entries.each do |e| %>
-								<%= e.entry  %>
+						<div class="content clearfix">
+							<% t.entries.limit(4).each do |e| %>
+								<div class="title_entry", ><div id="wrapper"><% if e.image.present? %>
+								<%= image_tag e.image.url(:thumb) %><% end %></div>
+								<p style="padding:0 5px;"><%=h truncate(e.entry, :length => 85) %></p>
+								</div>
 							<% end %>
 						</div>
 						<div class="footer">
