@@ -1,6 +1,9 @@
-.tag h3, .tag p {
-    display: inline;
-}
+
+/********************************
+
+Titles Page
+
+********************************/
 
 #titles .tag_list #journal_titles {
 	margin: 5px 0;
@@ -9,15 +12,36 @@
 }
 
 #titles .tag_list a {
-	color: #fff;
+	color: #444;
 }
 
+#titles #journal_titles li {
+	list-style-type: none;
+	margin-right: 10px;
+	padding: 3px 7px;
+	border-radius: 3px;
+} 
+
+#titles #journal_titles li.active {
+	background: #FD9781;
+	list-style-type: inherit;
+	direction: rtl;
+	color: red;
+} 
+
+/*
 #titles #journal_titles:nth-child(5n+1) { background: #FD9781; }
 #titles #journal_titles:nth-child(5n+2) { background: #A9D5C6; }
 #titles #journal_titles:nth-child(5n+3) { background: #9EB69F; }
 #titles #journal_titles:nth-child(5n+4) { background: #90948D; }
 #titles #journal_titles:nth-child(5n+5) { background: #8F7274; }
+*/
 
+/********************************
+
+Journals Page
+
+********************************/
 
 #journals_page ul.tag_list {
 	margin-left: 1.1rem;
