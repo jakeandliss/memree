@@ -13,10 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require jquery-fileupload
 //= require best_in_place
 //= require turbolinks
-//= require dropzone
-//= require jquery-fileupload
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

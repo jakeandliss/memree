@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
- *= require dropzone/dropzone
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
  */

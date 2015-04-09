@@ -36,6 +36,10 @@ gem 'best_in_place', '~> 3.0.1'
 
 gem "paperclip", "~> 4.2"
 
+gem 'kaminari'
+
+gem "jquery-fileupload-rails"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -65,6 +69,3 @@ group :test do
   gem 'capybara-email', "~> 2.4.0"
 
 end
-
-gem 'dropzonejs-rails'
-gem "jquery-fileupload-rails"
