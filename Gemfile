@@ -36,8 +36,6 @@ gem 'best_in_place', '~> 3.0.1'
 
 gem "paperclip", "~> 4.2"
 
-gem 'kaminari'
-
 gem "jquery-fileupload-rails"
 
 group :development, :test do
