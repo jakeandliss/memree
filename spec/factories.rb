@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :tagging do
+FactoryGirl.define do  factory :image do
+    
+  end
+  factory :tagging do
     title nil
 tag nil
   end

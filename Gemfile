@@ -67,3 +67,4 @@ group :test do
 end
 
 gem 'dropzonejs-rails'
+gem "jquery-fileupload-rails"

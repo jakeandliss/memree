@@ -24,13 +24,18 @@ class TitlesController < ApplicationController
 	def create
 		@title = current_user.titles.new(title_params)
 		if @title.save
-      @title.entries.first.update_attributes(image: params[:file]) 
+      entry = @title.entries.first
+      if entry.present? && params[:images].present?
+        params[:images].each do |img|
+          entry.images.create(avatar: img) 
+        end
+      end
 			flash[:notice] = "Entry was created succesfully" 
 			#render plain: params[:title].inspect
-			#redirect_to title_entries_path(@title)
+			redirect_to title_entries_path(@title)
 		else 
 			flash[:error] = "There was a problem adding your entry."
-			#render action: 'new'
+			render action: 'new'
 		end
 	end
 
