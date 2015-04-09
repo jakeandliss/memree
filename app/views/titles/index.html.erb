@@ -35,10 +35,14 @@
 						</div>
 						<div class="content clearfix">
 							<% t.entries.limit(4).each do |e| %>
-								<div class="title_entry", ><div id="wrapper"><% if e.image.present? %>
-								<%= image_tag e.image.url(:thumb) %><% end %></div>
-								<p style="padding:0 5px;"><%=h truncate(e.entry, :length => 85) %></p>
-								</div>
+									<div class="title_entry", >
+										<div id="wrapper">
+											<% e.images.limit(1).each do |i| %>
+											<%= image_tag i.avatar.url(:medium) %>
+										<% end %>		
+										</div>
+											<p style="padding:0 5px;"><%=h truncate(e.entry, :length => 85) %></p>
+										</div>
 							<% end %>
 						</div>
 						<div class="footer">

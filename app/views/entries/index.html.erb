@@ -27,7 +27,9 @@
 				<div id="<%= dom_id(e) %>">
 					<div class="content">
 							<p><%= e.entry %></p>
-							<div class="entry_image"><%= image_tag e.image.url(:medium) if e.image.file? %></div>		
+							<% e.images.each do |i| %>
+							<div class="entry_image"><%= image_tag i.avatar.url(:medium) %></div>
+							<% end %>		
 						<div class="footer">
 							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e) %></p>
 							<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />

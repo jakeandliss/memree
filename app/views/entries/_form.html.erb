@@ -1,6 +1,6 @@
 <%= form_for [@title, @entry] do |f| %>
 	<p><%= f.text_area :entry, placeholder: "Your entry goes here..."  %></p>
-	<p><%= f.file_field :image  %></p>
+	<%= f.file_field :image, multiple: true, name: 'images[]' %>
 
 	<div class="action">
 		<%= f.submit 'Save Entry', class: "button" %>

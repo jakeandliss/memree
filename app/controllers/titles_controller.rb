@@ -8,13 +8,13 @@ class TitlesController < ApplicationController
 		@title.entries.build
 		@user = current_user
 		@tags = Tag.all
-
-    @entries = @title.entries
-		if params[:tag]
-			@titles = current_user.titles.tagged_with(params[:tag])
-		else
-			@titles = current_user.titles.all
-		end
+	    @entries = @title.entries
+	    @images = Image.all
+			if params[:tag]
+				@titles = current_user.titles.tagged_with(params[:tag])
+			else
+				@titles = current_user.titles.all
+			end
 	end
 
 	def edit
@@ -23,20 +23,20 @@ class TitlesController < ApplicationController
 
 	def create
 		@title = current_user.titles.new(title_params)
-		if @title.save
-      entry = @title.entries.first
-      if entry.present? && params[:images].present?
-        params[:images].each do |img|
-          entry.images.create(avatar: img) 
-        end
-      end
-			flash[:notice] = "Entry was created succesfully" 
-			#render plain: params[:title].inspect
-			redirect_to title_entries_path(@title)
-		else 
-			flash[:error] = "There was a problem adding your entry."
-			render action: 'new'
-		end
+			if @title.save
+		      	entry = @title.entries.first
+			      	if entry.present? && params[:images].present?
+				        params[:images].each do |img|
+				        entry.images.create(avatar: img) 
+				  		end
+      				end
+				flash[:notice] = "Entry was created succesfully" 
+				#render plain: params[:title].inspect
+				redirect_to title_entries_path(@title)
+			else 
+				flash[:error] = "There was a problem adding your entry."
+				render action: 'new'
+			end
 	end
 
 	def update

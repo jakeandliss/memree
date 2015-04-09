@@ -31,6 +31,7 @@ label.right {
   padding: 25px;
   border-radius: .2rem;
   box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
 }
 
 #titles .form input[type="text"], #titles .form input[type="password"], #titles .form input[type="date"], #titles .form input[type="datetime"], #titles .form input[type="datetime-local"], #titles .form input[type="month"], #titles .form input[type="week"], #titles .form input[type="email"], #titles .form input[type="number"], #titles .form input[type="search"], #titles .form input[type="tel"], #titles .form input[type="time"], #titles .form input[type="url"], #titles .form input[type="color"], textarea {
@@ -72,7 +73,8 @@ label.right {
   padding: 5px 10px;
 }
 
-#titles #title .content {
+#titles #title .content p {
+  float: left;
 }
 
 #titles #title .footer {

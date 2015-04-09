@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20150409131117) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "journals", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "title_id"
     t.integer  "tag_id"

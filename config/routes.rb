@@ -7,14 +7,19 @@ Rails.application.routes.draw do
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
 
-  resources :users
+  resources :users do
+    resources :images
+  end
+
   resources :user_sessions, only: [:new, :create]
 
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   resources :titles do
     get :tag_list, on: :collection
-    resources :entries
+    resources :entries do
+      resource :images
+    end
   end
   
 
