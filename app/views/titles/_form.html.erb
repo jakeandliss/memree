@@ -2,9 +2,14 @@
 	<%= f.text_field :title, placeholder: "Entry Title" %>
 		<%= f.fields_for :entries, @entries do |e| %>
 			<%= e.text_area :entry, placeholder: "Your entry goes here..." %>
-  	    <%= e.file_field :image, multiple: true, name: 'images[]' %>
-
+  	    <%= e.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image" %>
+				<!-- The table listing the files available for upload/download -->
+        <table role="presentation" class="table table-striped">
+          <tbody id="files" class="files">
+          </tbody>
+        </table>
 		<% end %>
+  
 	<div class="clear"></div>
 	<div class="clear"></div>
 	<%= f.text_field :all_tags, class: "typeahead" %>	
