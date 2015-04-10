@@ -1,3 +1,21 @@
+/*************************************
+
+Titles#index and Entries#index sidebar
+
+**************************************/
+
+.user_info {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+
+/*************************************
+
+Titles#index
+
+**************************************/
+
 #title_title_date_1i, #title_title_date_2i, #title_title_date_3i {  
   width: 32.6666%;
 	margin-right: 1%;
@@ -14,16 +32,6 @@ label.right {
 
 #titles .medium-9 {
   background: #eee;
-
-}
-
-#titles .user_info {
-  text-align: center;
-  padding-top: 1rem;
-}
-
-#titles .user_journals {
-  text-align: right;
 }
 
 #titles .form {
@@ -34,7 +42,7 @@ label.right {
   margin-bottom: 1rem;
 }
 
-#titles .form input[type="text"], #titles .form input[type="password"], #titles .form input[type="date"], #titles .form input[type="datetime"], #titles .form input[type="datetime-local"], #titles .form input[type="month"], #titles .form input[type="week"], #titles .form input[type="email"], #titles .form input[type="number"], #titles .form input[type="search"], #titles .form input[type="tel"], #titles .form input[type="time"], #titles .form input[type="url"], #titles .form input[type="color"], textarea {
+.form input[type="text"], .form input[type="password"], .form input[type="date"], .form input[type="datetime"], .form input[type="datetime-local"], .form input[type="month"], .form input[type="week"], .form input[type="email"], .form input[type="number"], .form input[type="search"], .form input[type="tel"], .form input[type="time"], .form input[type="url"], .form input[type="color"], textarea {
   margin: 0 0 .2px 0;
 }
 
@@ -43,7 +51,6 @@ label.right {
 }
 
 #titles #title {
-  box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.15);
   background: white;
   border-radius: .2rem;
   margin: 1rem 0;

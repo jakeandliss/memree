@@ -19,4 +19,17 @@
 <% end %>
 <script type="text/javascript">
   showImages();
+  $(function(){
+    //$("input#title_all_tags").tagsinput('items')
+  	$('#title_all_tags').tagsinput({
+			typeahead: {                  
+			    source: function(query) {
+			      return $.get('<%= tag_list_titles_url %>'+'?text='+query);
+			    }
+		  
+			  }
+
+    });
+
+  });  
 </script>

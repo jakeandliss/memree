@@ -1,33 +1,58 @@
 
 /********************************
 
-Titles Page
+Titles#index and Entries#index Page
 
 ********************************/
 
-#titles .tag_list #journal_titles {
+#journal_titles {
 	margin: 5px 0;
 	padding: 5px;
 	border-radius: 5px;
+  	text-align: right;
 }
 
-#titles .tag_list a {
+#journal_titles a {
 	color: #444;
 }
 
-#titles #journal_titles li {
+#journal_titles li {
 	list-style-type: none;
 	margin-right: 10px;
 	padding: 3px 7px;
 	border-radius: 3px;
 } 
 
-#titles #journal_titles li.active {
+#journal_titles li.active {
 	background: #FD9781;
 	list-style-type: inherit;
 	direction: rtl;
 	color: red;
 } 
+
+#entries #journal_titles li {
+	list-style-type: none;
+	margin-right: 0px;
+	padding: 3px 7px;
+	margin-bottom: 3px;
+	border-radius: 3px;
+	background: #A9D5C6;
+} 
+
+#entries #journal_titles li:hover {
+	background: #FD9781;
+} 
+
+#edit_form {
+  display: none;
+}
+
+#journal_titles a {
+	list-style-type: none;
+	margin-right: 10px;
+	padding: 3px 7px;
+	border-radius: 3px;	
+}
 
 /*
 #titles #journal_titles:nth-child(5n+1) { background: #FD9781; }

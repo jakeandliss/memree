@@ -1,21 +1,31 @@
 <div id="entries">
 	<div class="row wrapper">
-		<div class="medium-2 columns">
+		<div class="medium-3 columns">
 			<div class="user_info">
 				<div class="avatar">
 					<%= image_tag @user.avatar.url(:avatar) %>
+					<%#= image_tag current_user.gravatar_url %>
 				</div>
 				<p><%= current_user.full_name  %></p>
 			</div>
-			<div class="user_journals">
-				<p>Journals</p>
-				<p><%= link_to 'All', titles_path %></p>
+			<div id="user_journals">
+				<h4><%= "Journals for this Entry" if @title.tags.any? %></h4>
+					<div id="journal_titles">
+				 		<% if @title.tags.present? %>
+				 			<% @title.tags.each do |t| %>
+				 			<li><%= link_to t.name, tag_path(t.name) %></li>
+				 			<% end %>
+				 			<% end %>
+				 		<a href="#" id="edit_journals">Edit Journals</a>
+					</div>
+					<div id="edit_form">
+				 		<%= render 'tag_form' %>
+				 	</div>
 			</div>
 
 		</div>
-		<div class="medium-10 columns">
+		<div class="medium-9 columns">
 			<div class="header clearfix">	
-				
 				<h2><%= best_in_place @title, :title %></h2>
 				<p style="float:left;margin-bottom:0;"><%= best_in_place @title, :title_date %></p>		
 				<p style="float:right;"><%= link_to 'Delete Event', title_path(@title), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
@@ -41,3 +51,12 @@
 		</div>
 	</div>
 </div>
+<script>
+$(function() {
+  $('a#edit_journals').click(function(event){
+    event.preventDefault();
+    $('#edit_form').toggle();
+    $('#journal_titles').toggle();
+  });
+});  
+</script>

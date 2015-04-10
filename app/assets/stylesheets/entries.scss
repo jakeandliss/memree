@@ -22,20 +22,11 @@
   background-size: auto 100%;
 }
 
-#entries {
+#entries .medium-9 {
   background: #f2f2f2;
 }
 
 #entries .wrapper {
-  padding-top: 1em;
-}
-
-#entries .user_info {
-  text-align: center;
-}
-
-#entries .user_journals {
-  text-align: right;
 }
 
 #entries .header h2 {
@@ -44,7 +35,7 @@
 }
 
 #entries .header {
-  padding: 15px;
+  padding: 15px 0;
   border-radius: .2rem;
 }
 
@@ -52,7 +43,8 @@
   background: #fff;
   padding: 25px;
   border-radius: .2rem;
-  margin-top: 1rem;
+  box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1rem;
 }
 
 #entries .form input[type="text"], #entries .form input[type="password"], #entries .form input[type="date"], #entries .form input[type="datetime"], #entries .form input[type="datetime-local"], #entries .form input[type="month"], #entries .form input[type="week"], #entries .form input[type="email"], #entries .form input[type="number"], #entries .form input[type="search"], #entries .form input[type="tel"], #entries .form input[type="time"], #entries .form input[type="url"], #entries .form input[type="color"], textarea {
@@ -64,6 +56,7 @@
   background: white;
   border-radius: .2rem;
   margin: 1rem 0;
+  box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 
 #entries .entry .content {
@@ -91,6 +84,7 @@ IMAGE STYLING
 .entry_image img {
   border-radius: 1.3rem;
 }
+
 
 
 

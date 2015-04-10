@@ -660,7 +660,7 @@ $input-focus-border-color: scale-color($white, $lightness: -20%);
 // We use these to style the prefix and postfix input elements
 // $input-prefix-bg: scale-color($white, $lightness: -5%);
 // $input-prefix-border-color: scale-color($white, $lightness: -20%);
-// $input-prefix-border-size: 1px;
+$input-prefix-border-size: 0px;
 // $input-prefix-border-type: solid;
 // $input-prefix-overflow: hidden;
 // $input-prefix-font-color: $oil;

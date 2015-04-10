@@ -1,0 +1,23 @@
+<%= form_for @title, html: { multipart: true } do |f| %>
+	<%= f.text_field :all_tags, class: "typeahead" %>	
+	<div class="action">
+		<%= f.submit 'Update', class: "button small right" %>
+	</div>
+<% end %>
+<a href="#" id="edit_journals">Cancel</a>
+<script type="text/javascript">
+  $(function(){
+    //$("input#title_all_tags").tagsinput('items')
+  	$('#title_all_tags').tagsinput({
+			typeahead: {                  
+			    source: function(query) {
+			      return $.get('<%= tag_list_titles_url %>'+'?text='+query);
+			    }
+		  
+			  }
+
+    });
+
+  });  
+
+</script>

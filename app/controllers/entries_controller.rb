@@ -8,6 +8,8 @@ class EntriesController < ApplicationController
     @entry = Entry.new
     @entries = @title.entries
     @images = Image.all
+    @tags = Tag.find_by(params[:title_id])
+    @tag = Tag.new
   end
 
   def new

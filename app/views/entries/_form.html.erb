@@ -1,5 +1,5 @@
 <%= form_for [@title, @entry] do |f| %>
-	<p><%= f.text_area :entry, placeholder: "Your entry goes here..."  %></p>
+	<%= f.text_area :entry, placeholder: "Your entry goes here..."  %>
 	<%= f.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image" %>
   <table role="presentation" class="table table-striped">
     <tbody id="files" class="files">
