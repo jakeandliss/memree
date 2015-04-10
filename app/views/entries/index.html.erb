@@ -43,7 +43,7 @@
 							</div>
 							<div id="entry_long_<%= e.id %>" style="display:none;">
 							    <%= e.entry %>
-							    <%= link_to '...Read less', '', class: "read-less-#{e.id}" %>
+							    <%= link_to '...Read less', '', class: "read-less-#{e.id}", style: "float:right;" %>
 							</div>
 							<script>
 							  	$('.read-more-<%= e.id %>').on('click', function(e) {
@@ -62,9 +62,11 @@
 						<% else %>
 							<%= e.entry %>
 						<% end %>
+							<div class="entry_image">
 							<% e.images.each do |i| %>
-							<div class="entry_image"><%= image_tag i.avatar.url(:medium) %></div>
+							<a href="<%= i.avatar.url(:large) %>" data-lightbox="yes"><%= image_tag i.avatar.url(:medium) %></a>
 						<% end %>		
+					</div>
 						<div class="footer">
 							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e) %></p>
 							<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />

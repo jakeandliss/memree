@@ -15,6 +15,7 @@
  *= require foundation_and_overrides
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
+ *= require lightbox
  */
 
 

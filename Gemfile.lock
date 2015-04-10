@@ -96,6 +96,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.2)
     libv8 (3.16.14.7)
+    lightbox2-rails (2.7.1)
+      railties (>= 3.1)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -219,6 +221,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
+  lightbox2-rails
   paperclip (~> 4.2)
   quiet_assets
   rails (= 4.2.0)
