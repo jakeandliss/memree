@@ -36,10 +36,35 @@
 			<div class="entry">
 				<div id="<%= dom_id(e) %>">
 					<div class="content">
-							<p><%= e.entry %></p>
+						<% if e.entry.length > 250 %>
+							<div id="entry_truncate_<%= e.id %>">
+							    <%= truncate(e.entry, length: 250) %>
+							    <%= link_to '...Read more', '', class: "read-more-#{e.id}" %>
+							</div>
+							<div id="entry_long_<%= e.id %>" style="display:none;">
+							    <%= e.entry %>
+							    <%= link_to '...Read less', '', class: "read-less-#{e.id}" %>
+							</div>
+							<script>
+							  	$('.read-more-<%= e.id %>').on('click', function(e) {
+							    e.preventDefault()
+							    $('#entry_truncate_<%= e.id %>').toggle();
+							    $('#entry_long_<%= e.id %>').toggle();
+							})
+							</script>
+							<script>
+							  	$('.read-less-<%= e.id %>').on('click', function(e) {
+							    e.preventDefault()
+							    $('#entry_truncate_<%= e.id %>').toggle();
+							    $('#entry_long_<%= e.id %>').toggle();
+							  })
+							</script>
+						<% else %>
+							<%= e.entry %>
+						<% end %>
 							<% e.images.each do |i| %>
 							<div class="entry_image"><%= image_tag i.avatar.url(:medium) %></div>
-							<% end %>		
+						<% end %>		
 						<div class="footer">
 							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e) %></p>
 							<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
