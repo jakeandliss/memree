@@ -3,7 +3,6 @@
 		<%= f.fields_for :entries, @entries do |e| %>
 			<%= e.text_area :entry, placeholder: "Your entry goes here..." %>
   	    <%= e.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image" %>
-				<!-- The table listing the files available for upload/download -->
         <table role="presentation" class="table table-striped">
           <tbody id="files" class="files">
           </tbody>
@@ -18,3 +17,6 @@
 		<%= f.submit 'Save Entry', class: "button small right" %>
 	</div>
 <% end %>
+<script type="text/javascript">
+  showImages();
+</script>
