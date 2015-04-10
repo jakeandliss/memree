@@ -1,4 +1,8 @@
-
+   $stationery	: #EBE5CD;
+   $greendew 	: #A9D5C6;
+   $evendarker	: #241616;
+   $sun 		: #F2EAAB;
+   $salmon	 	: #FD9781;
 /********************************
 
 Titles#index and Entries#index Page
@@ -14,20 +18,27 @@ Titles#index and Entries#index Page
 
 #journal_titles a {
 	color: #444;
+	display:block;
+	list-style-type: none;
+	margin-right: 10px;
+	padding: 3px 7px;
+	border-radius: 3px;	
+  	line-height: 1.2rem;
 }
 
 #journal_titles li {
 	list-style-type: none;
-	margin-right: 10px;
-	padding: 3px 7px;
+	margin-right: 10px;	
 	border-radius: 3px;
-} 
+  	background: #f2f2f2;
+  	margin-bottom: .2rem;
+}
 
 #journal_titles li.active {
-	background: #FD9781;
+	background: $salmon;
 	list-style-type: inherit;
 	direction: rtl;
-	color: red;
+	color: $salmon;
 } 
 
 #entries #journal_titles li {
@@ -36,23 +47,18 @@ Titles#index and Entries#index Page
 	padding: 3px 7px;
 	margin-bottom: 3px;
 	border-radius: 3px;
-	background: #A9D5C6;
+	background: $greendew ;
 } 
 
 #entries #journal_titles li:hover {
-	background: #FD9781;
+	background: $salmon;
 } 
 
 #edit_form {
   display: none;
 }
 
-#journal_titles a {
-	list-style-type: none;
-	margin-right: 10px;
-	padding: 3px 7px;
-	border-radius: 3px;	
-}
+
 
 /*
 #titles #journal_titles:nth-child(5n+1) { background: #FD9781; }
@@ -110,7 +116,7 @@ background-size:14px 8px;
 }
 
 #journals_page .tag_list a {
-  background: #F2EAAB;
+  background: $greendew;
   color: #241616;
   padding: 4px 5px;
   border-radius: 3px;
