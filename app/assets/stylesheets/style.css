@@ -40,3 +40,19 @@
   color: #333;
   white-space: nowrap;
 }
+
+.dropzone {
+  border: 2px dashed #0087F7;
+  border-radius: 5px;
+  background: white;
+}
+.dropzone .dropzone * {
+  box-sizing: border-box;
+}
+#entry-image{
+  opacity: 0;
+  min-height: 150px;
+  padding: 54px, 54px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
