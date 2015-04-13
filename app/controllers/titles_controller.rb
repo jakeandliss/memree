@@ -23,20 +23,21 @@ class TitlesController < ApplicationController
 
 	def create
 		@title = current_user.titles.new(title_params)
-			if @title.save
-		      	entry = @title.entries.first
-			      	if entry.present? && params[:images].present?
-				        params[:images].each do |img|
-				        entry.images.create(avatar: img) 
-				  		end
-      				end
-				flash[:notice] = "Entry was created succesfully" 
-				#render plain: params[:title].inspect
-				redirect_to title_entries_path(@title)
-			else 
-				flash[:error] = "There was a problem adding your entry."
-				render action: 'new'
-			end
+			respond_to do |format|
+				if @title.save
+			      	entry = @title.entries.first
+				      	if entry.present? && params[:images].present?
+					        params[:images].each do |img|
+					        entry.images.create(avatar: img) 
+					  		end
+	      				end
+	      				format.html { redirect_to titles_path, notice: "Entry was created succesfully"}
+	      				format.js
+				else 
+					flash[:error] = "There was a problem adding your entry."
+					render action: 'new'
+				end
+	      	end
 	end
 
 	def update
@@ -44,9 +45,8 @@ class TitlesController < ApplicationController
 		@title.update_attributes!(title_params)
 		if @title.save  
 			respond_to do |format|
-    			format.html { flash[:notice] = "Entry was updated succesfully" 
-  							redirect_to title_entries_path(@title) }
-    			format.json { render json: title_entries_path(@title) }
+    			format.html { redirect_to titles_path, notice: "Entry was updated succesfully" }
+    			format.json { render json: titles_path }
     		end
   		else 
   			flash[:error] = "Entry has not been updated"
@@ -58,8 +58,11 @@ class TitlesController < ApplicationController
 	def destroy
 		@title = current_user.titles.find(params[:id])
 		@title.destroy
-		flash[:notice] = "Entry has been deleted"
-		redirect_to titles_path
+		respond_to do |format|
+    			format.html { redirect_to titles_path, notice: "Entry has been deleted"
+  							 }
+    			format.js
+    		end
 	end
 
   def tag_list
