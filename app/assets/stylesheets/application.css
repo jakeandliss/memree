@@ -26,3 +26,16 @@
  }
 
 
+.alert.flash.notice {
+  position: fixed;
+  background: gray;
+  width: 25%;
+  height: 10rem;
+  text-align: center;
+  z-index: 1;
+  opacity: .9;
+  bottom: 2rem;
+  left: 2rem;
+  padding-top: 4rem;
+  color: white;
+  border-radius: .3rem;
