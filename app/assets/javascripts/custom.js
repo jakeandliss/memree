@@ -10,7 +10,7 @@ function showImages(){
         if (regex.test(file[0].name.toLowerCase())) {
           var reader = new FileReader();
           reader.onload = function (e) {
-            var img = $('<tr><td><img src='+e.target.result+' style="height:100px; width:100px;"/></td><td>'+ file[0].name.toLowerCase() +'</td></tr>');
+            var img = $('<tr><td><img src='+e.target.result+' style="height:100px; width:100px;"/></td><td>'+ file[0].name.toLowerCase() +'</td><td><a data-attr='+file[0].name+' title="Remove" class="remove_img cancel">X</a></td></tr>');
 
             dvPreview.append(img);
           }
@@ -29,4 +29,24 @@ function showImages(){
     }
   });
 
+  $("#files").on( "click",".remove_img",function(){
+    var name = $(this).attr('data-attr')
+    files = $("#entry-image")[0].files;
+    $(files).each(function(){
+      var file = $(this);
+      if (file[0].name.toLowerCase() == name) {
+        console.log(file)
+        console.log(files)
+        var idx = $(files).indexOf(file);
+        console.log(idx)
+        if (idx != -1) {
+          return $("#entry-image")[0].files.splice(idx, 1); // The second parameter is the number of elements to remove.
+        }
+
+      };
+    });
+    
+  });
+
+  
 }
