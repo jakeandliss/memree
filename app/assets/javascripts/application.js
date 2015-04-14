@@ -17,6 +17,7 @@
 //= require lightbox
 //= require best_in_place
 //= require turbolinks
+//= require liveValidation
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

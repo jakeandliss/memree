@@ -10,29 +10,42 @@
               </ul>
             </div>
           <% end %>
-          <div class="field">
-            <%= f.label :first_name, "First Name" %><br>
-            <%= f.text_field :first_name %>
-          </div>
-          <div class="field">
-            <%= f.label :last_name, "Last Name" %><br>
-            <%= f.text_field :last_name %>
-          </div>
-          <div class="field">
-            <%= f.label :email %><br>
-            <%= f.text_field :email %>
+          <div id="form_first"class="">
+            <div class="field">
+              <%= f.label :first_name, "First Name" %>
+              <%= f.text_field :first_name %>
             </div>
-          <div class="field">
-            <%= f.label :password %><br>
-            <%= f.password_field :password %>
+            <div class="field">
+              <%= f.label :last_name, "Last Name" %>
+              <%= f.text_field :last_name %>
+            </div>
+            <div class="field">
+              <%= f.label :email %>
+              <%= f.text_field :email %>
+              </div>
+            <div class="field">
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+            </div>
+            <div class="field">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation %>
+            </div>
+            <input type="button" id="form_next" value="Next" class="" /> 
           </div>
-          <div class="field">
-            <%= f.label :password_confirmation %><br>
-            <%= f.password_field :password_confirmation %>
+
+          <div id="form_second" class="hide">  
+            <%= f.label :avatar, "Add Profile Photo" %>
+            <%= f.file_field :avatar %>
+
+            <input type="button" id="" value="Back" class="" />
+            <input type="button" id="" value="Submit" class="" />
+            
           </div>
-             <%= f.label :avatar, "Add Profile Photo" %><br>
-             <%= f.file_field :avatar %> 
+
+          <div class="hide">
+          </div>  
           <div class="actions">
-            <%= f.submit "Register", class: "button" %>
+            <%= f.submit "Register", class: "button hide", :id =>"user_form" %>
           </div>
         <% end %>

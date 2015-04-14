@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <body id="home">
 	<div id="wrapper">
 		<div class="header">
@@ -5,8 +8,9 @@
 			 </div>
 		<div class="content">
 			<p>Because we <i>want</i> to remember.</p> 
-
-			<p><%= link_to "Get Started", new_user_path, class: "button round" %></p>
+			
+			<input type="button" id="btnOpenDialog" value="Get Started" class="button round" />
+			<p><%#= link_to "Get Started", new_user_path, class: "button round" %></p>
 		</div>
 		<div class="footer">
 			<p>All rights reserved.</p> 
@@ -17,3 +21,74 @@
 		</div>
 	</div>
 </body>
+
+<div id="dialog-confirm" style="display:none;">
+	<%= render :partial =>"users/form"%>
+</div>
+
+<script type="text/javascript">
+
+
+  function fnOpenNormalDialog() {
+    $("#dialog-confirm").dialog({
+      resizable: false,
+      modal: true,
+      title: "New User Registration",
+      height: 600,
+      width: 600,
+      modal: true,
+      show: 'clip',
+      hide: 'clip',
+      
+	  });
+	}
+
+
+   
+  function validateRegistrationForm() {
+      var is_true = false;
+
+  		var f1 = new LiveValidation('user_first_name');
+			f1.add( Validate.Presence );
+      
+      is_true = f1.validationFailed
+
+			var f2 = new LiveValidation('user_last_name');
+			f2.add( Validate.Presence );
+
+      is_true = f2.validationFailed
+
+			var f3 = new LiveValidation('user_email');
+			f3.add( Validate.Email );
+
+			is_true = f3.validationFailed
+
+			var f4 = new LiveValidation('user_password');
+			f4.add( Validate.Presence );
+			f4.add( Validate.Length, { minimum: 8, maximum: 20 } );
+
+			is_true = f4.validationFailed
+
+			var f5 = new LiveValidation('user_password_confirmation');
+			f5.add( Validate.Presence );
+			f5.add( Validate.Length, { minimum: 8, maximum: 20 } );
+			f5.add( Validate.Confirmation, { match: 'user_password' } );
+
+			is_true = f5.validationFailed
+      
+      return is_true;
+  }
+
+  $(function(){
+
+  		$('#btnOpenDialog').click(fnOpenNormalDialog);
+  
+		  $("#form_next").click(function(){
+		  	var is_true = validateRegistrationForm;
+		  	console.log(is_true)
+
+		  });
+
+  })
+</script>
+

@@ -10,7 +10,7 @@ function showImages(){
         if (regex.test(file[0].name.toLowerCase())) {
           var reader = new FileReader();
           reader.onload = function (e) {
-            var img = $('<tr><td><img src='+e.target.result+' style="height:100px; width:100px;"/></td><td>'+ file[0].name.toLowerCase() +'</td><td><a data-attr='+file[0].name+' title="Remove" class="remove_img cancel">X</a></td></tr>');
+            var img = $('<tr><td><img src='+e.target.result+' style="height:100px; width:100px;"/></td><td>'+ file[0].name.toLowerCase() +'</td><td><button type="reset" class="btn btn-warning cancel">cancel</button></td></tr>');
 
             dvPreview.append(img);
           }
@@ -48,5 +48,12 @@ function showImages(){
     
   });
 
-  
+
+  $("#files").on( "click",".cancel",function(e){
+    alert(1)
+    var jqXHR = data.submit();
+    $(this).closest('tr').remove();
+    jqXHR.abort();
+  });
+
 }
