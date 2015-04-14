@@ -1,33 +1,41 @@
 <div id="entry_<%= @entry.id %>">
-	<div id="entry">
-	<div class="content">
-		
-			
-			    <%= @entry.entry %>
+	<div class="entry">
+		<div class="content">
+			<% if @entry.entry.length > 250 %>
+				<div id="entry_truncate_<%= @entry.id %>">
+				    <%= truncate(@entry.entry, length: 250) %>
+				    <%= link_to '...Read more', '', class: "read-more-#{@entry.id}" %>
+				</div>
+				<div id="entry_long_<%= @entry.id %>" style="display:none;">
+				    <%= @entry.entry %>
+				    <%= link_to '...Read less', '', class: "read-less-#{@entry.id}", style: "float:right;" %>
+				</div>
+				<script>
+				  	$('.read-more-<%= @entry.id %>').on('click', function(e) {
+				    e.preventDefault()
+				    $('#entry_truncate_<%= @entry.id %>').toggle();
+				    $('#entry_long_<%= @entry.id %>').toggle();
+				})
+				</script>
+				<script>
+				  	$('.read-less-<%= @entry.id %>').on('click', function(e) {
+				    e.preventDefault()
+				    $('#entry_truncate_<%= @entry.id %>').toggle();
+				    $('#entry_long_<%= @entry.id %>').toggle();
+				  })
+				</script>
+			<% else %>
+				<%= @entry.entry %>
+			<% end %>
+				<div class="entry_image">
+				<% @entry.images.each do |i| %>
+				<a href="<%= i.avatar.url(:large) %>" data-lightbox="yes"><%= image_tag i.avatar.url(:medium) %></a>
+			<% end %>		
+		</div>
+			<div class="footer">
+				<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, @entry), remote: true %></p>
+				<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, @entry), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p><br />
 			</div>
-			<script>
-			  	$('.read-more-<%= @entry.id %>').on('click', function(e) {
-			    e.preventDefault()
-			    $('#entry_truncate_<%= @entry.id %>').toggle();
-			    $('#entry_long_<%= @entry.id %>').toggle();
-			})
-			</script>
-			<script>
-			  	$('.read-less-<%= @entry.id %>').on('click', function(e) {
-			    e.preventDefault()
-			    $('#entry_truncate_<%= @entry.id %>').toggle();
-			    $('#entry_long_<%= @entry.id %>').toggle();
-			  })
-			</script>
-		
-			<div class="entry_image">
-			<% @entry.images.each do |i| %>
-			<a href="<%= i.avatar.url(:large) %>" data-lightbox="yes"><%= image_tag i.avatar.url(:medium) %></a>
-		<% end %>		
-	</div>
-		<div class="footer">
-			<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, @entry) %></p>
-			<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, @entry), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p><br />
 		</div>
 	</div>
 </div>

@@ -1,4 +1,5 @@
-<%= form_for [@title, @entry], remote: true, authenticity_token: true do |f| %>
+<div class="content">
+	<%= form_for [@title, @entry], remote: true, authenticity_token: true do |f| %>
 	<%= f.text_area :entry, placeholder: "Your entry goes here..."  %>
 	<%= f.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image" %>
   <table role="presentation" class="table table-striped">
@@ -7,10 +8,11 @@
   </table>
 
 	<div class="action">
-		<%= f.submit 'Save Entry', class: "button", id: "submit_button" %>
+		<%= f.submit 'Update', class: "button", id: "submit_button", remote: true %>
 	</div>
 	
 <% end %>
 <script type="text/javascript">
   showImages();
 </script>
+</div>

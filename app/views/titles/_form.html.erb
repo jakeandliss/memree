@@ -15,7 +15,8 @@
 	<div class="clear"></div>
 	<div class="clear"></div>
 	<%= f.text_field :all_tags, class: "typeahead" %>	
-	<%= f.date_select :title_date, :order => [:day, :month, :year] %>
+	<div id="current_date"><a href="#" id="change_date">Change Date?</a></div>
+	<div id="new_date"><%= f.date_select :title_date, :order => [:day, :month, :year] %></div>
 	<div class="action">
 		<%= f.submit 'Save Entry', class: "button small right" %>
 	</div>
@@ -35,4 +36,13 @@
     });
 
   });  
+</script>
+<script>
+$(function() {
+  $('a#change_date').click(function(event){
+    event.preventDefault();
+    $('#current_date').toggle();
+    $('#new_date').toggle();
+  });
+});  
 </script>

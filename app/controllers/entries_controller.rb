@@ -46,8 +46,11 @@ class EntriesController < ApplicationController
     @title = Title.find(params[:title_id])
     @entry = @title.entries.find(params[:id])
     if @entry.update_attributes(entry_params)
-      flash[:success] = "Entry updated successfully."
-      redirect_to title_entries_path
+      respond_to do |format|
+        format.html {flash[:success] = "Entry updated successfully."
+      redirect_to title_entries_path}
+        format.js
+      end
     else
       flash[:error] = "Your entry could not be saved."
       render action: :edit
