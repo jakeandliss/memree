@@ -20,18 +20,20 @@ class EntriesController < ApplicationController
   def create
     @title = Title.find(params[:title_id])
     @entry = @title.entries.new(entry_params)
-    if @entry.save
-      entry = @title.entries.first
-              if entry.present? && params[:images].present?
-                params[:images].each do |img|
-                entry.images.create(avatar: img) 
+    respond_to do |format|
+      if @entry.save
+        entry = @title.entries.first
+                if entry.present? && params[:images].present?
+                  params[:images].each do |img|
+                  entry.images.create(avatar: img) 
+                end
               end
-              end
-      flash[:success] = "Entry added successfully."
-      redirect_to title_entries_path
-    else
-      flash[:error] = "There was a problem adding your entry."
-      render action: :new
+        format.html { redirect_to title_entries_path, success: "Entry added successfully." }
+        format.js
+      else
+        flash[:error] = "There was a problem adding your entry."
+        render action: :new
+        end
     end
   end
 
@@ -56,8 +58,10 @@ class EntriesController < ApplicationController
     @title = Title.find(params[:title_id])
     @entry = @title.entries.find(params[:id])
     @entry.destroy
-    flash[:notice] = "Entry has been deleted"
-    redirect_to title_entries_path(@title)
+    respond_to do |format|
+      format.html { redirect_to title_entries_path(@title), notice: "Entry has been deleted" }
+      format.js
+    end
   end
 
   private

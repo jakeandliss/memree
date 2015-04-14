@@ -1,0 +1,24 @@
+					<div id="title">
+						<div id="title_<%= @title.id %>">
+							<div class="header">
+								<h3><%= link_to title.title, title_entries_path(title) %></h3>
+								<p><%= title.title_date %></p>
+							</div>
+							<div class="content clearfix">
+								<% title.entries.limit(4).each do |e| %>
+										<div class="title_entry", >
+											<div id="wrapper">
+												<% e.images.limit(1).each do |i| %>
+												<%= image_tag i.avatar.url(:medium) %>
+											<% end %>		
+											</div>
+												<p style="padding:0 5px;"><%=h truncate(e.entry, :length => 85) %></p>
+											</div>
+								<% end %>
+							</div>
+							<div class="footer">
+								<span style="float:right;"><%= link_to 'Delete', title_path(title), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></span>
+								<h5>MemryBooks: <%= raw tag_links(title.all_tags) %></h5>
+							</div>
+						</div>
+					</div>

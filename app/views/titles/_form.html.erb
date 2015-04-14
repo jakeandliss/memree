@@ -1,4 +1,4 @@
-<%= form_for @title, html: { multipart: true } do |f| %>
+<%= form_for @title, remote: true, html: { multipart: true }, authenticity_token: true  do |f| %>
 	<%= f.text_field :title, placeholder: "Entry Title" %>
 		<%= f.fields_for :entries, @entries do |e| %>
 			<%= e.text_area :entry, placeholder: "Your entry goes here..." %>
