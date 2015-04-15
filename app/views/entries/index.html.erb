@@ -39,11 +39,11 @@
 					<div class="content">
 						<% if e.entry.length > 250 %>
 							<div id="entry_truncate_<%= e.id %>">
-							    <%= truncate(e.entry, length: 250) %>
+							    <%= truncate_html(e.entry.html_safe, length: 250) %>
 							    <%= link_to '...Read more', '', class: "read-more-#{e.id}" %>
 							</div>
 							<div id="entry_long_<%= e.id %>" style="display:none;">
-							    <%= e.entry %>
+							    <%= e.entry.html_safe %>
 							    <%= link_to '...Read less', '', class: "read-less-#{e.id}", style: "float:right;" %>
 							</div>
 							<script>
@@ -61,7 +61,7 @@
 							  })
 							</script>
 						<% else %>
-							<%= e.entry %>
+							<%= e.entry.html_safe %>
 						<% end %>
 							<div class="entry_image">
 							<% e.images.each do |i| %>
@@ -69,7 +69,7 @@
 						<% end %>		
 					</div>
 						<div class="footer">
-							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e) %></p>
+							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e), remote: true %></p>
 							<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p><br />
 						</div>
 					</div>

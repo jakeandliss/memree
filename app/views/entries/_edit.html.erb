@@ -1,4 +1,5 @@
-<%= form_for [@title, @entry], remote: true, authenticity_token: true do |f| %>
+<div class="content">
+	<%= form_for [@title, @entry], remote: true, authenticity_token: true do |f| %>
 	<%= f.text_area :entry, id: "wysiwyg", placeholder: "Your entry goes here...", rows: 5  %>
 	<%= f.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image" %>
   <table role="presentation" class="table table-striped">
@@ -7,7 +8,7 @@
   </table>
 
 	<div class="action">
-		<%= f.submit 'Save Entry', class: "button", id: "submit_button" %>
+		<%= f.submit 'Update Entry', class: "button", id: "submit_button" %>
 	</div>
 	
 <% end %>
@@ -20,11 +21,3 @@
           $('#wysiwyg').editable({inlineMode: false})
       });
   </script>
-  <script>
-$(function() {
-  $('#new_entry').on("change keyup paste", function(event){
-    event.preventDefault();
-    $('#bttn-wrapper-1').show();
-  });
-});  
-</script>

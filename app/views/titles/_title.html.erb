@@ -2,7 +2,7 @@
 						<div id="title_<%= @title.id %>">
 							<div class="header">
 								<h3><%= link_to title.title, title_entries_path(title) %></h3>
-								<p><%= title.title_date %></p>
+								<p><%= title.title_date.to_date.strftime('%a, %B %e, %Y')  %></p>
 							</div>
 							<div class="content clearfix">
 								<% title.entries.limit(4).each do |e| %>
@@ -12,7 +12,7 @@
 												<%= image_tag i.avatar.url(:medium) %>
 											<% end %>		
 											</div>
-												<p style="padding:0 5px;"><%=h truncate(e.entry, :length => 85) %></p>
+												<p style="padding:0 5px;"><%= truncate_html(e.entry.html_safe, :length => 85, :escape => false) %></p>
 											</div>
 								<% end %>
 							</div>

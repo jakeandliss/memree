@@ -1,8 +1,9 @@
-<%= form_for @title, remote: true, html: { multipart: true }, authenticity_token: true  do |f| %>
+<%= form_for @title, remote: true, html: { multipart: true }, authenticity_token: true  do |f| %>	
+	<div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a></div>
+	<div id="new_date"><%= f.date_select :title_date, :order => [:day, :month, :year] %></div>
 	<%= f.text_field :title, placeholder: "Entry Title" %>
 		<%= f.fields_for :entries, @entries do |e| %>
-			<%= e.text_area :entry, placeholder: "Your entry goes here..." %>
-  	    
+			<%= e.text_area :entry, id: "wysiwyg", placeholder: "Your entry goes here...", rows: 5 %>
   	    <div class="dropzone">
   	    <%= e.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image", :class =>"file" %>
 	        <table role="presentation" class="table table-striped">
@@ -14,8 +15,7 @@
   
 	<div class="clear"></div>
 	<div class="clear"></div>
-	<%= f.text_field :all_tags, class: "typeahead" %>	
-	<%= f.date_select :title_date, :order => [:day, :month, :year] %>
+	<%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Journals" %>
 	<div class="action">
 		<%= f.submit 'Save Entry', class: "button small right" %>
 	</div>
@@ -35,4 +35,26 @@
     });
 
   });  
+</script>
+<script>
+$(function() {
+  $('a#change_date').click(function(event){
+    event.preventDefault();
+    $('#current_date').toggle();
+    $('#new_date').toggle();
+  });
+});  
+</script>
+<script>
+      $(function() {
+          $('#wysiwyg').editable({inlineMode: false})
+      });
+  </script>
+  <script>
+$(function() {
+  $('.froala-view.froala-element.not-msie.f-basic').on("change keyup paste", function(event){
+    event.preventDefault();
+    $('#bttn-wrapper-1').show();
+  });
+});  
 </script>
