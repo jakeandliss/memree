@@ -4,7 +4,7 @@ class TitlesController < ApplicationController
 	
 	def index
 		@titles = current_user.titles.all
-		@title = current_user.titles.new
+		@title = current_user.titles.new(:title_date => Date.today)
 		@title.entries.build
 		@user = current_user
 		@tags = Tag.all
