@@ -32,13 +32,13 @@
       <%= f.password_field :password_confirmation, :class=>"validate[required]" %>
     </div>
   </div>
-  <div id="form_second" class="hide">  
+  <div id="form_second">  
     <%= f.label :avatar, "Add Profile Photo" %>
     <%= f.file_field :avatar %> 
   </div>
-  <div class="hide">
+  <div id="form_third">
   </div>  
   <div class="actions">
-    <%= f.submit "Register", class: "button hide", :id =>"user_form" %>
+    <%= f.submit "Register", class: "button", :id =>"form_submit" %>
   </div>
 <% end %>

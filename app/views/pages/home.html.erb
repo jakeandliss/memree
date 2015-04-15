@@ -28,7 +28,10 @@
 		<%= render :partial =>"users/form"%>
 	</div>
 	<div class='modal-footer'>
-	  <button type="button" data-dismiss="modal" class="btn" id="form_next">Next</button>
+    <button type="button" class="btn" id="form_back_first">Back</button>
+    <button type="button" class="btn" id="form_back_second">Back</button>
+	  <button type="button" class="btn" id="form_next_first">Next</button>
+    <button type="button" class="btn" id="form_next_second">Next</button>
     <a href="#" role="button" class="btn" data-dismiss="modal" data-toggle="modal">Cancel</a>
   </div>		
 </div>
@@ -40,14 +43,47 @@
 <script type="text/javascript">
 
   $(function(){
-    $("form#new_user").validationEngine(); 
-	});
+    $('#form_submit').hide();
+    $("#form_second").hide();
+    $("#form_back_first").hide();
+    $("#form_back_second").hide();
+    $('#form_next_second').hide();
 
-	$("#registration-form").on("click", "#form_next", function(event) {
-	  $("#form_first").addClass('hide');
-	  $("#form_second").removeClass('hide');
-	});
+    $('#form_next_first').on('click', function(){
+      $("#new_user").validationEngine(); 
+      $("#form_first").hide();
+      $("#form_second").show();
+      $("#form_back_first").show();
+      $('#form_next_first').hide();
+      $('#form_next_second').show();
+    })
+    
+    $('#form_next_second').on('click', function(){
+      $('#form_third').show();
+      $('#form_next_second').hide();
+      $("#form_back_first").hide();
+      $('#form_submit').show();
+      $('#form_back_second').show();
+    });
 
+    $("#form_back_first").on('click', function(){
+      $("#form_second").hide();
+      $("#form_first").show();
+      $("#form_back_first").hide();
+      $('#form_next_second').hide();
+      $('#form_next_first').show();
+      
+    });
+
+    $('#form_back_second').on('click', function(){
+      $('#form_third').hide();
+      $('#form_back_second').hide();
+      $("#form_back_first").show();
+      $('#form_next_second').show();
+      $('#form_submit').hide();
+    });
+
+	});
 
 </script>
 
