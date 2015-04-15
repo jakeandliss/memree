@@ -83,3 +83,6 @@ group :test do
 
 end
 
+# heroku
+gem 'rails_12factor'
+
