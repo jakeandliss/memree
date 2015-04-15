@@ -12,7 +12,7 @@
 												<%= image_tag i.avatar.url(:medium) %>
 											<% end %>		
 											</div>
-												<p style="padding:0 5px;"><%=h truncate(e.entry, :length => 85) %></p>
+												<p style="padding:0 5px;"><%= truncate_html(e.entry.html_safe, :length => 85, :escape => false) %></p>
 											</div>
 								<% end %>
 							</div>
