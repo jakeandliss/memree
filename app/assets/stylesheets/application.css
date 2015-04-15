@@ -16,6 +16,9 @@
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
  *= require lightbox
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require font-awesome
  */
 
 

@@ -1,6 +1,6 @@
 <div class="content">
 	<%= form_for [@title, @entry], remote: true, authenticity_token: true do |f| %>
-	<%= f.text_area :entry, placeholder: "Your entry goes here..."  %>
+	<%= f.text_area :entry, id: "wysiwyg", placeholder: "Your entry goes here...", rows: 5  %>
 	<%= f.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image" %>
   <table role="presentation" class="table table-striped">
     <tbody id="files" class="files">
@@ -8,11 +8,16 @@
   </table>
 
 	<div class="action">
-		<%= f.submit 'Update', class: "button", id: "submit_button", remote: true %>
+		<%= f.submit 'Update Entry', class: "button", id: "submit_button" %>
 	</div>
 	
 <% end %>
 <script type="text/javascript">
   showImages();
 </script>
-</div>
+
+<script>
+      $(function() {
+          $('#wysiwyg').editable({inlineMode: false})
+      });
+  </script>

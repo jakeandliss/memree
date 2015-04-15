@@ -3,7 +3,7 @@
 	<div id="new_date"><%= f.date_select :title_date, :order => [:day, :month, :year] %></div>
 	<%= f.text_field :title, placeholder: "Entry Title" %>
 		<%= f.fields_for :entries, @entries do |e| %>
-			<%= e.text_area :entry, placeholder: "Your entry goes here...", rows: 5 %>
+			<%= e.text_area :entry, id: "wysiwyg", placeholder: "Your entry goes here...", rows: 5 %>
   	    <div class="dropzone">
   	    <%= e.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image", :class =>"file" %>
 	        <table role="presentation" class="table table-striped">
@@ -42,7 +42,19 @@ $(function() {
     event.preventDefault();
     $('#current_date').toggle();
     $('#new_date').toggle();
-    document.getElementById('#title_title_date_3i').value = Date();
+  });
+});  
+</script>
+<script>
+      $(function() {
+          $('#wysiwyg').editable({inlineMode: false})
+      });
+  </script>
+  <script>
+$(function() {
+  $('.froala-view.froala-element.not-msie.f-basic').on("change keyup paste", function(event){
+    event.preventDefault();
+    $('#bttn-wrapper-1').show();
   });
 });  
 </script>

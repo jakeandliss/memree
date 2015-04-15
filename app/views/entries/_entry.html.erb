@@ -3,11 +3,11 @@
 		<div class="content">
 			<% if @entry.entry.length > 250 %>
 				<div id="entry_truncate_<%= @entry.id %>">
-				    <%= truncate(@entry.entry, length: 250) %>
+				    <%= truncate_html(@entry.entry.html_safe, length: 250) %>
 				    <%= link_to '...Read more', '', class: "read-more-#{@entry.id}" %>
 				</div>
 				<div id="entry_long_<%= @entry.id %>" style="display:none;">
-				    <%= @entry.entry %>
+				    <%= @entry.entry.html_safe %>
 				    <%= link_to '...Read less', '', class: "read-less-#{@entry.id}", style: "float:right;" %>
 				</div>
 				<script>
@@ -25,7 +25,7 @@
 				  })
 				</script>
 			<% else %>
-				<%= @entry.entry %>
+				<%= @entry.entry.html_safe %>
 			<% end %>
 				<div class="entry_image">
 				<% @entry.images.each do |i| %>

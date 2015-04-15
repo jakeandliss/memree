@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require froala_editor.min.js
 //= require jquery-fileupload
 //= require lightbox
 //= require best_in_place
