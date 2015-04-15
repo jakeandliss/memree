@@ -69,3 +69,12 @@ group :test do
   gem 'capybara-email', "~> 2.4.0"
 
 end
+
+
+gem 'jquery-ui-rails'
+gem 'jquery-modal-rails'
+
+
+
+gem 'jQuery-Validation-Engine-rails'
+
