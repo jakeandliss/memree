@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150409131117) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "entries", force: :cascade do |t|
     t.string   "entry"
     t.datetime "created_at",         null: false
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 20150409131117) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
-  add_index "taggings", ["title_id"], name: "index_taggings_on_title_id"
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+  add_index "taggings", ["title_id"], name: "index_taggings_on_title_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 20150409131117) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name"
+  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
 
   create_table "titles", force: :cascade do |t|
     t.string   "title"
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150409131117) do
     t.integer  "user_id"
   end
 
-  add_index "titles", ["user_id"], name: "index_titles_on_user_id"
+  add_index "titles", ["user_id"], name: "index_titles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -77,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150409131117) do
     t.datetime "avatar_updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token"
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
 
 end
