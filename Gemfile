@@ -46,6 +46,12 @@ gem "wysiwyg-rails"
 
 gem "font-awesome-rails"
 
+gem 'jquery-ui-rails'
+
+gem 'jquery-modal-rails'
+
+gem 'jQuery-Validation-Engine-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -76,3 +82,4 @@ group :test do
   gem 'capybara-email', "~> 2.4.0"
 
 end
+

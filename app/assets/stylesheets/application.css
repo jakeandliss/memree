@@ -12,6 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery.modal
+ *= require jquery.modal
+ *= require validationEngine.jquery
  *= require foundation_and_overrides
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
@@ -19,6 +22,7 @@
  *= require froala_editor.min.css
  *= require froala_style.min.css
  *= require font-awesome
+
  */
 
 

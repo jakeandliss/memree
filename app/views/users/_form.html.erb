@@ -1,51 +1,44 @@
-        <%= form_for(@user) do |f| %>    
-          <% if @user.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<%= form_for(@user) do |f| %>    
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-              <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div id="form_first"class="">
-            <div class="field">
-              <%= f.label :first_name, "First Name" %>
-              <%= f.text_field :first_name %>
-            </div>
-            <div class="field">
-              <%= f.label :last_name, "Last Name" %>
-              <%= f.text_field :last_name %>
-            </div>
-            <div class="field">
-              <%= f.label :email %>
-              <%= f.text_field :email %>
-              </div>
-            <div class="field">
-              <%= f.label :password %>
-              <%= f.password_field :password %>
-            </div>
-            <div class="field">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation %>
-            </div>
-            <input type="button" id="form_next" value="Next" class="" /> 
-          </div>
-
-          <div id="form_second" class="hide">  
-            <%= f.label :avatar, "Add Profile Photo" %>
-            <%= f.file_field :avatar %>
-
-            <input type="button" id="" value="Back" class="" />
-            <input type="button" id="" value="Submit" class="" />
-            
-          </div>
-
-          <div class="hide">
-          </div>  
-          <div class="actions">
-            <%= f.submit "Register", class: "button hide", :id =>"user_form" %>
-          </div>
-        <% end %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div id="form_first">
+    <div class="field">
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name, :class=>"validate[required]" %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name, "Last Name" %>
+      <%= f.text_field :last_name, :class=> "validate[required]" %>
+    </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email, :class=> "validate[required]" %>
+      </div>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, :class=>"validate[required]" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, :class=>"validate[required]" %>
+    </div>
+  </div>
+  <div id="form_second">  
+    <%= f.label :avatar, "Add Profile Photo" %>
+    <%= f.file_field :avatar %> 
+  </div>
+  <div id="form_third">
+  </div>  
+  <div class="actions">
+    <%= f.submit "Register", class: "button", :id =>"form_submit" %>
+  </div>
+<% end %>

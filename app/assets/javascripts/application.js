@@ -12,13 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.modal
+//= require jquery.validationEngine-en
+//= require jquery.validationEngine
 //= require foundation
 //= require froala_editor.min.js
 //= require jquery-fileupload
 //= require lightbox
 //= require best_in_place
 //= require turbolinks
-//= require liveValidation
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
