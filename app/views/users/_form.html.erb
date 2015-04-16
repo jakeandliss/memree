@@ -1,14 +1,15 @@
 <%= form_for(@user) do |f| %>    
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div id="form_first">
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
     <div class="field">
       <%= f.label :first_name, "First Name" %>
       <%= f.text_field :first_name, :class=>"validate[required]" %>

@@ -46,10 +46,6 @@ gem 'truncate_html'
 
 gem "font-awesome-rails"
 
-gem 'jquery-ui-rails'
-
-gem 'jquery-modal-rails'
-
 gem 'jQuery-Validation-Engine-rails'
 
 

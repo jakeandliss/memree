@@ -12,8 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require jquery.modal
- *= require validationEngine.jquery
+  *= require validationEngine.jquery
  *= require foundation_and_overrides
  *= require jquery.fileupload
  *= require jquery.fileupload-ui

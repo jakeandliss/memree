@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.modal
 //= require jquery.validationEngine-en
 //= require jquery.validationEngine
 //= require foundation
