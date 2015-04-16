@@ -29,7 +29,7 @@ class UsersController < ApplicationController
         format.html { redirect_to titles_path, success: 'Thanks for signing up!' }
         format.json { render action: 'show', status: :created, location: @user }
       else
-        format.html { render action: 'new' }
+        format.html { render template: 'pages/home' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
