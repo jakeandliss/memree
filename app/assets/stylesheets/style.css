@@ -90,3 +90,12 @@ textarea.LV_invalid_field:hover,
 textarea.LV_invalid_field:active {
     border: 1px solid #CC0000;
 }
+#form_back_second, #form_submit, 
+#form_back_first, #form_next_first, #form_next_second{
+  margin-top: 30px;
+  float: right;
+  margin-right: 10px;
+}
+.scroll-pagination{
+  display: none;
+}

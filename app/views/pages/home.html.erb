@@ -7,8 +7,11 @@
 			<p>Because we <i>want</i> to remember.</p> 
 			
 			<!-- <input type="button" id="" value="Get Started" class="button round" /> -->
-			<p><%= link_to_modal "Get Started", "#registration-form", class: "button round" %></p>
+			<p><%#= link_to_modal "Get Started", "#registration-form", class: "button round" %>
+        <%= link_to "Get Started", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'}, class: "button round" %>
+      </p>
 		</div>
+   
 		<div class="footer">
 			<p>All rights reserved.</p> 
 			<ul class="social">
@@ -19,30 +22,27 @@
 	</div>
 </body>
 
-<div id="registration-form" style="display:none;">
- <div class="modal-header">
- 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="float:right;">×</button>
-    <h3 id="myModalLabel">Registration Form</h3>
-  </div>
-  <div class="modal-body">
-		<%= render :partial =>"users/form"%>
-	</div>
-	<div class='modal-footer'>
+
+<div id="signupModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h3 id="modalTitle">Registration Form</h3>
+  <%= render 'users/form' %>
+  <a class="close-reveal-modal">&#215;</a>
+  <div class='modal-footer'>
+    <button type="button" class="btn" id="form_next_second">Next</button>
     <button type="button" class="btn" id="form_back_first">Back</button>
     <button type="button" class="btn" id="form_back_second">Back</button>
-	  <button type="button" class="btn" id="form_next_first">Next</button>
-    <button type="button" class="btn" id="form_next_second">Next</button>
-    <a href="#" role="button" class="btn" data-dismiss="modal" data-toggle="modal">Cancel</a>
-  </div>		
-</div>
-
-
-
+    <button type="button" class="btn" id="form_next_first">Next</button>
+  </div>
+</div> 
 
 
 <script type="text/javascript">
 
-  $(function(){
+  $(document).ready(function(){
+    <% if @user.errors.present? %>
+      $('a.round').trigger('click');
+    <% end %>
+    $("#new_user").validationEngine();
     $('#form_submit').hide();
     $("#form_second").hide();
     $("#form_back_first").hide();
@@ -50,13 +50,14 @@
     $('#form_next_second').hide();
 
     $('#form_next_first').on('click', function(){
-      $("#new_user").validationEngine(); 
-      $("#form_first").hide();
-      $("#form_second").show();
-      $("#form_back_first").show();
-      $('#form_next_first').hide();
-      $('#form_next_second').show();
-    })
+      if($("#new_user").validationEngine('validate')){
+        $("#form_first").hide();
+        $("#form_second").show();
+        $("#form_back_first").show();
+        $('#form_next_first').hide();
+        $('#form_next_second').show();
+      }
+    });
     
     $('#form_next_second').on('click', function(){
       $('#form_third').show();
@@ -64,6 +65,7 @@
       $("#form_back_first").hide();
       $('#form_submit').show();
       $('#form_back_second').show();
+      $('#cancel-button').hide();
     });
 
     $("#form_back_first").on('click', function(){
@@ -81,6 +83,7 @@
       $("#form_back_first").show();
       $('#form_next_second').show();
       $('#form_submit').hide();
+      $('#cancel-button').show();
     });
 
 	});

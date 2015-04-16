@@ -1,0 +1,3 @@
+$('.image-loader').hide();
+$('#title_added').append('<%= escape_javascript render partial: "user_title", locals: {titles: @titles} %>');
+$('.pagination').replaceWith('<%= escape_javascript will_paginate(@titles) %>');

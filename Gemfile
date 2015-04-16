@@ -46,10 +46,6 @@ gem 'truncate_html'
 
 gem "font-awesome-rails"
 
-gem 'jquery-ui-rails'
-
-gem 'jquery-modal-rails'
-
 gem 'jQuery-Validation-Engine-rails'
 
 
@@ -86,3 +82,6 @@ end
 gem 'rails_12factor'
 gem 'pg'
 
+gem 'sqlite3'
+
+gem 'will_paginate'
