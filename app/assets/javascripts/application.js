@@ -18,6 +18,7 @@
 //= require jquery-fileupload
 //= require lightbox
 //= require best_in_place
+//= require dropzone
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

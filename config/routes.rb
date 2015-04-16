@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :images
   end
 
+  resources :images, only: [:create, :destroy]
+
   resources :user_sessions, only: [:new, :create]
 
   resources :password_resets, only: [:new, :create, :edit, :update]

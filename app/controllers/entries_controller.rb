@@ -69,7 +69,7 @@ class EntriesController < ApplicationController
 
   private
   def entry_params
-    params[:entry].permit(:entry, :id, :title_id, :entry_id, :image)
+    params[:entry].permit(:entry, :id, :title_id, :entry_id, :image_ids => [])
   end
 
   def find_imageable

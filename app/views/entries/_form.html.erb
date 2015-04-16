@@ -1,28 +1,12 @@
 <%= form_for [@title, @entry], remote: true, authenticity_token: true do |f| %>
 	<%= f.text_area :entry, id: "wysiwyg", placeholder: "Add more to this entry here...", rows: 5  %>
-	<%= f.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image" %>
-  <table role="presentation" class="table table-striped">
-    <tbody id="files" class="files">
-    </tbody>
-  </table>
 
+    <div id="dropzone" class="dropzone-custom">
+      <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+    </div>
+    <br/>
 	<div class="action">
 		<%= f.submit 'Save Entry', class: "button", id: "submit_button" %>
 	</div>
 	
 <% end %>
-<script type="text/javascript">
-  showImages();
-</script>
-<script>
-/*      $(function() {
-          $('#wysiwyg').editable({inlineMode: false})
-      });
-$(function() {
-  $('#new_entry').on("change keyup paste", function(event){
-    event.preventDefault();
-    $('#bttn-wrapper-1').show();
-  });
-});  
-*/
-</script>
