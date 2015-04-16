@@ -83,3 +83,5 @@ gem 'rails_12factor'
 gem 'pg'
 
 gem 'sqlite3'
+
+gem 'will_paginate'

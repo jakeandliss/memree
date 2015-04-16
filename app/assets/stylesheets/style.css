@@ -96,3 +96,6 @@ textarea.LV_invalid_field:active {
   float: right;
   margin-right: 10px;
 }
+.scroll-pagination{
+  display: none;
+}

@@ -3,18 +3,17 @@ class TitlesController < ApplicationController
 	layout "application_index", only: :index
 	
 	def index
-		@titles = current_user.titles.all
 		@title = current_user.titles.new(:title_date => Date.today)
 		@title.entries.build
 		@user = current_user
 		@tags = Tag.all
-	    @entries = @title.entries
-	    @images = Image.all
-			if params[:tag]
-				@titles = current_user.titles.tagged_with(params[:tag])
-			else
-				@titles = current_user.titles.all
-			end
+    @entries = @title.entries
+    @images = Image.all
+		if params[:tag]
+			@titles = current_user.titles.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 1)
+		else
+			@titles = current_user.titles.paginate(:page => params[:page], :per_page => 1)
+		end
 	end
 
 	def edit
