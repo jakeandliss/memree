@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def show
+    @tags = Tag.all
+  end
   # GET /users/new
   def new
     @user = User.new
@@ -8,11 +11,15 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @tags = Tag.all
+    @tag = Tag.new
     case params[:form]
         when "profile"
           render  "update_profile"
         when "password"
           render "update_password"
+        when "journals"
+          render "update_journals"
         else
           render :action => :edit
         end

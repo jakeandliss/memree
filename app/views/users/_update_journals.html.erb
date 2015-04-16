@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="medium-4 columns">
+	 	
+	 		<%= render 'user_sidebar' %>
+			<%= render 'user_nav' %>  
+	</div>
+	<div class="medium-8 columns white box-shadow">  
+		<div id="journals">
+			<h3>My Journals</h3>
+			<%= form_for @tag do |f| %>
+				<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
+				<%= f.submit 'Save Journal', class: "button small", id: "tag_submit"  %>
+			<% end %>
+
+			<% @tags.each do |t| %>
+				<ul class="clearfix">
+					<li><h4><%= t.name %></h4>
+					<p><%= link_to "View Journal", tag_path(t.name) %> <%= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+					</li>
+				</ul>
+			<% end %>
+		</div>
+	</div>
+</div> 
+
+<script type="text/javascript">
+$(function() {
+  $('#name_field').on("change keyup paste", function(event){
+    event.preventDefault();
+    $('#tag_submit').show();
+  });
+}); 
+</script>

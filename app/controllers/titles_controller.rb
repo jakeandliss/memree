@@ -7,8 +7,8 @@ class TitlesController < ApplicationController
 		@title.entries.build
 		@user = current_user
 		@tags = Tag.all
-    @entries = @title.entries
-    @images = Image.all
+   		@entries = @title.entries
+    	@images = Image.all
 		if params[:tag]
 			@titles = current_user.titles.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 1)
 		else

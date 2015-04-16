@@ -73,6 +73,23 @@ Journals Page
 
 ********************************/
 
+#journals li {
+    list-style: none;
+    background-color: #fff;
+    padding: 0 1rem;
+    margin:.5rem 0;
+}
+
+#journals ul {
+    margin: auto;
+}
+
+#journals #tag_submit {
+	display: none;
+}
+
+
+/*
 #journals_page ul.tag_list {
 	margin-left: 1.1rem;
 	float: left;
@@ -131,3 +148,6 @@ background-size:14px 8px;
 	margin: .5rem 0;
 	padding: .3rem;
 }
+*/
+
+
