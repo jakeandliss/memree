@@ -6,6 +6,5 @@ class CreateEntries < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :entries, :titles
   end
 end

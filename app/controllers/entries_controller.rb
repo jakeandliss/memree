@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new
     @entries = @title.entries
     @images = Image.all
-    @tags = Tag.find(params[:title_id])
+    @tags = @title.tags
     @tag = Tag.new
   end
 
