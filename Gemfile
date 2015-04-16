@@ -44,8 +44,6 @@ gem 'lightbox2-rails'
 
 gem 'truncate_html'
 
-gem "wysiwyg-rails"
-
 gem "font-awesome-rails"
 
 gem 'jquery-ui-rails'

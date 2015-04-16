@@ -30,7 +30,6 @@ Titles#index and Entries#index Page
 	list-style-type: none;
 	margin-right: 10px;	
 	border-radius: 3px;
-  	background: #f2f2f2;
   	margin-bottom: .2rem;
 }
 
@@ -58,15 +57,15 @@ Titles#index and Entries#index Page
   display: none;
 }
 
+#journal_titles img, #user_journals img  {
+    height: 2rem;
+}
+
+#journal_titles h4, #user_journals h4 {
+    text-align: center;
+}
 
 
-/*
-#titles #journal_titles:nth-child(5n+1) { background: #FD9781; }
-#titles #journal_titles:nth-child(5n+2) { background: #A9D5C6; }
-#titles #journal_titles:nth-child(5n+3) { background: #9EB69F; }
-#titles #journal_titles:nth-child(5n+4) { background: #90948D; }
-#titles #journal_titles:nth-child(5n+5) { background: #8F7274; }
-*/
 
 /********************************
 

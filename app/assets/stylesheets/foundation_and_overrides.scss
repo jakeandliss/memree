@@ -114,12 +114,13 @@ $font-family-Open-Sans: 'Helam Slab', 'Roboto Slab', Calibri, Helvetica, Arial, 
    $tuatara     : #444444;
 // $oil         : #333333;
    $jet         : #222222;
-// $black       : #000000;
+   $black       : #000000;
    $stationery	: #EBE5CD;
    $greendew 	: #A9D5C6;
    $evendarker	: #241616;
    $sun 		: #F2EAAB;
    $salmon	 	: #FD9781;
+   $gray       : #eee;
 
 // We use these as default colors throughout
    $primary-color: $salmon;
@@ -130,7 +131,7 @@ $font-family-Open-Sans: 'Helam Slab', 'Roboto Slab', Calibri, Helvetica, Arial, 
 // $info-color: #a0d3e8;
 
 // We use these to control various global styles
-$body-bg: $white;
+$body-bg: $gray;
 $body-font-color: $tuatara;
 $body-font-family: $font-family-Open-Sans;
 // $body-font-weight: $font-weight-normal;
@@ -621,21 +622,21 @@ $button-font-sml: rem-calc(16);
 // $include-html-form-classes: $include-html-classes;
 
 // We use this to set the base for lots of form spacing and positioning styles
-// $form-spacing: rem-calc(16);
+// $form-spacing: rem-calc(14);
 
 // We use these to style the labels in different ways
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: $font-weight-normal;
 // $form-label-line-height: 1.5;
-// $form-label-font-color: scale-color($black, $lightness: 30%);
+$form-label-font-color: scale-color($salmon, $lightness: 30%);
 // $form-label-small-transform: capitalize;
 // $form-label-bottom-margin: 0;
 // $input-font-family: inherit;
-// $input-font-color: rgba(0,0,0,0.75);
-// $input-font-size: rem-calc(14);
-$input-bg-color: #ebebeb;
-// $input-focus-bg-color: scale-color($white, $lightness: -2%);
+$input-font-color: scale-color($black, $lightness: 10%);
+$input-font-size: rem-calc(18);
+$input-bg-color: scale-color($gray, $lightness: 30%);
+$input-focus-bg-color: scale-color($white, $lightness: -2%);
 $input-border-color: #fff;
 $input-focus-border-color: scale-color($white, $lightness: -20%);
 // $input-border-style: solid;

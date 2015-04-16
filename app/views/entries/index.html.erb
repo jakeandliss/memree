@@ -1,7 +1,7 @@
 <div id="entries">
 	<div class="row wrapper">
 		<div class="medium-3 columns">
-			<div class="user_info">
+			<div class="user_info hide-for-small-only">
 				<div class="avatar">
 					<%= image_tag @user.avatar.url(:avatar) %>
 					<%#= image_tag current_user.gravatar_url %>
@@ -9,7 +9,7 @@
 				<p><%= current_user.full_name  %></p>
 			</div>
 			<div id="user_journals">
-				<h4><%= "Journals for this Entry" if @title.tags.any? %></h4>
+				<h4><%= image_tag('feather.png') %><%= "Journals For Entry" if @title.tags.any? %></h4>
 					<div id="journal_titles">
 				 		<% if @title.tags.present? %>
 				 			<% @title.tags.each do |t| %>
@@ -25,10 +25,14 @@
 
 		</div>
 		<div class="medium-9 columns">
-			<div class="header clearfix">	
-				<h2><%= best_in_place @title, :title %></h2>
-				<p style="float:left;margin-bottom:0;"><%= best_in_place @title, :title_date %></p>		
-				<p style="float:right;"><%= link_to 'Delete Event', title_path(@title), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
+			<div class="row">	
+				<div class="medium-9 columns">
+					<h2><%= best_in_place @title, :title %></h2>
+				</div>
+				<div class="medium-3 columns">
+					<p style="float:right"><%= @title.title_date.to_date.strftime('%a, %B %e, %Y') %></p>	
+				</div>
+			</div>
 			<div class="form">		
 				<%= render 'form' %>
 			</div>
@@ -76,6 +80,7 @@
 				</div>
 			</div>
 		<% end %>
+		<p style="float:right;"><%= link_to 'Delete Event', title_path(@title), method: :delete, data: {confirm: 'Are you sure?' } %></p><br />
 		</div>
 	</div>
 </div>

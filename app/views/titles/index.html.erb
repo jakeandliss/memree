@@ -1,14 +1,15 @@
 <div id="titles">
 	<div class="row wrapper">
 		<div class="medium-3 columns">
-			<div class="user_info">
-				<div class="avatar">
-					<%= image_tag @user.avatar.url(:avatar) %>
-					<%#= image_tag current_user.gravatar_url %>
+				<div class="user_info hide-for-small-only">
+					<div class="avatar">
+						<%= image_tag @user.avatar.url(:avatar) %>
+						<%#= image_tag current_user.gravatar_url %>
+					</div>
+					<p><%= current_user.full_name  %></p>
 				</div>
-				<p><%= current_user.full_name  %></p>
-			</div>
 				<div id="journal_titles">
+					<h4><%= image_tag('feather.png') %><%= @user.first_name %>'s Journals</h4>
 					<ul>
 						<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
 				 		<% @tags.each do |t| %>
@@ -51,3 +52,12 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(function() {
+  $('a#add_new').click(function(event){
+    event.preventDefault();
+    $('#title_form').show();
+  });
+});  
+</script>
+

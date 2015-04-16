@@ -1,11 +1,12 @@
-	<h3>Hey <%= @user.first_name %>, Here's your profile page. You can change or update anything at any time.</h3>
-	<div class="row">
-		<div class="medium-3 columns">
+
+	<div class="row pages">
+		<div class="medium-4 columns">
 			<div class="avatar">
 			 	<%= image_tag @user.avatar.url(:avatar) %>
 			 </div>	 
 		</div>	 
-		<div class="medium-9 columns">	
+		<div class="medium-8 columns white box-shadow">	
+			<h3>Hey <%= @user.first_name %>, Here's your profile page. You can change or update anything at any time.</h3>
 			<p>
 			  <strong>First name:</strong>
 			  <%= @user.first_name %>

@@ -1,42 +1,46 @@
 <div class="row">
-    <div class="medium-3 columns">
-      <div class="avatar">
-        <%= form_for(@user) do |f| %>
-            <%= image_tag @user.avatar.url(:avatar) %>
-            <p> Current photo </p>
-             <%= f.file_field :avatar %>
-          </div>  
-          <%= render 'header' %>
-        </div>   
-        <div class="medium-9 columns">  
-          <% if @user.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-              <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div id="user_profile">
-
-            <div class="field">
-                <%= f.label :first_name, "First Name" %><br>
-                <%= f.text_field :first_name %>
-            </div>
-            <div class="field">
-                <%= f.label :last_name, "Last Name" %><br>
-                <%= f.text_field :last_name %>
-            </div>
-            <div class="field">
-                <%= f.label :email %><br>
-                <%= f.text_field :email %>
-            </div>
-            <div class="actions">
-                <%= f.submit "Update Profile", class: "button" %>
-            </div>
-            <% end %>
-          </div>
-           
+	<div class="medium-4 columns">
+		<ul class="avatar">
+			<%= form_for(@user) do |f| %>
+					<li id="image_click"><figure><%= image_tag @user.avatar.url(:avatar) %><figcaption><p>Edit Photo</p></figcaption>
+					</figure></li>
+					<p> Current photo </p>
+					 <%= f.file_field :avatar, id: "image_upload" %>
+		</ul>  
+		<%= render 'user_nav' %>
+	</div>   
+	<div class="medium-8 columns white box-shadow">  
+		<% if @user.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+				<ul>
+					<% @user.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<div id="user_profile">
+			<div class="field">
+					<%= f.label :first_name, "First Name" %><br>
+					<%= f.text_field :first_name %>
+			</div>
+			<div class="field">
+					<%= f.label :last_name, "Last Name" %><br>
+					<%= f.text_field :last_name %>
+			</div>
+			<div class="field">
+					<%= f.label :email %><br>
+					<%= f.text_field :email %>
+			</div>
+			<div class="actions">
+					<%= f.submit "Update Profile", class: "button" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$('li#image_click').click(function(){ $('#image_upload').trigger('click'); });
+</script>
+					 

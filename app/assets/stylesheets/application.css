@@ -19,21 +19,11 @@
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
  *= require lightbox
- *= require froala_editor.min.css
- *= require froala_style.min.css
  *= require font-awesome
 
  */
 
-
- .pages {
- 	background: #fff;
- 	padding: 1.1rem;
- 	margin: 1.1rem;
- }
-
-
-.alert.flash.notice {
+/*.alert.flash.notice {
   position: fixed;
   background: gray;
   width: 25%;
@@ -47,3 +37,18 @@
   color: white;
   border-radius: .3rem;
 }
+*/
+
+.box-shadow {
+    box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
+}
+
+.white {
+  background: #fff;
+  padding: 1rem;
+}
+
+.pages {
+  margin-top: 1rem;
+}
+

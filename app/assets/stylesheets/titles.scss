@@ -36,6 +36,7 @@ Titles#index and Entries#index
   color: #444 !important;
 }
 
+
 /*************************************
 
 Titles#index
@@ -69,8 +70,8 @@ Titles#index
 
 #new_date {
   display: none;
-  float: right;
-  width: 45%;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 #current_date {
@@ -82,25 +83,16 @@ label.right {
 	padding-right: 5rem; 
 }
 
-#titles .medium-9 {
-  background: #eee;
-}
-
 #titles .form {
   background: #fff;
   padding: 25px;
   border-radius: .2rem;
   box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 .form input[type="text"], .form input[type="password"], .form input[type="date"], .form input[type="datetime"], .form input[type="datetime-local"], .form input[type="month"], .form input[type="week"], .form input[type="email"], .form input[type="number"], .form input[type="search"], .form input[type="tel"], .form input[type="time"], .form input[type="url"], .form input[type="color"], textarea {
-  margin: 0 0 .2px 0;
-  font-size: 1rem;
-}
-
-#titles .form .button {
-  
+  margin: 0 0 .2rem 0;
 }
 
 #titles #title {

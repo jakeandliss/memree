@@ -1,9 +1,9 @@
 <%= form_for @title, remote: true, html: { multipart: true }, authenticity_token: true  do |f| %>	
 	<div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a></div>
-	<div id="new_date"><%= f.date_select :title_date, :order => [:day, :month, :year] %></div>
+	<div class="row"><div id="new_date" class="small-12 medium-6 right"><%= f.date_select :title_date, :order => [:day, :month, :year] %></div></div>
 	<%= f.text_field :title, placeholder: "Entry Title" %>
 		<%= f.fields_for :entries, @entries do |e| %>
-			<%= e.text_area :entry, id: "wysiwyg", placeholder: "Your entry goes here...", rows: 5 %>
+			<%= e.text_area :entry, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Your entry goes here...", rows: 5 %>
   	    <div class="dropzone">
   	    <%= e.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image", :class =>"file" %>
 	        <table role="presentation" class="table table-striped">
@@ -42,19 +42,6 @@ $(function() {
     event.preventDefault();
     $('#current_date').toggle();
     $('#new_date').toggle();
-  });
-});  
-</script>
-<script>
-      $(function() {
-          $('#wysiwyg').editable({inlineMode: false})
-      });
-  </script>
-  <script>
-$(function() {
-  $('.froala-view.froala-element.not-msie.f-basic').on("change keyup paste", function(event){
-    event.preventDefault();
-    $('#bttn-wrapper-1').show();
   });
 });  
 </script>
