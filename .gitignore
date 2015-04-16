@@ -18,3 +18,6 @@
 FILE_NAME
 public/system
 public/system
+.idea
+.ruby-version
+.ruby-gemset

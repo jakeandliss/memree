@@ -18,7 +18,7 @@
  *= require jquery.fileupload-ui
  *= require lightbox
  *= require font-awesome
-
+ *= require dropzone
  */
 
 /*.alert.flash.notice {

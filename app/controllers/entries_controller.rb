@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new
     @entries = @title.entries
     @images = Image.all
-    @tags = Tag.find(params[:title_id])
+    @tags = @title.tags
     @tag = Tag.new
   end
 
@@ -69,7 +69,7 @@ class EntriesController < ApplicationController
 
   private
   def entry_params
-    params[:entry].permit(:entry, :id, :title_id, :entry_id, :image)
+    params[:entry].permit(:entry, :id, :title_id, :entry_id, :image_ids => [])
   end
 
   def find_imageable
