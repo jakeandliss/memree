@@ -15,8 +15,10 @@ class TagsController < ApplicationController
   def create
   	@tag = Tag.new(tag_params)
   	if @tag.save
-      flash[:success] = "Journal added successfully."
-      redirect_to tags_path
+      respond_to do |format|
+        format.html { redirect_to tags_path, notice: "Journal added successfully." }
+        format.js
+      end      
     else
       flash[:error] = "There was a problem adding your Journal."
       render action: :new

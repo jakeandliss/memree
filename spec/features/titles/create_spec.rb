@@ -18,7 +18,7 @@ describe "Creating Journal Titles" do
   	sign_in user, password: "Test123"
   end
   
-  it "redirects to the Journal Entry index page on success" do
+  it "stays on the Journal Entry index page on success" do
     create_title
     expect(page).to have_content("My Journal Title")
   end

@@ -1,10 +1,10 @@
 class EntriesController < ApplicationController
-  before_action :require_user
+  before_action :authenticate_user!
   layout "application_index", only: :index
 
   def index
     @title = Title.find(params[:title_id])
-    @user = User.find_by(params[:user_id])
+    @user = current_user
     @entry = Entry.new
     @entries = @title.entries
     @images = Image.all

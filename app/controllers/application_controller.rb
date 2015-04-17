@@ -15,29 +15,8 @@ class ApplicationController < ActionController::Base
     render file: 'public/500.html', status: :internal_server_error, layout: false
   end
 
-  def logged_in?
-    current_user
+  def after_sign_out_path_for(resource_or_scope)
+    titles_path
   end
-  helper_method :logged_in?
 
-  def current_user
-  	if session[:user_id]
-      @current_user ||= User.find(session[:user_id]) 
-    elsif cookies.permanent.signed[:remember_me_token]
-      verification = nil#Rails.application.message_verifieer(:remember_me).verify(cookies.permanent.signed[:remember_me_token])
-      if verification
-        Rails.logger.info "Logging in by cookie."
-        @current_user ||= User.find(verification)
-      end
-    end
-  end
-  helper_method :current_user
-
-  def require_user
-  	if current_user
-  		true
-  	else
-  		redirect_to new_user_session_path, notice: "You must be logged in to access that page."
-  	end
-  end
 end

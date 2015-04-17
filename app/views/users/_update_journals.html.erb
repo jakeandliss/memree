@@ -9,7 +9,7 @@
 			<h3>My Journals</h3>
 			<%= form_for @tag do |f| %>
 				<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
-				<%= f.submit 'Save Journal', class: "button small", id: "tag_submit"  %>
+				<%= f.submit 'Save Journal', class: "button small", id: "tag_submit", remote: true  %>
 			<% end %>
 
 			<% @tags.each do |t| %>

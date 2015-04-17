@@ -1,5 +1,5 @@
 class TitlesController < ApplicationController
-	before_action :require_user
+	before_action :authenticate_user!
 	layout "application_index", only: :index
 	
 	def index

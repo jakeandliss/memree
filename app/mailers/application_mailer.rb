@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "info@journally.com"
-  default_url_options[:host] = "localhost:3000"
+  default from: "mail@memrybook.com"
+  default_url_options[:host] = "MemryBook"
   layout 'mailer'
 end

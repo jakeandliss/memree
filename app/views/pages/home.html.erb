@@ -1,5 +1,15 @@
 <body id="home">
 	<div id="wrapper">
+     <div id="user_nav">
+        <% if user_signed_in? %>
+          Logged in as <strong><%= current_user.email %></strong>
+        <%= link_to 'Edit profile', edit_user_registration_path %>
+        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      <% else %>
+          <%= link_to "Sign up", new_user_registration_path %>
+          <%= link_to "Login", new_user_session_path %>
+      <% end %>
+      </div>
 		<div class="header">
 			 	<h1>MemryBook</h1>
 			 </div>
@@ -24,8 +34,7 @@
 
 
 <div id="signupModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <h3 id="modalTitle">Registration Form</h3>
-  <%= render 'users/form' %>
+  <%= render 'devise/registrations/popup_form' %>
   <a class="close-reveal-modal">&#215;</a>
   <div class='modal-footer'>
     <button type="button" class="btn" id="form_next_second">Next</button>
