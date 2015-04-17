@@ -99,3 +99,7 @@ textarea.LV_invalid_field:active {
 .scroll-pagination{
   display: none;
 }
+
+.hidden{
+    display: none;
+}
