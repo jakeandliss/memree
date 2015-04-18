@@ -101,5 +101,5 @@ textarea.LV_invalid_field:active {
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }

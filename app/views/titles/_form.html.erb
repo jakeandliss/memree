@@ -1,46 +1,42 @@
-<%= form_for @title, remote: true, html: { multipart: true }, authenticity_token: true  do |f| %>	
-	<div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a></div>
-	<div class="row"><div id="new_date" class="small-12 medium-6 right"><%= f.date_select :title_date, :order => [:day, :month, :year] %></div></div>
-	<%= f.text_field :title, placeholder: "Entry Title" %>
-		<%= f.fields_for :entries, @entries do |e| %>
-			<%= e.text_area :entry, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Your entry goes here...", rows: 5 %>
-  	    <div class="dropzone">
-  	    <%= e.file_field :image, multiple: true, name: 'images[]', :id =>"entry-image", :class =>"file" %>
-	        <table role="presentation" class="table table-striped">
-	          <tbody id="files" class="files">
-	          </tbody>
-	        </table>
-	      </div>  
-		<% end %>
+<%= form_for @title, remote: true, html: { multipart: true, data: {dropzone_name: 'title[entries_attributes][0][image_ids][]'} }, authenticity_token: true  do |f| %>
+    <div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a></div>
+    <div class="row"><div id="new_date" class="small-12 medium-6 right"><%= f.date_select :title_date, :order => [:day, :month, :year] %></div></div>
+    <%= f.text_field :title, placeholder: "Entry Title" %>
+    <%= f.fields_for :entries, @entries do |e| %>
+        <%= e.text_area :entry, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Your entry goes here...", rows: 5 %>
+        <div id="dropzone" class="dropzone-custom hidden">
+          <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+        </div>
+    <% end %>
   
-	<div class="clear"></div>
-	<div class="clear"></div>
-	<%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Journals" %>
-	<div class="action">
-		<%= f.submit 'Save Entry', class: "button small right" %>
-	</div>
+    <div class="clear"></div>
+    <div class="clear"></div>
+    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Journals" %>
+    <div class="action">
+      <%= f.submit 'Save Entry', class: "button small right" %>
+    </div>
 <% end %>
 <script type="text/javascript">
-  $(function(){
-    //$("input#title_all_tags").tagsinput('items')
-  	$('#title_all_tags').tagsinput({
-			typeahead: {                  
-			    source: function(query) {
-			      return $.get('<%= tag_list_titles_url %>'+'?text='+query);
-			    }
+    $(function(){
+        //$("input#title_all_tags").tagsinput('items')
+        $('#title_all_tags').tagsinput({
+            typeahead: {
+                source: function(query) {
+                    return $.get('<%= tag_list_titles_url %>'+'?text='+query);
+                }
 		  
-			  }
+            }
+
+        });
 
     });
-
-  });  
 </script>
 <script>
-$(function() {
-  $('a#change_date').click(function(event){
-    event.preventDefault();
-    $('#current_date').toggle();
-    $('#new_date').toggle();
-  });
-});  
+    $(function() {
+        $('a#change_date').click(function(event){
+            event.preventDefault();
+            $('#current_date').toggle();
+            $('#new_date').toggle();
+        });
+    });
 </script>

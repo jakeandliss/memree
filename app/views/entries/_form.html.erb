@@ -1,4 +1,4 @@
-<%= form_for [@title, @entry], remote: true, authenticity_token: true do |f| %>
+<%= form_for [@title, @entry], remote: true, authenticity_token: true, html: {data: {dropzone_name: 'entry[image_ids][]'}} do |f| %>
 	<%= f.text_area :entry, id: "wysiwyg", placeholder: "Add more to this entry here...", rows: 5  %>
 
     <div id="dropzone" class="dropzone-custom hidden">
