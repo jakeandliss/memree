@@ -75,6 +75,6 @@ class TitlesController < ApplicationController
 
 private
 	def title_params
-		params.require(:title).permit(:title, :title_date, :all_tags, entries_attributes: [:entry, :id, :title_id, :image])
+		params.require(:title).permit(:title, :title_date, :all_tags, entries_attributes: [:entry, :id, :title_id, :image_ids => []])
 	end
 end
