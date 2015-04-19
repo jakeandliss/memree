@@ -1,4 +1,5 @@
 class Tag < ActiveRecord::Base
+	belongs_to :user
 	has_many :taggings
 	has_many :titles, -> { uniq }, through: :taggings
 	default_scope { order('created_at DESC') } 

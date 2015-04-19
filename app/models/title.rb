@@ -20,4 +20,5 @@ class Title < ActiveRecord::Base
 	def self.tagged_with(name)
 		Tag.find_by_name!(name).titles
 	end
+	
 end

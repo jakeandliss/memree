@@ -3,13 +3,13 @@
 		<div class="medium-3 columns">
 				<div class="user_info hide-for-small-only">
 					<div class="avatar">
-						<%= image_tag @user.avatar.url(:avatar) %>
+						<%= image_tag current_user.avatar.url(:avatar) %>
 						<%#= image_tag current_user.gravatar_url %>
 					</div>
-					<p><%= @user.first_name  %></p>
+					<p><%= current_user.first_name  %></p>
 				</div>
 				<div id="journal_titles">
-					<h4><%= image_tag('feather.png') %><%= @user.first_name %>'s Journals</h4>
+					<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
 					<ul>
 						<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
 				 		<% @tags.each do |t| %>

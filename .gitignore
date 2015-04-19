@@ -21,3 +21,7 @@ public/system
 .idea
 .ruby-version
 .ruby-gemset
+
+
+/config/database.yml
+c/onfig/secrets.yml

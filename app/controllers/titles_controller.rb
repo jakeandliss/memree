@@ -5,8 +5,7 @@ class TitlesController < ApplicationController
 	def index
 		@title = current_user.titles.new(:title_date => Date.today)
 		@title.entries.build
-		@user = current_user
-		@tags = Tag.all
+		@tags = current_user.tags
    		@entries = @title.entries
     	@images = Image.all
 		if params[:tag]
@@ -30,7 +29,7 @@ class TitlesController < ApplicationController
 					        entry.images.create(avatar: img) 
 					  		end
 	      				end
-	      				format.html { redirect_to titles_path, notice: "Entry was created succesfully"}
+	      				format.html { redirect_to titles_path, notice: "Entry was created succesfully" }
 	      				format.js
 				else 
 					flash[:error] = "There was a problem adding your entry."

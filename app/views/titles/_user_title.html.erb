@@ -7,6 +7,7 @@
       </div>
       <div class="content clearfix">
         <% t.entries.limit(4).each do |e| %>
+        <% next if e.images.blank? %>
             <div class="title_entry", >
               <div id="wrapper">
                 <% e.images.limit(1).each do |i| %>

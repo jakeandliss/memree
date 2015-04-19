@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token, only: [:create]
+
   def create
     @image = Image.create(images_param)
     respond_to do |format|
