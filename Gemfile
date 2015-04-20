@@ -50,6 +50,14 @@ gem 'jQuery-Validation-Engine-rails'
 
 gem 'devise'
 
+gem 'will_paginate'
+
+# heroku
+gem 'rails_12factor'
+
+gem 'pg'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -78,9 +86,3 @@ group :test do
   gem 'capybara-email', "~> 2.4.0"
 
 end
-
-# heroku
-gem 'rails_12factor'
-gem 'pg'
-
-gem 'will_paginate'

@@ -92,7 +92,6 @@ textarea.LV_invalid_field:active {
 }
 #form_back_second, #form_submit, 
 #form_back_first, #form_next_first, #form_next_second{
-  margin-top: 30px;
   float: right;
   margin-right: 10px;
 }

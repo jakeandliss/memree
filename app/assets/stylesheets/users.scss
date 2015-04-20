@@ -137,3 +137,33 @@ ul.avatar figcaption {
   z-index: 100;
 }
 
+
+/*********************
+
+USER POPUP
+
+***********************/
+
+#pass_confirm {
+  display: none;
+}
+
+#form_second .field img {
+  border-radius: 100%;
+  border: 1px #eee solid;
+  margin: 1rem;
+}
+
+#form_second #avatar {
+  text-align: center;
+}
+
+#form_second #avatar:hover {
+  text-align: center;
+  cursor: pointer;
+  opacity: .8;
+}
+
+#form_second #avatar input {
+  display: none;
+}

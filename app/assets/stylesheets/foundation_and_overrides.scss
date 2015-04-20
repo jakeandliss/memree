@@ -626,12 +626,12 @@ $button-font-sml: rem-calc(16);
 
 // We use these to style the labels in different ways
 // $form-label-pointer: pointer;
-// $form-label-font-size: rem-calc(14);
+$form-label-font-size: rem-calc(16);
 // $form-label-font-weight: $font-weight-normal;
 // $form-label-line-height: 1.5;
-$form-label-font-color: scale-color($salmon, $lightness: 30%);
-// $form-label-small-transform: capitalize;
-// $form-label-bottom-margin: 0;
+$form-label-font-color: scale-color($black, $lightness: 50%);
+$form-label-small-transform: capitalize;
+$form-label-bottom-margin: 0;
 // $input-font-family: inherit;
 $input-font-color: scale-color($black, $lightness: 10%);
 $input-font-size: rem-calc(18);
@@ -1105,7 +1105,7 @@ $input-prefix-border-size: 0px;
 // We use these to control the style of the modal itself.
 // $reveal-modal-bg: $white;
 // $reveal-position-top: rem-calc(100);
-// $reveal-default-width: 80%;
+$reveal-default-width: 35%;
 // $reveal-max-width: $row-width;
 // $reveal-modal-padding: rem-calc(20);
 // $reveal-box-shadow: 0 0 10px rgba($black,.4);

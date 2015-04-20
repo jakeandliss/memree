@@ -8,8 +8,14 @@
 	padding-top: 10em;
 }
 
-#home #wrapper{
-  width: 30em;
+#home #user_nav {
+  padding: .5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#home .wrapper{
   margin-left: auto ;
  	margin-right: auto ;
  	margin-top: auto;
@@ -17,25 +23,25 @@
  	border-radius: 8px;
 }
 
-#home #wrapper .header {
+#home .wrapper .header {
   background:#FD9781;
   opacity:.87; 
   padding: 1.5em;
 }
 
-#home #wrapper .header h1 {
+#home .wrapper .header h1 {
   text-align: center;
   color: #fff;
   margin: 0;
 }
 
-#home #wrapper .content {
+#home .wrapper .content {
   text-align: center;
   background: #fff;
   padding: 1.5em;
 }
 
-#home #wrapper .footer {
+#home .wrapper .footer {
   text-align: center;
   background: #EBE5CD;
   padding: 1em;

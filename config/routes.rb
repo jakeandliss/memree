@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-  
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
+
   get 'tags/index'
 
   get 'journals/:tag', to: 'titles#index', as: "journal"
@@ -14,10 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :images, only: [:create, :destroy]
-
-  resources :user_sessions, only: [:new, :create]
-
-  resources :password_resets, only: [:new, :create, :edit, :update]
 
   resources :titles do
     get :tag_list, on: :collection

@@ -1,15 +1,16 @@
 <body id="home">
-	<div id="wrapper">
-     <div id="user_nav">
+  <div id="user_nav">
         <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>
-        <%= link_to 'Edit profile', edit_user_registration_path %>
+        <%= link_to 'Entries', titles_path %> | 
+        <%= link_to 'Edit Profile', edit_user_registration_path %> | 
         <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
       <% else %>
-          <%= link_to "Sign up", new_user_registration_path %>
-          <%= link_to "Login", new_user_session_path %>
+          <%= link_to "Sign Up", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'} %> | 
+          <%= link_to "Login",  'javascript:void(0);', data: {:'reveal-id' => 'loginModal'} %>
       <% end %>
       </div>
+	<div class="row">
+   <div class="medium-6 medium-centered columns wrapper"> 
 		<div class="header">
 			 	<h1>MemryBook</h1>
 			 </div>
@@ -30,6 +31,7 @@
 			</ul>
 		</div>
 	</div>
+</div>
 </body>
 
 
@@ -38,10 +40,15 @@
   <a class="close-reveal-modal">&#215;</a>
   <div class='modal-footer'>
     <button type="button" class="btn" id="form_next_second">Next</button>
-    <button type="button" class="btn" id="form_back_first">Back</button>
+    <a href="#" id="form_back_first" style="float:left;color:#444;padding:.4rem;">Back</a>
     <button type="button" class="btn" id="form_back_second">Back</button>
-    <button type="button" class="btn" id="form_next_first">Next</button>
+    <button type="button expand" class="btn" id="form_next_first">Next</button>
   </div>
+
+<div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <%= render 'devise/sessions/popup_form' %>
+  <a class="close-reveal-modal">&#215;</a>
+  
 </div> 
 
 
@@ -64,7 +71,8 @@
         $("#form_second").show();
         $("#form_back_first").show();
         $('#form_next_first').hide();
-        $('#form_next_second').show();
+      $('#form_submit').show();
+      $('#cancel-button').hide();
       }
     });
     
@@ -83,6 +91,8 @@
       $("#form_back_first").hide();
       $('#form_next_second').hide();
       $('#form_next_first').show();
+      $('#form_submit').hide();
+      $('#cancel-button').show();
       
     });
 
@@ -97,5 +107,6 @@
 
 	});
 
-</script>
 
+
+</script>
