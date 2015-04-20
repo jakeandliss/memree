@@ -4,17 +4,16 @@
     <%= f.text_field :title, placeholder: "Entry Title" %>
     <%= f.fields_for :entries, @entries do |e| %>
         <%= e.text_area :entry, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Your entry goes here...", rows: 5 %>
-        <div id="dropzone" class="dropzone-custom hidden">
+       
+    <% end %>
+    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Journals" %>
+    <div id="image_click"><p>Drag or click to add images</p></div>
+      <div class="action">
+      <%= f.submit 'Save Entry', class: "button small right" %>
+   </div>
+    <div id="dropzone" class="dropzone-custom hidden">
           <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
         </div>
-    <% end %>
-  
-    <div class="clear"></div>
-    <div class="clear"></div>
-    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Journals" %>
-    <div class="action">
-      <%= f.submit 'Save Entry', class: "button small right" %>
-    </div>
 <% end %>
 <script type="text/javascript">
     $(function(){
@@ -37,6 +36,14 @@
             event.preventDefault();
             $('#current_date').toggle();
             $('#new_date').toggle();
+        });
+    });
+</script>
+<script>
+    $(function() {
+        $('div#image_click').click(function(event){
+            event.preventDefault();
+            $('#dropzone').trigger('click');
         });
     });
 </script>

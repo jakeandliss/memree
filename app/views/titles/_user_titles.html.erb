@@ -6,17 +6,29 @@
         <p><%= t.title_date.to_date.strftime('%a, %B %e, %Y') if t.title_date.present? %></p>
       </div>
       <div class="content clearfix">
-        <% t.entries.limit(4).each do |e| %>
+        <% t.entries.limit(1).each do |e| %>
         <% next if e.images.blank? %>
-            <div class="title_entry", >
+         <div class="title_entry_image">
               <div id="wrapper">
                 <% e.images.limit(1).each do |i| %>
                 <%= image_tag i.avatar.url(:medium) %>
               <% end %>
               </div>
-                <div style="padding:0 5px;"><%= truncate_html(e.entry.html_safe, :length => 85, :escape => false) %></div>
+            </div>
+        <% end %>
+        <% t.entries.limit(3).each do |e| %>
+            <div class="title_entry">
+                <p style="padding:0 5px;"><%= truncate_html(e.entry.html_safe, :length => 200, :escape => false) %></p>
               </div>
         <% end %>
+        <div id="entry_image_thumbnails">
+          <% t.entries.each do |e| %>
+            <% next if e.images.blank? %>
+              <% e.images.each do |i| %>
+              <%= image_tag i.avatar.url(:medium) %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
       <div class="footer">
         <span style="float:right;"><%= link_to 'Delete', title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></span>

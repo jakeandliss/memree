@@ -1,11 +1,20 @@
 <%= form_for [@title, @entry], remote: true, authenticity_token: true, html: {data: {dropzone_name: 'entry[image_ids][]'}} do |f| %>
 	<%= f.text_area :entry, id: "wysiwyg", placeholder: "Add more to this entry here...", rows: 5  %>
-
+	<div id="image_click"><p>Drag or click to add images</p></div>
+	<div class="action clearfix">
+		<%= f.submit 'Save Entry', class: "button right", id: "submit_button" %>
+	</div>
     <div id="dropzone" class="dropzone-custom hidden">
       <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
     </div>
-	<div class="action">
-		<%= f.submit 'Save Entry', class: "button", id: "submit_button" %>
-	</div>
+	
 	
 <% end %>
+<script>
+    $(function() {
+        $('div#image_click').click(function(event){
+            event.preventDefault();
+            $('#dropzone').trigger('click');
+        });
+    });
+</script>

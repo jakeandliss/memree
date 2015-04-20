@@ -6,7 +6,7 @@
 					<%= image_tag @user.avatar.url(:avatar) %>
 					<%#= image_tag current_user.gravatar_url %>
 				</div>
-				<p><%= @user.full_name  %></p>
+				<p><%= @user.first_name  %></p>
 			</div>
 			<div id="user_journals">
 				<h4><%= image_tag('feather.png') %><%= "Journals For Entry" if @title.tags.any? %></h4>

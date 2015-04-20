@@ -36,14 +36,14 @@ jQuery ->
   insideDropzone = false
   dragEnterHandler = ->
     counter++
-    $(this).find('.form').find('input, textarea').addClass('hidden')
+    $(this).find('.form').find('input, textarea, p').addClass('hidden')
     $(this).find('.form').find("#dropzone").removeClass('hidden')
 
   dragLeaveHandler = ->
     counter--
     if (counter == 0)
       unless insideDropzone
-        $(this).find('.form').find('input, textarea').removeClass('hidden')
+        $(this).find('.form').find('input, textarea, p').removeClass('hidden')
         $(this).find('.form').find('#dropzone').addClass('hidden')
 
   $('body').bind('dragenter', dragEnterHandler)

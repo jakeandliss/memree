@@ -167,3 +167,20 @@ USER POPUP
 #form_second #avatar input {
   display: none;
 }
+
+.formError .formErrorContent {
+  width: 100% !important;
+  width: 13rem !important;
+  font-size: 1rem !important;
+  border: none !important; 
+  border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+  -webkit-border-radius: 6px !important;
+  box-shadow:none;
+}
+
+.formError .formErrorArrow div {
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow:none;
+}

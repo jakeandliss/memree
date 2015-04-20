@@ -23,7 +23,7 @@
 				<%= render 'form' %>
 			</div>
 			<div id="title_added">
-        <%= render partial: 'user_title', locals: {titles: @titles} %>
+        <%= render partial: 'user_titles', locals: {titles: @titles} %>
 			</div>	
 			<div class="scroll-pagination">
 				<%= will_paginate @titles %>
