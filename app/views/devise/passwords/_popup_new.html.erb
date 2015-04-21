@@ -1,0 +1,20 @@
+<div id="popup_new_pass">
+	<div id="popup_title">Reset Password</div>
+
+	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+	  <%= devise_error_messages! %>
+
+	  <div class="field">
+	    <%= f.label :email %>
+	    <%= f.email_field :email, autofocus: true %>
+	  </div>
+
+	  <div class="actions">
+	    <%= f.submit "Reset Password", class: "button" %>
+	  </div>
+	<% end %>
+
+	<%= link_to "Login", '#', id: "login_pass_toggle" %>
+
+	</div>
+</div>

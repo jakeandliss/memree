@@ -24,7 +24,6 @@ jQuery ->
           })
         else
           $('#temp_image_'+file.serverId).remove()
-          window.clearAfterSubmit = false
 
         if this.files.length == 0
           $('#dropzone').addClass('hidden')

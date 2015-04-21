@@ -2,3 +2,4 @@ $('#title_added').hide().prepend('<%= j render(@title) %>').fadeIn(1300);
 $('#new_title')[0].reset();
 window.clearAfterSubmit = true;
 window.dropzone.removeAllFiles();
+window.clearAfterSubmit = false;
