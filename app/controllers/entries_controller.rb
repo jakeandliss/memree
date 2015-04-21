@@ -22,12 +22,6 @@ class EntriesController < ApplicationController
     @entry = @title.entries.new(entry_params)
     respond_to do |format|
       if @entry.save
-        entry = @title.entries.first
-                if entry.present? && params[:images].present?
-                  params[:images].each do |img|
-                  entry.images.create(avatar: img) 
-                end
-              end
         format.html { redirect_to title_entries_path, success: "Entry added successfully." }
         format.js
       else

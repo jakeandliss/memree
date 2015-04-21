@@ -10,7 +10,7 @@ class Entry < ActiveRecord::Base
   validate :at_least_one_name
 
 	def at_least_one_name
-	  if [self.image, self.entry].reject(&:blank?).size == 0
+	  if [self.image_ids, self.entry].reject(&:blank?).size == 0
     	errors.add :base, 'You need at least one field.'
 	  end
 	end

@@ -23,12 +23,7 @@ class TitlesController < ApplicationController
 		@title = current_user.titles.new(title_params)
 			respond_to do |format|
 				if @title.save
-			      	entry = @title.entries.first
-				      	if entry.present? && params[:images].present?
-					        params[:images].each do |img|
-					        entry.images.create(avatar: img) 
-					  		end
-	      				end
+			      
 	      				format.html { redirect_to titles_path, notice: "Entry was created succesfully" }
 	      				format.js
 				else 
