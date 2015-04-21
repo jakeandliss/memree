@@ -1,3 +1,4 @@
+window.clearAfterSubmit = false
 jQuery ->
   Dropzone.options.dropzone = {
     init: ->
@@ -8,25 +9,33 @@ jQuery ->
 
       this.on "addedfile", (file) ->
         $('#dropzone').closest('form').find('input, textarea').removeClass('hidden')
+        $('#dropzone').closest('form').find('input[type="submit"]').attr('disabled','disabled');
         $('body').unbind('dragenter', dragEnterHandler)
         $('body').unbind('dragleave', dragLeaveHandler)
 
       this.on("removedfile", (file) ->
         return unless file.serverId
-        $.ajax({
-          url: '/images/'+ file.serverId
-          type: 'DELETE'
-          success: ->
-            $('#temp_image_'+file.serverId).remove()
-        })
+        unless window.clearAfterSubmit
+          $.ajax({
+            url: '/images/'+ file.serverId
+            type: 'DELETE'
+            success: ->
+              $('#temp_image_'+file.serverId).remove()
+          })
+        else
+          $('#temp_image_'+file.serverId).remove()
+
         if this.files.length == 0
           $('#dropzone').addClass('hidden')
           $('body').bind('dragenter', dragEnterHandler)
           $('body').bind('dragleave', dragLeaveHandler)
+
+      this.on 'queuecomplete', (file) ->
+        $('#dropzone').closest('form').find('input[type="submit"]').removeAttr('disabled');
+
       )
   }
-
-  $("div#dropzone").dropzone({
+  window.dropzone = new Dropzone("div#dropzone", {
     url: "/images"
     paramName: "image[avatar]"
     addRemoveLinks: true

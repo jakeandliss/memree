@@ -25,9 +25,12 @@ class EntriesController < ApplicationController
         format.html { redirect_to title_entries_path, success: "Entry added successfully." }
         format.js
       else
-        flash[:error] = "There was a problem adding your entry."
-        render action: :new
-        end
+        format.js{ render nothing: true}
+        format.html{
+          flash[:error] = "There was a problem adding your entry."
+          render action: :new
+        }
+      end
     end
   end
 
@@ -64,14 +67,5 @@ class EntriesController < ApplicationController
   private
   def entry_params
     params[:entry].permit(:entry, :id, :title_id, :entry_id, :image_ids => [])
-  end
-
-  def find_imageable
-    params.reverse_each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
-    nil
   end
 end
