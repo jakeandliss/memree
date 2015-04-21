@@ -2,7 +2,7 @@
   <div id="title">
     <div id="<%= dom_id(t) %>">
       <div class="header">
-        <h3><%= link_to t.title, title_entries_path(t) %></h3>
+        <h3><%= link_to "#{t.title}- #{t.id}", title_entries_path(t) %></h3>
         <p><%= t.title_date.to_date.strftime('%a, %B %e, %Y') if t.title_date.present? %></p>
       </div>
       <div class="content clearfix">

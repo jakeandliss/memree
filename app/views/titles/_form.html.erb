@@ -16,28 +16,22 @@
         </div>
 <% end %>
 <script type="text/javascript">
-    $(function(){
-        //$("input#title_all_tags").tagsinput('items')
-        $('#title_all_tags').tagsinput({
-            typeahead: {
-                source: function(query) {
-                    return $.get('<%= tag_list_titles_url %>'+'?text='+query);
-                }
-		  
-            }
-
-        });
-
+  $(function(){
+        
+    $('#title_all_tags').tagsinput({
+      typeahead: {
+        source: function(query) {
+          return $.get('<%= tag_list_titles_url %>'+'?text='+query);
+        }
+      }
     });
-</script>
-<script>
-    $(function() {
-        $('a#change_date').click(function(event){
-            event.preventDefault();
-            $('#current_date').toggle();
-            $('#new_date').toggle();
-        });
+
+    $('a#change_date').click(function(event){
+      event.preventDefault();
+      $('#current_date').toggle();
+      $('#new_date').toggle();
     });
+<<<<<<< HEAD
 </script>
 <script>
     $(function() {
@@ -46,4 +40,8 @@
             $('#dropzone').trigger('click');
         });
     });
+=======
+
+  });
+>>>>>>> ac899bf8c5a1bcb4a26b283d411530d3162021c1
 </script>
