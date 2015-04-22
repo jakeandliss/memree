@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #home {
-	background: url("dad.jpg") center;
-	background-size: cover;
-	height: 100%;
-	padding-top: 10em;
+  background: url("dad.jpg") center;
+  background-size: cover;
+  height: 100%;
+  padding-top: 10em;
 }
 
 #home #user_nav {
@@ -17,10 +17,10 @@
 
 #home .wrapper{
   margin-left: auto ;
- 	margin-right: auto ;
- 	margin-top: auto;
- 	margin-bottom: auto;
- 	border-radius: 8px;
+  margin-right: auto ;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 8px;
 }
 
 #home .wrapper .header {
@@ -47,13 +47,14 @@
   padding: 1em;
 }
 
-#home .social ul {
+#home .social {
   margin: 0;
+  margin-bottom: .2rem;
   padding: 0;
   list-style: none;
 }
 
-#home .social ul li {   
+#home .social li {   
   margin: 2px 0 6px 0; 
   padding: 15px;
   font-weight: bold;
@@ -63,12 +64,12 @@
 
 }
 
-#home .social ul li:hover {
+#home .social li:hover {
     opacity: 1;
 }
 
 
-#home .social ul li a {
+#home .social li a {
   padding-left: 30px;
 }
 
@@ -83,4 +84,10 @@
 
 #home li#instagram {
   background: url("social/instagram.png") no-repeat;
+}
+
+#home .popup_title {
+  border-bottom:1px solid #eee;
+  margin-bottom:.7rem;
+  color:#FD9781;
 }

@@ -1,109 +1,110 @@
 <body id="home">
-  <div id="user_nav">
-        <% if user_signed_in? %>
-        <%= link_to 'Entries', titles_path %> | 
-        <%= link_to 'Edit Profile', edit_user_registration_path %> | 
-        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-      <% else %>
-          <%= link_to "Sign Up", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'} %> | 
-          <%= link_to "Login",  'javascript:void(0);', data: {:'reveal-id' => 'loginModal'} %>
-      <% end %>
-      </div>
+	<div id="user_nav">
+				<% if user_signed_in? %>
+				<%= link_to 'Entries', titles_path %> | 
+				<%= link_to 'Edit Profile', edit_user_registration_path %> | 
+				<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+			<% else %>
+					<%= link_to "Sign Up", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'} %> | 
+					<%= link_to "Login",  'javascript:void(0);', data: {:'reveal-id' => 'loginModal'} %>
+			<% end %>
+	</div>
 	<div class="row">
-   <div class="medium-6 medium-centered columns wrapper"> 
-		<div class="header">
-			 	<h1>MemryBook</h1>
-			 </div>
-		<div class="content">
-			<p>Because we <i>want</i> to remember.</p> 
-			
-			<!-- <input type="button" id="" value="Get Started" class="button round" /> -->
-			<p><%#= link_to_modal "Get Started", "#registration-form", class: "button round" %>
-        <%= link_to "Get Started", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'}, class: "button round" %>
-      </p>
-		</div>
-   
-		<div class="footer">
-			<p>All rights reserved.</p> 
-			<ul class="social">
-			<ul>
-			 	<li id="facebook"><a href="http://facebook.com/" target="_blank"></a></li><li id="twitter"><a href="http://twitter.com/" target="_blank"></a></li><li id="instagram"><a href="http://instagram.com/" target="_blank"></a></li>
-			</ul>
+	 	<div class="medium-6 medium-centered columns wrapper"> 
+			<div class="header">
+				<h1>MemryBook</h1>
+			</div>
+			<div class="content">
+				<p>Because we <i>want</i> to remember.</p> 
+				
+				<!-- <input type="button" id="" value="Get Started" class="button round" /> -->
+				<p><%#= link_to_modal "Get Started", "#registration-form", class: "button round" %>
+					<%= link_to "Get Started", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'}, class: "button round" %>
+				</p>
+			</div>
+		 	<div class="footer">
+				<p>All rights reserved.</p> 
+				<ul class="social">
+					<li id="facebook"><a href="http://facebook.com/" target="_blank"></a></li>
+					<li id="twitter"><a href="http://twitter.com/" target="_blank"></a></li>
+					<li id="instagram"><a href="http://instagram.com/" target="_blank"></a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
 </body>
 
 
 <div id="signupModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <%= render 'devise/registrations/popup_form' %>
-  <a class="close-reveal-modal">&#215;</a>
-  <div class='modal-footer'>
-    <button type="button" class="btn" id="form_next_second">Next</button>
-    <a href="#" id="form_back_first" style="float:left;color:#444;padding:.4rem;">Back</a>
-    <button type="button" class="btn" id="form_back_second">Back</button>
-    <button type="button expand" class="btn" id="form_next_first">Next</button>
-  </div>
+	<%= render 'popup_register' %>
+	<a class="close-reveal-modal">&#215;</a>
+	<div class='modal-footer'>
+		<button type="button" class="btn" id="form_next_second">Next</button>
+		<a href="#" id="form_back_first" style="float:left;color:#444;padding:.4rem;">Back</a>
+		<button type="button" class="btn" id="form_back_second">Back</button>
+		<button type="button expand" class="btn" id="form_next_first">Next</button>
+	</div>
+</div>
 
 <div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <%= render 'devise/sessions/popup_form' %>
-  <a class="close-reveal-modal">&#215;</a>
-  
+	<%= render 'popup_login' %>
+	<a class="close-reveal-modal">&#215;</a>
+	
 </div> 
 
 
 <script type="text/javascript">
 
-  $(document).ready(function(){
-    <% if @user.errors.present? %>
-      $('a.round').trigger('click');
-    <% end %>
-    $("#new_user").validationEngine();
-    $('#form_submit').hide();
-    $("#form_second").hide();
-    $("#form_back_first").hide();
-    $("#form_back_second").hide();
-    $('#form_next_second').hide();
+	$(document).ready(function(){
+		<% if @user.errors.present? %>
+			$('a.round').trigger('click');
+		<% end %>
+		$("#new_user").validationEngine();
+		$('#form_submit').hide();
+		$("#form_second").hide();
+		$("#form_back_first").hide();
+		$("#form_back_second").hide();
+		$('#form_next_second').hide();
 
-    $('#form_next_first').on('click', function(){
-      if($("#new_user").validationEngine('validate')){
-        $("#form_first").hide();
-        $("#form_second").show();
-        $("#form_back_first").show();
-        $('#form_next_first').hide();
-      $('#form_submit').show();
-      $('#cancel-button').hide();
-      }
-    });
-    
-    $('#form_next_second').on('click', function(){
-      $('#form_third').show();
-      $('#form_next_second').hide();
-      $("#form_back_first").hide();
-      $('#form_submit').show();
-      $('#form_back_second').show();
-      $('#cancel-button').hide();
-    });
+		$('#form_next_first').on('click', function(){
+			if($("#new_user").validationEngine('validate')){
+				$("#form_first").hide();
+				$("#form_second").show();
+				$("#form_back_first").show();
+				$('#form_next_first').hide();
+			$('#form_submit').show();
+			$('#cancel-button').hide();
+			}
+		});
+		
+		$('#form_next_second').on('click', function(){
+			$('#form_third').show();
+			$('#form_next_second').hide();
+			$("#form_back_first").hide();
+			$('#form_submit').show();
+			$('#form_back_second').show();
+			$('#cancel-button').hide();
+		});
 
-    $("#form_back_first").on('click', function(){
-      $("#form_second").hide();
-      $("#form_first").show();
-      $("#form_back_first").hide();
-      $('#form_next_second').hide();
-      $('#form_next_first').show();
-      $('#form_submit').hide();
-      $('#cancel-button').show();
-      
-    });
+		$("#form_back_first").on('click', function(){
+			$("#form_second").hide();
+			$("#form_first").show();
+			$("#form_back_first").hide();
+			$('#form_next_second').hide();
+			$('#form_next_first').show();
+			$('#form_submit').hide();
+			$('#cancel-button').show();
+			
+		});
 
-    $('#form_back_second').on('click', function(){
-      $('#form_third').hide();
-      $('#form_back_second').hide();
-      $("#form_back_first").show();
-      $('#form_next_second').show();
-      $('#form_submit').hide();
-      $('#cancel-button').show();
-    });
+		$('#form_back_second').on('click', function(){
+			$('#form_third').hide();
+			$('#form_back_second').hide();
+			$("#form_back_first").show();
+			$('#form_next_second').show();
+			$('#form_submit').hide();
+			$('#cancel-button').show();
+		});
 
 	});
 
