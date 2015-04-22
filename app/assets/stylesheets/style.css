@@ -1,3 +1,9 @@
+/*******************************
+
+BOOTSTRAP
+
+*******************************/
+
 .bootstrap-tagsinput .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -41,6 +47,55 @@
   white-space: nowrap;
 }
 
+#entries .bootstrap-tagsinput {
+  text-align: right;
+}
+.bootstrap-tagsinput .tag {
+  margin-right: 2px;
+  color: #241616;
+  font-size: 1.1rem;
+  margin-bottom: .2rem;
+  background: #f2f2f2;
+  border-radius: .3rem;
+  margin-top: .2rem;
+}
+.bootstrap-tagsinput .tag [data-role="remove"] {
+  margin-left: 8px;
+  cursor: pointer;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:after {
+  content: "x";
+  padding: 0px 2px;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:hover {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.bootstrap-tagsinput {
+  padding: 5px;
+} 
+
+.bootstrap-tagsinput .tag {
+  list-style-type: none;
+  margin-right: 10px;
+  padding: 6px 7px;
+  margin-bottom: 3px;
+  margin-right: 10px;
+  border-radius: 3px;
+  background: #A9D5C6;
+  width: 100%;
+  text-align: right;
+} 
+
+/*******************************
+
+DROPZONE
+
+*******************************/
+
 .dropzone-custom {
   border: none !important;
   padding: 1rem !important;
@@ -75,19 +130,19 @@
   box-sizing: border-box;
 }
 
-#image_click {
+#home #image_click {
   cursor: pointer;
   float: left;
   color: #444;
 }
 
-#entry-image{
-  opacity: 0;
-  min-height: 150px;
-  padding: 54px, 54px;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
+/*******************************
+
+SITEWIDE
+
+*******************************/
+
+
 
 .hide{
   display: none;
@@ -95,42 +150,6 @@
 
 .show{
   display: block;
-}
-.LV_validation_message{
-    font-weight:bold;
-    margin:0 0 0 5px;
-}
-
-.LV_valid {
-    color:#00CC00;
-}
-  
-.LV_invalid {
-    color:#CC0000;
-}
-    
-.LV_valid_field,
-input.LV_valid_field:hover, 
-input.LV_valid_field:active,
-textarea.LV_valid_field:hover, 
-textarea.LV_valid_field:active {
-    border: 1px solid #00CC00;
-}
-    
-.LV_invalid_field, 
-input.LV_invalid_field:hover, 
-input.LV_invalid_field:active,
-textarea.LV_invalid_field:hover, 
-textarea.LV_invalid_field:active {
-    border: 1px solid #CC0000;
-}
-#form_back_second, #form_submit, 
-#form_back_first, #form_next_first, #form_next_second{
-  float: right;
-  margin-right: 10px;
-}
-.scroll-pagination{
-  display: none;
 }
 
 .hidden{

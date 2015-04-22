@@ -5,7 +5,8 @@ class Title < ActiveRecord::Base
 	validates :title, presence: true
 	has_many :taggings
 	has_many :tags, -> { uniq }, through: :taggings
-	default_scope { order('title_date DESC', 'created_at DESC') } 
+	default_scope { order('title_date DESC', 'created_at DESC') }
+	
 
 	def all_tags=(names)
 		self.tags = names.split(',').map do |name|
@@ -20,5 +21,7 @@ class Title < ActiveRecord::Base
 	def self.tagged_with(name)
 		Tag.find_by_name!(name).titles
 	end
+
+
 	
 end

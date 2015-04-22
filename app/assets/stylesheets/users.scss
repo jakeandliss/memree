@@ -184,3 +184,9 @@ USER POPUP
   border-right: none !important;
   box-shadow:none;
 }
+
+#form_back_second, #form_submit, 
+#form_back_first, #form_next_first, #form_next_second{
+  float: right;
+  margin-right: 10px;
+}

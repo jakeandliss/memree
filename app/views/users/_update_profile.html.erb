@@ -30,8 +30,8 @@
 					<%= f.text_field :email %>
 			</div>
 			<div class="field">
-					<%= f.label :avatar, "Change Photo" %>
-			 <%= f.file_field :avatar, id: "image_upload" %>
+				<%= f.label :avatar, "Change Photo" %>
+			 	<%= f.file_field :avatar, id: "image_upload" %>
 			 </div>
 			<div class="actions">
 					<%= f.submit "Update Profile", class: "button" %>
@@ -40,6 +40,3 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-$('li#image_click').click(function(){ $('#image_upload').trigger('click'); });
-</script>

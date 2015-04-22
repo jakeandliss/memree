@@ -7,14 +7,4 @@
     <div id="dropzone" class="dropzone-custom hidden">
       <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
     </div>
-	
-	
 <% end %>
-<script>
-    $(function() {
-        $('div#image_click').click(function(event){
-            event.preventDefault();
-            $('#dropzone').trigger('click');
-        });
-    });
-</script>

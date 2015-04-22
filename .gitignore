@@ -24,4 +24,4 @@ public/system
 
 
 /config/database.yml
-c/onfig/secrets.yml
+/config/secrets.yml

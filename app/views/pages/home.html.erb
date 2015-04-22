@@ -40,7 +40,7 @@
 	<a class="close-reveal-modal">&#215;</a>
 	<div class='modal-footer'>
 		<button type="button" class="btn" id="form_next_second">Next</button>
-		<a href="#" id="form_back_first" style="float:left;color:#444;padding:.4rem;">Back</a>
+		<a href="#" id="form_back_first" style="float:left;color:#444;padding:.4rem;float:left">Back</a>
 		<button type="button" class="btn" id="form_back_second">Back</button>
 		<button type="button expand" class="btn" id="form_next_first">Next</button>
 	</div>
@@ -51,7 +51,6 @@
 	<a class="close-reveal-modal">&#215;</a>
 	
 </div> 
-
 
 <script type="text/javascript">
 
@@ -74,6 +73,7 @@
 				$('#form_next_first').hide();
 			$('#form_submit').show();
 			$('#cancel-button').hide();
+			$('#login_link').hide();			
 			}
 		});
 		
@@ -94,6 +94,7 @@
 			$('#form_next_first').show();
 			$('#form_submit').hide();
 			$('#cancel-button').show();
+			$('#login_link').show();	
 			
 		});
 

@@ -14,6 +14,10 @@ Titles#index and Entries#index
   padding-top: 1rem;
 }
 
+.scroll-pagination{
+  display: none;
+}
+
 /*************************************
 
 Titles#index
@@ -166,5 +170,4 @@ Entry Snippets
   overflow: hidden;
   z-index: 100;
 }
-
 
