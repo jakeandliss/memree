@@ -1,29 +1,29 @@
 <div id="titles">
 	<div class="row wrapper">
 		<div class="medium-3 columns">
-				<div class="user_info hide-for-small-only">
-					<div class="avatar">
+			<div class="user_info hide-for-small-only">
+				<div class="avatar">
 						<%= image_tag current_user.avatar.url(:avatar) %>
 						<%#= image_tag current_user.gravatar_url %>
-					</div>
+				</div>
 					<p><%= current_user.first_name  %></p>
-				</div>
-				<div id="journal_titles">
-					<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
-					<ul>
-						<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
-				 		<% @tags.each do |t| %>
-				 			<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
-						<% end %>
-					</ul>
-				</div>
+			</div>
+			<div id="journal_titles">
+				<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
+				<ul>
+					<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
+				 	<% @tags.each do |t| %>
+				 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
+					<% end %>
+				</ul>
+			</div>
 		</div>
 		<div class="medium-9 columns">
 			<div class="form clearfix" id="title_form">
 				<%= render 'form' %>
 			</div>
 			<div id="title_added">
-        <%= render partial: 'user_titles', locals: {titles: @titles} %>
+        		<%= render partial: 'user_titles', locals: {titles: @titles} %>
 			</div>	
 			<div class="scroll-pagination">
 				<%= will_paginate @titles %>

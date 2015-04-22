@@ -66,7 +66,7 @@ label.right {
 
 #titles .form {
   background: #fff;
-  padding: 25px;
+  padding: 1rem;
   border-radius: .2rem;
   box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
   margin: 1rem 0;
@@ -77,10 +77,8 @@ label.right {
 }
 
 #titles #title {
-  background: white;
   border-radius: .2rem;
   margin: 1rem 0;
-  box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.15);
 }
 
 #titles #title h3 {
@@ -90,10 +88,18 @@ label.right {
 }
 
 #titles #title h5 a {
-  background: $greendew ;
   color: #241616;
-  padding: 3px 4px;
+
   border-radius: 3px;
+}
+
+
+#titles #title li {
+  background: $greendew ;
+  width: 100%;
+  margin: .5rem 0;  
+  padding: 0.2rem .5rem;  
+  list-style-type: none;
 }
 
 #titles #title p {
@@ -103,16 +109,14 @@ label.right {
 }
 
 #titles #title .header {
-  padding: 5px 10px;
 }
 
-#titles #title .content p {
-  float: left;
+#titles #title .content {  
+  min-height: 10rem;
 }
+
 
 #titles #title .footer {
-  padding: 5px 10px; 
-  z-index: 50;
 }
 
 .bootstrap-tagsinput{
@@ -150,14 +154,7 @@ Entry Snippets
 
 #titles #entry_image_thumbnails img {
   margin-right: -4px;
-  width: 10%;
-}
-
-#titles .title_entry p {
-  background: -webkit-linear-gradient(bottom, #f5f5f5, #000);
-  background: linear-gradient(bottom, #f5f5f5, #000);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  width: 33%;
 }
 
 #titles .title_entry_image img {
@@ -171,3 +168,9 @@ Entry Snippets
   z-index: 100;
 }
 
+#shared_users {
+  position: absolute;
+  width: 15%;
+  bottom: 0;
+  right: -30%;
+}
