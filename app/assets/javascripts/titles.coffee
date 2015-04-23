@@ -20,5 +20,3 @@ $ ->
 	  event.preventDefault()
 	  $('#dropzone').trigger 'click'
 	  return
-
-

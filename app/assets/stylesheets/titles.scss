@@ -76,23 +76,36 @@ label.right {
   margin: 0 0 .2rem 0;
 }
 
+.bootstrap-tagsinput{
+  width: 100%;
+}
+
+
+/****************************
+
+Title/Entry Snippets
+
+*****************************/
+
 #titles #title {
   border-radius: .2rem;
   margin: 1rem 0;
 }
 
 #titles #title h3 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-bottom: .1rem;
   display: inline;
 }
 
 #titles #title h5 a {
   color: #241616;
-
   border-radius: 3px;
 }
 
+#titles .footer ul {
+  margin-left: 0;
+}
 
 #titles #title li {
   background: $greendew ;
@@ -102,10 +115,10 @@ label.right {
   list-style-type: none;
 }
 
-#titles #title p {
- display:inline;
- float:right;
- margin-bottom: 0;
+#titles #title h6 {
+  margin-bottom: 0;
+  color: #999;
+  font-size: 1.1rem;
 }
 
 #titles #title .header {
@@ -119,20 +132,7 @@ label.right {
 #titles #title .footer {
 }
 
-.bootstrap-tagsinput{
-  width: 100%;
-}
-
-
-/****************************
-
-Entry Snippets
-
-*****************************/
-
 #titles .title_entry {
-  display: block;
-  overflow: hidden;
 }
 
 
@@ -157,20 +157,32 @@ Entry Snippets
   width: 33%;
 }
 
-#titles .title_entry_image img {
-  opacity: .1;
-  width: 100%;
-  z-index: -100;
-}
-
-#titles .title_entry_image {
-  overflow: hidden;
-  z-index: 100;
-}
-
 #shared_users {
+  width: 12%;
+  float: right;
+}
+
+#shared_users img {
+  border-radius: 100%;
+}
+
+.delete-x {
   position: absolute;
-  width: 15%;
-  bottom: 0;
-  right: -30%;
+  top: 1%;
+  right: 4%;
+  opacity: .5;
+  line-height: 1rem;
+  font-size: 2rem;
+}
+
+.delete-x a {
+  color: #ccc;
+}
+
+.delete-x {
+  display:none;
+}
+
+.delete-x.hover {
+  display: inline;
 }
