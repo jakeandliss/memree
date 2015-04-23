@@ -12,6 +12,7 @@ jQuery ->
         $('#dropzone').closest('form').find('input[type="submit"]').attr('disabled','disabled');
         $('body').unbind('dragenter', dragEnterHandler)
         $('body').unbind('dragleave', dragLeaveHandler)
+        $('#dropzone').removeClass('hidden')
 
       this.on("removedfile", (file) ->
         return unless file.serverId
@@ -35,11 +36,12 @@ jQuery ->
 
       )
   }
-  window.dropzone = new Dropzone("div#dropzone", {
-    url: "/images"
-    paramName: "image[avatar]"
-    addRemoveLinks: true
-  })
+  if $('div#dropzone').length
+    window.dropzone = new Dropzone("div#dropzone", {
+      url: "/images"
+      paramName: "image[avatar]"
+      addRemoveLinks: true
+    })
 
   counter = 0
   insideDropzone = false
