@@ -7,16 +7,43 @@
 						<div id="shared_users">
 							<%= image_tag current_user.avatar.url(:avatar) %>
 						</div>
-						<h3><%= link_to t.title, title_entries_path(t) %></h3>
+						<h3>
+							<%= link_to truncate(t.title, length: 45), title_entries_path(t) %>
+						</h3>
 						<div class="datetime"><h6><u><%= t.title_date.to_date.strftime('%a, %B %e, %Y') if t.title_date.present? %></u></h6>
 						</div>
 					</div>
 					<div class="content clearfix">
 						<% t.entries.limit(1).each do |e| %>
 								<div class="title_entry">
-										<%= truncate_html(e.entry.html_safe, :length => 200, :escape => false) %>
+									<% if e.entry.length > 180 %>
+										<div id="entry_truncate_<%= e.id %>">
+										    <%= truncate_html(e.entry.html_safe, length: 180) %>
+										    <%= link_to '...Read more', '', class: "read-more-#{e.id}" %>
+										</div>
+										<div id="entry_long_<%= e.id %>" style="display:none;">
+										    <%= e.entry.html_safe %>
+										    <%= link_to '...Read less', '', class: "read-less-#{e.id}", style: "float:right;" %>
+										</div>
+									<% else %>
+										<%= e.entry.html_safe %>
+									<% end %>
+									<script>
+									  	$('.read-more-<%= e.id %>').on('click', function(e) {
+									    e.preventDefault()
+									    $('#entry_truncate_<%= e.id %>').toggle();
+									    $('#entry_long_<%= e.id %>').toggle();
+									})
+									</script>
+									<script>
+									  	$('.read-less-<%= e.id %>').on('click', function(e) {
+									    e.preventDefault()
+									    $('#entry_truncate_<%= e.id %>').toggle();
+									    $('#entry_long_<%= e.id %>').toggle();
+									  })
+									</script>
 								</div>
-						<% end %>
+							<% end %>
 						<div id="entry_image_thumbnails">
 							<% t.entries.limit(4).each do |e| %>
 								<% next if e.images.blank? %>

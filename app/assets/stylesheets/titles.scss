@@ -80,6 +80,10 @@ label.right {
   width: 100%;
 }
 
+#image_click:hover {
+  cursor: pointer;
+}
+
 
 /****************************
 
@@ -93,7 +97,7 @@ Title/Entry Snippets
 }
 
 #titles #title h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-bottom: .1rem;
   display: inline;
 }
@@ -110,7 +114,7 @@ Title/Entry Snippets
 #titles #title li {
   background: $greendew ;
   width: 100%;
-  margin: .5rem 0;  
+  margin-bottom: .5rem;  
   padding: 0.2rem .5rem;  
   list-style-type: none;
 }
@@ -150,6 +154,8 @@ Title/Entry Snippets
 
 #titles #entry_image_thumbnails {
   float: left;
+  width: 100%;
+  height: 100%;
 }
 
 #titles #entry_image_thumbnails img {

@@ -5,7 +5,7 @@ $ ->
 $ ->
 	$('div#image_click').click (event) ->
 	  event.preventDefault()
-	  $('#dz-clickable').trigger 'click'
+	  $('#dropzone').trigger 'click'
 
 $ ->
   $('a#edit_journals').click (event) ->

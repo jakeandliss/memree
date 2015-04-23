@@ -18,5 +18,5 @@ $ ->
 $ ->
 	$('div#image_click').click (event) ->
 	  event.preventDefault()
-	  $('#dropzone').trigger 'click'
+	  $('#dz-clickable').trigger 'click'
 	  return
