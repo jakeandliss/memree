@@ -4,7 +4,7 @@ class Title < ActiveRecord::Base
 	accepts_nested_attributes_for :entries, reject_if: :all_blank
 	validates :title, presence: true
 	has_many :taggings
-	has_many :tags, -> { uniq }, through: :taggings
+	has_many :tags, -> { uniq }, through: :taggings, :dependent => :destroy
 	default_scope { order('title_date DESC', 'created_at DESC') }
 	
 
