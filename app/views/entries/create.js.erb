@@ -1,6 +1,5 @@
 $('#entry_added').hide().prepend('<%= j render(@entry) %>').fadeIn(1300);
 $('#new_entry')[0].reset();
-$('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('reset');
 window.clearAfterSubmit = true;
 window.dropzone.removeAllFiles();
 window.clearAfterSubmit = false;
