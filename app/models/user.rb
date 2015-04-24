@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   	# :confirmable, :lockable, :timeoutable and :omniauthable
   	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-	has_many :titles
-	has_many :tags
+	has_many :titles, :dependent => :destroy
+	has_many :tags, :dependent => :destroy
 
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :avatar =>  "150x150#", :thumb => "100x100>" }, :default_url => "blank_avatar.png"
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/, reject_if: :blank

@@ -5,7 +5,7 @@ class TitlesController < ApplicationController
   def index
     @title = current_user.titles.new(:title_date => Date.today)
     @title.entries.build
-    @tags = current_user.tags
+    @tags = Tag.all
     @entries = @title.entries
     @images = Image.all
     if params[:tag]
