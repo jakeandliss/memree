@@ -201,16 +201,14 @@ CALENDAR
 
 .date {
   float: right;
+  margin-right: -.5rem;
+  margin-top: -.5rem;
 }
 
 .calendar {
   background: darkgray;
   width: 3.2rem;
   height: 3rem;
-  margin-left: .5rem;
-  margin-bottom: 1rem;
-  margin-right: -.3rem;
-  margin-top: -0.6rem;
   padding: .5rem .7rem 0rem 0rem;
   color: #ffffff;
   font-size: 1.5rem;
@@ -235,12 +233,12 @@ CALENDAR
   -ms-transform: rotate(270deg);
   transform: rotate(270deg);
   position: absolute;
-  top: 1.3rem;
+  top: 1.4rem;
   font-size: 1.05rem;
   font-weight: normal;
   background: #777;
-  width: 3rem;
-  right: .4rem;
+  width: 2.95rem;
+  right: .3rem;
 }
 
 

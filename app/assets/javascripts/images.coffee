@@ -8,7 +8,7 @@ jQuery ->
         $('#dropzone').closest('form').append('<input type="hidden" id="temp_image_'+response.id+'" name="'+name+'" value="'+response.id+'" />')
 
       this.on "addedfile", (file) ->
-        $('#dropzone').closest('form').find('input, textarea').removeClass('hidden')
+        $('#dropzone').closest('form').find('input, textarea, p, tag').removeClass('hidden')
         $('#dropzone').closest('form').find('input[type="submit"]').attr('disabled','disabled');
         $('body').unbind('dragenter', dragEnterHandler)
         $('body').unbind('dragleave', dragLeaveHandler)
