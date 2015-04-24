@@ -3,43 +3,41 @@
 		<div class="medium-9 columns">
 			<div class="white box-shadow title">
 				<div class="header">
-					<div id="shared_users">
-						<%= image_tag current_user.avatar.url(:avatar) %>
+					<div class="date">
+						<div class="calendar"><%= t.title_date.to_date.strftime('%e') if t.title_date.present? %><month><%= t.title_date.to_date.strftime('%b') if t.title_date.present? %></month><year><%= t.title_date.to_date.strftime('%Y') if t.title_date.present? %></year></div>				
 					</div>
 					<h3>
 						<%= link_to truncate(t.title, length: 45), title_entries_path(t) %>
 					</h3>
-					<div class="datetime"><h6><u><%= t.title_date.to_date.strftime('%a, %B %e, %Y') if t.title_date.present? %></u></h6>
-					</div>
 				</div>
 				<div class="content clearfix">
 					<% t.entries.limit(1).each do |e| %>
 							<div class="title_entry">
 								<% if e.entry.length > 180 %>
 									<div id="entry_truncate_<%= e.id %>">
-											<%= truncate_html(e.entry.html_safe, length: 180) %>
-											<%= link_to '...Read more', '', class: "read-more-#{e.id}" %>
+									    <%= truncate_html(e.entry.html_safe, length: 180) %>
+									    <%= link_to '...Read more', '', class: "read-more-#{e.id}" %>
 									</div>
 									<div id="entry_long_<%= e.id %>" style="display:none;">
-											<%= e.entry.html_safe %>
-											<%= link_to '...Read less', '', class: "read-less-#{e.id}", style: "float:right;" %>
+									    <%= e.entry.html_safe %>
+									    <%= link_to '...Read less', '', class: "read-less-#{e.id}", style: "float:right;" %>
 									</div>
 								<% else %>
 									<%= e.entry.html_safe %>
 								<% end %>
 								<script>
-										$('.read-more-<%= e.id %>').on('click', function(e) {
-										e.preventDefault()
-										$('#entry_truncate_<%= e.id %>').toggle();
-										$('#entry_long_<%= e.id %>').toggle();
+								  	$('.read-more-<%= e.id %>').on('click', function(e) {
+								    e.preventDefault()
+								    $('#entry_truncate_<%= e.id %>').toggle();
+								    $('#entry_long_<%= e.id %>').toggle();
 								})
 								</script>
 								<script>
-										$('.read-less-<%= e.id %>').on('click', function(e) {
-										e.preventDefault()
-										$('#entry_truncate_<%= e.id %>').toggle();
-										$('#entry_long_<%= e.id %>').toggle();
-									})
+								  	$('.read-less-<%= e.id %>').on('click', function(e) {
+								    e.preventDefault()
+								    $('#entry_truncate_<%= e.id %>').toggle();
+								    $('#entry_long_<%= e.id %>').toggle();
+								  })
 								</script>
 							</div>
 						<% end %>
@@ -51,8 +49,9 @@
 							<% end %>
 						<% end %>
 					</div>
-				</div>  
-				<div class="delete-x"><%= link_to 'x', title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
+				</div>	
+				<div class="delete-x">
+					<%= link_to 'x', title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
 				</div>
 			</div>
 		</div>
@@ -64,6 +63,9 @@
 						<%= raw tag_links(t.all_tags) %>
 					</ul>
 				</h5>
+				<div id="shared_users">
+					<%= image_tag current_user.avatar.url(:avatar) %>
+				</div>
 			</div>
 		</div>
 		<% end %>
