@@ -5,13 +5,13 @@ class TitlesController < ApplicationController
   def index
     @title = current_user.titles.new(:title_date => Date.today)
     @title.entries.build
-    @tags = Tag.all
+    @tags = current_user.tags
     @entries = @title.entries
     @images = Image.all
     if params[:tag]
-      @titles = current_user.titles.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 2)
+      @titles = current_user.titles.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
     else
-      @titles = current_user.titles.paginate(:page => params[:page], :per_page => 2)
+      @titles = current_user.titles.paginate(:page => params[:page], :per_page => 10)
     end
   end
 
@@ -62,9 +62,9 @@ class TitlesController < ApplicationController
 
   def tag_list
     tags = if params[:query].present?
-             Tag.where("name LIKE '%?%'", params[:query]).map(&:name)
+             current_user.tags.where("name LIKE '%?%'", params[:query]).map(&:name)
            else
-             Tag.all.map(&:name)
+             current_user.tags.all.map(&:name)
            end
     render json: tags
   end

@@ -1,32 +1,33 @@
 class TagsController < ApplicationController
 
   def index
-  	@tags = Tag.all
-  	@tag = Tag.new
+  	@tags = current_user.tags
+  	@tag = current_user.tags.new
   end
 
   def edit
+    @tag = current_user.tags.find(params[:id])
   end
 
   def new
-    @tag = Tag.new
+    @tag = current_user.tags.new
   end
 
   def create
-  	@tag = Tag.new(tag_params)
-  	if @tag.save
-      respond_to do |format|
+  	@tag = current_user.tags.new(tag_params)
+  	 respond_to do |format|
+      if @tag.save
         format.html { redirect_to tags_path, notice: "Journal added successfully." }
         format.js
-      end      
-    else
-      flash[:error] = "There was a problem adding your Journal."
-      render action: :new
+      else
+        flash[:error] = "There was a problem adding your Journal."
+        render action: :new
+      end
     end
   end
 
   def destroy
-  	@tag = Tag.find(params[:id]) 
+  	@tag = current_user.tags.find(params[:id]) 
   	@tag.destroy
     respond_to do |format|
       format.html { redirect_to tags_url }
@@ -37,6 +38,6 @@ class TagsController < ApplicationController
   private 
 
   def tag_params
-  	params.require(:tag).permit(:name, :id)
+  	params.require(:tag).permit(:name, :id, :user_id)
   end
 end

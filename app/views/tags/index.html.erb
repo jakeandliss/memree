@@ -1,30 +1,25 @@
-<div id="journals_page">
-	<div class="row">
-		<div class="center columns">
-			<h1>My Journals</h1>
-		</div>
+<div class="row">
+	<div class="medium-4 columns">
+	 	
+	 		<%= render 'users/user_sidebar' %>
+			<%= render 'users/user_nav' %>  
 	</div>
-	<div class="row">
-		<div class="center columns">
-			<%= render 'form' %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="center columns">
+	<div class="medium-8 columns white box-shadow">  
+		<div id="journals">
+			<h3>My Journals</h3>
+			<%= form_for @tag do |f| %>
+				<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
+				<%= f.submit 'Save Journal', class: "button small", id: "tag_submit", remote: true  %>
+			<% end %>
+
 			<% @tags.each do |t| %>
-				<ul class="tag_list clearfix">
-					<li>
-							<div class="tag_front">
-								<div class="tag_back">
-									<div class="tag_bind"><h2><i><%= t.name %></i></h2>
-									</div>
-								</div>
-							</div>
-						
-						<p><%= link_to "View Journal", tag_path(t.name) %> <%= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
+				<ul class="clearfix">
+					<li><h4><%= t.name %></h4>
+					<p><%= link_to "Edit Journal", edit_tag_path(@user, t), remote: true %> <%#= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' } %></p>
 					</li>
 				</ul>
-				<% end %>
+			<% end %>
 		</div>
 	</div>
-</div>
+</div> 
+

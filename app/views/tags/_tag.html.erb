@@ -1,0 +1,4 @@
+<%= div_for @tag, controller: :tags do |f| %>
+				<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
+				<%= f.submit 'Save Journal', class: "button small", id: "tag_submit", remote: true  %>
+			<% end %>

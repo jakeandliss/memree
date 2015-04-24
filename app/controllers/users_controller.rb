@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @tags = Tag.all
+    @tags = current_user.tags
     @user = current_user
   end
   # GET /users/new
@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = current_user
-    @tags = Tag.all
-    @tag = Tag.new
+    @tags = current_user.tags
+    @tag = current_user.tags.new
     case params[:form]
         when "profile"
           render  "update_profile"
