@@ -18,6 +18,7 @@ Titles#index and Entries#index
   display: none;
 }
 
+
 /*************************************
 
 Titles#index
@@ -130,12 +131,16 @@ Title/Entry Snippets
 }
 
 #titles .content {  
-  min-height: 10rem;
+  min-height: 8rem;
 }
 
 
-#titles .footer {
+#titles .hide-for-small-only .footer {
   margin-left: -1rem;
+}
+
+#titles .show-for-small-only a {
+  font-size: .9rem;
 }
 
 #titles .title_entry {
@@ -168,7 +173,7 @@ Title/Entry Snippets
 #shared_users img {
   border-radius: 100%;
   width: 33%;
-  float: right;
+  float: left;
 }
 
 .delete-x {
@@ -202,7 +207,8 @@ CALENDAR
 .date {
   float: right;
   margin-right: -.5rem;
-  margin-top: -.5rem;
+  margin-top: -.5rem;  
+  margin-bottom: .5rem;
 }
 
 .calendar {

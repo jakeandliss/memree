@@ -40,6 +40,37 @@ Titles#index and Entries#index Page
 	color: $salmon;
 } 
 
+// On Mobile
+
+.show-for-small-only #journal_titles {
+	margin: 5px 0;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.show-for-small-only #journal_titles a {
+	color: #444;
+	display:block;
+	list-style-type: none;
+	padding: 3px 7px;
+	border-radius: 3px;	
+  	line-height: 1.2rem;
+}
+
+.show-for-small-only #journal_titles li {
+	list-style-type: none;
+	border-radius: 3px;
+  	margin-bottom: .2rem;
+  	float: left;
+}
+
+.show-for-small-only #journal_titles li.active {
+	background: $salmon;
+	list-style-type: none;
+	color: $salmon;
+	float: left;
+} 
+
 #entries #journal_titles li {
 	list-style-type: none;
 	margin-right: 0px;

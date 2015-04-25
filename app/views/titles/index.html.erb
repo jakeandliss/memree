@@ -8,7 +8,7 @@
 				</div>
 					<p><%= current_user.first_name  %></p>
 			</div>
-			<div id="journal_titles">
+			<div id="journal_titles" class="hide-for-small-only">
 				<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
 				<ul>
 					<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
@@ -21,6 +21,17 @@
 		<div class="medium-9 columns">
 			<div class="form clearfix" id="title_form">
 				<%= render 'form' %>
+			</div>
+			<div class="show-for-small-only">
+				<div id="journal_titles">
+					<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
+					<ul>
+						<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
+					 	<% @tags.each do |t| %>
+					 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
+						<% end %>
+					</ul>
+				</div>
 			</div>
 			<div id="title_added">
         		<%= render partial: 'user_titles', locals: {titles: @titles} %>

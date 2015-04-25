@@ -53,10 +53,27 @@
 				<div class="delete-x">
 					<%= link_to 'x', title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
 				</div>
+				<div class="footer show-for-small-only">
+					<div class="row">
+						<div class="small-6 columns">
+							<h5>
+								<ul>
+									<%= raw tag_links(t.all_tags) %>
+								</ul>
+							</h5>
+						</div>
+						<div class="small-6 columns">
+							<div id="shared_users">
+								<%= image_tag current_user.avatar.url(:avatar) %>
+								<p style="float:right;"><%= link_to "Share", "#", :title_id => t.id %></p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<% if t.all_tags.present? %>
-		<div class="medium-3 columns">
+		<div class="medium-3 columns hide-for-small-only">
 			<div class="footer">
 				<h5>
 					<ul>
