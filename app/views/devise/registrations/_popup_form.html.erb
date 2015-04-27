@@ -8,6 +8,12 @@
 	    	<%= f.label :first_name, "First Name" %>
 	    	<%= f.text_field :first_name, :class=>"validate[required]" %>
 	</div>
+
+	<div class="field hide" id="user_last_name">
+	    	<%= f.label :last_name, "Last Name" %>
+	    	<%= f.text_field :last_name, :class=>"validate[required]" %>
+	</div>
+
 	<div class="field">
 	    <%= f.label :email %>
 	    <%= f.email_field :email, autofocus: true, :class=> "validate[required, custom[email]]"  %>

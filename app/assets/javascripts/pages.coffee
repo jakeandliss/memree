@@ -1,4 +1,7 @@
 $ ->
+	$('input#user_first_name').on 'change keyup paste', (event) ->
+	  event.preventDefault()
+	  $('#user_last_name').show()
 	$('#pass').on 'change keyup paste', (event) ->
 	  event.preventDefault()
 	  $('#pass_confirm').show()

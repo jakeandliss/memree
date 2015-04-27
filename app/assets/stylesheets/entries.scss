@@ -19,6 +19,7 @@
   border-radius: 5px;
   width: 80%;
 }
+
 .best_in_place:hover {
   background: url("256.png") no-repeat right;
   background-color: #CCC;
@@ -26,22 +27,9 @@
 }
 
 
-#entries .header h2 {
-  font-size: 2rem;
-  line-height: 1.4rem;
-  width: 75%;
-  padding:.3rem;
-  display:inline;
-}
-
-#entries .header p {
-  display:inline;
-  float:right;
-}
-
-#entries .header {
-  padding: 15px 0;
-  border-radius: .2rem;
+#entries .header h1 {
+  font-size: 2rem;  
+  margin-top: 1rem;
 }
 
 #entries .form {

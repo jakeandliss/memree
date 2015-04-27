@@ -2,30 +2,39 @@
 	<div class="row wrapper">
 		<div class="medium-3 columns">
 			<div class="user_info hide-for-small-only">
-				<div class="avatar">
-					<%= image_tag @user.avatar.url(:avatar) %>
-					<%#= image_tag current_user.gravatar_url %>
+				<div class="avatar clearfix">
+					<div class="row medium-collapse">
+						<div class="medium-5 columns">
+							<%= image_tag current_user.avatar.url(:avatar) %>
+							<%#= image_tag current_user.gravatar_url %>
+						</div>
+						<div class="medium-7 columns ">
+							<p><%= current_user.full_name  %></br>
+							<%= link_to "Edit Profile", edit_user_path(@user, form: "profile") %></p>
+						</div>
+					</div>
 				</div>
-				<p><%= @user.first_name  %></p>
 			</div>
 			<div id="user_journals">
-				<h4><%= image_tag('feather.png') %><%= "Journals For Entry" if @title.tags.any? %></h4>
-					<div id="journal_titles">
-				 		<% if @title.tags.present? %>
-				 			<% @title.tags.each do |t| %>
-				 			<li><%= link_to t.name, tag_path(t.name) %></li>
-				 			<% end %>
-				 			<% end %>
-				 		<a href="#" id="edit_journals" style="color:#FD9781;">Edit Journals</a>
-					</div>
-					<div id="edit_form">
-				 		<%= render 'tag_form' %>
-				 	</div>
+				<div id="journal_titles">
+			 		<% if @title.tags.present? %>
+			 			<% @title.tags.each do |t| %>
+			 			<li><%= link_to t.name, tag_path(t.name) %></li>
+			 			<% end %>
+			 			<% end %>
+			 			<%= link_to "Edit Journals", '#', id: "edit_journals", style: "color:#FD9781;" if @title.tags.any? %> 
+			 		<!-- <a href="#" id="edit_journals" style="color:#FD9781;">Edit Journals</a> -->
+				</div>
+				<div id="edit_form">
+			 		<%= render 'tag_form' %>
+			 	</div>
 			</div>
 
 		</div>
 		<div class="medium-9 columns">
-			<h1><%= @title.title %></h1>
+			<div class="header">
+				<h1><%= best_in_place @title, :title %></h1>
+			</div>
 			<div class="form">		
 				<%= render 'form' %>
 			</div>

@@ -2,14 +2,20 @@
 	<div class="row wrapper">
 		<div class="medium-3 columns">
 			<div class="user_info hide-for-small-only">
-				<div class="avatar">
-						<%= image_tag current_user.avatar.url(:avatar) %>
-						<%#= image_tag current_user.gravatar_url %>
+				<div class="avatar clearfix">
+					<div class="row medium-collapse">
+						<div class="medium-5 columns">
+							<%= image_tag current_user.avatar.url(:avatar) %>
+							<%#= image_tag current_user.gravatar_url %>
+						</div>
+						<div class="medium-7 columns ">
+							<p><%= current_user.full_name  %></br>
+							<%= link_to "Edit Profile", edit_user_path(current_user, form: "profile") %></p>
+						</div>
+					</div>
 				</div>
-					<p><%= current_user.first_name  %></p>
 			</div>
 			<div id="journal_titles" class="hide-for-small-only">
-				<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
 				<ul>
 					<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
 				 	<% @tags.each do |t| %>
