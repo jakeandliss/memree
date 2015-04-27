@@ -25,14 +25,7 @@
 
 		</div>
 		<div class="medium-9 columns">
-			<div class="row">	
-				<div class="medium-9 columns">
-					<h2><%= best_in_place @title, :title %></h2>
-				</div>
-				<div class="medium-3 columns">
-					<p style="float:right"><%= @title.title_date.to_date.strftime('%a, %B %e, %Y') %></p>	
-				</div>
-			</div>
+			<h1><%= @title.title %></h1>
 			<div class="form">		
 				<%= render 'form' %>
 			</div>
@@ -41,6 +34,9 @@
 			<div class="entry">
 				<div id="<%= dom_id(e) %>">
 					<div class="content">
+						<div class="date">
+							<div class="calendar"><month><%= e.entry_date.to_date.strftime('%b') if e.entry_date.present? %></month><day><%= e.entry_date.to_date.strftime('%e') if e.entry_date.present? %></day><year><%= e.entry_date.to_date.strftime('%Y') if e.entry_date.present? %></year></div>
+						</div>
 						<% if e.entry.length > 250 %>
 							<div id="entry_truncate_<%= e.id %>">
 							    <%= truncate_html(e.entry.html_safe, length: 250) %>

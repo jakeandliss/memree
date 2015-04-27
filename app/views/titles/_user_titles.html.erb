@@ -4,10 +4,13 @@
 			<div class="white box-shadow title">
 				<div class="header">
 					<div class="date">
-						<div class="calendar"><%= t.title_date.to_date.strftime('%e') if t.title_date.present? %><month><%= t.title_date.to_date.strftime('%b') if t.title_date.present? %></month><year><%= t.title_date.to_date.strftime('%Y') if t.title_date.present? %></year></div>				
+						<% t.entries.limit(1).each do |e| %>
+							<div class="calendar"><month><%= e.entry_date.to_date.strftime('%b') if e.entry_date.present? %></month><day><%= e.entry_date.to_date.strftime('%e') if e.entry_date.present? %></day><year><%= e.entry_date.to_date.strftime('%Y') if e.entry_date.present? %></year>
+							</div>
+						<% end %>			
 					</div>
 					<h3>
-						<%= link_to truncate(t.title, length: 45), title_entries_path(t) %>
+						<%= link_to truncate(t.title, length: 63), title_entries_path(t) %>
 					</h3>
 				</div>
 				<div class="content clearfix">

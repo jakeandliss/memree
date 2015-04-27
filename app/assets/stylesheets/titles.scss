@@ -25,35 +25,37 @@ Titles#index
 
 **************************************/
 
-#title_title_date_1i {  
+#title_entries_attributes_0_entry_date_1i {  
   width: 32.6666%;
 	margin-right: 1%;
 	float: left; 
   margin-bottom: 0;
 }
 
-#title_title_date_2i {  
+#title_entries_attributes_0_entry_date_2i, #entry_entry_date_2i {  
   width: 42.6666%;
   margin-right: 1%;
   float: left; 
   margin-bottom: 0;
 }
 
-#title_title_date_3i {  
+#title_entries_attributes_0_entry_date_3i, #entry_entry_date_3i {  
   width: 22.6666%;
   margin-right: 1%;
   float: left; 
   margin-bottom: 0;
 }
 
-#title_title_date_1i {  
-	margin-right: 0%;
+#title_entries_attributes_0_entry_date_1i, #entry_entry_date_1i {  
+	width: 32.6666%;
+  margin-right: 0%;
 }
 
 #new_date {
   display: none;
   padding-right: 1rem;
   padding-left: 1rem;
+  margin-bottom: -.5rem;
 }
 
 #current_date {
@@ -82,6 +84,7 @@ label.right {
 }
 
 #image_click {
+  width: 80%;
   float: left;
 }
 
@@ -102,7 +105,7 @@ Title/Entry Snippets
 }
 
 #titles h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-bottom: .1rem;
   display: inline;
 }
@@ -216,40 +219,73 @@ CALENDAR
 }
 
 .calendar {
-  background: darkgray;
-  width: 3.2rem;
-  height: 3rem;
-  padding: .5rem .7rem 0rem 0rem;
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: 900;
+  padding: 1rem;
+  background: #A9D5C6;
+  border-radius: 100%;
+  height: 4.5rem;
+  width: 4.5rem;
   text-align: center;
-  line-height: 80%;
-  font-family: 'Open sans', sans-serif;
 }
 
 .calendar month {
-  font-size: .8rem;
-  text-transform: uppercase;
-  font-weight: 400;
   display: block;
-  color: #ffffff;
+  color: #000;
+  line-height: 0;
+  margin-top: -.15rem;
+  text-transform: uppercase;
+}
+
+.calendar day {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  line-height: 2.3rem;
+  margin-bottom: -.5rem;
+  margin-top: .25rem;
 }
 
 .calendar year {
-  -webkit-transform: rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  transform: rotate(270deg);
-  position: absolute;
-  top: 1.4rem;
-  font-size: 1.05rem;
-  font-weight: normal;
-  background: #777;
-  width: 2.95rem;
-  right: .3rem;
+  color: black;
+  line-height: 0rem;
 }
+
+
+// .calendar {
+//   background: darkgray;
+//   width: 3.2rem;
+//   height: 3rem;
+//   padding: .5rem .7rem 0rem 0rem;
+//   color: #ffffff;
+//   font-size: 1.5rem;
+//   font-weight: 900;
+//   text-align: center;
+//   line-height: 80%;
+//   font-family: 'Open sans', sans-serif;
+// }
+
+// .calendar month {
+//   font-size: .8rem;
+//   text-transform: uppercase;
+//   font-weight: 400;
+//   display: block;
+//   color: #ffffff;
+// }
+
+// .calendar year {
+//   -webkit-transform: rotate(270deg);
+//   -moz-transform: rotate(270deg);
+//   -o-transform: rotate(270deg);
+//   -ms-transform: rotate(270deg);
+//   transform: rotate(270deg);
+//   position: absolute;
+//   top: 1.4rem;
+//   font-size: 1.05rem;
+//   font-weight: normal;
+//   background: #777;
+//   width: 2.95rem;
+//   right: .3rem;
+// }
 
 
 

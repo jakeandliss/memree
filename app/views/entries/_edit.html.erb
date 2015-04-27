@@ -1,5 +1,6 @@
 <div class="content">
 	<%= form_for [@title, @entry], remote: true, authenticity_token: true do |f| %>
+    <%= f.date_select :entry_date, :order => [:day, :month, :year] %>
 	<%= f.text_area :entry, id: "wysiwyg", placeholder: "Your entry goes here...", rows: 5  %>
 	<% @entry.images.each do |i| %>
 		<div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :images, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :images, remote: true %></span>

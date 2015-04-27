@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
   def index
     @title = Title.find(params[:title_id])
     @user = current_user
-    @entry = Entry.new
+    @entry = Entry.new(:entry_date => Date.today)
     @entries = @title.entries
     @images = Image.all
     @tags = @title.tags
@@ -66,6 +66,6 @@ class EntriesController < ApplicationController
 
   private
   def entry_params
-    params[:entry].permit(:entry, :id, :title_id, :entry_id, :image_ids => [])
+    params[:entry].permit(:entry, :id, :entry_date, :title_id, :entry_id, :image_ids => [])
   end
 end

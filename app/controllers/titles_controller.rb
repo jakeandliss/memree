@@ -3,8 +3,8 @@ class TitlesController < ApplicationController
   layout "application_index", only: :index
 
   def index
-    @title = current_user.titles.new(:title_date => Date.today)
-    @title.entries.build
+    @title = current_user.titles.new
+    @title.entries.build(:entry_date => Date.today)
     @tags = current_user.tags
     @entries = @title.entries
     @images = Image.all
@@ -71,6 +71,6 @@ class TitlesController < ApplicationController
 
   private
   def title_params
-    params.require(:title).permit(:title, :title_date, :all_tags, entries_attributes: [:entry, :id, :title_id, :image_ids => []])
+    params.require(:title).permit(:title, :all_tags, entries_attributes: [:entry, :id, :entry_date, :title_id, :image_ids => []])
   end
 end

@@ -1,4 +1,11 @@
 <%= form_for [@title, @entry], remote: true, authenticity_token: true, html: {data: {dropzone_name: 'entry[image_ids][]'}} do |f| %>
+	<div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a>
+    </div>
+    <div class="row">
+	 	<div id="new_date" class="small-12 medium-6 right">
+	        <%= f.date_select :entry_date, :order => [:day, :month, :year], :start_year => 1900 %>
+	    </div>
+	</div>
 	<%= f.text_area :entry, id: "wysiwyg", placeholder: "Add more to this entry here...", rows: 5  %>
 	<div id="image_click"><p>Drag or click to add images</p></div>
 	<div class="action clearfix">
