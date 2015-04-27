@@ -1,12 +1,12 @@
 <%= form_for @title, remote: true, html: { multipart: true, data: {dropzone_name: 'title[entries_attributes][0][image_ids][]'} }, authenticity_token: true  do |f| %>
     <div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a></div>
     <div class="row"><div id="new_date" class="small-12 medium-6 right"><%= f.date_select :title_date, :order => [:day, :month, :year] %></div></div>
-    <%= f.text_field :title, placeholder: "Entry Title" %>
+    <%= f.text_field :title, placeholder: "Title" %>
     <%= f.fields_for :entries, @entries do |e| %>
-        <%= e.text_area :entry, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Your entry goes here...", rows: 5 %>
+        <%= e.text_area :entry, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Entry", rows: 5 %>
        
     <% end %>
-    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Journals" %>
+    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals" %>
     <div id="image_click"><p>Drag or click to add images</p></div>
       <div class="action">
       <%= f.submit 'Save Entry', class: "button small right" %>

@@ -16,8 +16,11 @@ class ImagesController < ApplicationController
 
   def destroy
     @image = Image.find(params[:id])
-    if @image.destroy
-      render json: {success: true}
+    respond_to do  |format|
+      if @image.destroy
+        format.html {redirect_to title_entries_path, notice: "Delete Successful"}
+        format.js
+      end
     end
   end
 

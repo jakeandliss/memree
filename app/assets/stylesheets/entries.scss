@@ -93,6 +93,28 @@ IMAGE STYLING
 
 
 
+/******************************
+
+EDIT ENTRY
+
+*******************************/
+
+.image_remove {
+  position: relative;
+  float: left;
+}
+
+.image_remove span a {
+  display: none
+}
+.image_remove:hover span a {
+  cursor: pointer;
+  display: inherit;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 4rem;
+}
 
 
 

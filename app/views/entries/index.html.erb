@@ -47,7 +47,7 @@
 							    <%= link_to '...Read more', '', class: "read-more-#{e.id}" %>
 							</div>
 							<div id="entry_long_<%= e.id %>" style="display:none;">
-							    <%= e.entry.html_safe %>
+							    <%= simple_format(e.entry) %>
 							    <%= link_to '...Read less', '', class: "read-less-#{e.id}", style: "float:right;" %>
 							</div>
 							<script>
@@ -65,7 +65,7 @@
 							  })
 							</script>
 						<% else %>
-							<%= e.entry.html_safe %>
+							<%= simple_format(e.entry) %>
 						<% end %>
 							<div class="entry_image">
 							<% e.images.each do |i| %>
