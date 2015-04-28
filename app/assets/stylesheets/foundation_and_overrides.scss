@@ -91,10 +91,14 @@ $column-gutter: rem-calc(30);
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 $font-family-Open-Sans: 'Helam Slab', 'Roboto Slab', Calibri, Helvetica, Arial, sans-serif;
+$font-family-header:'Open Sans Condensed', sans-serif;
+$font-family-body: 'Lato', 'Open Sans', sans-serif;
+
+
 
 // We use these to define default font weights
 // $font-weight-normal: normal !default;
-// $font-weight-bold: bold !default;
+$font-weight-bold: bold !default;
 
    $white       : #FFFFFF;
 // $ghost       : #FAFAFA;
@@ -133,7 +137,7 @@ $font-family-Open-Sans: 'Helam Slab', 'Roboto Slab', Calibri, Helvetica, Arial, 
 // We use these to control various global styles
 $body-bg: $gray;
 $body-font-color: $tuatara;
-$body-font-family: $font-family-Open-Sans;
+$body-font-family: $font-family-body;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
@@ -202,9 +206,9 @@ $body-font-family: $font-family-Open-Sans;
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// $header-font-family: $body-font-family;
-// $header-font-weight: $font-weight-normal;
-// $header-font-style: normal;
+$header-font-family: $font-family-header;
+$header-font-weight: $font-weight-bold;
+$header-font-style: none;
 // $header-font-color: $jet;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
@@ -213,11 +217,11 @@ $body-font-family: $font-family-Open-Sans;
 
 // We use these to control header font sizes
 $h1-font-size: rem-calc(27);
-// $h2-font-size: rem-calc(37);
-// $h3-font-size: rem-calc(27);
-// $h4-font-size: rem-calc(23);
-// $h5-font-size: rem-calc(18);
-// $h6-font-size: 1rem;
+$h2-font-size: rem-calc(24);
+$h3-font-size: rem-calc(21);
+$h4-font-size: rem-calc(17);
+$h5-font-size: rem-calc(16);
+$h6-font-size: rem-calc(14);
 
 // We use these to control header size reduction on small screens
 // $h1-font-reduction: rem-calc(10) !default;

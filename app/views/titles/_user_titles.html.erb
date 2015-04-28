@@ -26,7 +26,7 @@
 									    <%= link_to '...Read less', '', class: "read-less-#{e.id}", style: "float:right;" %>
 									</div>
 								<% else %>
-									<%= simple_format(e.entry) %>
+									<%= e.entry.html_safe %>
 								<% end %>
 								<script>
 								  	$('.read-more-<%= e.id %>').on('click', function(e) {

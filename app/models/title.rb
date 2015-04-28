@@ -7,6 +7,10 @@ class Title < ActiveRecord::Base
 	has_many :tags, -> { uniq }, through: :taggings, :dependent => :destroy
 	default_scope { order('created_at DESC') }
 	
+	# def self.default_scope
+	# 	@entry = self.entry.find(params[:id])
+	# 	order('@entry.entry_date DESC', 'created_at DESC')
+	# end
 
 	def all_tags=(names)
 		self.tags = names.split(',').map do |name|
