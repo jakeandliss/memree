@@ -1,4 +1,6 @@
-<%= div_for @tag, controller: :tags do |f| %>
-				<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
-				<%= f.submit 'Save Journal', class: "button small", id: "tag_submit", remote: true  %>
-			<% end %>
+<ul class="clearfix">
+	<li id="tag_<%= @tag.id %>">
+		<h4><%= @tag.name %></h4>
+		<p><%= link_to "Edit Journal", edit_tag_path(@tag), remote: true %> <%= link_to 'Delete', tag_path(@tag), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
+	</li>
+</ul>

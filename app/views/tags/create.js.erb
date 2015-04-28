@@ -1,1 +1,2 @@
-create.js.erb
+$('#journal_added').hide().prepend('<%= j render(@tag) %>').fadeIn(1300);
+$('#new_tag')[0].reset();

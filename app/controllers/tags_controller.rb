@@ -7,10 +7,12 @@ class TagsController < ApplicationController
 
   def edit
     @tag = current_user.tags.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
-    @tag = current_user.tags.new
   end
 
   def create
@@ -26,12 +28,26 @@ class TagsController < ApplicationController
     end
   end
 
+  def update
+    @tag = current_user.tags.find(params[:id])
+    if @tag.update_attributes(tag_params)
+      respond_to do |format|
+        format.html { redirect_to titles_path, notice: "Journal updated successfully." }
+        format.js
+      end
+    else
+      flash[:error] = "Your Journal could not be saved."
+      render action: :edit
+    end
+  end
+
   def destroy
   	@tag = current_user.tags.find(params[:id]) 
   	@tag.destroy
     respond_to do |format|
       format.html { redirect_to tags_url }
       format.json { head :no_content }
+      format.js
   	end
   end
 

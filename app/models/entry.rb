@@ -6,7 +6,7 @@ class Entry < ActiveRecord::Base
   
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  default_scope { order('created_at DESC') } 
+  default_scope { order('entry_date DESC', 'created_at DESC') } 
   validate :at_least_one_name
 
 	def at_least_one_name
