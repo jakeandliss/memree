@@ -34,3 +34,17 @@
   });
 
 </script>
+ <script>
+      window.onbeforeunload = function(){
+        var inputs = document.getElementById('wysiwyg').value;
+        var unfinished = 'false';
+        for (var i=0; i<inputs.length; ++i) {
+          if ( inputs[i].value != '' ) {
+            unfinished = 'true';
+          }
+        }
+        if ( unfinished == 'true' ) {
+          return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
+        }
+      }
+    </script>

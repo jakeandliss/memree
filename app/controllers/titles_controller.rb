@@ -3,6 +3,7 @@ class TitlesController < ApplicationController
   layout "application_index", only: :index
 
   def index
+    @titles = current_user.titles
     @title = current_user.titles.new
     @title.entries.build(:entry_date => Date.today)
     @tags = current_user.tags
