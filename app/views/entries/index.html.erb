@@ -78,8 +78,7 @@
 						<% end %>		
 					</div>
 						<div class="footer">
-							<p style="float:left;"><%= link_to "Edit", edit_title_entry_path(@title, e), remote: true %></p>
-							<p style="float:right;"><%= link_to 'Delete', title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p><br />
+							<p style="float:left;"><%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_title_entry_path(@title, e), remote: true %>  <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p><br />
 						</div>
 					</div>
 				</div>
