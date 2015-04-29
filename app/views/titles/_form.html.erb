@@ -12,7 +12,7 @@
        
     <% end %>
     <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals" %>
-    <div id="image_click"><p>Drag or click to add images</p></div>
+    <div id="image_click" class="pointer"><p>Drag or click to add images</p></div>
       <div class="action">
       <%= f.submit 'Save Entry', class: "button small right" %>
    </div>
@@ -34,17 +34,17 @@
   });
 
 </script>
- <script>
-      window.onbeforeunload = function(){
-        var inputs = document.getElementById('wysiwyg').value;
-        var unfinished = 'false';
-        for (var i=0; i<inputs.length; ++i) {
-          if ( inputs[i].value != '' ) {
-            unfinished = 'true';
-          }
-        }
-        if ( unfinished == 'true' ) {
-          return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
-        }
+<script>
+  window.onbeforeunload = function(){
+    var inputs = document.getElementById('wysiwyg').value;
+    var unfinished = 'false';
+    for (var i=0; i<inputs.length; ++i) {
+      if ( inputs[i].value != '' ) {
+        unfinished = 'true';
       }
-    </script>
+    }
+    if ( unfinished == 'true' ) {
+      return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
+    }
+  }
+</script>

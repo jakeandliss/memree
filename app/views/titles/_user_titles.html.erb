@@ -54,7 +54,7 @@
 					</div>
 				</div>	
 				<div class="delete-x">
-					<%= link_to 'x', title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
+					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
 				</div>
 				<div class="footer show-for-small-only">
 					<div class="row">

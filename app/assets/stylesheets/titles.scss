@@ -242,15 +242,13 @@ Title/Entry Snippets
 
 .delete-x {
   position: absolute;
-  bottom: 5%;
-  right: 1%;
+  right: 1rem;
+  bottom: 1rem;
   opacity: .5;
-  line-height: 1rem;
-  font-size: 2rem;
 }
 
 .delete-x a {
-  color: red;
+  color: gray;
 }
 
 .delete-x {
