@@ -50,4 +50,6 @@
   margin-top: 1rem;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:400italic,700italic,400,700);
+.pointer:hover {
+  cursor: pointer;
+}

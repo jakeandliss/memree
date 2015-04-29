@@ -20,3 +20,9 @@ $ ->
 	  event.preventDefault()
 	  $('#dz-clickable').trigger 'click'
 	  return
+
+$ ->
+	$('i.fa-search').click (event) ->
+	  event.preventDefault()
+	  $('i.fa-search').hide();
+	  $('.search').show();

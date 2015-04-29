@@ -1,0 +1,11 @@
+<i class="fa fa-search right pointer"></i>
+<div class="search hide white box-shadow">
+	<%= search_form_for @search do |f| %>
+
+	  <%= f.search_field :title_cont, placeholder: "Search" %>
+
+	  <%= f.submit class: "button expand" %>
+
+	<% end %>
+
+</div>
