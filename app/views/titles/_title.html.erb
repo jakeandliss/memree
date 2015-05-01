@@ -1,94 +1,97 @@
-<% div_for @title do |t| %>
-	<div id="<%= dom_id(t) %>" class="row">
-		<div class="medium-9 columns">
-			<div class="white box-shadow title">
-				<div class="header">
-					<div class="date">
-							<div class="calendar"><month><%= t.title_date.to_date.strftime('%b') if t.title_date.present? %></month><day><%= t.title_date.to_date.strftime('%e') if t.title_date.present? %></day><year><%= t.title_date.to_date.strftime('%Y') if t.title_date.present? %></year>
-							</div>		
-					</div>
-					<h3>
-						<%= link_to truncate(t.title, length: 63), title_entries_path(t) %>
-					</h3>
+
+<div id="<%= dom_id(@title) %>" class="row">
+	<div class="medium-9 columns">
+		<div class="white box-shadow title">
+			<div class="header">
+				<div class="date">
+						<div class="calendar"><month><%= @title.title_date.to_date.strftime('%b') if @title.title_date.present? %></month><day><%= @title.title_date.to_date.strftime('%e') if @title.title_date.present? %></day><year><%= @title.title_date.to_date.strftime('%Y') if @title.title_date.present? %></year>
+						</div>		
 				</div>
-				<div class="content clearfix">
-							<div class="title_entry">
-								<% if t.entry.length > 180 %>
-									<div id="entry_truncate_<%= t.id %>">
-									    <%= truncate_html(t.entry.html_safe, length: 180) %>
-									    <%= link_to '...Read more', '', class: "read-more-#{t.id}" %>
-									</div>
-									<div id="entry_long_<%= t.id %>" style="display:none;">
-									    <%= simple_format(t.entry) %>
-									    <%= link_to '...Read less', '', class: "read-less-#{t.id}", style: "float:right;" %>
-									</div>
-								<% else %>
-									<%= t.entry.html_safe %>
-								<% end %>
-								<script>
-								  	$('.read-more-<%= t.id %>').on('click', function(e) {
-								    e.preventDefault()
-								    $('#entry_truncate_<%= t.id %>').toggle();
-								    $('#entry_long_<%= t.id %>').toggle();
-								})
-								</script>
-								<script>
-								  	$('.read-less-<%= t.id %>').on('click', function(e) {
-								    e.preventDefault()
-								    $('#entry_truncate_<%= t.id %>').toggle();
-								    $('#entry_long_<%= t.id %>').toggle();
-								  })
-								</script>
-							</div>
-					<div id="entry_image_thumbnails">
-								<% t.images.each do |i| %>
-								<%= image_tag i.avatar.url(:medium) %>
-							<% end %>
-					</div>
-				</div>	
-				<div class="delete-x">
-					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
-				</div>
-				<div id="entry_media">
-						<!-- <p>if Imagt.exists?(avatar_content_type: 'video') </p> -->
-						<i class="fa fa-camera"></i>
-						<i class="fa fa-video-camera"></i>
-						<i class="fa fa-music"></i>
-						<i class="fa fa-file-text"></i>
-				</div>
-				<div class="footer show-for-small-only">
-					<div class="row">
-						<div class="small-6 columns">
-							<h5>
-								<ul>
-									<%= raw tag_links(t.all_tags) %>
-								</ul>
-							</h5>
-						</div>
-						<div class="small-6 columns">
-							<div id="shared_users">
-								<%= image_tag current_user.avatar.url(:avatar) %>
-								<p style="float:right;"><%= link_to "Share", "#", :title_id => t.id %></p>
-							</div>
-						</div>
-					</div>
-				</div>
+				<h3>
+					<%= truncate(@title.title, length: 63) %>
+				</h3>
 			</div>
-		</div>
-		<div class="medium-3 columns hide-for-small-only">
-			<div class="footer">
-				<% if t.all_tags.present? %>
-					<h5>
-						<ul>
-							<%= raw tag_links(t.all_tags) %>
-						</ul>
-					</h5>
-				<% end %>
-				<div id="shared_users">
-					<%= image_tag current_user.avatar.url(:avatar) %>
-					<%= link_to "Share", "#", :title_id => t.id %>
+			<div class="content clearfix">
+						<div class="title_entry">
+							<% if @title.entry.length > 180 %>
+								<div id="entry_truncate_<%= @title.id %>">
+								    <%= truncate_html(@title.entry.html_safe, length: 180) %>
+								    <%= link_to '...Read more', '', class: "read-more-#{@title.id}" %>
+								</div>
+								<div id="entry_long_<%= @title.id %>" style="display:none;">
+								    <%= simple_format(@title.entry) %>
+								    <%= link_to '...Read less', '', class: "read-less-#{@title.id}", style: "float:right;" %>
+								</div>
+							<% else %>
+								<%= @title.entry.html_safe %>
+							<% end %>
+							<script>
+							  	$('.read-more-<%= @title.id %>').on('click', function(e) {
+							    e.preventDefault()
+							    $('#entry_truncate_<%= @title.id %>').toggle();
+							    $('#entry_long_<%= @title.id %>').toggle();
+							})
+							</script>
+							<script>
+							  	$('.read-less-<%= @title.id %>').on('click', function(e) {
+							    e.preventDefault()
+							    $('#entry_truncate_<%= @title.id %>').toggle();
+							    $('#entry_long_<%= @title.id %>').toggle();
+							  })
+							</script>
+						</div>
+				<div id="entry_image_thumbnails">
+							<% @title.images.each do |i| %>
+							<%= image_tag i.avatar.url(:medium) %>
+						<% end %>
+				</div>
+			</div>	
+			<div class="delete-x">
+				<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(@title), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
+			</div>
+			<p style="float:left;">
+					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_title_path(@title), remote: true %>  
+					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(@title), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
+				</p>
+			<div id="entry_media">
+					<!-- <p>if Imag@title.exists?(avatar_content_type: 'video') </p> -->
+					<i class="fa fa-camera"></i>
+					<i class="fa fa-video-camera"></i>
+					<i class="fa fa-music"></i>
+					<i class="fa fa-file-text"></i>
+			</div>
+			<div class="footer show-for-small-only">
+				<div class="row">
+					<div class="small-6 columns">
+						<h5>
+							<ul>
+								<%= raw tag_links(@title.all_tags) %>
+							</ul>
+						</h5>
+					</div>
+					<div class="small-6 columns">
+						<div id="shared_users">
+							<%= image_tag current_user.avatar.url(:avatar) %>
+							<p style="float:right;"><%= link_to "Share", "#", :title_id => @title.id %></p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-<% end %>
+	<div class="medium-3 columns hide-for-small-only">
+		<div class="footer">
+			<% if @title.all_tags.present? %>
+				<h5>
+					<ul>
+						<%= raw tag_links(@title.all_tags) %>
+					</ul>
+				</h5>
+			<% end %>
+			<div id="shared_users">
+				<%= image_tag current_user.avatar.url(:avatar) %>
+				<%= link_to "Share", "#", :title_id => @title.id %>
+			</div>
+		</div>
+	</div>
+</div>

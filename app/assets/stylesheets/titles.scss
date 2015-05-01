@@ -142,7 +142,7 @@ label.right {
 }
 
 #titles #image_click, #entries #image_click {
-  width: 80%;
+  width: 75%;
   float: left;
 }
 
@@ -245,7 +245,7 @@ Title/Entry Snippets
 
 .delete-x {
   position: absolute;
-  right: 1rem;
+  left: 1.5rem;
   bottom: 1rem;
   opacity: .5;
 }
@@ -271,6 +271,30 @@ Title/Entry Snippets
 #entry_media i {
   color: gray;
   padding-left: .5rem;
+}
+
+
+/**************************
+
+Edit Entries
+
+**************************/
+
+.image_remove {
+  position: relative;
+  float: left;  
+}
+
+.image_remove span a {
+  display: none
+}
+.image_remove:hover span a {
+  cursor: pointer;
+  display: inherit;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 4rem;
 }
 
 /**************************

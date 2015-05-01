@@ -1,0 +1,59 @@
+<%= form_for @title, remote: true, html: { multipart: true, data: {dropzone_name: 'title[image_ids][]'} }, authenticity_token: true  do |f| %>
+    <div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a>
+    </div>
+    <div class="row">
+      <div id="new_date" class="small-12 medium-6 right">
+        <%= f.date_select :title_date, :order => [:day, :month, :year] %>
+      </div>
+    </div>
+    <%= f.text_field :title, placeholder: "Title" %>
+   
+    <%= f.text_area :entry, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Entry", rows: 5 %>
+       
+    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals" %>
+    <div style="width:100%;">
+    <% @title.images.each do |i| %>
+    <div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :images, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :images, remote: true %></span>
+    </div>
+  <% end %>
+</div>
+    <div id="image_click" class="pointer">
+      <p>Drag or click to add images</p>
+    </div>
+    <div class="action clearfix">
+      <%= f.submit 'Save Entry', class: "button small right" %>
+    </div>
+    <div id="dropzone" class="dropzone-custom hidden">
+      <div class="dz-default dz-message">
+        <span>Drop files here to upload</span>
+      </div>
+    </div>
+<% end %>
+<script type="text/javascript">
+  $(function(){
+        
+    $('#title_all_tags').tagsinput({
+      typeahead: {
+        source: function(query) {
+          return $.get('<%= tag_list_titles_url %>'+'?text='+query);
+        }
+      }
+    });
+    
+  });
+
+</script>
+<script>
+  window.onbeforeunload = function(){
+    var inputs = document.getElementById('wysiwyg').value;
+    var unfinished = 'false';
+    for (var i=0; i<inputs.length; ++i) {
+      if ( inputs[i].value != '' ) {
+        unfinished = 'true';
+      }
+    }
+    if ( unfinished == 'true' ) {
+      return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
+    }
+  }
+</script>

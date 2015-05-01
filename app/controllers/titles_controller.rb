@@ -44,7 +44,7 @@ class TitlesController < ApplicationController
     if @title.save
       respond_to do |format|
         format.html { redirect_to titles_path, notice: "Entry was updated succesfully" }
-        format.json { render json: titles_path }
+        format.js
       end
     else
       flash[:error] = "Entry has not been updated"

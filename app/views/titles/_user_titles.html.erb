@@ -47,8 +47,10 @@
 					</div>
 				</div>	
 				<div class="delete-x">
+					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_title_path(t), remote: true %>  
 					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
 				</div>
+
 				<div id="entry_media">
 						<!-- <p>if Imagt.exists?(avatar_content_type: 'video') </p> -->
 						<i class="fa fa-camera"></i>
