@@ -4,61 +4,53 @@
 			<div class="white box-shadow title">
 				<div class="header">
 					<div class="date">
-						<% t.entries.limit(1).each do |e| %>
-							<div class="calendar"><month><%= e.entry_date.to_date.strftime('%b') if e.entry_date.present? %></month><day><%= e.entry_date.to_date.strftime('%e') if e.entry_date.present? %></day><year><%= e.entry_date.to_date.strftime('%Y') if e.entry_date.present? %></year>
-							</div>
-						<% end %>			
+							<div class="calendar"><month><%= t.title_date.to_date.strftime('%b') if t.title_date.present? %></month><day><%= t.title_date.to_date.strftime('%e') if t.title_date.present? %></day><year><%= t.title_date.to_date.strftime('%Y') if t.title_date.present? %></year>
+							</div>		
 					</div>
 					<h3>
-						<%= link_to truncate(t.title, length: 63), title_entries_path(t) %>
+						<%= truncate(t.title, length: 63) %>
 					</h3>
 				</div>
 				<div class="content clearfix">
-					<% t.entries.limit(1).each do |e| %>
 							<div class="title_entry">
-								<% if e.entry.length > 180 %>
-									<div id="entry_truncate_<%= e.id %>">
-									    <%= truncate_html(e.entry.html_safe, length: 180) %>
-									    <%= link_to '...Read more', '', class: "read-more-#{e.id}" %>
+								<% if t.entry.length > 180 %>
+									<div id="entry_truncate_<%= t.id %>">
+									    <%= truncate_html(t.entry.html_safe, length: 180) %>
+									    <%= link_to '...Read more', '', class: "read-more-#{t.id}" %>
 									</div>
-									<div id="entry_long_<%= e.id %>" style="display:none;">
-									    <%= simple_format(e.entry) %>
-									    <%= link_to '...Read less', '', class: "read-less-#{e.id}", style: "float:right;" %>
+									<div id="entry_long_<%= t.id %>" style="display:none;">
+									    <%= simple_format(t.entry) %>
+									    <%= link_to '...Read less', '', class: "read-less-#{t.id}", style: "float:right;" %>
 									</div>
 								<% else %>
-									<%= e.entry.html_safe %>
+									<%= t.entry.html_safe %>
 								<% end %>
 								<script>
-								  	$('.read-more-<%= e.id %>').on('click', function(e) {
+								  	$('.read-more-<%= t.id %>').on('click', function(e) {
 								    e.preventDefault()
-								    $('#entry_truncate_<%= e.id %>').toggle();
-								    $('#entry_long_<%= e.id %>').toggle();
+								    $('#entry_truncate_<%= t.id %>').toggle();
+								    $('#entry_long_<%= t.id %>').toggle();
 								})
 								</script>
 								<script>
-								  	$('.read-less-<%= e.id %>').on('click', function(e) {
+								  	$('.read-less-<%= t.id %>').on('click', function(e) {
 								    e.preventDefault()
-								    $('#entry_truncate_<%= e.id %>').toggle();
-								    $('#entry_long_<%= e.id %>').toggle();
+								    $('#entry_truncate_<%= t.id %>').toggle();
+								    $('#entry_long_<%= t.id %>').toggle();
 								  })
 								</script>
 							</div>
-						<% end %>
 					<div id="entry_image_thumbnails">
-						<% t.entries.each do |e| %>
-							<% next if e.images.blank? %>
-								<% e.images.each do |i| %>
-								<% next unless i.avatar_content_type.include? "image" %>
+								<% t.images.each do |i| %>
 								<%= image_tag i.avatar.url(:medium) %>
 							<% end %>
-						<% end %>
 					</div>
 				</div>	
 				<div class="delete-x">
 					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
 				</div>
 				<div id="entry_media">
-						<!-- <p>if Image.exists?(avatar_content_type: 'video') </p> -->
+						<!-- <p>if Imagt.exists?(avatar_content_type: 'video') </p> -->
 						<i class="fa fa-camera"></i>
 						<i class="fa fa-video-camera"></i>
 						<i class="fa fa-music"></i>

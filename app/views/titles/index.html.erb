@@ -9,8 +9,9 @@
 							<%#= image_tag current_user.gravatar_url %>
 						</div>
 						<div class="medium-7 columns ">
-							<p><%= current_user.full_name  %></br>
-							<%= link_to "Edit Profile", edit_user_path(current_user, form: "profile") %></p>
+							<p><%= current_user.full_name  %><br />
+								<%= link_to "Edit Profile", edit_user_path(current_user, form: "profile") %>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -18,7 +19,7 @@
 			<div id="journal_titles" class="hide-for-small-only">
 				<ul>
 					<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Journals'.html_safe, titles_path %></li>
-				 	<% @tags.each do |t| %>
+				 		<% @tags.each do |t| %>
 				 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
 					<% end %>
 				</ul>

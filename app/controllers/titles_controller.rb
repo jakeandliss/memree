@@ -3,10 +3,8 @@ class TitlesController < ApplicationController
   layout "application_index", only: :index
 
   def index
-    @title = current_user.titles.new
-    @title.entries.build(:entry_date => Date.today)
+    @title = current_user.titles.new(:title_date => Date.today)
     @tags = current_user.tags
-    @entries = @title.entries
     @images = Image.all
     if params[:tag]
       @titles = current_user.titles.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
@@ -76,6 +74,6 @@ class TitlesController < ApplicationController
 
   private
   def title_params
-    params.require(:title).permit(:title, :all_tags, entries_attributes: [:entry, :id, :entry_date, :title_id, :image_ids => []])
+    params.require(:title).permit(:title, :all_tags, :entry, :title_date, :image_ids => [])
   end
 end

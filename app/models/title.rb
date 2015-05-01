@@ -1,12 +1,19 @@
 class Title < ActiveRecord::Base
 	belongs_to :user
-	has_many :entries, :dependent => :destroy
-	accepts_nested_attributes_for :entries, reject_if: :all_blank
 	validates :title, presence: true
 	has_many :taggings
 	has_many :tags, -> { uniq }, through: :taggings, :dependent => :destroy
 	default_scope { order('created_at DESC') }
-	
+	has_many :images, as: :imageable
+  	
+
+  	# validate :at_least_one_name
+
+	def at_least_one_name
+	  if [self.image_ids, self.entry].reject(&:blank?).size == 0
+    	errors.add :base, 'You need at least one field.'
+	  end
+	end
 	# def self.default_scope
 	# 	@entry = self.entry.find(params[:id])
 	# 	order('@entry.entry_date DESC', 'created_at DESC')
