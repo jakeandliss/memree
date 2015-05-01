@@ -114,7 +114,6 @@ Titles#index
   display: none;
   padding-right: 1rem;
   padding-left: 1rem;
-  margin-bottom: -.5rem;
 }
 
 #current_date {
@@ -240,6 +239,10 @@ Title/Entry Snippets
   float: left;
 }
 
+#shared_users {
+  display: inline-block;
+}
+
 .delete-x {
   position: absolute;
   right: 1rem;
@@ -259,6 +262,16 @@ Title/Entry Snippets
   display: inherit;
 }
 
+#entry_media {
+  margin-bottom: -1rem;
+  padding: 0;
+  text-align: right;
+}
+
+#entry_media i {
+  color: gray;
+  padding-left: .5rem;
+}
 
 /**************************
 

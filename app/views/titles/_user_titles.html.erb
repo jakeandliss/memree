@@ -45,9 +45,10 @@
 							</div>
 						<% end %>
 					<div id="entry_image_thumbnails">
-						<% t.entries.limit(4).each do |e| %>
+						<% t.entries.each do |e| %>
 							<% next if e.images.blank? %>
 								<% e.images.each do |i| %>
+								<% next unless i.avatar_content_type.include? "image" %>
 								<%= image_tag i.avatar.url(:medium) %>
 							<% end %>
 						<% end %>
@@ -55,6 +56,13 @@
 				</div>	
 				<div class="delete-x">
 					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
+				</div>
+				<div id="entry_media">
+						<!-- <p>if Image.exists?(avatar_content_type: 'video') </p> -->
+						<i class="fa fa-camera"></i>
+						<i class="fa fa-video-camera"></i>
+						<i class="fa fa-music"></i>
+						<i class="fa fa-file-text"></i>
 				</div>
 				<div class="footer show-for-small-only">
 					<div class="row">
@@ -75,21 +83,20 @@
 				</div>
 			</div>
 		</div>
-		<% if t.all_tags.present? %>
 		<div class="medium-3 columns hide-for-small-only">
 			<div class="footer">
-				<h5>
-					<ul>
-						<%= raw tag_links(t.all_tags) %>
-					</ul>
-				</h5>
+				<% if t.all_tags.present? %>
+					<h5>
+						<ul>
+							<%= raw tag_links(t.all_tags) %>
+						</ul>
+					</h5>
+				<% end %>
 				<div id="shared_users">
 					<%= image_tag current_user.avatar.url(:avatar) %>
 					<%= link_to "Share", "#", :title_id => t.id %>
 				</div>
 			</div>
 		</div>
-		<% end %>
 	</div>
-
 <% end %>

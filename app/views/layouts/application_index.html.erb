@@ -13,14 +13,12 @@
         <%= csrf_meta_tags %>
     </head>
     <body>   
-        
         <%= render 'layouts/nav' %>
-
-        <% flash.each do |type, message| %>
-            <div class="alert flash <%= type %>">
-                <%= message %>
-            </div>
-            <% end %>
+             <% flash.each do |type, message| %>
+                 <div class="alert flash <%= type %>">
+                      <%= message %>
+                 </div>
+             <% end %>
         <%= yield %> 
     </body>
 </html>

@@ -73,10 +73,17 @@
 							<%= simple_format(e.entry) %>
 						<% end %>
 							<div class="entry_image">
-							<% e.images.each do |i| %>
-							<a href="<%= i.avatar.url(:large) %>" data-lightbox="yes"><%= image_tag i.avatar.url(:medium) %></a>
-						<% end %>		
-					</div>
+								<% e.images.each do |i| %>
+								<% next unless i.avatar_content_type.include? "image" %>
+								<a href="<%= i.avatar.url(:large) %>" data-lightbox="yes"><%= image_tag i.avatar.url %></a>
+								<% end %>
+							</div>
+							<div class="entry_video">
+								<% e.images.each do |i| %>
+								<% next unless i.avatar_content_type.include? "video" %>
+								<%= video_tag i.avatar.url, controls: true %>
+								<% end %>
+							</div>
 						<div class="footer">
 							<p style="float:left;"><%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_title_entry_path(@title, e), remote: true %>  <%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_entry_path(@title, e), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p><br />
 						</div>
