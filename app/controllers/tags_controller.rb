@@ -14,6 +14,10 @@ class TagsController < ApplicationController
 
   def new
     @tag = current_user.tags.new(:parent_id => params[:parent_id])
+    respond_to do |format|
+      format.html {redirect_to new_tags_path }
+      format.js 
+    end
   end
 
   def create

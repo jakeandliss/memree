@@ -1,4 +1,5 @@
-<%= form_for @tag, remote: true do |f| %>
+<li>
+	<%= form_for @tag, remote: true do |f| %>
 	<div class="row">
 		<div class="small-9 columns">
 			<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
@@ -9,3 +10,4 @@
 		</div>
 	</div>
 <% end %>
+</li>

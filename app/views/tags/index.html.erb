@@ -13,16 +13,18 @@
 				<ul class="clearfix">
 					<li id="tag_<%= t.id %>">
 						<h4><%= t.name %></h4>
-						<%= link_to "Add Subjournal", new_tag_path(:parent_id => t) %>
-						<p><%= link_to "Edit Journal", edit_tag_path(t), remote: true %> <%= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
+						<%= link_to "Add Subjournal", new_tag_path(:parent_id => t), remote: true %>
+						<p><%= link_to "Edit Journal", edit_tag_path(t), remote: true %> 
+							<%= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
 						<div id="sub-menu">
 							<% if t.children? %>
 								<% t.children.each do |c| %>
 									<ul class="clearfix">
 										<li id="tag_<%= c.id %>">
 											<h4><%= c.name %></h4>
-											<%= link_to "Add Subjournal", new_tag_path(:parent_id => c) %>
-											<p><%= link_to "Edit Journal", edit_tag_path(t), remote: true %> <%= link_to 'Delete', tag_path(c), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
+											<%= link_to "Add Subjournal", new_tag_path(:parent_id => c), remote: true %>
+											<p><%= link_to "Edit Journal", edit_tag_path(c), remote: true %> 
+												<%= link_to 'Delete', tag_path(c), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
 										</li>
 									</ul>
 								<% end %>
