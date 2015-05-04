@@ -63,11 +63,19 @@
 			<div class="footer show-for-small-only">
 				<div class="row">
 					<div class="small-6 columns">
-						<h5>
-							<ul>
-								<%= raw tag_links(@title.all_tags) %>
-							</ul>
-						</h5>
+						<% if @title.tags.present? %>
+							<h5>
+								<ul>
+									<ul>
+										<% @title.tags.each do |tag| %>
+											<li> 
+												<%= link_to tag.name, tag_path(tag.id) %>
+											</li>
+										<% end %>
+									</ul>
+								</ul>
+							</h5>
+						<% end %>
 					</div>
 					<div class="small-6 columns">
 						<div id="shared_users">

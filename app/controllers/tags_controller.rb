@@ -2,7 +2,7 @@ class TagsController < ApplicationController
 
   def index
   	@tags = current_user.tags
-  	@tag = current_user.tags.new
+  	@tag = current_user.tags.new(:parent_id => params[:parent_id])
   end
 
   def edit
@@ -13,6 +13,7 @@ class TagsController < ApplicationController
   end
 
   def new
+    @tag = current_user.tags.new(:parent_id => params[:parent_id])
   end
 
   def create
@@ -54,6 +55,6 @@ class TagsController < ApplicationController
   private 
 
   def tag_params
-  	params.require(:tag).permit(:name, :id, :user_id)
+  	params.require(:tag).permit(:name, :id, :user_id, :parent_id)
   end
 end

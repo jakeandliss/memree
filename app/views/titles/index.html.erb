@@ -19,7 +19,7 @@
 			<div id="journal_titles" class="hide-for-small-only">
 				<ul>
 					<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Journals'.html_safe, titles_path %></li>
-				 		<% @tags.each do |t| %>
+				 		<% @tags.roots.each do |t| %>
 				 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
 					<% end %>
 				</ul>
@@ -35,7 +35,7 @@
 					<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
 					<ul>
 						<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
-					 	<% @tags.each do |t| %>
+					 	<% @tags.roots.each do |t| %>
 					 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
 						<% end %>
 					</ul>

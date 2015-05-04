@@ -4,13 +4,13 @@ class TitlesController < ApplicationController
 
   def index
     @title = current_user.titles.new(:title_date => Date.today)
-    @tags = current_user.tags
+    @tags = current_user.tags(:parent_id => params[:parent_id])
     @images = Image.all
-    if params[:tag]
-      @titles = current_user.titles.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
-    else
+    # if params[:tag]
+    #   @titles = current_user.titles.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
+    # else
       @titles = current_user.titles.paginate(:page => params[:page], :per_page => 10)
-    end
+    # end
   end
 
   def search

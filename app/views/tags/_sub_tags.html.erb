@@ -1,0 +1,7 @@
+<ul class="clearfix">
+	<li id="tag_<%= t.id %>">
+		<h4><%= message.name %></h4>
+		<%= link_to "Add Subjournal", new_tag_path(:parent_id => message) %>
+		<p><%= link_to "Edit Journal", edit_tag_path(message), remote: true %> <%= link_to 'Delete', tag_path(message), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
+	</li>
+</ul>
