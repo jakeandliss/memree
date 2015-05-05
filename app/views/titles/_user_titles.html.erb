@@ -95,7 +95,7 @@
 							<ul>
 								<% t.tags.each do |tag| %>
 									<li> 
-										<%= link_to tag.name, tag_path(tag.name) %>
+										<%= link_to tag.name, tag_path(:entries, tag.name) %>
 									</li>
 								<% end %>
 							</ul>

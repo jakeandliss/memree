@@ -20,7 +20,7 @@
 				<ul>
 					<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Journals'.html_safe, titles_path %></li>
 				 		<% @tags.roots.each do |t| %>
-				 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
+				 	<li class="<%= 'active' if current_page?(tag_path(:entries, t.name)) %>"><%= link_to t.name, tag_path(:entries, t.name) %></li>
 					<% end %>
 				</ul>
 			</div>
@@ -36,7 +36,7 @@
 					<ul>
 						<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
 					 	<% @tags.roots.each do |t| %>
-					 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
+					 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(:entries, t.name) %></li>
 						<% end %>
 					</ul>
 				</div>
