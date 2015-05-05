@@ -1,7 +1,7 @@
 module TagsHelper
-	def nested_tags(messages)
-	  messages.map do |message, sub_messages|
-	    render(message) + content_tag(:div, nested_tags(sub_messages), :class => "nested_messages")
+	def nested_tags(tags)
+	  tags.map do |tag, sub_tags| 
+	    render(tag) + content_tag(:div, nested_tags(sub_tags), :class => "nested_tags")
 	  end.join.html_safe
 	end
 end

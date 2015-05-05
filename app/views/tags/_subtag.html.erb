@@ -1,0 +1,8 @@
+<ul class="clearfix">
+	<li id="tag_<%= t.id %>">
+		<h4><%= t.name %></h4>
+		<%= link_to "Add Subjournal", new_tag_path(:parent_id => t) %>
+		<p><%= link_to "Edit Journal", edit_tag_path(t), remote: true %> <%= link_to 'Delete', tag_path(t), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %></p>
+			<%= nested_tags @tags.arrange(:order => :created_at) %>
+	</li>
+</ul>
