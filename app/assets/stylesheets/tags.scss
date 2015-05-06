@@ -25,9 +25,7 @@ Titles#index and Entries#index Page
   	line-height: 1.2rem;
 }
 
-#journal_titles .fa-caret-down{
-	display: none;
-}
+
 
 #journal_titles a:focus { outline: none !important; }
 
@@ -49,14 +47,14 @@ Titles#index and Entries#index Page
 } 
 
 #journal_titles a.active{
-	background: $salmon;
+	background: $salmon !important;
 }
 
 #journal_titles li.root:nth-child {
 	background: white;
 }
 
-#journal_titles .root {
+#tag-list > div > .root > a{
 	background: white;
 }
 
@@ -141,6 +139,18 @@ Journals Page
 
 .nested_tags {
   margin-left: 30px;
+}
+
+li .nested-tags-right{
+	display: none
+}
+
+.expanded > .nested-tags-right{
+	display: block;
+}
+
+.toggable i{
+	float: right;
 }
 
 

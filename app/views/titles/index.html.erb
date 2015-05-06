@@ -20,9 +20,13 @@
 				<ul>
 
 					<li class="<%= 'active' if current_page?(titles_path) %>">
-						<%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Journals'.html_safe, titles_path %>
+						<%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Journals'.html_safe, titles_path, remote: true %>
 					</li>
-				 	<%= render partial: "tags", locals: { tags: @tags.roots } %>	
+					<div id="tag-list">
+						
+					</div>
+
+				 		
 				</ul>
 			</div>
 			<%= render 'search' %>
@@ -46,3 +50,9 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var tagManager = new TagManager();
+	tagManager.initialize('<%= current_user.tags.hierarchy_tree.html_safe  %>', $("#tag-list"));
+
+</script>

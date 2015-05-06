@@ -10,12 +10,10 @@ class Tag < ActiveRecord::Base
 	  self.select("name, count(taggings.tag_id) as count").joins(:taggings).group("taggings.tag_id")
 	end
 
-	def direct_descendants
-		if ancestry.present?
-			Tag.where(ancestry: ancestry + "/" + id.to_s)
-		else
-			Tag.where(ancestry: id.to_s)
-		end
+	def self.hierarchy_tree
+		self.arrange_serializable.to_json(:only => ["id","name", "children"])
+
 	end
+
 
 end

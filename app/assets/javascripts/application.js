@@ -19,6 +19,7 @@
 //= require lightbox
 //= require jquery.slick
 //= require dropzone
+//= require tag-manager.js
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

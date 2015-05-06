@@ -9,22 +9,11 @@
   activeTag.addClass("active");
   activeElement.addClass("active");
 
-  // Open menu with child tags
-  if (!activeTag.hasClass("opened")){
-  	<% unless @tag.direct_descendants.blank? %>
-      activeElement.addClass("opened");
-  		activeTag.append('<%= j render partial: "tags", locals: { tags: @tag.direct_descendants } %>');
-  		activeTag.addClass("opened");
-
-      // Close menu with child tags on click event
-      activeElement.click(function(){
-        $(this).toggleClass("opened");
-        $(this).parent().toggleClass("opened");
-        $(this).parent().find(".nested-tags-right").toggle();
-      })
-
-  	<% end %>
+  if (!activeElement.is(":visible")){
+    activeElement.parents("li").addClass("expanded");
   }
+
+
 
   
 
