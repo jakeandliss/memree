@@ -1,7 +1,35 @@
-$('.image-loader').hide();
-<% unless @titles.blank? %>
-  $('.pagination').replaceWith('<%= escape_javascript will_paginate(@titles) %>');
-  $('#title_added').append('<%= escape_javascript render partial: "user_titles", locals: {titles: @titles} %>');
-<% else %>
+
+  // Show titles with specified tags
+  $('#titles-wrapper').html('<%= j render partial: "titles" %>').fadeIn(1300);
+
+  // Highlight active eliments of the tag menu
+  $("#journal_titles .active").removeClass("active");
+  var activeElement = $('#journal_titles [href="<%=request.path%>"]');
+  var activeTag = activeElement.parent();
+  activeTag.addClass("active");
+  activeElement.addClass("active");
+
+  // Open menu with child tags
+  if (!activeTag.hasClass("opened")){
+  	<% unless @tag.direct_descendants.blank? %>
+      activeElement.addClass("opened");
+  		activeTag.append('<%= j render partial: "tags", locals: { tags: @tag.direct_descendants } %>');
+  		activeTag.addClass("opened");
+
+      // Close menu with child tags on click event
+      activeElement.click(function(){
+        $(this).toggleClass("opened");
+        $(this).parent().toggleClass("opened");
+        $(this).parent().find(".nested-tags-right").toggle();
+      })
+
+  	<% end %>
+  }
+
+  
+
+<% if @titles.blank? %>
   $('.pagination').detach();
 <% end %>
+
+$('.image-loader').hide();

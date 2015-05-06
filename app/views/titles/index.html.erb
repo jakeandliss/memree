@@ -18,10 +18,11 @@
 			</div>
 			<div id="journal_titles" class="hide-for-small-only">
 				<ul>
-					<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Journals'.html_safe, titles_path %></li>
-				 		<% @tags.roots.each do |t| %>
-				 	<li class="<%= 'active' if current_page?(tag_path(:entries, t.name)) %>"><%= link_to t.name, tag_path(:entries, t.name) %></li>
-					<% end %>
+
+					<li class="<%= 'active' if current_page?(titles_path) %>">
+						<%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Journals'.html_safe, titles_path %>
+					</li>
+				 	<%= render partial: "tags", locals: { tags: @tags.roots } %>	
 				</ul>
 			</div>
 			<%= render 'search' %>
@@ -35,20 +36,12 @@
 					<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
 					<ul>
 						<li class="<%= 'active' if current_page?(titles_path) %>"><%= link_to 'All Journals', titles_path %></li>
-					 	<% @tags.roots.each do |t| %>
-					 	<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(:entries, t.name) %></li>
-						<% end %>
+					 	<%= render partial: "tags", locals: { tags: @tags.roots } %>	
 					</ul>
 				</div>
 			</div>
-			<div id="title_added">
-        		<%= render partial: 'user_titles', locals: {titles: @titles} %>
-			</div>	
-			<div class="scroll-pagination">
-				<%= will_paginate @titles %>
-			</div>
-			<div class="image-loader">
-        		<center><i class="fa fa-refresh fa-spin"></i></center>
+			<div id="titles-wrapper">
+				<%= render partial: "titles" %>
 			</div>
 		</div>
 	</div>

@@ -19,11 +19,23 @@ class Title < ActiveRecord::Base
 	# 	order('@entry.entry_date DESC', 'created_at DESC')
 	# end
 
-	def all_tags=(names)
-		self.tags = names.split(',').map do |name|
-			Tag.where(name: name.strip).first_or_create!
+	# def all_tags=(names)
+	# 	self.tags = names.split(',').map do |name|
+	# 		Tag.where(name: name.strip).first_or_create!
+	# 	end
+	# end
+
+	# Add tags for new titles
+	def add_tags(tag_names="")
+		tag_names.split(',').map do |tag_name|
+			if tag = user.tags.find_by(name: tag_name.strip)
+				taggings.find_or_create_by(tag_id: tag.id, title_id: id)
+			else
+				tags.find_or_create_by(name: tag_name.strip, user_id: user_id)
+			end
 		end
 	end
+
 
 	def all_tags
 		self.tags.map(&:name).join(", ")
@@ -31,6 +43,13 @@ class Title < ActiveRecord::Base
 
 	def self.tagged_with(name)
 		Tag.find_by_name!(name).titles
+	end
+
+	# Retrive all titles having with tag or child of this tag
+	def self.childrens_of tag
+	    title_ids = Tagging.where(tag_id: tag.subtree_ids).pluck(:title_id)
+
+		Title.where(id: title_ids.uniq)
 	end
 
 

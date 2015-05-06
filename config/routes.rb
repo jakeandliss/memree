@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   get 'tags/index'
 
-  get '/journals/entries.:tag', to: 'titles#index', as: "journal"
+  get 'journals/new', to: 'tags#new', as: "new_tag"
+  get 'journals/:tag', to: 'titles#index', as: "journal"
+
 
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
