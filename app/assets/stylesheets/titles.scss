@@ -232,9 +232,16 @@ Title/Entry Snippets
 }
 
 #titles .entry_image_thumbnails img {
-  margin-right: -4px;
-  width: 33%;
   border-radius: 3px;
+}
+
+.slick-slide {
+  transform: scale(.9);
+}
+
+.slick-slide.slick-center {
+  transform: scale(1);
+  transition: all .4s ease-in-out;
 }
 
 #shared_users img {

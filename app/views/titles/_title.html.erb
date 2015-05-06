@@ -1,4 +1,3 @@
-
 <div id="<%= dom_id(title) %>" class="row">
 	<div class="medium-9 columns">
 		<div class="white box-shadow title">
@@ -42,9 +41,47 @@
 						</div>
 				<div id="entry_<%= title.id %>_image_thumbnails" class="entry_image_thumbnails">
 					<% title.images.each do |i| %>
-						<%= image_tag i.avatar.url(:medium) %>
+						<div><%= image_tag i.avatar.url(:medium) %></div>
 					<% end %>
+
 				</div>
+					<script>
+					$('#entry_<%= title.id %>_image_thumbnails').slick({
+						  centerMode: true,
+						  slidesToShow: 1,
+						  centerPadding: "25%",
+						  focusOnSelect: true,
+						  arrows: false,
+						  infinite: false,
+						  initialSlide: 1,
+						  responsive: [
+						    {
+						      breakpoint: 768,
+						      settings: {
+						          centerMode: true,
+								  slidesToShow: 1,
+								  centerPadding: "25%",
+								  focusOnSelect: true,
+								  arrows: false,
+								  infinite: false,
+								  initialSlide: 1
+						      }
+						    },
+						    {
+						      breakpoint: 640,
+						      settings: {
+						          centerMode: true,
+								  slidesToShow: 1,
+								  centerPadding: "20%",
+								  focusOnSelect: true,
+								  arrows: false,
+								  infinite: false,
+								  initialSlide: 1
+						      }
+						    }
+						  ]
+						});
+				</script>
 			</div>	
 			<div class="delete-x">
 				<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_title_path(title), remote: true %>

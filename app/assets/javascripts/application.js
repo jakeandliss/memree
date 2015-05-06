@@ -17,13 +17,8 @@
 //= require foundation
 //= require jquery-fileupload
 //= require lightbox
-//= require best_in_place
+//= require jquery.slick
 //= require dropzone
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
-
-$(document).ready(function() {
-  /* Activating Best In Place */
-  jQuery(".best_in_place").best_in_place();
-});
