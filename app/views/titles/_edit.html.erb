@@ -11,12 +11,12 @@
     <%= f.text_area :entry, id: "wysiwyg", placeholder: "Entry", rows: 5 %>
        
     <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals", id: "edit_title_all_tags" %>
-    <div style="width:100%;">
-    <% @title.images.each do |i| %>
-    <div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :images, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :images, remote: true %></span>
-    </div>
-  <% end %>
-</div>
+    <div class="edit_images">
+      <% @title.images.each do |i| %>
+      <div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :images, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :images, remote: true %></span>
+      </div>
+    <% end %>
+  </div>
     <div id="image_click" class="pointer clearfix">
       <p>Drag or click to add images</p>
     </div>

@@ -237,11 +237,19 @@ Title/Entry Snippets
 
 .slick-slide {
   transform: scale(.9);
+  -webkit-transform: scale(.9);
+  -moz-transform: scale(.9);
+  -ms-transform: scale(.9);
 }
 
 .slick-slide.slick-center {
-  transform: scale(1);
-  transition: all .4s ease-in-out;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -webkit-transition: all .4s ease-in-out;
+  -ms-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
 }
 
 #shared_users img {
@@ -291,21 +299,33 @@ Edit Entries
 
 **************************/
 
+.edit_images {
+  margin-bottom: 1rem;
+}
+
 .image_remove {
   position: relative;
-  float: left;  
+  display: inline-block;
+  margin-right: -.25%;
+  margin-left: -.3%;
+  width: 25%;
+}
+
+.image_remove img {
+  width: 100%;
 }
 
 .image_remove span a {
   display: none
 }
+
 .image_remove:hover span a {
   cursor: pointer;
   display: inherit;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 4rem;
+  top: 25%;
+  left: 25%;
+  width: 50%;
 }
 
 /**************************
