@@ -1,15 +1,45 @@
 class Image < ActiveRecord::Base
   belongs_to :imageable, polymorphic: true
 
-  has_attached_file :avatar, styles: {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#" }, :default_url => "no_image.png"
+  #has_attached_file :avatar, styles: {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#" }, :default_url => "no_image.png"
+
+  #has_attached_file :avatar
   	# if: :is_video_type?, :styles =>  {
 	  #   :medium => { :geometry => "640x480", :format => 'flv' },
 	  #   :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
 	  # }, :processors => [:transcoder]
 
-  validates_attachment_content_type :avatar,
-    :content_type => ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', "video/mp4", "video/m4v", "video/mpeg"]
 
+   	has_attached_file :avatar, styles: lambda { |a| a.instance.check_file_type}, :default_url => "no_image.png"
+
+
+  validates_attachment_content_type :avatar, :content_type => /.*/
+
+
+  def check_file_type
+    if is_image_type?
+      {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#" }
+    elsif is_video_type?
+      {
+          :thumb => { 
+            :geometry => "100x100#", 
+            :format => 'jpg', 
+            :processors => [:transcoder]
+           },
+          :medium => {:geometry => "300x300#", :format => 'jpg', :processors => [:transcoder]}
+      }
+    else
+      {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#"}
+    end
+  end
+
+  def is_image_type?
+    avatar_content_type =~ %r(image)
+  end
+
+  def is_video_type?
+    avatar_content_type =~ %r(video)
+  end
 
 
 end

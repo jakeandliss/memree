@@ -34,7 +34,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'foundation-rails'
 
+gem "jquery-slick-rails"
 gem "paperclip", "~> 4.2"
+gem 'paperclip-av-transcoder'
 
 gem "jquery-fileupload-rails"
 
@@ -58,8 +60,6 @@ gem 'pg'
 gem 'thin'
 
 gem 'ancestry'
-
-gem "jquery-slick-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

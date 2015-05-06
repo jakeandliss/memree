@@ -25,7 +25,10 @@ var TagManager = function () {
 		buildSubtree(wrapperElement, tagStructure)
 		wrapperElement.find(".nested-tags-right").first().find(">li").addClass("root");
 		$(".root > a").click(function(){
-			$(".root").not($(this).parent()).removeClass("expanded");
+			$(".expanded").not($(this).parent()).removeClass("expanded");
+		});
+		wrapperElement.parent().find("> li > a").click(function(){
+			$(".toggable").parent().addClass("expanded");
 		})
 	}
 
