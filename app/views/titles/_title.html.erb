@@ -41,8 +41,11 @@
 						</div>
 				<div id="entry_<%= title.id %>_image_thumbnails" class="entry_image_thumbnails">
 					<% title.images.each do |i| %>
-						<div><%= image_tag i.avatar.url(:medium) %></div>
+						<div><%= image_tag i.avatar.url(:medium) %>
+						<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url, data: { lightbox: "#{title.id}" } %></div>
 					<% end %>
+
+					<div id="tester"></div>
 
 				</div>
 					<script>

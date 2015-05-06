@@ -7,7 +7,7 @@ class TitlesController < ApplicationController
     @tags = current_user.tags(:parent_id => params[:parent_id])
     @images = Image.all
 
-    # if parametr "tag" exists retrieve titles with the specified tag, otherwise retrieve all tags belonging to current user
+    # if parametr "tag" exists retriece titles with specified tag, otherwise retrieve all tags belonging to current user
     if params[:tag]
       @tag = Tag.find_by(name: params[:tag])
       @titles = Title.childrens_of(@tag).paginate(:page => params[:page], :per_page => 10)

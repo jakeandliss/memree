@@ -220,30 +220,6 @@ Title/Entry Snippets
   height: 8rem;
 }
 
-#titles .title_entry img {
-  opacity: .15;
-  width: 100%;
-}
-
-#titles .entry_image_thumbnails {
-  float: left;
-  width: 100%;
-  height: 100%;
-}
-
-#titles .entry_image_thumbnails img {
-  border-radius: 3px;
-}
-
-.slick-slide {
-  transform: scale(.9);
-}
-
-.slick-slide.slick-center {
-  transform: scale(1);
-  transition: all .4s ease-in-out;
-}
-
 #shared_users img {
   border-radius: 100%;
   width: 33%;
@@ -284,6 +260,57 @@ Title/Entry Snippets
   padding-left: .5rem;
 }
 
+/********************************
+
+ENTRY IMAGES
+
+********************************/
+
+#titles .entry_image_thumbnails {
+  float: left;
+  width: 100%;
+  height: 100%;
+}
+
+#titles .entry_image_thumbnails img {
+  border-radius: 3px; 
+  position: relative;
+}
+
+.slick-slide {
+  transform: scale(.9);
+  -webkit-transform: scale(.9);
+  -moz-transform: scale(.9);
+  -ms-transform: scale(.9);
+}
+
+.slick-slide.slick-center {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -webkit-transition: all .4s ease-in-out;
+  -ms-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+}
+
+i.fa.fa-external-link-square {
+  position: absolute;
+  z-index: 1000000;
+  bottom: 1%;
+  font-size: 2rem;
+  color: gray;
+  padding: .25rem;
+}
+
+.slick-slide  i.fa.fa-external-link-square { 
+  display: none;
+}
+
+.slick-slide.slick-center:hover i.fa.fa-external-link-square { 
+  display: inherit;
+}
+
 
 /**************************
 
@@ -291,21 +318,33 @@ Edit Entries
 
 **************************/
 
+.edit_images {
+  margin-bottom: 1rem;
+}
+
 .image_remove {
   position: relative;
-  float: left;  
+  display: inline-block;
+  margin-right: -.25%;
+  margin-left: -.3%;
+  width: 25%;
+}
+
+.image_remove img {
+  width: 100%;
 }
 
 .image_remove span a {
   display: none
 }
+
 .image_remove:hover span a {
   cursor: pointer;
   display: inherit;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 4rem;
+  top: 25%;
+  left: 25%;
+  width: 50%;
 }
 
 /**************************
