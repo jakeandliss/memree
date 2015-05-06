@@ -19,6 +19,7 @@
 //= require lightbox
 //= require best_in_place
 //= require dropzone
+//= require tag-manager.js
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
