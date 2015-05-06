@@ -8,20 +8,21 @@
     </div>
     <%= f.text_field :title, placeholder: "Title" %>
    
-    <%= f.text_area :entry, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Entry", rows: 5 %>
+    <%= f.text_area :entry, id: "wysiwyg", placeholder: "Entry", rows: 5 %>
        
-    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals" %>
+    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals", id: "edit_title_all_tags" %>
     <div style="width:100%;">
     <% @title.images.each do |i| %>
     <div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :images, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :images, remote: true %></span>
     </div>
   <% end %>
 </div>
-    <div id="image_click" class="pointer">
+    <div id="image_click" class="pointer clearfix">
       <p>Drag or click to add images</p>
     </div>
-    <div class="action clearfix">
-      <%= f.submit 'Save Entry', class: "button small right" %>
+   <div class="action clearfix">
+       <%= f.submit 'Save Entry', class: "button small right" %>
+       <%= link_to "Cancel", '#', id: "cancel_#{@title.id}", class: "right", style: "padding-right:.5rem;" %>
     </div>
     <div id="dropzone" class="dropzone-custom hidden">
       <div class="dz-default dz-message">
@@ -32,7 +33,7 @@
 <script type="text/javascript">
   $(function(){
         
-    $('#title_all_tags').tagsinput({
+    $('#edit_title_all_tags').tagsinput({
       typeahead: {
         source: function(query) {
           return $.get('<%= tag_list_titles_url %>'+'?text='+query);
@@ -56,4 +57,14 @@
       return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
     }
   }
+</script>
+<script>
+$('#cancel_<%= @title.id %>').on('click', function(e) {
+                    e.preventDefault()
+    $('#title_<%= @title.id %> .header').show();
+    $('#title_<%= @title.id %> .content').show();
+    $('#title_<%= @title.id %> .footer').show();
+    $('#title_<%= @title.id %> .title:hover .delete-x').show();
+    $('form#edit_title_<%= @title.id %>').remove();
+  })
 </script>

@@ -20,7 +20,6 @@ Titles#index and Entries#index Page
 	color: #444;
 	display:block;
 	list-style-type: none;
-	margin-right: 10px;
 	padding: 3px 7px;
 	border-radius: 3px;	
   	line-height: 1.2rem;
@@ -44,7 +43,6 @@ Titles#index and Entries#index Page
 }
 
 #journal_titles li.active {
-	
 	list-style-type: inherit;
 	direction: rtl;
 	color: $salmon;
@@ -52,6 +50,14 @@ Titles#index and Entries#index Page
 
 #journal_titles a.active{
 	background: $salmon;
+}
+
+#journal_titles li.root:nth-child {
+	background: white;
+}
+
+#journal_titles .root {
+	background: white;
 }
 
 // On Mobile

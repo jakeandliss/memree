@@ -40,10 +40,10 @@
 							  })
 							</script>
 						</div>
-				<div id="entry_image_thumbnails">
-							<% title.images.each do |i| %>
-							<%= image_tag i.avatar.url(:medium) %>
-						<% end %>
+				<div id="entry_<%= title.id %>_image_thumbnails" class="entry_image_thumbnails">
+					<% title.images.each do |i| %>
+						<%= image_tag i.avatar.url(:medium) %>
+					<% end %>
 				</div>
 			</div>	
 			<div class="delete-x">

@@ -3,7 +3,7 @@
 <div class="nested-tags-right">
 	<% tags.each do |tag| %>
 		<li class="<%= 'active' if request.path == tag_path(tag.name) %>">
-			<%= link_to (tag.name + "  <i class='fa fa-caret-down'></i>").html_safe, tag_path(tag.name), remote: true %>
+			<%= link_to (tag.name + "  <i class='fa fa-caret-down'></i>").html_safe, tag_path(tag.name), remote: true, :class => (tag.parent_id == nil ? "root" : "") %>
 		</li>
 	<% end %>
 </div>
