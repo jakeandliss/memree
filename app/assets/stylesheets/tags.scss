@@ -26,19 +26,33 @@ Titles#index and Entries#index Page
   	line-height: 1.2rem;
 }
 
+#journal_titles .fa-caret-down{
+	display: none;
+}
+
+#journal_titles a:focus { outline: none !important; }
+
 #journal_titles li {
-	list-style-type: none;
-	margin-right: 10px;	
+	list-style-type: none;	
 	border-radius: 3px;
   	margin-bottom: .2rem;
 }
 
+
+#journal_titles a.opened .fa-caret-down{
+	display: inline;
+}
+
 #journal_titles li.active {
-	background: $salmon;
+	
 	list-style-type: inherit;
 	direction: rtl;
 	color: $salmon;
 } 
+
+#journal_titles a.active{
+	background: $salmon;
+}
 
 // On Mobile
 
@@ -122,6 +136,7 @@ Journals Page
 .nested_tags {
   margin-left: 30px;
 }
+
 
 .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags {
   margin-left: 0;

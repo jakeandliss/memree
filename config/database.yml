@@ -5,7 +5,7 @@ development:
   database: memrybook_development
   pool: 5
   username: jacobtho
-  password: 
+  #password: 
 
 test: &TEST
   adapter: postgresql

@@ -6,16 +6,22 @@ class TitlesController < ApplicationController
     @title = current_user.titles.new(:title_date => Date.today)
     @tags = current_user.tags(:parent_id => params[:parent_id])
     @images = Image.all
-    # if params[:tag]
-    #   @titles = current_user.titles.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
-    # else
+
+    # if parametr "tag" exists retriece titles with specified tag, otherwise retrieve all tags belonging to current user
+    if params[:tag]
+      @tag = Tag.find_by(name: params[:tag])
+      @titles = Title.childrens_of(@tag).paginate(:page => params[:page], :per_page => 10)
+    else
       @titles = current_user.titles.paginate(:page => params[:page], :per_page => 10)
-    # end
+    end
   end
 
   def search
     index
-    render :index
+    respond_to do |format|
+      format.html { render :index }
+      format.js
+    end
   end
 
   def edit
@@ -24,8 +30,9 @@ class TitlesController < ApplicationController
 
   def create
     @title = current_user.titles.new(title_params)
+    
     respond_to do |format|
-      if @title.save
+      if @title.save && @title.add_tags(params[:title][:all_tags])
         format.html { redirect_to titles_path, notice: "Entry was created succesfully" }
         format.js
       else
@@ -40,8 +47,7 @@ class TitlesController < ApplicationController
 
   def update
     @title = current_user.titles.find(params[:id])
-    @title.update_attributes!(title_params)
-    if @title.save
+    if @title.update_attributes!(title_params) && @title.add_tags(params[:title][:all_tags])
       respond_to do |format|
         format.html { redirect_to titles_path, notice: "Entry was updated succesfully" }
         format.js
@@ -64,8 +70,8 @@ class TitlesController < ApplicationController
   end
 
   def tag_list
-    tags = if params[:query].present?
-             current_user.tags.where("name LIKE '%?%'", params[:query]).map(&:name)
+    tags = if params[:text].present?
+             current_user.tags.where("name LIKE ?", "%#{params[:text]}%").map(&:name)
            else
              current_user.tags.all.map(&:name)
            end
@@ -74,6 +80,6 @@ class TitlesController < ApplicationController
 
   private
   def title_params
-    params.require(:title).permit(:title, :all_tags, :entry, :title_date, :image_ids => [])
+    params.require(:title).permit(:title, :entry, :title_date, :image_ids => [])
   end
 end

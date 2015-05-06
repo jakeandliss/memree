@@ -1,7 +1,10 @@
 class TagsController < ApplicationController
 
   def index
-  	@tags = current_user.tags.where({:active => true}).arrange
+  	# @tags = current_user.tags.where({:active => true}).arrange
+    @user = current_user
+
+    @tags = current_user.tags.arrange(:order => :name)
   	@tag = current_user.tags.new(:parent_id => params[:parent_id])
   end
 
@@ -23,7 +26,8 @@ class TagsController < ApplicationController
   def create
   	@tag = current_user.tags.new(tag_params)
   	 respond_to do |format|
-      if @tag.save
+      if @tag.save 
+
         format.html { redirect_to tags_path, notice: "Journal added successfully." }
         format.js
       else
