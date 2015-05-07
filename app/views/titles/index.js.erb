@@ -1,6 +1,17 @@
 
   // Show titles with specified tags
+
+<% if params[:page].present? %>
+  
+
+  $('#titles-wrapper').append('<%= j render partial: "titles" %>').fadeIn(1300);
+  <% unless @titles.next_page %>
+    $('.scroll-pagination').remove();
+    $(".image-loader").remove();
+  <% end %>
+<% else %>
   $('#titles-wrapper').html('<%= j render partial: "titles" %>').fadeIn(1300);
+<% end %>
 
   // Highlight active eliments of the tag menu
   $("#journal_titles .active").removeClass("active");

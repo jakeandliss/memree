@@ -37,6 +37,9 @@ gem 'foundation-rails'
 gem "jquery-slick-rails"
 gem "paperclip", "~> 4.2"
 gem 'paperclip-av-transcoder'
+gem 'delayed_job_active_record'
+gem "daemons"
+gem 'delayed_paperclip'
 
 gem "jquery-fileupload-rails"
 
