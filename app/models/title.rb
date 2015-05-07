@@ -14,18 +14,8 @@ class Title < ActiveRecord::Base
     	errors.add :base, 'You need at least one field.'
 	  end
 	end
-	# def self.default_scope
-	# 	@entry = self.entry.find(params[:id])
-	# 	order('@entry.entry_date DESC', 'created_at DESC')
-	# end
 
-	# def all_tags=(names)
-	# 	self.tags = names.split(',').map do |name|
-	# 		Tag.where(name: name.strip).first_or_create!
-	# 	end
-	# end
-
-	# Add tags for new titles
+	# Add tags for a new title
 	def add_tags(tag_names="")
 		tag_names.split(',').map do |tag_name|
 			if tag = user.tags.find_by(name: tag_name.strip)
@@ -36,19 +26,22 @@ class Title < ActiveRecord::Base
 		end
 	end
 
-
+	# Get names of all tags related to this title
 	def all_tags
 		self.tags.map(&:name).join(", ")
 	end
 
+	# Find all titles whish has a specified name
 	def self.tagged_with(name)
 		Tag.find_by_name!(name).titles
 	end
 
 	# Retrive all titles having with tag or child of this tag
 	def self.childrens_of tag
+		# Get identifiers of specified tag and its children
 	    title_ids = Tagging.where(tag_id: tag.subtree_ids).pluck(:title_id)
 
+	    # Find titles with ids from the array title_ids
 		Title.where(id: title_ids.uniq)
 	end
 

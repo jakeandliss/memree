@@ -47,11 +47,22 @@
 			<div id="titles-wrapper">
 				<%= render partial: "titles" %>
 			</div>
+			<div class="scroll-pagination">
+				<%= will_paginate @titles %>
+			</div>
+			<div class="image-loader">
+				<center><i class="fa fa-refresh fa-spin"></i></center>
+			</div>
+
 		</div>
 	</div>
 </div>
 
 <script>
+
+	
+	// Load all tags and put them on sidebar
+	// TagManager class is located in app/assets/tag-manager.js
 	var tagManager = new TagManager();
 	tagManager.initialize('<%= current_user.tags.hierarchy_tree.html_safe  %>', $("#tag-list"));
 
