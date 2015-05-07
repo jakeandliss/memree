@@ -1,36 +1,33 @@
 <div class="row pages">
 	<div class="medium-4 columns">
 		<div class="avatar">
-		 	<%= image_tag @user.avatar.url(:avatar) %>
+		 	<%= image_tag current_user.avatar.url(:avatar) %>
+		 </div>
+		 <div style="text-align:center;">
+		 	<h3>
+		 		<%= current_user.full_name %>
+			</h3>
 		 </div>	 
-		 <div id="journal_titles">
-			<h4><%= image_tag('feather.png') %><%= @user.first_name %>'s Journals</h4>
-			<ul>
-		 		<% @tags.each do |t| %>
-		 			<li class="<%= 'active' if current_page?(tag_path(t.name)) %>"><%= link_to t.name, tag_path(t.name) %></li>
-				<% end %>
-				<%= link_to 'Edit Journals', edit_user_path(@user, form: "journals"), style: "color:#FD9781 !important" %>
-			</ul>
-			
-		</div>
 	</div>	 
-	<div class="medium-8 columns white box-shadow">	
-		<h3>Hey <%= @user.first_name %>, Here's your profile page. You can change or update anything at any time.</h3>
-		<p>
-		  <strong>First name:</strong>
-		  <%= @user.first_name %>
-		</p>
+	<div class="medium-8 columns">
+		<div class="white box-shadow">	
+			<h3>Hey <%= current_user.first_name %>, Here's your profile page. You can change or update anything at any time.</h3>
+			<p>
+			  <strong>First name:</strong>
+			  <%= current_user.first_name %>
+			</p>
 
-		<p>
-		  <strong>Last name:</strong>
-		  <%= @user.last_name %>
-		</p>
+			<p>
+			  <strong>Last name:</strong>
+			  <%= current_user.last_name %>
+			</p>
 
-		<p>
-		  <strong>Email:</strong>
-		  <%= @user.email %>
-		</p>
-		<%= link_to 'Edit Profile', edit_user_path(@user, form: "profile"), class: "button" %>
+			<p>
+			  <strong>Email:</strong>
+			  <%= current_user.email %>
+			</p>
+			<%= link_to 'Edit Profile', edit_user_path(current_user, form: "profile"), class: "button" %>
+		</div>
 	</div>
 </div>
 

@@ -2,8 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @tags = current_user.tags
-    @user = current_user
+    @tags = current_user.tags(:parent_id => params[:parent_id])
   end
   # GET /users/new
   def new

@@ -2,8 +2,6 @@ class TagsController < ApplicationController
 
   def index
   	# @tags = current_user.tags.where({:active => true}).arrange
-    @user = current_user
-
     @tags = current_user.tags.arrange(:order => :name)
   	@tag = current_user.tags.new(:parent_id => params[:parent_id])
   end
