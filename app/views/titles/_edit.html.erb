@@ -10,7 +10,7 @@
    
     <%= f.text_area :entry, id: "wysiwyg", placeholder: "Entry", rows: 5 %>
        
-    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals", id: "edit_title_all_tags" %>
+    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals (separate with comma)", id: "edit_title_all_tags" %>
     <div class="edit_images">
       <% @title.images.each do |i| %>
         <% if i.avatar_content_type.include? "image" %>

@@ -328,6 +328,32 @@ ENTRY IMAGES
   border-left: none !important;
 }
 
+/**************************
+
+Entry Audio
+
+**************************/
+
+#titles .audio audio {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+#titles .audio {
+  border: 2px solid #eee;
+  background: #444;
+  border-radius: 3%;
+}
+
+#titles .audio span {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
 
 /**************************
 

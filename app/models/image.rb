@@ -10,7 +10,7 @@ class Image < ActiveRecord::Base
 	  # }, :processors => [:transcoder]
 
 
-   	has_attached_file :avatar, styles: lambda { |a| a.instance.check_file_type}, :default_url => "no_image.png"
+  has_attached_file :avatar, styles: lambda { |a| a.instance.check_file_type}, :default_url => "no_image.png"
 
 
   validates_attachment_content_type :avatar, :content_type => /.*/
@@ -24,12 +24,19 @@ class Image < ActiveRecord::Base
           :medium => { 
             :geometry => "300x300#", 
             :format => 'jpg', 
-           },
-          :video => {:geometry => "300x300#", :format => 'mpeg'},
-          :processors => [:transcoder]
+          },
+          :video => {:geometry => "640x360#", :format => 'mp4', :processors => [:transcoder]
+          }
       }
+    elsif is_audio_type?
+      {
+        :audio => {
+          :format => "mp3", :processors => [:transcoder]
+        }
+      }
+     # avatar_file_name = self.basename(:avatar_file_name, self.extname(:avatar_file_name))
     else
-      {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#"}
+      {}
     end
   end
 
@@ -39,6 +46,10 @@ class Image < ActiveRecord::Base
 
   def is_video_type?
     avatar_content_type =~ %r(video)
+  end
+
+  def is_audio_type?
+    avatar_content_type =~ /\Aaudio\/.*\Z/
   end
 
 

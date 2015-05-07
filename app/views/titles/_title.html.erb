@@ -45,9 +45,14 @@
 							<div><%= image_tag i.avatar.url(:medium) %>
 								<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url, class: "light_#{title.id} mfp-image" %>
 							</div>
-						<% elsif i.avatar_content_type.include? "video" %>
+						<% elsif ((i.avatar_content_type.include? "video") && (i.avatar_content_type.exclude? "image")) %>
 							<div><%= image_tag i.avatar.url(:medium) %>
-								<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url, class: "light_#{title.id} mfp-iframe" %>
+								<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url(:video), class: "light_#{title.id} mfp-iframe" %>
+							</div>
+						<% elsif i.avatar_content_type.include? "audio" %>
+							<div class="audio"><%= image_tag('audio.png') %>
+								<%= audio_tag i.avatar.url(:audio), controls: true %>
+								<span><%= i.avatar_file_name %></span>
 							</div>
 						<% end %>
 					<% end %>
