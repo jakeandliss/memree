@@ -13,8 +13,13 @@
     <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals", id: "edit_title_all_tags" %>
     <div class="edit_images">
       <% @title.images.each do |i| %>
-      <div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :images, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :images, remote: true %></span>
+        <% if i.avatar_content_type.include? "image" %>
+          <div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :images, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :images, remote: true %></span>
       </div>
+        <% elsif i.avatar_content_type.include? "video" %>
+            <div class="image_remove"><%= link_to image_tag(i.avatar.url(:medium)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :images, remote: true %><i class="fa fa-play-circle" style="font-size:3rem;line-height:2rem;"></i><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :images, remote: true %></span>
+          </div>
+        <% end %>
     <% end %>
   </div>
     <div id="image_click" class="pointer clearfix">

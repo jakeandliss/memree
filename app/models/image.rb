@@ -21,12 +21,12 @@ class Image < ActiveRecord::Base
       {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#" }
     elsif is_video_type?
       {
-          :thumb => { 
-            :geometry => "100x100#", 
+          :medium => { 
+            :geometry => "300x300#", 
             :format => 'jpg', 
-            :processors => [:transcoder]
            },
-          :medium => {:geometry => "300x300#", :format => 'jpg', :processors => [:transcoder]}
+          :video => {:geometry => "300x300#", :format => 'mpeg'},
+          :processors => [:transcoder]
       }
     else
       {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#"}

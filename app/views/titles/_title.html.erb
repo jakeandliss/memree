@@ -39,67 +39,54 @@
 							  })
 							</script>
 						</div>
-				<div id="entry_<%= title.id %>_image_thumbnails" class="entry_image_thumbnails">
+				<div id="entry_<%= title.id %>_thumbnails" class="entry_image_thumbnails">
 					<% title.images.each do |i| %>
-						<div><%= image_tag i.avatar.url(:medium) %>
-						<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url, data: { lightbox: "#{title.id}" } %></div>
+						<% if i.avatar_content_type.include? "image" %>
+							<div><%= image_tag i.avatar.url(:medium) %>
+								<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url, class: "light_#{title.id} mfp-image" %>
+							</div>
+						<% elsif i.avatar_content_type.include? "video" %>
+							<div><%= image_tag i.avatar.url(:medium) %>
+								<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url, class: "light_#{title.id} mfp-iframe" %>
+							</div>
+						<% end %>
 					<% end %>
-
-					<div id="tester"></div>
-
 				</div>
 					<script>
-					$('#entry_<%= title.id %>_image_thumbnails').slick({
-						  centerMode: true,
+					$('.light_<%= title.id %>').magnificPopup({
+						gallery: {
+							enabled: true
+						}
+
+							// other options
+						});
+					</script>
+				<% if title.images.count(:imageable_id) == 1 %>
+					<script>
+					$('#entry_<%= title.id %>_thumbnails').slick({
+						  initialSlide: -1,
 						  slidesToShow: 1,
 						  centerPadding: "25%",
 						  focusOnSelect: true,
 						  arrows: false,
-						  infinite: false,
-						  initialSlide: 1,
-						  responsive: [
-						    {
-						      breakpoint: 768,
-						      settings: {
-						          centerMode: true,
-								  slidesToShow: 1,
-								  centerPadding: "25%",
-								  focusOnSelect: true,
-								  arrows: false,
-								  infinite: false,
-								  initialSlide: 1
-						      }
-						    },
-						    {
-						      breakpoint: 640,
-						      settings: {
-						          centerMode: true,
-								  slidesToShow: 1,
-								  centerPadding: "20%",
-								  focusOnSelect: true,
-								  arrows: false,
-								  infinite: false,
-								  initialSlide: 1
-						      }
-						    }
-						  ]
+						  centerMode: true,
 						});
-				</script>
+					</script>
+				<% else %>
+					<script>
+						$('#entry_<%= title.id %>_thumbnails').slick({
+						  slidesToShow: 1,
+						  centerPadding: "25%",
+						  focusOnSelect: true,
+						  arrows: false,
+						  centerMode: true,
+						});
+					</script>
+				<% end %>
 			</div>	
 			<div class="delete-x">
 				<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_title_path(title), remote: true %>
 				<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(title), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
-			</div>
-<!--  			<p style="float:left;">
-					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_title_path(title), remote: true %>  
-					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(title), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
-			</p>  -->
-			<div id="entry_media">
-					<!-- <p>if Imag@title.exists?(avatar_content_type: 'video') </p> -->
-					<i class="fa fa-camera"></i>
-					<i class="fa fa-video-camera"></i>
-					<i class="fa fa-music"></i>
-					<i class="fa fa-file-text"></i>
 			</div>
 			<div class="footer show-for-small-only">
 				<div class="row">

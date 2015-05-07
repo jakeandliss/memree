@@ -40,8 +40,6 @@ gem 'paperclip-av-transcoder'
 
 gem "jquery-fileupload-rails"
 
-gem 'lightbox2-rails'
-
 gem 'truncate_html'
 
 gem "font-awesome-rails"
@@ -60,6 +58,8 @@ gem 'pg'
 gem 'thin'
 
 gem 'ancestry'
+
+gem 'magnific-popup-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

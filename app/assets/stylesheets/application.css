@@ -16,9 +16,9 @@
  *= require foundation_and_overrides
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
- *= require lightbox
  *= require font-awesome
  *= require slick
+ *= require magnific-popup
  *= require dropzone
  */
 

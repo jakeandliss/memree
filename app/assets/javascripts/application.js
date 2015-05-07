@@ -16,10 +16,10 @@
 //= require jquery.validationEngine
 //= require foundation
 //= require jquery-fileupload
-//= require lightbox
 //= require jquery.slick
 //= require dropzone
 //= require tag-manager.js
+//= require magnific-popup
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
