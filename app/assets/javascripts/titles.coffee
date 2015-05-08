@@ -25,6 +25,17 @@ $ ->
 $ ->
 	$('i.fa-search').click (event) ->
 	  event.preventDefault()
-	  $('i.fa-search').hide();
-	  $('.search').show();
+	  $('i.fa-search').hide()
+	  $('.search').show()
 
+$ -> 
+	$('.playing').click (event) ->
+		event.preventDefault()
+		$(this).closest('.audio').attr('id', 'playing')
+		$('#playing').appendTo('body').removeClass('audio')
+		$('#playing i.playing').remove()
+		$('#playing i.stop').closest('a').show()
+$ -> 
+	$('.stop').click (event) ->
+		event.preventDefault()
+		$(this).closest('#playing').remove()
