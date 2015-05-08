@@ -357,6 +357,28 @@ Entry Audio
 
 /**************************
 
+Entry Files
+
+**************************/
+
+
+.application {
+    width: 50%;
+    float: left;
+    padding: 1rem;
+}
+
+.entry_application_thumbnails {
+    /* border: 2px dashed #aaa; */
+    margin-bottom: -1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-top: .5rem;
+    background: #ccc;
+}
+
+/**************************
+
 Edit Entries
 
 **************************/

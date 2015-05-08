@@ -5,7 +5,19 @@ class Image < ActiveRecord::Base
 
   # Apply styling appropriate for this file
   has_attached_file :avatar, styles: lambda { |a| a.instance.check_file_type}, :default_url => "no_image.png"
-  validates_attachment_content_type :avatar, :content_type => /.*/
+  validates_attachment_content_type :avatar, :content_type => [
+      /\Aaudio\/.*\Z/,
+      /\Avideo\/.*\Z/, 
+      /\Aimage\/.*\Z/, 
+      "application/pdf", 
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      'text/plain'
+    ] #See paperclip.rb initializer for all formats
+
 
   
   # The path of the image that will be shown while the file is loading
@@ -34,6 +46,8 @@ class Image < ActiveRecord::Base
         }
       }
      # avatar_file_name = self.basename(:avatar_file_name, self.extname(:avatar_file_name))
+    elsif is_doc_type?
+      {}
     else
       {}
     end
@@ -54,6 +68,10 @@ class Image < ActiveRecord::Base
   # Method returns true if file's content type contains word 'audio', overwise false
   def is_audio_type?
     avatar_content_type =~ /\Aaudio\/.*\Z/
+  end
+
+  def is_doc_type?
+    avatar_content_type = ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"]
   end
 
 

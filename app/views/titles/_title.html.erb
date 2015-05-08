@@ -93,6 +93,11 @@
 				<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_title_path(title), remote: true %>
 				<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, title_path(title), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
 			</div>
+				<% title.images.limit(1).each do |i| %>
+				<% if i.avatar_content_type.include? "application" %>
+					<i class="fa fa-file-text pointer" id="application_icon_<%= title.id %>" style="width:100%;text-align: right;font-size:1.5rem;padding:0;"></i>
+				<% end %>
+			<% end %>
 			<div class="footer show-for-small-only">
 				<div class="row">
 					<div class="small-6 columns">
@@ -118,6 +123,22 @@
 					</div>
 				</div>
 			</div>
+			<div id="entry_<%= title.id %>_application" class="entry_application_thumbnails clearfix hide">
+				<% title.images.each do |i| %>
+					<% if i.avatar_content_type.include? "application" %>
+						<div class="application">
+							<%= link_to '<i class="fa fa-file-text"></i>'.html_safe, i.avatar.url, class: "light_#{title.id}_application mfp-iframe" %>
+							<span><%= truncate(i.avatar_file_name, length: 27) %></span>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+			<script>
+			$('i#application_icon_<%= title.id %>').on ('click', function(e) {
+				e.preventDefault()
+				$('#entry_<%= title.id %>_application').toggle();
+			})
+			</script>
 		</div>
 	</div>
 	<div class="medium-3 columns hide-for-small-only">
