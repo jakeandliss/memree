@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507211522) do
+ActiveRecord::Schema.define(version: 20150508213635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,20 +33,17 @@ ActiveRecord::Schema.define(version: 20150507211522) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "entries", force: :cascade do |t|
-    t.string   "entry"
-    t.integer  "title_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.date     "entry_date"
+    t.string   "title"
+    t.date     "title_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.string   "content"
   end
 
-  add_index "entries", ["title_id"], name: "index_entries_on_title_id", using: :btree
+  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
 
-  create_table "images", force: :cascade do |t|
+  create_table "resources", force: :cascade do |t|
     t.integer  "imageable_id"
     t.string   "imageable_type"
     t.datetime "created_at",          null: false
@@ -56,19 +53,21 @@ ActiveRecord::Schema.define(version: 20150507211522) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "avatar_processing"
+    t.integer  "entry_id"
   end
 
-  add_index "images", ["avatar_content_type"], name: "index_images_on_avatar_content_type", using: :btree
+  add_index "resources", ["avatar_content_type"], name: "index_resources_on_avatar_content_type", using: :btree
+  add_index "resources", ["entry_id"], name: "index_resources_on_entry_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "title_id"
     t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "entry_id"
   end
 
+  add_index "taggings", ["entry_id"], name: "index_taggings_on_entry_id", using: :btree
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["title_id"], name: "index_taggings_on_title_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -80,17 +79,6 @@ ActiveRecord::Schema.define(version: 20150507211522) do
 
   add_index "tags", ["ancestry"], name: "index_tags_on_ancestry", using: :btree
   add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
-
-  create_table "titles", force: :cascade do |t|
-    t.string   "title"
-    t.date     "title_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.string   "entry"
-  end
-
-  add_index "titles", ["user_id"], name: "index_titles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -120,5 +108,4 @@ ActiveRecord::Schema.define(version: 20150507211522) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "taggings", "tags"
-  add_foreign_key "taggings", "titles"
 end

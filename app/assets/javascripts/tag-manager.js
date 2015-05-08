@@ -27,7 +27,8 @@ var TagManager = function () {
 		var element = $("<li><a>" + name + "</i></a></li>");
 		
 		$('a', element).attr('data-remote','true');
-		$('a', element).attr('href','/journals/' + name);
+		$('a', element).attr('data-tagname', name);
+		$('a', element).attr('href', window.location.href  + '/?tag=' + name);
 		parent.append(element); 
 		return element;
 	}

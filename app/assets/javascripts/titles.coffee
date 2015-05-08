@@ -16,9 +16,10 @@ $ ->
 	  return
 
 $ ->
-	$('div#image_click').click (event) ->
+	Dropzone.autoDiscover = false;
+	$('div.image_click').click (event) ->
 	  event.preventDefault()
-	  $('#dz-clickable').trigger 'click'
+	  $('.dz-clickable').trigger 'click'
 	  return
 
 $ ->
@@ -26,3 +27,4 @@ $ ->
 	  event.preventDefault()
 	  $('i.fa-search').hide();
 	  $('.search').show();
+

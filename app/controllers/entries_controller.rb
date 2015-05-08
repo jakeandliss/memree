@@ -1,71 +1,84 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
-  layout "application_index", only: :index
-
+  before_action :fetch_entry, only: [:show, :edit, :update, :destroy]
+  
   def index
-    @title = Title.find(params[:title_id])
-    @user = current_user
-    @entry = Entry.new(:entry_date => Date.today)
-    @entries = @title.entries
-    @images = Image.all
-    @tags = @title.tags
-    @tag = Tag.new
-  end
-
-  def new
-    @title = Title.find(params[:title_id])
-    @entry = @title.entries.new
-  end
-
-  def create
-    @title = Title.find(params[:title_id])
-    @entry = @title.entries.new(entry_params)
-    respond_to do |format|
-      if @entry.save
-        format.html { redirect_to title_entries_path, success: "Entry added successfully." }
-        format.js
-      else
-        format.js{ render nothing: true}
-        format.html{
-          flash[:error] = "There was a problem adding your entry."
-          render action: :new
-        }
-      end
-    end
-  end
-
-  def edit
-    @title = Title.find(params[:title_id])
-    @entry = @title.entries.find(params[:id])
-  end
-
-  def update
-    @title = Title.find(params[:title_id])
-    @entry = @title.entries.find(params[:id])
-    if @entry.update_attributes(entry_params)
-      respond_to do |format|
-        format.html {flash[:success] = "Entry updated successfully."
-      redirect_to title_entries_path}
-        format.js
-      end
+    @entry = current_user.entries.new(:title_date => Date.today)
+    @tags = current_user.tags(:parent_id => params[:parent_id])
+    
+    # if parametr "tag" exists retrieve entries with specified tag, otherwise retrieve all tags belonging to current user
+    if params[:tag]
+      @tag = Tag.find_by(name: params[:tag])
+      @entries = Entry.childrens_of(@tag).paginate(:page => params[:page], :per_page => 10)
     else
-      flash[:error] = "Your entry could not be saved."
-      render action: :edit
+      @entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
     end
+
+    render layout: "application_index"
   end
 
-  def destroy
-    @title = Title.find(params[:title_id])
-    @entry = @title.entries.find(params[:id])
-    @entry.destroy
+  def search
+    index
     respond_to do |format|
-      format.html { redirect_to title_entries_path(@title), notice: "Entry has been deleted" }
+      format.html { render :index }
       format.js
     end
   end
 
+  def edit
+  end
+
+  def create
+    @entry = current_user.entries.new(entry_params)
+    
+    respond_to do |format|
+      if @entry.save && @entry.add_tags(params[:entry][:all_tags])
+        format.html { redirect_to entries_path, notice: "Entry was created succesfully" }
+        format.js
+      else
+        format.html { 
+          flash[:error] = "There was a problem adding your entry."
+          render action: 'new'
+        }
+        format.js { render nothing: true}
+      end
+    end
+  end
+
+  def update
+    if @entry.update_attributes!(entry_params) && @entry.add_tags(params[:entry][:all_tags])
+      respond_to do |format|
+        format.html { redirect_to entries_path, notice: "Entry was updated succesfully" }
+        format.js
+      end
+    else
+      flash[:error] = "Entry has not been updated"
+      render action: 'edit'
+    end
+  end
+
+  def destroy
+    
+    if @entry.destroy
+      respond_to do |format|
+        format.html { redirect_to entries_path, notice: "Entry has been deleted"}
+        format.js
+      end
+    end
+  end
+
+  def tag_list
+    tags = params[:text] ? current_user.tags.where("name LIKE ?", "%#{params[:text]}%").map(&:name) : current_user.tags.all.map(&:name)
+    render json: tags
+  end
+
   private
+
+  def fetch_entry
+    @entry = current_user.entries.find(params[:id])
+  end
+
   def entry_params
-    params[:entry].permit(:entry, :id, :entry_date, :title_id, :entry_id, :image_ids => [])
+    params.require(:entry).permit(:title, :content, :title_date, :resource_ids => [])
   end
 end

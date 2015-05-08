@@ -1,7 +1,7 @@
 <body id="home">
 	<div id="user_nav">
 				<% if user_signed_in? %>
-				<%= link_to 'Entries', titles_path %> | 
+				<%= link_to 'Entries', entries_path %> | 
 				<%= link_to 'Edit Profile', edit_user_registration_path %> | 
 				<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
 			<% else %>

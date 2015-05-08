@@ -18,7 +18,7 @@ jQuery ->
         return unless file.serverId
         unless window.clearAfterSubmit
           $.ajax({
-            url: '/images/'+ file.serverId
+            url: '/resources/'+ file.serverId
             type: 'DELETE'
             success: ->
               $('#temp_image_'+file.serverId).remove()
@@ -38,8 +38,8 @@ jQuery ->
   }
   if $('div#dropzone').length
     window.dropzone = new Dropzone("div#dropzone", {
-      url: "/images"
-      paramName: "image[avatar]"
+      url: "/resources"
+      paramName: "resource[avatar]"
       addRemoveLinks: true
     })
 

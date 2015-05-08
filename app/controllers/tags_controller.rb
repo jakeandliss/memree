@@ -1,13 +1,13 @@
 class TagsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :fetch_tag, only: [:show, :edit, :update, :destroy]
 
   def index
-  	# @tags = current_user.tags.where({:active => true}).arrange
     @tags = current_user.tags.arrange(:order => :name)
   	@tag = current_user.tags.new(:parent_id => params[:parent_id])
   end
 
   def edit
-    @tag = current_user.tags.find(params[:id])
     respond_to do |format|
       format.js
     end
@@ -25,7 +25,6 @@ class TagsController < ApplicationController
   	@tag = current_user.tags.new(tag_params)
   	 respond_to do |format|
       if @tag.save 
-
         format.html { redirect_to tags_path, notice: "Journal added successfully." }
         format.js
       else
@@ -36,7 +35,6 @@ class TagsController < ApplicationController
   end
 
   def update
-    @tag = current_user.tags.find(params[:id])
     if @tag.update_attributes(tag_params)
       respond_to do |format|
         format.html { redirect_to titles_path, notice: "Journal updated successfully." }
@@ -49,7 +47,7 @@ class TagsController < ApplicationController
   end
 
   def destroy
-  	@tag = current_user.tags.find(params[:id]) 
+  	@tag = Tag.find(params[:id]) 
   	@tag.destroy
     respond_to do |format|
       format.html { redirect_to tags_url }
@@ -60,7 +58,12 @@ class TagsController < ApplicationController
 
   private 
 
+  def fetch_tag
+    @tag = Tag.find(params[:id]) 
+  end
+
   def tag_params
   	params.require(:tag).permit(:name, :id, :user_id, :parent_id)
   end
+
 end

@@ -1,9 +1,9 @@
 class Tag < ActiveRecord::Base
 	belongs_to :user
 	has_many :taggings, :dependent => :destroy
-	has_many :titles, -> { uniq }, through: :taggings
+	has_many :entries, -> { uniq }, through: :taggings
 	default_scope { order('created_at DESC') } 
-	validates_uniqueness_of :name
+	validates_presence_of :name
 	has_ancestry
 
 	def self.counts
