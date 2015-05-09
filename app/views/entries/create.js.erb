@@ -3,5 +3,5 @@ $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
 $('#title_added').hide().prepend('<%= j render(@entry) %>').fadeIn(1300);
 
 window.clearAfterSubmit = true;
-window.dropzone.removeAllFiles();
+Dropzone.forElement("#new_entry .dropzone").removeAllPreviewFiles(true);
 window.clearAfterSubmit = false;

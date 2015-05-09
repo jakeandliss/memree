@@ -11,23 +11,31 @@
     <%= f.text_area :content, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Entry", rows: 5 %>
        
     <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals (separate with comma)" %>
-    <div class="image_click" class="pointer">
+    <div class="image_click pointer">
       <p>Drag or click to add images</p>
     </div>
     <div class="action">
       <%= f.submit 'Save Entry', class: "button small right" %>
     </div>
-    <div id="dropzone" class="dropzone-custom hidden">
+    <div class="dropzone dropzone-custom hidden">
       <div class="dz-default dz-message">
         <span>Drop files here to upload</span>
       </div>
     </div>
 <% end %>
+
+
+<script>
+  var dropzone = new DropzoneManager();
+  dropzone.initialize($("#new_entry .dropzone")[0])
+</script>
+
+
 <script type="text/javascript">
   $(function(){
         
 
-    $("#new_entry .dropzone").dropzone({url: "/resources", paramName: "resource[avatar]"});
+    //$("#new_entry .dropzone").dropzone({url: "/resources", paramName: "resource[avatar]"});
 
     $('#entry_all_tags').tagsinput({
       typeahead: {

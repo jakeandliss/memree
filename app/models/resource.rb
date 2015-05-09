@@ -24,16 +24,8 @@ class Resource < ActiveRecord::Base
       {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#" }
     elsif is_video_type?
       {
-          :medium => { :geometry => "300x300#", :format => 'jpg', :time => 5},
-          :video => {:geometry => "640x360#", :format => 'mp4', :processors => [:transcoder]}
+          :medium => { :geometry => "300x300#", :format => 'jpg', :time => 5}
       }
-    elsif is_audio_type?
-      {
-        :audio => {
-          :format => "mp3", :processors => [:transcoder]
-        }
-      }
-     # avatar_file_name = self.basename(:avatar_file_name, self.extname(:avatar_file_name))
     elsif is_doc_type?
       {}
     else

@@ -19,6 +19,7 @@
 //= require jquery.slick
 //= require dropzone
 //= require tag-manager.js
+//= require dropzone-manager.js
 //= require magnific-popup
 //= require_tree .
 

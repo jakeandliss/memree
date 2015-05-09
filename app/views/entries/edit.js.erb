@@ -6,7 +6,10 @@ $('#entry_<%= @entry.id %> .title:hover .delete-x').hide();
 
 
     var element = $('#edit_entry_<%= @entry.id %>');
-    element.find(".dropzone").dropzone({url: "entries/<%=@entry.id%>/resources", paramName: "resource[avatar]"});
+
+
+  	var dropzone = new DropzoneManager();
+  	dropzone.initialize($("#edit_entry_<%= @entry.id %> .dropzone")[0], "entries/<%=@entry.id%>/resources")
 
     element.find(".image_click").click(function(event){
       event.preventDefault()

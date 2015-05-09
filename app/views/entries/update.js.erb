@@ -1,3 +1,5 @@
 $('#entry_<%= @entry.id %>').hide();
 $('#entry_<%= @entry.id %>').before('<%= j render(@entry) %>');
 
+Dropzone.forElement("#entry_<%= @entry.id %> .dropzone").removeAllPreviewFiles(true);
+
