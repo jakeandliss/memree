@@ -88,13 +88,16 @@
 					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, entry_path(entry), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
 				</div>
 				<% entry.resources.each do |i| %>
-					<% next unless i.avatar_content_type.include? "application" %>
+					<% if i.avatar_content_type.include? "application" %>
 						<i class="fa fa-file-text pointer" id="application_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
-
+						<% break %>
+					<% end %>
 				<% end %>
 				<% entry.resources.each do |i| %>
-					<% next unless i.avatar_content_type.include? "audio" %>
+					<% if i.avatar_content_type.include? "audio" %>
 						<i class="fa fa-music pointer" id="audio_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
+						<% break %>
+					<% end %>
 				<% end %>
 			</div>
 			<div id="entry_<%= entry.id %>_application" class="entry_application_thumbnails clearfix hide">
@@ -112,7 +115,7 @@
 					<% if i.avatar_content_type.include? "audio" %>
 						<div class="audio">
 							<span><%= i.avatar_file_name %></span>
-							<%= audio_tag i.avatar.url(:audio), controls: true %>
+							<%= audio_tag i.avatar.url, controls: true %>
 							<%= link_to '<i class="fa fa-external-link-square playing"></i>'.html_safe, '#', alt: "Click to play in sidebar" %>
 							<%= link_to '<i class="fa fa-times stop"></i>'.html_safe, '#', class: "hide" %>
 						</div>
