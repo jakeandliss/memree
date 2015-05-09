@@ -9,6 +9,7 @@ class ResourcesController < ApplicationController
     if @resource.save
       respond_to do |format|      
         format.json {render json: @resource}
+        format.js
       end
     end
   end
