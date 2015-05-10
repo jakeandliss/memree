@@ -9,8 +9,14 @@ Bundler.require(*Rails.groups)
 module Journalesk
   class Application < Rails::Application
 
+
+    # Credentials can be added to config/application.yml like:
+    # s3_bucket_name: "YOURBUCKETNAME"
+    # aws_access_key_id: "YOURACCESSKEYID"
+    # aws_secret_access_key: "YOURSECRERACCESSKEY"
     config.paperclip_defaults = {
         :storage => :s3,
+        :s3_host_name => 's3-us-west-2.amazonaws.com',
         :s3_credentials => {
             :bucket => ENV['s3_bucket_name'],
             :access_key_id => ENV['aws_access_key_id'],

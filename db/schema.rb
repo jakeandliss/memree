@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508213635) do
+ActiveRecord::Schema.define(version: 20150510181828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,14 +46,15 @@ ActiveRecord::Schema.define(version: 20150508213635) do
   create_table "resources", force: :cascade do |t|
     t.integer  "imageable_id"
     t.string   "imageable_type"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "avatar_processing"
     t.integer  "entry_id"
+    t.integer  "file_size",           limit: 8
   end
 
   add_index "resources", ["avatar_content_type"], name: "index_resources_on_avatar_content_type", using: :btree

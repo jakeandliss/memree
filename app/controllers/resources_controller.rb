@@ -5,6 +5,7 @@ class ResourcesController < ApplicationController
 
     @resource = Resource.new(resource_param)
     @resource.entry_id = params[:entry_id] if params[:entry_id].present?
+    @resource.file_size = params[:resource][:avatar].size if params[:resource][:avatar]
 
     if @resource.save
       respond_to do |format|      

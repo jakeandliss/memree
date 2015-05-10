@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 		first_name + " " + last_name
 	end
 
+	def used_space_in_megabytes
+		resources.sum(:file_size).fdiv(1024*1024)
+	end
+
 	def gravatar_url
 		stripped_email = email.strip 
 		downcase_email = stripped_email.downcase
