@@ -9,6 +9,15 @@ Bundler.require(*Rails.groups)
 module Journalesk
   class Application < Rails::Application
 
+    config.paperclip_defaults = {
+        :storage => :s3,
+        :s3_credentials => {
+            :bucket => ENV['s3_bucket_name'],
+            :access_key_id => ENV['aws_access_key_id'],
+            :secret_access_key => ENV['aws_secret_access_key']
+        }
+    }
+
     config.active_job.queue_adapter = :delayed_job
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

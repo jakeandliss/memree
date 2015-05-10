@@ -2,6 +2,16 @@ $('#new_entry')[0].reset();
 $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
 $('#title_added').hide().prepend('<%= j render(@entry) %>').fadeIn(1300);
 
+$("#entry_<%=@entry.id%>_thumbnails").slick({
+  initialSlide: ($(this).find("img").length > 1 ? 0 : -1),
+  slidesToShow: 1,
+  centerPadding: "25%",
+  focusOnSelect: true,
+  arrows: false,
+  centerMode: true,
+});
+
+
 window.clearAfterSubmit = true;
 Dropzone.forElement("#new_entry .dropzone").removeAllPreviewFiles(true);
 window.clearAfterSubmit = false;

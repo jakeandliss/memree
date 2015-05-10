@@ -1,8 +1,26 @@
 class Resource < ActiveRecord::Base
   belongs_to :entry
 
+
   # Apply styling appropriate for this file
-  has_attached_file :avatar, styles: lambda { |a| a.instance.check_file_type}, :default_url => "no_image.png"
+  has_attached_file :avatar, 
+    styles: lambda { |a| a.instance.check_file_type}, 
+    default_url: "no_image.png", 
+    processors: lambda { |a| a.processors},
+    only_process: lambda { |b| b.instance.process_in_foreground}
+
+  # Don't forget to add name of the image that will be shown while the file is loading
+  process_in_background :avatar, only_process: [:video], processing_image_url: lambda { |a| a.instance.processing_image_path("dad.jpg")}
+
+
+  def process_in_background
+    is_video_type? ? [:original] : []
+  end
+
+  def process_in_foreground
+    is_video_type? ? [:medium] : [:original]
+  end
+
   validates_attachment_content_type :avatar, :content_type => [
       /\Aaudio\/.*\Z/,
       /\Avideo\/.*\Z/, 
@@ -17,14 +35,23 @@ class Resource < ActiveRecord::Base
     ] #See paperclip.rb initializer for all formats
 
 
+  def processors
+    if is_image_type?
+      [:thumbnail, :compression]
+    elsif is_video_type?
+      [:transcoder]
+    end
+  end
+
   # IMPORTANT! The ffmpeg library has to added to the server machine. 
   # It can be uploaded from the official website https://www.ffmpeg.org/
   def check_file_type
     if is_image_type?
-      {:large => "750x750>", :medium => "300x300#", :thumb => "100x100#" }
+      {:original => "750x750#"}
     elsif is_video_type?
       {
-          :medium => { :geometry => "300x300#", :format => 'jpg', :time => 5}
+        :medium => { :geometry => "300x300#", :format => 'jpg', :time => 5},
+        :video => {:geometry => "640x360#", :format => 'mp4'}
       }
     elsif is_doc_type?
       {}
@@ -33,21 +60,27 @@ class Resource < ActiveRecord::Base
     end
   end
 
+  # The path of the image that will be shown while the file is loading
+  def processing_image_path(image_name)
+    "/assets/" + Rails.application.assets.find_asset(image_name).digest_path
+  end  
 
 
+  
+  
   # Method returns true if file's content type contains word 'image', overwise false
   def is_image_type?
-    avatar_content_type =~ %r(image)
+    avatar_content_type ? avatar_content_type =~ %r(image) : false
   end
 
   # Method returns true if file's content type contains word 'video', overwise false
   def is_video_type?
-    avatar_content_type =~ %r(video)
+    avatar_content_type ? avatar_content_type =~ %r(video) : false
   end
 
   # Method returns true if file's content type contains word 'audio', overwise false
   def is_audio_type?
-    avatar_content_type =~ /\Aaudio\/.*\Z/
+    avatar_content_type ? avatar_content_type =~ /\Aaudio\/.*\Z/ : false
   end
 
   def is_doc_type?

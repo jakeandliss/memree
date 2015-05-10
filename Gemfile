@@ -30,7 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
+gem 'aws-sdk', '< 2.0'
+gem "figaro"
 
 gem 'foundation-rails'
 
@@ -40,6 +41,7 @@ gem 'paperclip-av-transcoder'
 gem 'delayed_job_active_record'
 gem "daemons"
 gem 'delayed_paperclip'
+gem 'paperclip-compression'
 
 gem "jquery-fileupload-rails"
 

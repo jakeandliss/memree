@@ -41,11 +41,11 @@
 				</div>
 				<div id="entry_<%= entry.id %>_thumbnails" class="entry_image_thumbnails">
 					<% entry.resources.each do |i| %>
-						<% if i.avatar_content_type.include? "image" %>
-							<div><%= image_tag i.avatar.url(:medium) %>
+						<% if i.avatar_content_type.present? && (i.avatar_content_type.include? "image") %>
+							<div><%= image_tag i.avatar.url, size: "300x300" %>
 								<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url, class: "light_#{entry.id} mfp-image" %>
 							</div>
-						<% elsif ((i.avatar_content_type.include? "video") && (i.avatar_content_type.exclude? "image")) %>
+						<% elsif (i.avatar_content_type.present? && (i.avatar_content_type.include? "video") && (i.avatar_content_type.exclude? "image")) %>
 							<div><%= image_tag i.avatar.url(:medium) %>
 								<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url(:video), class: "light_#{entry.id} mfp-iframe" %>
 							</div>
@@ -57,32 +57,9 @@
 						gallery: {
 							enabled: true
 						}
+					});
+					</script>
 
-							// other options
-						});
-					</script>
-				<% if entry.resources.count(:imageable_id) == 1 %>
-					<script>
-					$('#entry_<%= entry.id %>_thumbnails').slick({
-						  initialSlide: -1,
-						  slidesToShow: 1,
-						  centerPadding: "25%",
-						  focusOnSelect: true,
-						  arrows: false,
-						  centerMode: true,
-						});
-					</script>
-				<% else %>
-					<script>
-						$('#entry_<%= entry.id %>_thumbnails').slick({
-						  slidesToShow: 1,
-						  centerPadding: "25%",
-						  focusOnSelect: true,
-						  arrows: false,
-						  centerMode: true,
-						});
-					</script>
-				<% end %>
 				<div class="delete-x">
 					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_entry_path(entry), remote: true %>
 					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, entry_path(entry), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>

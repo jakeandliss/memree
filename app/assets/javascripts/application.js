@@ -18,8 +18,10 @@
 //= require jquery-fileupload
 //= require jquery.slick
 //= require dropzone
-//= require tag-manager.js
-//= require dropzone-manager.js
+//= require tag-manager
+//= require dropzone-manager
+//= require bootstrap-tagsinput
+//= require typeahead
 //= require magnific-popup
 //= require_tree .
 

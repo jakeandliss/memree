@@ -19,8 +19,12 @@ var DropzoneManager = function () {
 
     self.dropzone = new Dropzone(element, options());
 
-    $('form').bind('dragenter', dragEnterHandler);
-  	$('form').bind('dragleave', dragLeaveHandler);
+    $(form).bind('dragenter', dragEnterHandler);
+  	$(form).bind('dragleave', dragLeaveHandler);
+
+    $(form).submit(function(e){
+      self.dropzone.abortAllUploads();
+    })
 
 		$element.bind({
     		dragenter: function(event){
@@ -76,6 +80,13 @@ var DropzoneManager = function () {
           this.on("queuecomplete", function(file){
             form.find('input[type="submit"]').removeAttr('disabled');
           });
+          this.on("removedfile", function(file){
+            if (this.files.length == 0){
+              $(this.element).addClass("hidden");
+              $(this.element).find(".dz-preview").remove();
+            }
+          });
+          
         }
       };
       return options;
@@ -103,7 +114,7 @@ var DropzoneManager = function () {
 
 
 
-Dropzone.prototype.removeAllPreviewFiles = function(cancelIfNecessary) {
+Dropzone.prototype.removeAllPreviewFiles = function() {
   this.files = []
   $(this.element).find(".dz-preview").remove();
   $(this.element).removeClass("dz-started");
@@ -111,4 +122,12 @@ Dropzone.prototype.removeAllPreviewFiles = function(cancelIfNecessary) {
   
   $(this.element).closest("form").find('[name="entry[resource_ids][]"]').remove();
 };
+
+Dropzone.prototype.abortAllUploads = function(){
+  var uploadingFiles = this.getUploadingFiles();
+  for (i = 0, n = uploadingFiles.length; i < n; i++) {
+    file = uploadingFiles[i];
+    this.removeFile(file);
+  }
+}
 
