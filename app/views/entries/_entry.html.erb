@@ -47,7 +47,7 @@
 							</div>
 						<% elsif (i.avatar_content_type.present? && (i.avatar_content_type.include? "video") && (i.avatar_content_type.exclude? "image")) %>
 							<div><%= image_tag i.avatar.url(:medium) %>
-								<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url(:video), class: "light_#{entry.id} mfp-iframe" %>
+								<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url(:original), class: "light_#{entry.id} mfp-iframe" %>
 							</div>
 						<% end %>
 					<% end %>
