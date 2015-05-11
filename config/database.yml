@@ -1,6 +1,7 @@
 
 development:
   adapter: postgresql
+  host: localhost
   encoding: utf8
   database: memrybook_development
   pool: 5

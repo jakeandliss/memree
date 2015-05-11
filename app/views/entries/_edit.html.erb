@@ -13,7 +13,7 @@
     <div class="edit_images">
       <% @entry.resources.each do |i| %>
         <% if i.avatar_content_type.include? "image" %>
-          <div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :resources, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>
+          <div class="image_remove"><%= link_to image_tag(i.avatar.url(:original)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :resources, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>
       </div>
         <% elsif i.avatar_content_type.include? "video" %>
             <div class="image_remove"><%= link_to image_tag(i.avatar.url(:medium)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :resources, remote: true %><i class="fa fa-play-circle" style="font-size:3rem;line-height:2rem;"></i><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>

@@ -413,7 +413,9 @@ Edit Entries
 }
 
 .image_remove img {
+  object-fit: cover;
   width: 100%;
+  height: 8rem;
 }
 
 .image_remove span a {
@@ -427,6 +429,11 @@ Edit Entries
   top: 24%;
   left: 25%;
   width: 50%;
+}
+
+.image_remove span img {
+  width: 100%;
+  height: 100%;
 }
 
 /**************************

@@ -22,7 +22,6 @@ Titles#index and Entries#index Page
 	list-style-type: none;
 	padding: 3px 7px;
 	border-radius: 3px;	
-  	line-height: 1.2rem;
 }
 
 
@@ -41,8 +40,6 @@ Titles#index and Entries#index Page
 }
 
 #journal_titles li.active {
-	list-style-type: inherit;
-	direction: rtl;
 	color: $salmon;
 } 
 
@@ -149,8 +146,21 @@ li .nested-tags-right{
 	display: block;
 }
 
-.toggable i{
-	float: right;
+.toggable i {
+  float: right;
+  margin-top: .35rem;
+  transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+}
+
+.active .toggable i {
+  float: right;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
 }
 
 

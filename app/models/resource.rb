@@ -10,7 +10,7 @@ class Resource < ActiveRecord::Base
     only_process: lambda { |b| b.instance.process_in_foreground}
 
   # Don't forget to add name of the image that will be shown while the file is loading
-  process_in_background :avatar, only_process: [:video], processing_image_url: lambda { |a| a.instance.processing_image_path("dad.jpg")}
+  process_in_background :avatar, only_process: [:video], processing_image_url: lambda { |a| a.instance.processing_image_path("vid-processing.jpg")}
 
 
   def process_in_background
@@ -47,7 +47,9 @@ class Resource < ActiveRecord::Base
   # It can be uploaded from the official website https://www.ffmpeg.org/
   def check_file_type
     if is_image_type?
-      {:original => "750x750#"}
+      {
+        :original => "750x750>"
+      }
     elsif is_video_type?
       {
         :medium => { :geometry => "300x300#", :format => 'jpg', :time => 5},
