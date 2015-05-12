@@ -8,6 +8,14 @@ class Entry < ActiveRecord::Base
 	default_scope { order('created_at DESC') }
   	validates_presence_of :title
 
+ 	#  validate :at_least_one
+
+	# def at_least_one
+	#   if [self.resource_ids, self.content].reject(&:blank?).size == 0
+ 	#   errors.add(:message, 'You need at least one field.')
+	#   end
+	# end
+
 
 	# Add tags for a new title
 	def add_tags(tag_names="")

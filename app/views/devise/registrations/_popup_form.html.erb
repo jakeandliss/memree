@@ -18,14 +18,19 @@
 	    <%= f.label :email %>
 	    <%= f.email_field :email, autofocus: true, :class=> "validate[required, custom[email]]"  %>
 	</div>
-
+	
 	<div class="field" id="pass">
-	    <%= f.label :password %>
+	    <%= f.label :password, "Password <em>(6 characters minimum)</em>".html_safe %>
+	    <%= f.password_field :password, autocomplete: "off", :class=>"validate[required]" %>
+	</div>
+
+	<!-- <div class="field" id="pass">
+	    <%= f.label :password, "Password" %>
 	    <% if @validatable %>
 	    <em>(<%= @minimum_password_length %> characters minimum)</em>
 	    <% end %>
 	    <%= f.password_field :password, autocomplete: "off", :class=>"validate[required]" %>
-	</div>
+	</div> -->
 
 	<div class="field" id="pass_confirm" >
 	    <%= f.label :password_confirmation %>

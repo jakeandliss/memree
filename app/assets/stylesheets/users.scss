@@ -190,3 +190,15 @@ USER POPUP
   float: right;
   margin-right: 10px;
 }
+
+
+// Devise Errors 
+label.message {
+  background: #241616;
+  color: white;
+  padding: .2rem;
+  /* width: 25%; */
+  border-radius: 5%;
+  margin-bottom: .5rem;
+  margin-top: -1rem;
+}

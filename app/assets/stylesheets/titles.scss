@@ -372,6 +372,23 @@ div#playing {
   color: gray;
 }
 
+
+/**************************
+
+Entry Validation
+
+**************************/
+
+
+#titles label.message {
+  background: $evendarker;
+  color: white;
+  padding: .2rem;
+  border-radius: 5%;
+  margin-bottom: .5rem;
+  margin-top: -.25rem;
+}
+
 /**************************
 
 Entry Files

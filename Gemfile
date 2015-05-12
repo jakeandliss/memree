@@ -65,6 +65,7 @@ gem 'thin'
 gem 'ancestry'
 
 gem 'magnific-popup-rails'
+gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "4-2-stable"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

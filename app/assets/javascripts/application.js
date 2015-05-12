@@ -23,6 +23,7 @@
 //= require bootstrap-tagsinput
 //= require typeahead
 //= require magnific-popup
+//= require rails.validations
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

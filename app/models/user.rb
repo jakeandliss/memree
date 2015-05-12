@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 	has_many :entries, :dependent => :destroy
 	has_many :tags, :dependent => :destroy
 	has_many :resources, :through => :entries
+	validates :first_name, presence: true
+	validates :last_name, presence: true
+
 
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :avatar =>  "150x150#", :thumb => "100x100>" }, :default_url => "blank_avatar.png"
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/, reject_if: :blank

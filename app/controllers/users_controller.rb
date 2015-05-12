@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         when "journals"
           render "update_journals"
         else
-          render :action => :edit
+          render :action => :show
         end
   end
 
