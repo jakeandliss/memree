@@ -22,21 +22,22 @@
  *= require dropzone
  */
 
-/*.alert.flash.notice {
+#notice {
+  display: none;
   position: fixed;
-  background: gray;
+  background: #eee;
   width: 25%;
-  height: 10rem;
+  height: 6rem;
   text-align: center;
   z-index: 1;
   opacity: .9;
   bottom: 2rem;
   left: 2rem;
-  padding-top: 4rem;
+  padding-top: 2rem;
   color: white;
   border-radius: .3rem;
 }
-*/
+
 
 .box-shadow {
     box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.15);

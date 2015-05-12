@@ -372,6 +372,24 @@ div#playing {
   color: gray;
 }
 
+#success {
+  display: none;
+  position: fixed;
+  background: #444;
+  width: 25%;
+  height: 6rem;
+  text-align: center;
+  z-index: 1;
+  opacity: .9;
+  bottom: 2rem;
+  left: 2rem;
+  padding-top: 2rem;
+  color: white;
+  border-radius: .3rem;
+  font-size: 1.1rem;
+}
+
+
 
 /**************************
 
