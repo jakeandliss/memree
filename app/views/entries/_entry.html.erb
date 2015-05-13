@@ -133,7 +133,7 @@
 					<div class="small-6 columns">
 						<div id="shared_users">
 							<%= image_tag current_user.avatar.url(:avatar) %>
-							<p style="float:right;"><%= link_to "Share", "#", :title_id => entry.id %></p>
+							<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id %>
 						</div>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 			<% end %>
 			<div id="shared_users">
 				<%= image_tag current_user.avatar.url(:avatar) %>
-				<%= link_to "Share", "#", :title_id => entry.id %>
+				<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, class: "right" %>
 			</div>
 		</div>
 	</div>
