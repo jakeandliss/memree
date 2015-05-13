@@ -20,10 +20,10 @@ class Entry < ActiveRecord::Base
 	# Add tags for a new title
 	def add_tags(tag_names="")
 		tag_names.split(',').map do |tag_name|
-			if tag = user.tags.find_by(name: tag_name.strip)
+			if tag = user.tags.find_by(name: tag_name.strip.downcase)
 				taggings.find_or_create_by(tag_id: tag.id, entry_id: id)
 			else
-				tags.find_or_create_by(name: tag_name.strip, user_id: user_id)
+				tags.find_or_create_by(name: tag_name.strip.downcase, user_id: user_id)
 			end
 		end
 	end
