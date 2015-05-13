@@ -14,15 +14,15 @@ module Journalesk
     # s3_bucket_name: "YOURBUCKETNAME"
     # aws_access_key_id: "YOURACCESSKEYID"
     # aws_secret_access_key: "YOURSECRERACCESSKEY"
-    # config.paperclip_defaults = {
-    #     :storage => :s3,
-    #     :s3_host_name => 's3-us-west-2.amazonaws.com',
-    #     :s3_credentials => {
-    #         :bucket => ENV['s3_bucket_name'],
-    #         :access_key_id => ENV['aws_access_key_id'],
-    #         :secret_access_key => ENV['aws_secret_access_key']
-    #     }
-    # }
+    config.paperclip_defaults = {
+        :storage => :s3,
+        :s3_host_name => 's3.amazonaws.com',
+        :s3_credentials => {
+            :bucket => ENV['s3_bucket_name'],
+            :access_key_id => ENV['aws_access_key_id'],
+            :secret_access_key => ENV['aws_secret_access_key']
+        }
+    }
 
     config.active_job.queue_adapter = :delayed_job
     # Settings in config/environments/* take precedence over those specified here.

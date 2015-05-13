@@ -3,7 +3,7 @@ class Entry < ActiveRecord::Base
 	
 	has_many :taggings
 	has_many :tags, -> { uniq }, through: :taggings, :dependent => :destroy
-	has_many :resources
+	has_many :resources, dependent: :destroy
 
 	default_scope { order('created_at DESC') }
   	validates_presence_of :title

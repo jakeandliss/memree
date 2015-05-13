@@ -6,20 +6,20 @@ class Resource < ActiveRecord::Base
   has_attached_file :avatar, 
     styles: lambda { |a| a.instance.check_file_type}, 
     default_url: "no_image.png", 
-    processors: lambda { |a| a.processors},
-    only_process: lambda { |b| b.instance.process_in_foreground}
+    processors: lambda { |a| a.processors}
+  #   only_process: lambda { |b| b.instance.process_in_foreground}
 
-  # Don't forget to add name of the image that will be shown while the file is loading
-  process_in_background :avatar, only_process: [:original], processing_image_url: lambda { |a| a.instance.processing_image_path("vid-processing.jpg")}
+  # # Don't forget to add name of the image that will be shown while the file is loading
+  # process_in_background :avatar, only_process: [:original], processing_image_url: lambda { |a| a.instance.processing_image_path("vid-processing.jpg")}
 
 
-  def process_in_background
-    is_video_type? ? [:original] : []
-  end
+  # def process_in_background
+  #   is_video_type? ? [:original] : []
+  # end
 
-  def process_in_foreground
-    is_video_type? ? [:medium] : [:original]
-  end
+  # def process_in_foreground
+  #   is_video_type? ? [:medium] : [:original]
+  # end
 
   validates_attachment_content_type :avatar, :content_type => [
       /\Aaudio\/.*\Z/,
