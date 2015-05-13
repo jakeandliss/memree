@@ -7,6 +7,7 @@ default_run_options[:pty] = true
 set :rvm_type, :system
 set :application, 'memree'
 set :user, "deployer"
+set :repository, "."
 set :password, 'memree123!@#' #deploy's password
 set :use_sudo, false
 
