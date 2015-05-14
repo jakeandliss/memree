@@ -1,0 +1,64 @@
+<%= form_for @entry, validate: true, remote: true, html: { multipart: true, data: {dropzone_name: 'entry[resource_ids][]'} }, authenticity_token: true  do |f| %>
+    <div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a>
+    </div>
+    <div class="row">
+      <div id="new_date" class="small-12 medium-6 right hide">
+        <%= f.date_select :title_date, :order => [:day, :month, :year] %>
+      </div>
+    </div>
+    <%= f.text_field :title, placeholder: "Title" %>
+   
+    <%= f.text_area :content, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Entry", rows: 5 %>
+       
+    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals (separate with comma)" %>
+    <div class="image_click pointer">
+      <i class="fa fa-camera"></i>
+    </div>
+    <div class="action">
+      <%= f.submit 'Save Entry', class: "button small right" %>
+    </div>
+    <div class="dropzone dropzone-custom hidden">
+      <div class="dz-default dz-message">
+        <span>Drop files here to upload</span>
+      </div>
+    </div>
+<% end %>
+
+
+<script>
+  var dropzone = new DropzoneManager();
+  dropzone.initialize($("#new_entry .dropzone")[0])
+</script>
+
+
+<script type="text/javascript">
+  $(function(){
+        
+
+    //$("#new_entry .dropzone").dropzone({url: "/resources", paramName: "resource[avatar]"});
+
+    $('#entry_all_tags').tagsinput({
+      typeahead: {
+        source: function(query) {
+          return $.get('<%= tag_list_entries_url %>'+'?text='+query);
+        }
+      }
+    });
+    
+  });
+
+</script>
+<script>
+  window.onbeforeunload = function(){
+    var inputs = document.getElementById('wysiwyg').value;
+    var unfinished = 'false';
+    for (var i=0; i<inputs.length; ++i) {
+      if ( inputs[i].value != '' ) {
+        unfinished = 'true';
+      }
+    }
+    if ( unfinished == 'true' ) {
+      return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
+    }
+  }
+</script>

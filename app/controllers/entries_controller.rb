@@ -1,7 +1,9 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
   before_action :fetch_entry, only: [:show, :edit, :update, :destroy]
-  
+  # Render mobile or desktop depending on User-Agent for these actions.
+  before_filter :check_for_mobile, :only => [:index, :edit, :update, :create, :new]
+
   def index
     @entry = current_user.entries.new(:title_date => Date.today)
     @tags = current_user.tags(:parent_id => params[:parent_id])
@@ -15,6 +17,11 @@ class EntriesController < ApplicationController
     end
 
     render layout: "application_index"
+  end
+
+  def new
+    @entry = current_user.entries.new(:title_date => Date.today)
+    render layout: false
   end
 
   def search
@@ -34,7 +41,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.save && @entry.add_tags(params[:entry][:all_tags])
         format.html { redirect_to entries_path, notice: "Entry was created succesfully" }
-        format.js
+        format.js 
       else
         format.html { 
           flash[:error] = "There was a problem adding your entry."
@@ -81,4 +88,9 @@ class EntriesController < ApplicationController
   def entry_params
     params.require(:entry).permit(:title, :content, :title_date, :resource_ids => [])
   end
+
+  def prepare_for_mobile
+    prepend_view_path Rails.root + 'app' + 'views_mobile'
+  end
+
 end

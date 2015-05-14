@@ -1,0 +1,80 @@
+<%= form_for @entry, remote: true, html: { multipart: true, data: {dropzone_name: 'entry[image_ids][]'} }, authenticity_token: true  do |f| %>
+    <div id="current_date"><%= Date.today.strftime('%a, %B %e, %Y') %> <a href="#" id="change_date">(Change Date)</a>
+    </div>
+    <div class="row">
+      <div id="new_date" class="columns">
+        <%= f.date_select :title_date, :order => [:day, :month, :year] %>
+      </div>
+    </div>
+    <%= f.text_field :title, placeholder: "Title" %>
+    <%= f.text_area :content, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Entry", rows: 5 %>
+       
+    <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals (separate with comma)", id: "edit_entry_all_tags" %>
+    <div class="edit_images">
+      <% @entry.resources.each do |i| %>
+        <% if i.avatar_content_type.include? "image" %>
+          <div class="image_remove"><%= link_to image_tag(i.avatar.url(:original)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :resources, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>
+      </div>
+        <% elsif i.avatar_content_type.include? "video" %>
+            <div class="image_remove"><%= link_to image_tag(i.avatar.url(:medium)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :resources, remote: true %><i class="fa fa-play-circle" style="font-size:3rem;line-height:2rem;"></i><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+    <div class="image_click" class="pointer clearfix">
+      <i class="fa fa-camera"></i>
+    </div>
+   <div class="action clearfix">
+       <%= f.submit 'Save Entry', class: "button small right" %>
+       <%= link_to "Cancel", '#', id: "cancel_#{@entry.id}", class: "right", style: "padding-right:.5rem;" %>
+    </div>
+    <div class="dropzone dropzone-custom hidden">
+      <div class="dz-default dz-message">
+        <span>Drop files here to upload</span>
+      </div>
+    </div>
+<% end %>
+<script type="text/javascript">
+  $(function(){
+
+    
+        
+    $('#edit_entry_all_tags').tagsinput({
+      typeahead: {
+        source: function(query) {
+          return $.get('<%= tag_list_entries_url %>'+'?text='+query);
+        }
+      }
+    });
+    
+  });
+
+</script>
+<script>
+
+
+    
+
+  window.onbeforeunload = function(){
+    var inputs = document.getElementById('wysiwyg').value;
+    var unfinished = 'false';
+    for (var i=0; i<inputs.length; ++i) {
+      if ( inputs[i].value != '' ) {
+        unfinished = 'true';
+      }
+    }
+    if ( unfinished == 'true' ) {
+      return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
+    }
+  }
+</script>
+<script>
+$('#cancel_<%= @entry.id %>').on('click', function(e) {
+                    e.preventDefault()
+    $('#entry_<%= @entry.id %> .header').show();
+    $('#entry_<%= @entry.id %> .content').show();
+    $('#entry_<%= @entry.id %> .footer').show();
+    $('#entry_<%= @entry.id %> .title:hover .delete-x').show();
+    $('form#edit_entry_<%= @entry.id %>').remove();
+  })
+</script>

@@ -1,10 +1,9 @@
-<div id="<%= dom_id(entry) %>" class="row">
-	<div class="medium-9 columns">
+<div id="<%= dom_id(entry) %>">
 		<div class="white box-shadow title">
 			<div class="header">
 				<div class="date">
-						<div class="calendar"><month><%= entry.title_date.to_date.strftime('%b') if entry.title_date.present? %></month><day><%= entry.title_date.to_date.strftime('%e') if entry.title_date.present? %></day><year><%= entry.title_date.to_date.strftime('%Y') if entry.title_date.present? %></year>
-						</div>		
+					<div class="calendar"><month><%= entry.title_date.to_date.strftime('%b') if entry.title_date.present? %></month><day><%= entry.title_date.to_date.strftime('%e') if entry.title_date.present? %></day><year><%= entry.title_date.to_date.strftime('%Y') if entry.title_date.present? %></year>
+					</div>		
 				</div>
 				<h3>
 					<%= truncate(entry.title, length: 63) %>
@@ -14,15 +13,15 @@
 				<div class="title_entry">
 					<% if entry.content.length > 180 %>
 						<div id="entry_truncate_<%= entry.id %>">
-						    <%= truncate_html(entry.content.html_safe, length: 180) %>
-						    <%= link_to '...Read more', '', class: "read-more-#{entry.id}" %>
+						   <p><%= truncate_html(entry.content.html_safe, length: 180) %>
+						    <%= link_to '...Read more', '', class: "read-more-#{entry.id}" %></p>
 						</div>
 						<div id="entry_long_<%= entry.id %>" style="display:none;">
-						    <%= simple_format(entry.content) %>
-						    <%= link_to '...Read less', '', class: "read-less-#{entry.id}", style: "float:right;" %>
+						    <p><%= simple_format(entry.content) %>
+						    <%= link_to '...Read less', '', class: "read-less-#{entry.id}", style: "float:right;" %></p>
 						</div>
 					<% else %>
-						<%= entry.content.html_safe %>
+						<p><%= entry.content.html_safe %></p>
 					<% end %>
 					<script>
 					  	$('.read-more-<%= entry.id %>').on('click', function(e) {
@@ -59,11 +58,6 @@
 						}
 					});
 					</script>
-
-				<div class="delete-x">
-					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_entry_path(entry), remote: true %>
-					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, entry_path(entry), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
-				</div>
 				<% entry.resources.each do |i| %>
 					<% if i.avatar_content_type.include? "application" %>
 						<i class="fa fa-file-text pointer" id="application_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
@@ -72,7 +66,7 @@
 				<% end %>
 				<% entry.resources.each do |i| %>
 					<% if i.avatar_content_type.include? "audio" %>
-						<i class="fa fa-music pointer" id="audio_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
+						<i class="fa fa-music pointer" id="audio_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;padding-bottom:.1rem;"></i>
 						<% break %>
 					<% end %>
 				<% end %>
@@ -113,27 +107,27 @@
 				$('#entry_<%= entry.id %>_application').slideUp("fast");
 			})
 			</script>
-		</div>
-	</div>
-	<div class="medium-3 columns">
-		<div class="footer">
-			<% if entry.tags.present? %>
-				<h5>
-					<ul>
+			<div class="footer clearfix">
+				<div class="clearfix">
+					<% if entry.tags.present? %>
 						<ul>
 							<% entry.tags.each do |tag| %>
 								<li> 
-									<%= link_to tag.name, entries_path(tag: tag.name), remote: true, :data => {:tagname=>tag.name} %>
+									<h5><%= link_to tag.name, entries_path(tag: tag.name), remote: true, :data => {:tagname=>tag.name} %>
+									</h5>
 								</li>
 							<% end %>
 						</ul>
-					</ul>
-				</h5>
-			<% end %>
-			<div id="shared_users">
-				<%= image_tag current_user.avatar.url(:avatar) %>
-				<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, class: "right" %>
+					<% end %>
+					<!-- <div id="shared_users">
+						<%= image_tag current_user.avatar.url(:avatar) %>
+						<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, class: "right" %>
+					</div> -->
+				</div>
+				<div class="delete-x">
+					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_entry_path(entry), remote: true %>
+					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, entry_path(entry), method: :delete, data: {confirm: 'Are you sure?' }, remote: true, style: "float:right" %>
+				</div>
 			</div>
 		</div>
-	</div>
 </div>

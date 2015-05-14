@@ -1,11 +1,11 @@
 <li>
 	<%= form_for @tag, remote: true do |f| %>
 	<div class="row">
-		<div class="small-9 columns">
+		<div class="medium-9 columns">
 			<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
 			<%= f.hidden_field :parent_id %>
 		</div>
-		<div class="action small-3 columns">
+		<div class="action medium-3 columns">
 			<%= f.submit 'Save Journal', class: "button sml", remote: true %>
 		</div>
 	</div>
