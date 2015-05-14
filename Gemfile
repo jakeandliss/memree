@@ -55,6 +55,7 @@ gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations"
 
 group :production do
   gem "unicorn-rails"
+  gem 'rack-handlers'
 end
 
 group :development, :test do
@@ -63,7 +64,7 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  #gem 'spring',  '~> 1.3.5'
+  gem 'spring',  '~> 1.3.5'
   gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara', '~> 2.4.4'
   gem 'shoulda-matchers', '~> 2.8.0'
