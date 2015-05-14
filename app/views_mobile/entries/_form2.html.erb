@@ -23,9 +23,9 @@
     <%= f.text_area :content, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "What would you like to remember?", rows: 5 %>
        
     <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals (separate with comma)" %>
-    <div class="image_click pointer">
-      <i class="fa fa-camera"></i>
-    </div>
+    
+      <%= link_to '<i class="fa fa-camera"></i>'.html_safe, '#', class: "image_click pointer", style: "color:#444;" %>
+   
     
     
     <div class="dropzone dropzone-custom hidden">

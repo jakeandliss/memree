@@ -26,7 +26,7 @@ $ ->
 
 $ ->
 	Dropzone.autoDiscover = false;
-	$('.image_click').click (event) ->
+	$('a.image_click').click (event) ->
 	  event.preventDefault()
 	  $('.dz-clickable').trigger 'click'
 
