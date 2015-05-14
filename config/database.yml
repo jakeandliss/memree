@@ -17,6 +17,7 @@ test: &TEST
   password: 
 
 production:
+  adapter: postgresql
   host: localhost
   encoding: utf8
   database: memrybook_production
