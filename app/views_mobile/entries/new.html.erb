@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <title><%= content_for?(:title) ? yield(:title) : "MemryBook" %></title>
-
-        <%= stylesheet_link_tag    "application" %>
-        <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Open+Sans+Condensed:300,700|Open+Sans:400italic,700italic,700,400' rel='stylesheet' type='text/css'>
-        <%= javascript_include_tag "vendor/modernizr" %>
-        <%= javascript_include_tag "application" %>
-        <%= csrf_meta_tags %>
-    </head>
-    <body id="new_title_form">
-
-	<div class="sticky-bottom">
-		<nav class="top-bar" data-topbar role="navigation">
-			<ul class="icons title-area">
-				<% if user_signed_in? %>
-					<li><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, new_entry_path  %></li>
-					<li><%= link_to '<i class="fa fa-book"></i>'.html_safe, entries_path %></li>
-					<li><%= link_to '<i class="fa fa-tag"></i>'.html_safe, tags_path %></li>
-				<% end %>
-				</ul>
-			</section>
-		</nav>
-	</div>
+<body id="new_title_form">
 
 	<%= render "form2" %>
    
-    </body>
-</html>
+</body>
 
 
  
