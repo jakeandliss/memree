@@ -13,7 +13,6 @@ $ ->
 	$('a#add_new').click (event) ->
 	  event.preventDefault()
 	  $('#title_form').show()
-	  return
 	
 $ ->	
 	$('.image-loader').hide()
@@ -24,14 +23,12 @@ $ ->
 	  event.preventDefault()
 	  $('#current_date').toggle()
 	  $('#new_date').toggle()
-	  return
 
 $ ->
 	Dropzone.autoDiscover = false;
-	$('div.image_click').click (event) ->
+	$('.image_click').click (event) ->
 	  event.preventDefault()
 	  $('.dz-clickable').trigger 'click'
-	  return
 
 $ ->
 	$('i.fa-search').click (event) ->

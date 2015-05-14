@@ -13,10 +13,10 @@
     <div class="small-4 columns"
      <div id="current_date"><a href="#" id="change_date"><%= Date.today.strftime('%B %e, %Y') %></a>
       </div>
-      <div class="row small-collapse">
-        <div id="new_date" class="columns hide">
-          <%= f.date_select :title_date, :order => [:day, :month, :year] %>
-        </div>
+    </div>
+    <div class="row small-collapse">
+      <div id="new_date" class="columns hide">
+        <%= f.date_select :title_date, :order => [:day, :month, :year] %>
       </div>
     </div>
   </div>
