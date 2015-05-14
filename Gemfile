@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "nokogiri"
 gem 'aws-sdk', '< 2.0'
 gem "figaro"
 gem 'foundation-rails'

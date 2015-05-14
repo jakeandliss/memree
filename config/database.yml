@@ -1,7 +1,7 @@
 
 development:
   adapter: postgresql
-  host: localhost
+  #host: localhost
   encoding: utf8
   database: memrybook_development
   pool: 5
@@ -15,3 +15,10 @@ test: &TEST
   pool: 5
   username: jacobtho
   password: 
+
+production:
+  host: localhost
+  encoding: utf8
+  database: memrybook_production
+  username: memree
+  password: memree123
