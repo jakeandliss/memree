@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+#ruby '2.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -61,6 +61,8 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 2.8.0'
   gem "factory_girl_rails", "~> 4.0"
   gem 'quiet_assets'
+  gem 'capistrano'
+  gem 'rvm-capistrano',  require: false
 end
 
 group :test do
