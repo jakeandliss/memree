@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 #ruby '2.2.0'
 
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
@@ -43,12 +45,17 @@ gem 'jQuery-Validation-Engine-rails'
 gem 'devise'
 gem 'will_paginate'
 # heroku
-gem 'rails_12factor', group: :production
+#gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'thin'
 gem 'ancestry'
 gem 'magnific-popup-rails'
 gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "4-2-stable"
+
+
+group :production do
+  gem "unicorn-rails"
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -56,7 +63,7 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring',  '~> 1.3.5'
+  #gem 'spring',  '~> 1.3.5'
   gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara', '~> 2.4.4'
   gem 'shoulda-matchers', '~> 2.8.0'
