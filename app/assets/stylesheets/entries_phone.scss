@@ -163,7 +163,7 @@ Entry Form
   width: 100%;
 }
 
-#titles_mobile .image_click {
+#titles_mobile #click_to_upload {
   float: left;
 }
 
@@ -566,7 +566,7 @@ New Entry Form
   width: 100%;
 }
 
-#new_title_form .image_click {
+#new_title_form #click_to_upload {
   float: left;
   margin: 1rem;
   width: 100%;
@@ -639,9 +639,6 @@ body#new_title_form {
   font-size: .9rem;
 }
 
-#new_title_form input#entry_title {
-  border-bottom: 1px solid #ccc;
-}
 
 // #new_title_form .dropzone-custom .dz-preview  {
 //   min-height: 0;

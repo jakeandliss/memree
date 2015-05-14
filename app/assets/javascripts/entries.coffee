@@ -26,9 +26,9 @@ $ ->
 
 $ ->
 	Dropzone.autoDiscover = false;
-	$('a.image_click').click (event) ->
+	$('#click_to_upload').click (event) ->
 	  event.preventDefault()
-	  $('.dz-clickable').trigger 'click'
+	  $('.dz-clickable').trigger('click')
 
 $ ->
 	$('i.fa-search').click (event) ->

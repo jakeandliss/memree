@@ -11,7 +11,7 @@
     <%= f.text_area :content, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "Entry", rows: 5 %>
        
     <%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals (separate with comma)" %>
-    <div class="image_click pointer">
+    <div id="click_to_upload" class="pointer">
       <i class="fa fa-camera"></i>
     </div>
     <div class="action">
