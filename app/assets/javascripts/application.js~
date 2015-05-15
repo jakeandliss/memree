@@ -22,7 +22,6 @@
 //= require dropzone-manager
 //= require bootstrap-tagsinput
 //= require typeahead
-//= require bootstrap-datepicker.min.js
 //= require magnific-popup
 //= require rails.validations
 //= require_tree .

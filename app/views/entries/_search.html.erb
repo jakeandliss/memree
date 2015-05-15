@@ -1,5 +1,66 @@
 <i class="fa fa-search right pointer"></i>
-<div class="search hide white box-shadow">
-	
+<div class="search hide white box-shadow" id="search">
+
+	<p> Select dates: </p>
+	<div class="input-daterange input-group" id="datepicker">
+	    <input type="text" class="input-sm form-control" name="start" value="<%=  (Date.today - 1.month).strftime("%d %B %Y") %>" />
+	    <span class="input-group-addon">to</span>
+	    <input type="text" class="input-sm form-control" name="finish" value="<%=  Date.today.strftime("%d %B %Y") %>"/>
+	</div>
+	<p> Search: </p>
+	<input name="query" class="form-control" placeholder="Start typing.."></input>
 
 </div>
+
+<script>
+
+	var today = new Date();
+
+	$('#search .input-daterange').datepicker({
+		format: "dd MM yyyy",
+    	autoclose: true,
+    	startDate: new Date(today.setMonth(today.getMonth() - 12)),
+    	endDate: new Date()        
+  	});
+
+  	function sendData()
+  	{
+  		var tag = $("#tag-list a.active").data("tagname");
+  		var query = $('.search input[name=query]').val();
+  		var data = {
+				query: query,
+				start: $("input[name=start]").val(),
+				finish: $("input[name=finish]").val()
+			}
+		if (tag != undefined){
+			data["tag"] = tag;
+		}
+		jQuery.ajax({
+			url: window.location.pathname,
+			data: data,
+			dataType: "script"
+		});  		
+  	}
+
+
+	$('.search input[name=query]').keyup(function(){
+		sendData();
+	});
+ 
+  
+  	var lastJQueryTS = 0 ;
+  	$('#search .input-daterange').datepicker().on("changeDate", function(event){
+  		var query = $(this).val();
+    	var send = true;
+    	if (typeof(event) == 'object'){
+    		if (event.timeStamp - lastJQueryTS < 300){
+        		send = false;
+      		}
+     		lastJQueryTS = event.timeStamp;
+    	}
+    	if (send){
+    		sendData();
+    	}
+  	}); 
+
+</script>

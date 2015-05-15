@@ -1,5 +1,5 @@
-<% if mobile_device? %>
-	$('#new_entry')[0].reset();
+$('#new_entry')[0].reset();
+<% if (mobile_device?) %>
 	window.location.replace('<%= entries_path(:anchor => "titles-wrapper") %>');
 <% else %>
 	$('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');

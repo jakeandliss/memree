@@ -24,17 +24,13 @@ $ ->
 	  $('#current_date').toggle()
 	  $('#new_date').toggle()
 
-$ ->
-	Dropzone.autoDiscover = false;
-	$('#click_to_upload').click (event) ->
-	  event.preventDefault()
-	  $('.dz-clickable').trigger('click')
+
 
 $ ->
 	$('i.fa-search').click (event) ->
 	  event.preventDefault()
 	  $('i.fa-search').hide()
-	  $('.search').show()
+	  $('.search').css("display", "inline-block");
 
 $ -> 
 	$('.playing').click (event) ->
