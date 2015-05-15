@@ -3,7 +3,7 @@
 		<ul class="title-area">
 			<li><%= link_to "Cancel", entries_path %></li>
 			<li>New Entry</li>
-			<li class="action"><%= f.submit 'Save'%></li>
+			<li class="action"><%= f.submit 'Save', id: "submit_this" %></li>
 		</ul>
 	</nav>
 	<div class="row small-collapse" style="border-bottom:1px solid #eee;">
@@ -68,7 +68,7 @@
 				unfinished = 'true';
 			}
 		}
-	--->on success unfinished = false
+		
 		if ( unfinished == 'true' ) {
 			return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
 		}
