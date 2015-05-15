@@ -2,7 +2,7 @@ window.clearAfterSubmit = false;
 Dropzone.autoDiscover = false;
 
 $(document).ready(function(){
-  $('#click_to_upload').on("click", function(){
+  $('#click_to_upload').on("click", function(event){
     event.preventDefault();
     $('.dz-clickable').trigger('click');
   });

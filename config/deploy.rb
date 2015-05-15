@@ -20,11 +20,11 @@ set :deploy_via, :copy
 set :shallow_clone, 1
 
 # Should be 'production' by default, otherwise use other env 
-rails_env = ENV['RAILS_ENV'] || 'production'
+set :rails_env,  'production'
 
 # Log everything to one file
-stderr_path "log/unicorn.log"
-stdout_path "log/unicorn.log"
+set :stderr_path, "log/unicorn.log"
+set :stdout_path, "log/unicorn.log"
 
 
 # Define where to put your application code
@@ -45,7 +45,7 @@ set :ssh_options, {
     user: 'deployer',
 }
 
-after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
-after 'deploy:restart', 'unicorn:restart'   # app preloaded
-after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
+# after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
+# after 'deploy:restart', 'unicorn:restart'   # app preloaded
+# after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
 
