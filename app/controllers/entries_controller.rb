@@ -20,7 +20,7 @@ class EntriesController < ApplicationController
 
   def new
     @entry = current_user.entries.new(:title_date => Date.today)
-    @hide_nav = true
+    @new_action = true
     render layout: "entries"
   end
 

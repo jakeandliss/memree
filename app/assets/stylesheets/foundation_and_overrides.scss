@@ -91,7 +91,7 @@ $column-gutter: rem-calc(30);
 // $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 $font-family-Open-Sans: 'Helam Slab', 'Roboto Slab', Calibri, Helvetica, Arial, sans-serif;
-$font-family-header:'Open Sans Condensed', sans-serif;
+$font-family-header: 'Lato', 'Open Sans', sans-serif; //'Open Sans Condensed', sans-serif;
 $font-family-body: 'Lato', 'Open Sans', sans-serif;
 
 
@@ -668,7 +668,7 @@ $input-focus-border-color: scale-color($white, $lightness: -20%);
 $input-prefix-border-size: 0px;
 // $input-prefix-border-type: solid;
 // $input-prefix-overflow: hidden;
-$input-prefix-font-color: $salmon;
+// $input-prefix-font-color: $oil;
 // $input-prefix-font-color-alt: $white;
 
 // We use this setting to turn on/off HTML5 number spinners (the up/down arrows)

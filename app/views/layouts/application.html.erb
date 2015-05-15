@@ -24,7 +24,13 @@
                             <%= message %>
                         </div>
                     <% end %>
-                    <%= yield %> 
+                    <% if mobile_device? %>
+                        <div style="margin-bottom:2rem;">
+                            <%= yield %> 
+                        </div>
+                    <% else %>    
+                        <%= yield %> 
+                    <% end %>
                 </div>
             </div>
         </div>

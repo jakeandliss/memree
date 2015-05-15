@@ -1,7 +1,7 @@
 
 <!-- Mobile Version -->
 <% if mobile_device? %>
-	<% unless @hide_nav %>
+	<% unless @new_action %>
 		<nav class="top-bar" data-topbar role="navigation">
 			<ul class="title-area">
 				<li class="name"><h1><%= link_to "MemryBook", entries_path %></h1></li>
