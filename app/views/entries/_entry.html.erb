@@ -93,7 +93,7 @@
 						<div class="audio">
 							<span><%= i.avatar_file_name %></span>
 							<%= audio_tag i.avatar.url, controls: true %>
-							<%= link_to '<i class="fa fa-external-link-square playing"></i>'.html_safe, '#', alt: "Click to play in sidebar" %>
+							<%= link_to '<i class="fa fa-external-link-square playing"></i>'.html_safe, '#', alt: "Click to play in sidebar", class: "playing" %>
 							<%= link_to '<i class="fa fa-times stop"></i>'.html_safe, '#', class: "hide" %>
 						</div>
 					<% end %>
@@ -115,7 +115,7 @@
 			</script>
 		</div>
 	</div>
-	<div class="medium-3 columns">
+	<div class="medium-3 columns" style="padding-left:0;">
 		<div class="footer">
 			<% if entry.tags.present? %>
 				<h5>
@@ -130,10 +130,10 @@
 					</ul>
 				</h5>
 			<% end %>
-			<div id="shared_users">
+			<!-- <div id="shared_users">
 				<%= image_tag current_user.avatar.url(:avatar) %>
 				<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, class: "right" %>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>

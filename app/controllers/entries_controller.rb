@@ -1,7 +1,6 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
   before_action :fetch_entry, only: [:show, :edit, :update, :destroy]
-  # Render mobile or desktop depending on User-Agent for these actions.
   before_filter :check_for_mobile, :only => [:index, :edit, :update, :create, :new]
 
   def index
@@ -16,11 +15,10 @@ class EntriesController < ApplicationController
       @entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
     end
 
-    
     @entries = @entries.search(params[:query], date_filters) 
     
+    render layout: "entries"
 
-    render layout: "application_index"
   end
 
   def date_filters
@@ -31,7 +29,8 @@ class EntriesController < ApplicationController
 
   def new
     @entry = current_user.entries.new(:title_date => Date.today)
-    render layout: false
+    @new_action = true
+    render layout: "entries"
   end
 
   def search

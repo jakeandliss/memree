@@ -1,25 +1,24 @@
 $('#new_entry')[0].reset();
-<% if (mobile_device?) %>
-	window.location.replace('<%= entries_path(:anchor => "titles-wrapper") %>');
-<% else %>
-	$('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
-	$('#title_added').prepend('<%= j render(@entry) %>')
-	$('#entry_<%= @entry.id %>').hide().fadeIn(1300);
-	$("#success").fadeIn(500).html("Entry created successfully").delay(2000).fadeOut(500);
 
-	$('.entry_image_thumbnails').each(function( index ) {
-			$(this).slick({
-			  initialSlide: $(this).find("img").length > 1 ? 0 : -1,
-			  slidesToShow: 1,
-			  centerPadding: "25%",
-			  focusOnSelect: true,
-			  arrows: false,
-			  centerMode: true,
-			});
-		});
+$('#current_date').show();
+$('#new_date').hide();
+$('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
+$('#title_added').prepend('<%= j render(@entry) %>')
+$('#entry_<%= @entry.id %>').hide().fadeIn(1300);
+$("#success").fadeIn(500).html("Entry created successfully").delay(2000).fadeOut(500);
 
-	window.clearAfterSubmit = true;
-	Dropzone.forElement("#new_entry .dropzone").removeAllPreviewFiles(true);
-	window.clearAfterSubmit = false;
 
-<% end %>
+$('.entry_image_thumbnails').each(function( index ) {
+	$(this).slick({
+	  initialSlide: $(this).find("img").length > 1 ? 0 : -1,
+	  slidesToShow: 1,
+	  centerPadding: "25%",
+	  focusOnSelect: true,
+	  arrows: false,
+	  centerMode: true,
+	});
+});
+
+window.clearAfterSubmit = true;
+Dropzone.forElement("#new_entry .dropzone").removeAllPreviewFiles(true);
+window.clearAfterSubmit = false;

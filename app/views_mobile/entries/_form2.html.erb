@@ -1,4 +1,4 @@
-<%= form_for @entry, validate: true, remote: true, html: { multipart: true, data: {dropzone_name: 'entry[resource_ids][]'} }, authenticity_token: true  do |f| %>
+<%= form_for @entry, validate: true, html: { multipart: true, data: {dropzone_name: 'entry[resource_ids][]'} }, authenticity_token: true  do |f| %>
 	<nav class="top-bar new_entry_nav" data-topbar role="navigation">
 		<ul class="title-area">
 			<li><%= link_to "Cancel", entries_path %></li>
@@ -35,6 +35,7 @@
 <% end %>
 
 
+
 <script>
 	var dropzone = new DropzoneManager();
 	dropzone.initialize($("#new_entry .dropzone")[0])
@@ -67,6 +68,7 @@
 				unfinished = 'true';
 			}
 		}
+	--->on success unfinished = false
 		if ( unfinished == 'true' ) {
 			return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
 		}

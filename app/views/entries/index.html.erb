@@ -17,17 +17,14 @@
 					</div>
 				</div>
 			</div>
-			<div id="journal_titles" class="hide-for-small-only">
+			<div id="journal_titles">
 				<ul>
-
 					<li class="<%= 'active' if current_page?(entries_path) %>">
 						<%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Journals'.html_safe, entries_path, remote: true %>
 					</li>
 					<div id="tag-list">
 						
 					</div>
-
-				 		
 				</ul>
 			</div>
 			<%= render 'search' %>
@@ -36,15 +33,6 @@
 		<div class="medium-9 columns">
 			<div class="form clearfix" id="title_form">
 				<%= render 'form' %>
-			</div>
-			<div class="show-for-small-only">
-				<div id="journal_titles">
-					<h4><%= image_tag('feather.png') %><%= current_user.first_name %>'s Journals</h4>
-					<ul>
-						<li class="<%= 'active' if current_page?(entries_path) %>"><%= link_to 'All Journals', entries_path %></li>
-					 	<%= render partial: "tags", locals: { tags: @tags.roots } %>	
-					</ul>
-				</div>
 			</div>
 			<div id="titles-wrapper">
 				<%= render partial: "entries" %>
