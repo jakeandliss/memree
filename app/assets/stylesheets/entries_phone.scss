@@ -595,7 +595,7 @@ body#new_title_form {
 
 #new_title_form input, #new_title_form textarea#wysiwyg {
   border: none;
-  background: white;
+  background: white !important;
   box-shadow: none;
   font-size: .9rem;
 }
