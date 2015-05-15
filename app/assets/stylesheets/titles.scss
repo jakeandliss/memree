@@ -119,6 +119,7 @@ Entry Form
 #titles #entry_title_date_1i {  
 	width: 32.6666%;
   margin-right: 0%;
+  margin-bottom: 0;
 }
 
 #titles #new_date {
@@ -127,9 +128,12 @@ Entry Form
   padding-left: 1rem;
 }
 
-#titles #current_date {
+#titles a#change_date {
+  margin-top: .5rem;
+  color: #ccc;
   float: right;
-  margin: 0;
+  margin-right: .5rem;
+  font-size: .9rem;
 }
 
 #titles label.right {
@@ -144,22 +148,41 @@ Entry Form
   margin: 1rem 0;
 }
 
-#titles input#entry_title, #titles textarea#wysiwyg {
-  margin: 0 0 .2rem 0;
+#titles .no_background {
+  margin: 0;
+  background: white;
+  border: 0;
+  box-shadow: none;
+}
+
+#titles input:-ms-input-placeholder, #titles input::-webkit-input-placeholder, #titles input:-moz-placeholder  {
+  color:red;
 }
 
 #titles .bootstrap-tagsinput{
   width: 100%;
 }
 
-#titles #image_click {
-  width: 65%;
-  float: left;
+#titles .bootstrap-tagsinput input{
+  background: white;
+  box-shadow: none;
 }
 
-#titles .image_click p {
+#titles #click_to_upload {
+  width: 65%;
+  float: left;
+  color: #ccc;
+  border: 1.5px dashed;
+  margin-left: 1rem;
+  padding: .4rem;
+  margin-right: -1rem;
+}
+
+#titles #click_to_upload p {
   margin-bottom: 0;
 }
+
+
 
 
 
