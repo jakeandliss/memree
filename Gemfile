@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 #ruby '2.2.0'
 
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
@@ -25,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "nokogiri"
 gem 'aws-sdk', '< 2.0'
 gem "figaro"
 gem 'foundation-rails'
@@ -42,12 +45,18 @@ gem 'jQuery-Validation-Engine-rails'
 gem 'devise'
 gem 'will_paginate'
 # heroku
-gem 'rails_12factor', group: :production
+#gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'thin'
 gem 'ancestry'
 gem 'magnific-popup-rails'
 gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "4-2-stable"
+
+
+group :production do
+  gem "unicorn-rails"
+  gem 'rack-handlers'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
