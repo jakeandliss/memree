@@ -3,10 +3,12 @@ Dropzone.autoDiscover = false;
 
 $(document).ready(function(){
   $('#click_to_upload').on("click", function(){
-    alert(123);
+    event.preventDefault();
+    $('.dz-clickable').trigger('click');
   });
 
   $('#click_to_upload').on('touchstart', function(event) {
+    alert(123);
     event.preventDefault();
     $('.dz-clickable').trigger('click');
   });
