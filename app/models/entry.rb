@@ -43,7 +43,7 @@ class Entry < ActiveRecord::Base
 		dates[:finish] ||= Date.today
 		dates[:start] ||= Date.today - 1.month
 
-	   result = where(:created_at => dates[:start]..dates[:finish])
+	   result = where(:created_at => dates[:start].beginning_of_day..dates[:finish].end_of_day)
 	   result = result.where('content LIKE ?', '%' + query + '%') if query
 	   return result
 	end
