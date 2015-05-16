@@ -13,7 +13,7 @@ class EntriesController < ApplicationController
       @entries = Entry.childrens_of(@tag).paginate(:page => params[:page], :per_page => 10)
     else
       @entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
-    end
+    end 
 
     render layout: "entries"
   end
