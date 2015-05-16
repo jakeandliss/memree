@@ -13,9 +13,9 @@ class EntriesController < ApplicationController
       @entries = Entry.childrens_of(@tag).paginate(:page => params[:page], :per_page => 10)
     else
       @entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
-    end 
+    end
 
-    # @entries = @entries.search(params[:query], date_filters) 
+    @entries = @entries.search(params[:query], date_filters) 
     
     render layout: "entries"
 
