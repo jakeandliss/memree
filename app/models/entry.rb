@@ -5,7 +5,7 @@ class Entry < ActiveRecord::Base
 	has_many :tags, -> { uniq }, through: :taggings, :dependent => :destroy
 	has_many :resources, dependent: :destroy
 
-	default_scope { order('title_date DESC') }
+	default_scope { order('title_date DESC', 'created_at DESC') }
   	validates_presence_of :title
 
  	#  validate :at_least_one
@@ -52,7 +52,7 @@ class Entry < ActiveRecord::Base
 	def self.childrens_of tag
 		# Get identifiers of specified tag and its children
 	    title_ids = Tagging.where(tag_id: tag.subtree_ids).pluck(:entry_id)
-
+f
 	    # Find titles with ids from the array title_ids
 		Entry.where(id: title_ids.uniq)
 	end
