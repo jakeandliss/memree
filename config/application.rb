@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 module Journalesk
   class Application < Rails::Application
 
+    config.time_zone = 'Eastern Time (US & Canada)'
+    config.active_record.default_timezone = 'Eastern Time (US & Canada)'
+    config.active_record.default_timezone = :local
 
     # Credentials can be added to config/application.yml like:
     # s3_bucket_name: "YOURBUCKETNAME"

@@ -20,12 +20,6 @@ set :branch, "master"
 set :deploy_via, :copy
 set :shallow_clone, 1
 
-# Should be 'production' by default, otherwise use other env 
-set :rails_env,  'production'
-
-# Log everything to one file
-set :stderr_path, "log/unicorn.log"
-set :stdout_path, "log/unicorn.log"
 
 
 # Define where to put your application code

@@ -53,6 +53,10 @@ gem 'magnific-popup-rails'
 gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "4-2-stable"
 
 
+group :assets do
+
+end
+
 group :production do
   gem "unicorn-rails"
 end
@@ -64,7 +68,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'capistrano-unicorn', :require => false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring',  '~> 1.3.5'
+  #gem 'spring',  '~> 1.3.5'
   gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara', '~> 2.4.4'
   gem 'shoulda-matchers', '~> 2.8.0'
