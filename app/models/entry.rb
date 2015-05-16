@@ -5,7 +5,7 @@ class Entry < ActiveRecord::Base
 	has_many :tags, -> { uniq }, through: :taggings, :dependent => :destroy
 	has_many :resources, dependent: :destroy
 
-	default_scope { order('created_at DESC') }
+	default_scope { order('title_date DESC') }
   	validates_presence_of :title
 
  	#  validate :at_least_one
@@ -43,7 +43,7 @@ class Entry < ActiveRecord::Base
 		dates[:finish] ||= Date.today
 		dates[:start] ||= Date.today - 1.month
 
-	   result = where(:created_at => dates[:start]..dates[:finish])
+	   result = where(:title_date => dates[:start]..dates[:finish])
 	   result = result.where('content LIKE ?', '%' + query + '%') if query
 	   return result
 	end
