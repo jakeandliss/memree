@@ -2,8 +2,8 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 require 'capistrano-unicorn'
 
-default_run_options[:pty] = true
-set :pty, true
+#default_run_options[:pty] = true
+#set :pty, true
 
 # Define the name of the application
 set :rvm_type, :system
