@@ -11,7 +11,7 @@ $(document).ready(function(){
     event.preventDefault();
     $('.dz-clickable').trigger('click');
   });
-});
+
 
 var DropzoneManager = function () {
 
