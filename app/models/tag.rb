@@ -2,7 +2,9 @@ class Tag < ActiveRecord::Base
 	belongs_to :user
 	has_many :taggings, :dependent => :destroy
 	has_many :entries, -> { uniq }, through: :taggings
-	before_create :change_registry
+
+	validate :name_has_to_be_unique, on: :create
+
 	default_scope { order('created_at DESC') } 
 	validates_presence_of :name
 	has_ancestry
@@ -16,10 +18,14 @@ class Tag < ActiveRecord::Base
 
 	end
 
-	private
 
-	def change_registry
-		self.name = self.name.downcase
+	private
+	
+	def name_has_to_be_unique
+	   	if self.user.tags.where('lower(name) = ?', self.name.downcase).exists?
+	   		errors.add(:name, "already exists")
+	   		false
+	   	end
 	end
 
 

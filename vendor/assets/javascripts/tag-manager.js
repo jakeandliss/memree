@@ -45,10 +45,19 @@ var TagManager = function () {
 			$(".expanded").not($(this).parent()).removeClass("expanded");
 		});
 
+		$(".root > a").on('touchstart', function(){
+    		$(".expanded").not($(this).parent()).removeClass("expanded");
+		});
+
 		// Remove all subtries on the 'journals' link click
 		wrapperElement.parent().find("> li > a").click(function(){
 			$(".toggable").parent().removeClass("expanded");
-		})
+		});
+
+		wrapperElement.parent().find("> li > a").on('touchstart', function(){
+    		$(".toggable").parent().removeClass("expanded");
+		});		
+
 	}
 
 	// Build a tree consisted of children an attach it to parent node.
@@ -60,9 +69,13 @@ var TagManager = function () {
 		$('a', parent).append($('<i class="fa fa-caret-down">'));
 
 		// Open/Close a subtree on button click
+		$('a', parent).on('touchstart', function(){
+			$(this).parent().toggleClass("expanded");
+		});
+
 		$('a', parent).click(function(){
 			$(this).parent().toggleClass("expanded");
-		})
+		});
 
 		// Recursively build all child subtries
 		$.each(children, function( index, tag ) {

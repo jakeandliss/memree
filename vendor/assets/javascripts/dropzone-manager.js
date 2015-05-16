@@ -1,5 +1,19 @@
 window.clearAfterSubmit = false;
 
+
+Dropzone.autoDiscover = false;
+
+$('#click_to_upload').click(function(event) {
+  event.preventDefault();
+  $('.dz-clickable').trigger('click');
+});
+
+$('#click_to_upload').on('touchstart', function(event) {
+  event.preventDefault();
+  $('.dz-clickable').trigger('click');
+});
+
+
 var DropzoneManager = function () {
 
 	var self = this;
