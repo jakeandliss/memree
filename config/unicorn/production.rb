@@ -22,8 +22,7 @@ rails_env = ENV['RAILS_ENV'] || 'production'
 pid "#{app_path}/tmp/pids/unicorn.pid"
 
 before_fork do |server, worker|
-  ActiveRecord::Base.connection.disconnect!
-
+  
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin

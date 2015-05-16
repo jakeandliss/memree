@@ -2,7 +2,7 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 require 'capistrano-unicorn'
 
-#default_run_options[:pty] = true
+default_run_options[:pty] = true
 #set :pty, true
 
 # Define the name of the application
@@ -37,9 +37,7 @@ set :deploy_to, "/home/#{user}/#{application}" #path to your app on the producti
 
 
 
-server '104.236.57.97', :web, :app, :db, primary: true
-
-set :ssh_options, {
+server '104.236.57.97', :web, :app, :db, primary: true , ssh_options: {
     forward_agent: false,
     auth_methods: %w(password),
     password: 'memree123!@#',
