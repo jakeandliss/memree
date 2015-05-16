@@ -3,6 +3,7 @@ require "bundler/capistrano"
 require 'capistrano-unicorn'
 
 default_run_options[:pty] = true
+set :pty, true
 
 # Define the name of the application
 set :rvm_type, :system
@@ -33,7 +34,7 @@ set :rails_env, "production"
 set :repository, "."
 set :deploy_to, "/home/#{user}/#{application}" #path to your app on the production server 
 
-set :pty, true
+
 
 
 server '104.236.57.97', :web, :app, :db, primary: true
