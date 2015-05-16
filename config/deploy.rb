@@ -48,3 +48,17 @@ after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
 after 'deploy:restart', 'unicorn:restart'   # app preloaded
 after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
 
+after 'deploy:restart', "figaro:setup"
+after 'deploy:restart', "figaro:finalize"
+
+namespace :figaro do
+  desc "SCP transfer figaro configuration to the shared folder"
+  task :setup do
+    transfer :up, "config/application.yml", "#{shared_path}/application.yml", :via => :scp
+  end
+ 
+  desc "Symlink application.yml to the release path"
+  task :finalize do
+    run "ln -sf #{shared_path}/application.yml #{release_path}/config/application.yml"
+  end
+end

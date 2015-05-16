@@ -1,17 +1,6 @@
 window.clearAfterSubmit = false;
 Dropzone.autoDiscover = false;
 
-$(document).ready(function(){
-  $('#click_to_upload').on("click", function(event){
-    event.preventDefault();
-    $('.dz-clickable').trigger('click');
-  });
-
-  $('#click_to_upload').on('touchstart', function(event) {
-    event.preventDefault();
-    $('.dz-clickable').trigger('click');
-  });
-
 
 var DropzoneManager = function () {
 
@@ -34,6 +23,17 @@ var DropzoneManager = function () {
 
     $(form).bind('dragenter', dragEnterHandler);
   	$(form).bind('dragleave', dragLeaveHandler);
+
+    $(form).find(".click_to_upload").on('touchstart', function(event) {
+      event.preventDefault();
+      $(form).find(".dz-clickable").trigger('click');
+    });
+
+    $(form).find(".click_to_upload").on('click', function(event) {
+      event.preventDefault();
+
+      $(form).find(".dz-clickable").trigger('click');
+    });
 
     $(form).submit(function(e){
       self.dropzone.abortAllUploads();

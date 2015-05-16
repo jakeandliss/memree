@@ -45,7 +45,7 @@ class Entry < ActiveRecord::Base
 
 	   result = where(:created_at => dates[:start].beginning_of_day..dates[:finish].end_of_day)
 
-	   result = result.where('content LIKE ?', '%' + query + '%') if query
+	   result = result.where("content LIKE ? OR title LIKE ?", "%#{query}%", "%#{query}%") if query
 	   return result
 	end
 
@@ -53,7 +53,6 @@ class Entry < ActiveRecord::Base
 	def self.childrens_of tag
 		# Get identifiers of specified tag and its children
 	    title_ids = Tagging.where(tag_id: tag.subtree_ids).pluck(:entry_id)
-f
 	    # Find titles with ids from the array title_ids
 		Entry.where(id: title_ids.uniq)
 	end

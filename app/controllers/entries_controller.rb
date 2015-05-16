@@ -17,7 +17,12 @@ class EntriesController < ApplicationController
 
     @entries = @entries.search(params[:query], date_filters) 
     
-    render layout: "entries"
+    
+
+    respond_to do |format|
+      format.html { render layout: "entries" }
+      format.js
+    end
 
   end
 
