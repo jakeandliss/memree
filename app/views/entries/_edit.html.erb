@@ -1,6 +1,4 @@
 <%= form_for @entry, remote: true, html: { multipart: true, data: {dropzone_name: 'entry[image_ids][]'} }, authenticity_token: true  do |f| %>
-    
-   
     <div class="row">
 		<div class="small-6 columns">
 			<%= f.text_field :title, placeholder: "Title", class: "no_background", style: "border-bottom:1px solid #ccc;" %>

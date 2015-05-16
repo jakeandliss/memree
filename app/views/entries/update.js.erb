@@ -1,4 +1,5 @@
 $('#entry_<%= @entry.id %>').hide();
+$('form#edit_entry_<%= @entry.id %>').remove();
 $('#entry_<%= @entry.id %>').before('<%= j render(@entry) %>');
 $('#entry_<%= @entry.id %>').hide().fadeIn(1300);
 $("#success").fadeIn(500).html("Entry updated successfully").delay(2000).fadeOut(500);
