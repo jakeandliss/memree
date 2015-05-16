@@ -15,7 +15,16 @@ class EntriesController < ApplicationController
       @entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
     end
 
+    @entries = @entries.search(params[:query], date_filters) 
+    
     render layout: "entries"
+
+  end
+
+  def date_filters
+      start = params[:start] ? params[:start].to_date : nil
+      finish = params[:finish] ? params[:finish].to_date : nil
+      return {start: start, finish: finish}
   end
 
   def new

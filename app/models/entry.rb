@@ -20,10 +20,10 @@ class Entry < ActiveRecord::Base
 	# Add tags for a new title
 	def add_tags(tag_names="")
 		tag_names.split(',').map do |tag_name|
-			if tag = user.tags.find_by(name: tag_name.strip.downcase)
+			if tag = user.tags.find_by(name: tag_name.strip)
 				taggings.find_or_create_by(tag_id: tag.id, entry_id: id)
 			else
-				tags.find_or_create_by(name: tag_name.strip.downcase, user_id: user_id)
+				tags.find_or_create_by(name: tag_name.strip, user_id: user_id)
 			end
 		end
 	end
@@ -36,6 +36,16 @@ class Entry < ActiveRecord::Base
 	# Find all titles whish has a specified name
 	def self.tagged_with(name)
 		Tag.find_by_name!(name).titles
+	end
+
+
+	def self.search(query = nil, dates = {})
+		dates[:finish] ||= Date.today
+		dates[:start] ||= Date.today - 1.month
+
+	   result = where(:created_at => dates[:start]..dates[:finish])
+	   result = result.where('content LIKE ?', '%' + query + '%') if query
+	   return result
 	end
 
 	# Retrive all titles having with tag or child of this tag
