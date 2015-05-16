@@ -40,8 +40,8 @@ class Entry < ActiveRecord::Base
 
 
 	def self.search(query = nil, dates = {})
-		dates[:finish] ||= Date.today
-		dates[:start] ||= Date.today - 10.years
+		dates[:finish] ||= Date.current
+		dates[:start] ||= Date.current - 10.years
 
 	   result = where(:created_at => dates[:start].beginning_of_day..dates[:finish].end_of_day)
 
