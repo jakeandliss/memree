@@ -14,8 +14,6 @@
  *= require_self
  *= require validationEngine.jquery
  *= require foundation_and_overrides
- *= require jquery.fileupload
- *= require jquery.fileupload-ui
  *= require font-awesome
  *= require slick
  *= require magnific-popup

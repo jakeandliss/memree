@@ -15,7 +15,6 @@
 //= require jquery.validationEngine-en
 //= require jquery.validationEngine
 //= require foundation
-//= require jquery-fileupload
 //= require jquery.slick
 //= require dropzone
 //= require tag-manager
