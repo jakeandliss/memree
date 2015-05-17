@@ -45,7 +45,7 @@ class Entry < ActiveRecord::Base
 
 	   result = where(:created_at => dates[:start].beginning_of_day..dates[:finish].end_of_day)
 
-	   result = result.where("content LIKE ? OR title LIKE ?", "%#{query}%", "%#{query}%") if query
+	   result = result.where("LOWER(content) LIKE ? OR LOWER(title) LIKE ?", "%#{query.downcase}%", "%#{query.downcase}%") if query
 	   return result
 	end
 
