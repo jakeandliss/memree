@@ -38,7 +38,6 @@ gem 'delayed_job_active_record'
 gem "daemons"
 gem 'delayed_paperclip'
 gem 'paperclip-compression'
-gem "jquery-fileupload-rails"
 gem 'truncate_html'
 gem "font-awesome-rails"
 gem 'jQuery-Validation-Engine-rails'
