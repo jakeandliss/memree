@@ -89,7 +89,7 @@ class EntriesController < ApplicationController
   end
 
   def tag_list
-    tags = params[:text] ? current_user.tags.where("name LIKE ?", "%#{params[:text]}%").map(&:name) : current_user.tags.all.map(&:name)
+    tags = params[:text] ? current_user.tags.where("lower(name) LIKE ?", "%#{params[:text].downcase}%").map(&:name) : current_user.tags.all.map(&:name)
     render json: tags
   end
 

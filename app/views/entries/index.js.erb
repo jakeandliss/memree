@@ -22,6 +22,18 @@
   activeTag.addClass("active");
   activeElement.addClass("active");
 
+  var tagName = '<%=params[:tag] ? params[:tag].downcase : "all journals"%>';
+
+  if (tagName == "all journals"){
+    $("#search .fa-close").hide();
+  }
+  else {
+    $("#search .fa-close").show();
+  }
+
+  $("#search-tag").html(tagName);
+
+
   if (!activeElement.is(":visible")){
     activeElement.parents("li").addClass("expanded");
   }

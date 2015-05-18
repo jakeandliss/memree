@@ -26,12 +26,12 @@ var DropzoneManager = function () {
 
     $(form).find(".click_to_upload").on('touchstart', function(event) {
       event.preventDefault();
+      alert($(form).find(".dz-clickable"));
       $(form).find(".dz-clickable").trigger('click');
     });
 
     $(form).find(".click_to_upload").on('click', function(event) {
       event.preventDefault();
-
       $(form).find(".dz-clickable").trigger('click');
     });
 

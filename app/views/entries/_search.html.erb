@@ -1,7 +1,11 @@
 <i class="fa fa-search right pointer"></i>
 <div class="search hide white box-shadow" id="search">
 	
-	<p> Search: </p>
+	<p> 
+		Search in 
+		<span id="search-tag"></span>
+		<i class="fa fa-close"></i>
+	</p>
 	<input name="query" class="form-control" placeholder="Start typing.."></input>
 	<br />
 
@@ -16,18 +20,21 @@
 
 <script>
 
-	var today = new Date();
+	var tagName = $("#tag-list a.active").data("tagname");
+	if (tagName == undefined){
+		tagName = "all journals";
+		$("#search .fa-close").hide();
+	}
 
-	$('#search .input-daterange').datepicker({
-		format: "dd MM yyyy",
-    	autoclose: true,
-    	startDate: new Date(today.setMonth(today.getMonth() - 12)),
-    	endDate: new Date()        
-  	});
-
-  	function sendData()
+	function sendData()
   	{
   		var tag = $("#tag-list a.active").data("tagname");
+
+  		if ($("#search-tag").text() == "all journals"){
+  			tag = undefined;
+  		}
+
+
   		var query = $('.search input[name=query]').val();
   		var data = {
 				query: query,
@@ -43,6 +50,23 @@
 			dataType: "script"
 		});  		
   	}
+
+	$("#search .fa-close").click(function(){
+		$("#search .fa-close").hide();
+		$("#search-tag").html("all journals");
+		sendData();
+	})
+
+  	$("#search-tag").html(tagName);
+
+	var today = new Date();
+
+	$('#search .input-daterange').datepicker({
+		format: "dd MM yyyy",
+    	autoclose: true,
+    	startDate: new Date(today.setMonth(today.getMonth() - 12)),
+    	endDate: new Date()        
+  	});
 
 
 	$('.search input[name=query]').keyup(function(){
