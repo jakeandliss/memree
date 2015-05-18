@@ -24,6 +24,9 @@ var DropzoneManager = function () {
 
     self.dropzone = new Dropzone(element, options());
 
+
+    alert(self.dropzone.hiddenFileInput);
+
     $(form).bind('dragenter', dragEnterHandler);
   	$(form).bind('dragleave', dragLeaveHandler);
 
