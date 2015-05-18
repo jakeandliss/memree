@@ -26,9 +26,9 @@ var DropzoneManager = function () {
 
     $(form).find(".click_to_upload").on('touchstart', function(event) {
       alert("test");
-      event.preventDefault();
-      alert($(form).find(".dz-clickable"));
-      $(form).find(".dz-clickable").trigger('click');
+      // event.preventDefault();
+      // alert($(form).find(".dz-clickable"));
+      // $(form).find(".dz-clickable").trigger('click');
     });
 
     $(form).find(".click_to_upload").on('click', function(event) {
