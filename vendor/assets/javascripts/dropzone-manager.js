@@ -1,11 +1,9 @@
 window.clearAfterSubmit = false;
 Dropzone.autoDiscover = false;
 
-$(window).on('touchstart', function(event) {
-  alert("test1");
-  // event.preventDefault();
-  // alert($(form).find(".dz-clickable"));
-  // $(form).find(".dz-clickable").trigger('click');
+$("form").find(".click_to_upload").on('click touchstart', function(event) {
+  event.preventDefault();
+  $("form").find(".dz-clickable").trigger('click');
 });
 
 
@@ -31,17 +29,17 @@ var DropzoneManager = function () {
     $(form).bind('dragenter', dragEnterHandler);
   	$(form).bind('dragleave', dragLeaveHandler);
 
-    $(window).on('touchstart', function(event) {
-      alert("test");
-      // event.preventDefault();
-      // alert($(form).find(".dz-clickable"));
-      // $(form).find(".dz-clickable").trigger('click');
-    });
+    // $(window).on('touchstart', function(event) {
+    //   alert("test");
+    //   // event.preventDefault();
+    //   // alert($(form).find(".dz-clickable"));
+    //   // $(form).find(".dz-clickable").trigger('click');
+    // });
 
-    $(form).find(".click_to_upload").on('click touchstart', function(event) {
-      event.preventDefault();
-      $(form).find(".dz-clickable").trigger('click');
-    });
+    // $(form).find(".click_to_upload").on('click touchstart', function(event) {
+    //   event.preventDefault();
+    //   $(form).find(".dz-clickable").trigger('click');
+    // });
 
     $(form).submit(function(e){
       self.dropzone.abortAllUploads();
