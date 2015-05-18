@@ -25,6 +25,7 @@ var DropzoneManager = function () {
   	$(form).bind('dragleave', dragLeaveHandler);
 
     $(form).find(".click_to_upload").on('touchstart', function(event) {
+      alert("test");
       event.preventDefault();
       alert($(form).find(".dz-clickable"));
       $(form).find(".dz-clickable").trigger('click');
