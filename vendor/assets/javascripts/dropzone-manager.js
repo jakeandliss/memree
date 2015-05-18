@@ -1,14 +1,7 @@
 window.clearAfterSubmit = false;
 Dropzone.autoDiscover = false;
 
-$(document).ready(function(){
-  alert(123);
-  $("form").find(".click_to_upload").on('click touchstart', function(event) {
-    alert($("form").find(".dz-clickable"));
-    event.preventDefault();
-    $("form").find(".dz-clickable").trigger('click');
-  });  
-})
+
 
 
 
