@@ -69,10 +69,6 @@ var TagManager = function () {
 		$('a', parent).append($('<i class="fa fa-caret-down">'));
 
 		// Open/Close a subtree on button click
-		$('a', parent).on('touchstart', function(){
-			$(this).parent().toggleClass("expanded");
-		});
-
 		$('a', parent).click(function(){
 			$(this).parent().toggleClass("expanded");
 		});
