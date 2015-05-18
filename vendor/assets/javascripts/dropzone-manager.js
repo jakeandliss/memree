@@ -17,15 +17,14 @@ var DropzoneManager = function () {
 
 	this.initialize = function(element, url){
 		$element = $(element);
-		form = $(element.closest("form"));
+		form = $($element.closest("form"));
+    alert(form);
 
 		if (url != undefined)
 			resourceUrl = url;
 
     self.dropzone = new Dropzone(element, options());
 
-
-    alert(Dropzone.instances.length);
 
     $(form).bind('dragenter', dragEnterHandler);
   	$(form).bind('dragleave', dragLeaveHandler);
