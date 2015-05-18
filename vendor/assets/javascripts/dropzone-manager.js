@@ -4,9 +4,9 @@ Dropzone.autoDiscover = false;
 $(document).ready(function(){
   alert(123);
   $("form").find(".click_to_upload").on('click touchstart', function(event) {
-    alert(1234);
+    $("form").find(".dz-clickable");
     event.preventDefault();
-    $("form").find(".dz-clickable").trigger('click');
+    $("form").find(".dz-clickable").trigger('touchstart');
   });  
 })
 
