@@ -1,6 +1,13 @@
 window.clearAfterSubmit = false;
 Dropzone.autoDiscover = false;
 
+$(window).on('touchstart', function(event) {
+  alert("test1");
+  // event.preventDefault();
+  // alert($(form).find(".dz-clickable"));
+  // $(form).find(".dz-clickable").trigger('click');
+});
+
 
 var DropzoneManager = function () {
 
@@ -24,7 +31,7 @@ var DropzoneManager = function () {
     $(form).bind('dragenter', dragEnterHandler);
   	$(form).bind('dragleave', dragLeaveHandler);
 
-    $(form).on('touchstart', function(event) {
+    $(window).on('touchstart', function(event) {
       alert("test");
       // event.preventDefault();
       // alert($(form).find(".dz-clickable"));
