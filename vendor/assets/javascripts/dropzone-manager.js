@@ -4,9 +4,9 @@ Dropzone.autoDiscover = false;
 $(document).ready(function(){
   alert(123);
   $("form").find(".click_to_upload").on('click touchstart', function(event) {
-    $("form").find(".dz-clickable");
+    alert($("form").find(".dz-clickable"));
     event.preventDefault();
-    $("form").find(".dz-clickable").trigger('touchstart');
+    $("form").find(".dz-clickable").trigger('click');
   });  
 })
 
@@ -41,10 +41,10 @@ var DropzoneManager = function () {
     //   // $(form).find(".dz-clickable").trigger('click');
     // });
 
-    // $(form).find(".click_to_upload").on('click touchstart', function(event) {
-    //   event.preventDefault();
-    //   $(form).find(".dz-clickable").trigger('click');
-    // });
+    $(form).find(".click_to_upload").on('click touchstart', function(event) {
+      event.preventDefault();
+      $(form).find(".dz-clickable").trigger('click');
+    });
 
     $(form).submit(function(e){
       self.dropzone.abortAllUploads();
