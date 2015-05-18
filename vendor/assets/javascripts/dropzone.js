@@ -658,7 +658,6 @@
             element: clickableElement,
             events: {
               "click": function(evt) {
-                alert(111);
                 if ((clickableElement !== _this.element) || (evt.target === _this.element || Dropzone.elementInside(evt.target, _this.element.querySelector(".dz-message")))) {
                   return _this.hiddenFileInput.click();
                 }
