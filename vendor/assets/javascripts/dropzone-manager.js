@@ -25,7 +25,7 @@ var DropzoneManager = function () {
     self.dropzone = new Dropzone(element, options());
 
 
-    alert(self.dropzone);
+    alert(Dropzone.instances.length);
 
     $(form).bind('dragenter', dragEnterHandler);
   	$(form).bind('dragleave', dragLeaveHandler);
