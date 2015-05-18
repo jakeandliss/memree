@@ -1,10 +1,15 @@
 window.clearAfterSubmit = false;
 Dropzone.autoDiscover = false;
 
-$("form").find(".click_to_upload").on('click touchstart', function(event) {
-  event.preventDefault();
-  $("form").find(".dz-clickable").trigger('click');
-});
+$(document).ready(function(){
+  alert(123);
+  $("form").find(".click_to_upload").on('click touchstart', function(event) {
+    alert(1234);
+    event.preventDefault();
+    $("form").find(".dz-clickable").trigger('click');
+  });  
+})
+
 
 
 var DropzoneManager = function () {
