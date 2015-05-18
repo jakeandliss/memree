@@ -18,7 +18,6 @@ var DropzoneManager = function () {
 	this.initialize = function(element, url){
 		$element = $(element);
 		form = $($element.closest("form"));
-    alert(form);
 
 		if (url != undefined)
 			resourceUrl = url;
