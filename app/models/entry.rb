@@ -41,9 +41,9 @@ class Entry < ActiveRecord::Base
 
 	def self.search(query = nil, dates = {})
 		dates[:finish] ||= Date.current
-		dates[:start] ||= Date.current - 10.years
+		dates[:start] ||= Date.current - 100.years
 
-	   result = where(:created_at => dates[:start].beginning_of_day..dates[:finish].end_of_day)
+	   result = where(:title_date => dates[:start].beginning_of_day..dates[:finish].end_of_day)
 
 	   result = result.where("LOWER(content) LIKE ? OR LOWER(title) LIKE ?", "%#{query.downcase}%", "%#{query.downcase}%") if query
 	   return result
