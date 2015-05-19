@@ -15,7 +15,7 @@ class Resource < ActiveRecord::Base
 
 
   def process_in_foreground
-    [:medium, :original]
+    [:thumb, :original]
   end
 
   def process_in_background_c
@@ -52,11 +52,12 @@ class Resource < ActiveRecord::Base
   def check_file_type
     if is_image_type?
       {
+        :thumb => "300x300#",
         :original => "750x750>"
       }
     elsif is_video_type?
       {
-        :medium => { :geometry => "300x300#", :format => 'jpg', :time => 5},
+        :thumb => { :geometry => "300x300#", :format => 'jpg', :time => 5},
         :video => {:geometry => "1024x576>", :format => 'mp4'}
       }
     elsif is_doc_type?
