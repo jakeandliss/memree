@@ -16,6 +16,10 @@ class Entry < ActiveRecord::Base
 	#   end
 	# end
 
+	include PgSearch
+
+	pg_search_scope :text_search, against: [:title, :content], using: {tsearch: {dictionary: "english"}}
+
 
 	# Add tags for a new title
 	def add_tags(tag_names="")
@@ -45,7 +49,15 @@ class Entry < ActiveRecord::Base
 
 	   result = where(:title_date => dates[:start].beginning_of_day..dates[:finish].end_of_day)
 
-	   result = result.where("LOWER(content) LIKE ? OR LOWER(title) LIKE ?", "%#{query.downcase}%", "%#{query.downcase}%") if query
+	   if query && !query.empty?
+	       res = result.text_search(query)
+		   if res.empty? 
+		     result = result.where("LOWER(content) LIKE :q OR LOWER(title) LIKE :q", q: "%#{query.downcase}%") if query.present?
+		   else
+		   	 result = res
+		   end
+	   end
+
 	   return result
 	end
 

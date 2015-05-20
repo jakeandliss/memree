@@ -1,10 +1,6 @@
 window.clearAfterSubmit = false;
 Dropzone.autoDiscover = false;
 
-
-
-
-
 var DropzoneManager = function () {
 
 	var self = this;
@@ -14,6 +10,7 @@ var DropzoneManager = function () {
   var insideDropzone = false;
   var resourceUrl = "/resources"
 	this.dropzone = null;
+  var lastenter = null;
 
 	this.initialize = function(element, url){
 		$element = $(element);
@@ -25,15 +22,9 @@ var DropzoneManager = function () {
     self.dropzone = new Dropzone(element, options());
 
 
-    $(form).bind('dragenter', dragEnterHandler);
-  	$(form).bind('dragleave', dragLeaveHandler);
+    $("#titles").on('dragenter', dragEnterHandler);
+  	$("#titles").on('dragleave', dragLeaveHandler);
 
-    // $(window).on('touchstart', function(event) {
-    //   alert("test");
-    //   // event.preventDefault();
-    //   // alert($(form).find(".dz-clickable"));
-    //   // $(form).find(".dz-clickable").trigger('click');
-    // });
 
     $(form).find(".click_to_upload").on('click touchstart', function(event) {
       event.preventDefault();
@@ -46,11 +37,13 @@ var DropzoneManager = function () {
 
 		$element.bind({
     		dragenter: function(event){
-    			event.preventDefault();
-    			insideDropzone = true;
+    			 event.stopPropagation();
+           event.preventDefault();
+    			 insideDropzone = true;
     		},
     		dragleave: function(event){
-    			event.preventDefault();
+    			event.stopPropagation();
+          event.preventDefault();
     			insideDropzone = false;
     		}
   		});
@@ -74,8 +67,8 @@ var DropzoneManager = function () {
           this.on("addedfile", function(file){
             form.find('input, textarea, p, tag').removeClass('hidden');
             form.find('input[type="submit"]').attr('disabled','disabled');
-            $('body').unbind('dragenter', dragEnterHandler);
-            $('body').unbind('dragleave', dragLeaveHandler);
+            $(document).unbind('dragenter', dragEnterHandler);
+            $(document).unbind('dragleave', dragLeaveHandler);
             $element.removeClass('hidden');
           });
           this.on("removedfile", function(file){
@@ -113,20 +106,26 @@ var DropzoneManager = function () {
     };
 
 
-  	function dragEnterHandler(){
-  		$(this).find('input, textarea, p, tag').addClass('hidden');
-    	$(this).find(".dropzone").removeClass('hidden');
+  	function dragEnterHandler(event){
+      event.stopPropagation();
+      event.preventDefault();
+
+  		$("form").find('input, textarea, p, tag').addClass('hidden');
+    	$(".dropzone").removeClass('hidden');
     	counter++;
   	};
 
-  	function dragLeaveHandler(){
-  		counter--;
-  		if (counter == 0){
-  			if (!insideDropzone){
-  				$(this).find('input, textarea, p, tag').removeClass('hidden');
-    			$(this).find(".dropzone").removeClass('hidden');  				
-  			}
-    	}
+  	function dragLeaveHandler(event){
+      event.stopPropagation();
+      event.preventDefault();
+    		counter--;
+    		if (counter == 0){
+    			if (!insideDropzone){
+    				$("form").find('input, textarea, p, tag').removeClass('hidden');
+      			$(".dropzone").addClass('hidden');  				
+    			}
+      	}
+      
   	};
 
 
