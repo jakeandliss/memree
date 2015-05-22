@@ -35,7 +35,7 @@ gem 'aws-sdk', '< 2.0'
 gem "figaro"
 gem 'foundation-rails'
 gem "jquery-slick-rails"
-gem "paperclip", "~> 4.2"
+gem "paperclip"
 gem 'paperclip-av-transcoder'
 gem 'delayed_job_active_record'
 gem "daemons"

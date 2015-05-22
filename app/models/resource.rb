@@ -1,5 +1,6 @@
 class Resource < ActiveRecord::Base
   belongs_to :entry
+  after_create :reprocess_without_delay
 
 
 
@@ -8,20 +9,22 @@ class Resource < ActiveRecord::Base
     styles: lambda { |a| a.instance.check_file_type}, 
     default_url: "no_image.png", 
     processors: lambda { |a| a.processors},
-    only_process: lambda { |b| b.instance.process_in_foreground}
+    only_process: [:thumb]
 
   # # Don't forget to add name of the image that will be shown while the file is loading
-  process_in_background :avatar, only_process: [:video], processing_image_url: lambda { |a| a.instance.processing_image_path("vid-processing.jpg")}
+  process_in_background :avatar, {
+    only_process: [:original], 
+    processing_image_url: lambda { |a| a.instance.processing_image_path("vid-processing.jpg")}
+  }
 
 
-  def process_in_foreground
-    [:thumb, :original]
+
+  def reprocess_without_delay
+    unless is_video_type?
+      avatar.reprocess_without_delay! 
+      update(avatar_processing: false)
+    end
   end
-
-  def process_in_background_c
-     is_video_type? ? :original : ""
-  end
-
 
 
 
@@ -58,7 +61,7 @@ class Resource < ActiveRecord::Base
     elsif is_video_type?
       {
         :thumb => { :geometry => "300x300#", :format => 'jpg', :time => 5},
-        :video => {:geometry => "1024x576>", :format => 'mp4'}
+        :original => {:geometry => "1024x576>", :format => 'mp4'}
       }
     elsif is_doc_type?
       {}

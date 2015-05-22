@@ -311,7 +311,7 @@ DEPENDENCIES
   jquery-slick-rails
   magnific-popup-rails
   nokogiri
-  paperclip (~> 4.2)
+  paperclip
   paperclip-av-transcoder
   paperclip-compression
   pg
