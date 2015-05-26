@@ -614,19 +614,31 @@ Entry Audio
   font-size: 1rem !important;
 }
 
-#titles div#playing audio {
-  width: 100%;
+div#playing {
+  position: fixed;
+  bottom: 8%;
+  background: #444;
+  opacity: .85;
+  padding: 0 .25rem;
+  text-align: center;
 }
 
+div#playing span {
+  color: white;
+}
 
-#titles div#playing {
+div#playing {
   position: fixed;
   bottom: 1rem; 
   left: 1rem;
-  width: 23%;
+  width: 25%;
 }
 
-#titles #playing i.fa.fa-times.stop {
+div#playing audio {
+  width: 100%;
+}
+
+#playing i.fa.fa-times.stop {
   position: absolute;
   top: 0;
   right: 0;

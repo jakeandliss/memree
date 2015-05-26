@@ -377,10 +377,12 @@ Entry Audio
 #titles_mobile i.fa.fa-external-link-square.playing {
   font-size: 1rem !important;
 }
- div#playing span {
+
+#titles_mobile div#playing span {
   color: white;
 }
-div#playing {
+
+#titles_mobile div#playing {
   position: fixed;
   bottom: 8%;
   background: #444;
@@ -389,7 +391,7 @@ div#playing {
   text-align: center;
 }
 
-#playing i.fa.fa-times.stop {
+#titles_mobile #playing i.fa.fa-times.stop {
   position: absolute;
   bottom: 0;
   right: 0;

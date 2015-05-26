@@ -35,7 +35,7 @@ $ ->
 $ -> 
 	$('.playing').click (event) ->
 		event.preventDefault()
-		$(this).closest('.audio').attr('id', 'playing')
+		$(this).closest('div').attr('id', 'playing')
 		$('#playing').appendTo('body').removeClass('audio')
 		$('#playing i.playing').remove()
 		$('#playing i.stop').closest('a').show()
