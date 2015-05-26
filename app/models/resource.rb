@@ -60,8 +60,14 @@ class Resource < ActiveRecord::Base
       }
     elsif is_video_type?
       {
-        :thumb => { :geometry => "300x300#", :format => 'jpg', :time => 5},
-        :original => {:geometry => "1024x576>", :format => 'mp4'}
+        :thumb => { :geometry => "300x300#", :format => 'jpeg', :time => 5},
+         :original => {:geometry => "1024x576>", :format => 'mp4', 
+          convert_options: {
+            output: { 
+              b: "1000k"
+            }
+          }
+        }
       }
     elsif is_doc_type?
       {}
