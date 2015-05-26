@@ -25,7 +25,7 @@ Rails.application.configure do
  # config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
 
-  config.serve_static_files = false
+  config.serve_static_files = true
 
   #config.action_controller.asset_host = "d34oukadfdb4o8.cloudfront.net"
   config.assets.js_compressor = :uglifier

@@ -419,11 +419,6 @@ Entry Snippets
 #titles .header {
 }
 
-#titles .content {  
-  min-height: 8rem;
-}
-
-
 #titles.footer {
   margin-left: -1rem;
 }
@@ -511,6 +506,7 @@ ENTRY IMAGES
   -webkit-transition: all .4s ease-in-out;
   -ms-transition: all .4s ease-in-out;
   -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
 }
 
 #titles i.fa.fa-external-link-square {
