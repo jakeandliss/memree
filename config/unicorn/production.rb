@@ -1,5 +1,6 @@
 listen "127.0.0.1:8080"
 worker_processes 4
+user "deployer"
 working_directory "/home/deployer/memree/current"
 pid "/home/unicorn/pids/unicorn.pid"
 stderr_path "/home/unicorn/log/unicorn.log"
