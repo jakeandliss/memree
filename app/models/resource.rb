@@ -32,14 +32,8 @@ class Resource < ActiveRecord::Base
       /\Aaudio\/.*\Z/,
       /\Avideo\/.*\Z/, 
       /\Aimage\/.*\Z/, 
-      "application/pdf", 
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      "application/vnd.ms-excel",
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "application/msword",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      'text/plain'
-    ] #See paperclip.rb initializer for all formats
+      "application/pdf"
+    ] #See paperclip.rb initializer for other formats
 
 
   def processors
