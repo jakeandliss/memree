@@ -47,6 +47,8 @@ class Resource < ActiveRecord::Base
       [:thumbnail, :compression]
     elsif is_video_type?
       [:transcoder]
+    elsif is_audio_type?
+      [:transcoder]
     end
   end
 
@@ -64,7 +66,19 @@ class Resource < ActiveRecord::Base
          :original => {:geometry => "1024x576>", :format => 'mp4', 
           convert_options: {
             output: { 
-              b: "1000k"
+              'b:v' => "1000k",
+              'b:a' => '128k'
+              # :output => {'c:v' => 'libx264', vprofile: 'high', preset: 'medium', 'b:v' => '750k', maxrate: '750k', bufsize: '1500k', pix_fmt: 'yuv420p', flags: '+mv4+aic', threads: 'auto', 'b:a' => '128k', strict: '-2'}
+            }
+          }
+        }
+      }
+    elsif is_audio_type?
+      { 
+        :original => { :format => 'mp3',
+        convert_options: {
+            output: { 
+              'b:a' => '128k'
             }
           }
         }

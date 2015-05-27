@@ -92,7 +92,7 @@
 					<% if i.avatar_content_type.include? "audio" %>
 						<div class="audio">
 							<span><%= i.avatar_file_name %></span>
-							<%= audio_tag i.avatar.url, controls: true %>
+							<%= audio_tag i.avatar.url(:original), controls: true %>
 							<%= link_to '<i class="fa fa-external-link-square playing"></i>'.html_safe, '#', alt: "Click to play in sidebar", class: "playing" %>
 							<%= link_to '<i class="fa fa-times stop"></i>'.html_safe, '#', class: "hide" %>
 						</div>
