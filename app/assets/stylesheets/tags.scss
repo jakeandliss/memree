@@ -19,8 +19,9 @@ Journals Page
     margin:.5rem 0;
 }
 
-#journals ul {
-    margin: auto;
+#journals ul, form#new_tag {
+    border: 2px solid #eee;
+    margin-bottom: 0;
 }
 
 #journals #tag_submit {
@@ -29,6 +30,8 @@ Journals Page
 
 .nested_tags {
   margin-left: 30px;
+  margin-bottom: 1rem;
+  margin-top: -2px;
 }
 
 li .nested-tags-right{
