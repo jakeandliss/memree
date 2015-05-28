@@ -56,7 +56,7 @@ class Resource < ActiveRecord::Base
       }
     elsif is_video_type?
       {
-        :thumb => { :geometry => "300x300#", :format => 'jpg', :time => 5},
+        :thumb => { :geometry => "300x300", :format => 'jpg', :time => 5},
          :original => {:geometry => "1024x576>", :format => 'mp4', 
           convert_options: {
             output: { 
