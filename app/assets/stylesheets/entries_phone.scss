@@ -34,7 +34,7 @@ ul.icons {
   bottom: 0px;
   width: 100%;
   margin-bottom: 0px;
-  z-index: 100;
+  z-index: 10000;
 }
 
 
@@ -385,16 +385,19 @@ Entry Audio
 #titles_mobile div#playing {
   position: fixed;
   bottom: 8%;
+  left: 0;
   background: #444;
   opacity: .85;
   padding: 0 .25rem;
   text-align: center;
+  z-index: 50;
+  overflow: hidden;
 }
 
 #titles_mobile #playing i.fa.fa-times.stop {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  top: 0;
+  right: 5%;
   color: white;
   font-size: 1.5rem;
 }

@@ -611,7 +611,7 @@ Entry Audio
   font-size: 1rem !important;
 }
 
-div#playing {
+#titles div#playing {
   position: fixed;
   bottom: 8%;
   background: #444;
@@ -620,22 +620,22 @@ div#playing {
   text-align: center;
 }
 
-div#playing span {
+#titles div#playing span {
   color: white;
 }
 
-div#playing {
+#titles div#playing {
   position: fixed;
   bottom: 1rem; 
   left: 1rem;
   width: 25%;
 }
 
-div#playing audio {
+#titles div#playing audio {
   width: 100%;
 }
 
-#playing i.fa.fa-times.stop {
+#titles #playing i.fa.fa-times.stop {
   position: absolute;
   top: 0;
   right: 0;
