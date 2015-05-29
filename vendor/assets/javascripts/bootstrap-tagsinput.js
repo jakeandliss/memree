@@ -43,7 +43,7 @@
 
     this.$element.after(this.$container);
 
-    var inputWidth = (this.inputSize < 100 ? 100 : this.inputSize) + "%";
+    var inputWidth = "15rem";
     this.$input.get(0).style.cssText = "width: " + inputWidth;
     this.build(options);
   }

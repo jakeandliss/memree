@@ -291,23 +291,25 @@ textarea#wysiwyg {
 
 
 #titles .bootstrap-tagsinput{
-  width: 100%;
+  
 }
 
-#titles .bootstrap-tagsinput input{
+#titles .bootstrap-tagsinput input {
   background: #fff;
   box-shadow: none;
   border: 0;
   margin-bottom: 0;
+  padding-top: 0;
 }
 
 .bootstrap-tagsinput .tag {
   color: #fff;
   font-size: 1.1rem;
   border-radius: .3rem;
-  min-width: 24%;
+  min-width: 15%;
   margin: .2rem 0.1rem .5rem 0.1rem;
   background: $evendarker;
+  float: left;
 }
 
 .bootstrap-tagsinput .tag [data-role="remove"] {
