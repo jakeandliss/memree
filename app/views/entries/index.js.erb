@@ -24,11 +24,16 @@
 
   var tagName = '<%=params[:tag] ? params[:tag].downcase : "all journals"%>';
 
+
   if (tagName == "all journals"){
     $("#search .fa-close").hide();
+    $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
+    $('.bootstrap-tagsinput input[type="text"]').val('').trigger(enter);
   }
   else {
     $("#search .fa-close").show();
+    $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
+    $('.bootstrap-tagsinput input[type="text"]').val(tagName).trigger( "keypress", { which: 13 } );
   }
 
   $("#search-tag").html(tagName);
@@ -37,9 +42,7 @@
   if (!activeElement.is(":visible")){
     activeElement.parents("li").addClass("expanded");
   }
-
-
-
+ 
   
 
 <% if @entries.blank? %>
