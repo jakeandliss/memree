@@ -1,13 +1,28 @@
-<li>
-	<%= form_for @tag, remote: true do |f| %>
-	<div class="row">
-		<div class="medium-9 columns">
-			<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
-			<%= f.hidden_field :parent_id %>
-		</div>
-		<div class="action medium-3 columns">
-			<%= f.submit 'Save Journal', class: "button sml", remote: true %>
-		</div>
-	</div>
+<%= form_for @tag, remote: true do |f| %>
+	<ul>
+		<li>
+			<div class="row collapse">
+				<!-- <div class="medium-4 columns">
+					<div class="hide"><%= f.collection_select :parent_id, current_user.tags.all, :id, :name, :include_blank => "None" %>
+					</div>
+				</div> -->
+				<div class="medium-8 columns">
+					<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
+					<%= f.hidden_field :parent_id %>
+				</div>
+				
+				<div class="action medium-3 columns">
+					<%= f.submit 'Save Journal', class: "button expand", remote: true %>
+					<%= link_to "Cancel", '#', id: "cancel_#{@tag.id}" %>
+				</div>
+			</div>
+		</li>
+	</ul>
+	<script>
+	$('#cancel_<%= @tag.id %>').on('click', function(e) {
+                    e.preventDefault()
+    $('form#new_tag').remove();
+    $('a.add_new_journal').show();
+  	});
+	</script>
 <% end %>
-</li>

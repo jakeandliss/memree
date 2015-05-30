@@ -19,19 +19,44 @@ Journals Page
     margin:.5rem 0;
 }
 
-#journals ul, form#new_tag {
+#journals ul {
     border: 2px solid #eee;
     margin-bottom: 0;
+}
+
+#journals .journals li p {
+  float: right;
 }
 
 #journals #tag_submit {
 	display: none;
 }
 
-.nested_tags {
-  margin-left: 30px;
-  margin-bottom: 1rem;
+.new_journal form#new_tag  ul, .new_journal form#new_tag li {
+    border: none !important;
+    margin-left: 0 !important;
+}
+
+#journals form#new_tag ul {
+  border-left: 1px dashed #eee;
   margin-top: -2px;
+  border-bottom: none;
+  border-top: none;
+}
+
+#journals form#new_tag li {
+  border: 2px solid #eee;
+  margin: -2px -2px -2px 20px;
+}
+
+.nested_tags {
+  margin-left: 20px;
+  margin-top: -2px;
+  border-left: 1px dashed #eee;
+}
+
+div#sub-menu {
+  margin-top: 1rem;
 }
 
 li .nested-tags-right{

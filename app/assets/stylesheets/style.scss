@@ -44,14 +44,21 @@ Sitewide Styling
 }
 
 
-.hide{
+.hide {
   display: none;
 }
 
-.show{
+.show {
   display: block;
 }
 
 .hidden{
     display: none !important;
+}
+
+.no_background {
+  margin: 0 !important;
+  background: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }

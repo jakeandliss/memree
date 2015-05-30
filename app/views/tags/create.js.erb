@@ -1,2 +1,4 @@
-$('form#new_tag').before('<%= j render(@tag) %>').fadeIn(1300);
-$('form#new_tag')[0].reset();
+$('#tag_<%= @tag.parent_id %>').closest('ul').after('<%= j render(@tag) %>');
+$('#tag_<%= @tag.id %>').hide().fadeIn(1300);
+$('form#new_tag')[0].remove();
+$('#tag_<%= @tag.id %>').closest('ul').wrap('<div class="nested_tags"></div>');

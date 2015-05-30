@@ -1,4 +1,7 @@
 $('form#new_tag').remove();
 $('#tag_<%= params[:parent_id] %>').closest(".journals").after('<%= j render(partial: 'form') %>');
-$('#add_new_journal').show();
+$('#add_new_journal').show().css('display', 'inline-block');
 
+
+$('select#tag_parent_id').closest('div').show();
+$('a.add_parent').closest('div').hide();

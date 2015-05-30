@@ -5,10 +5,18 @@
 	 		
 	</div>
 	<div class="medium-8 columns white box-shadow">  
-		<div id="journals">
-			<h3>My Journals</h3>
-			<%= link_to 'New Journal', tags_path, id: "add_new_journal", class: "hide" %>
-			<%= render 'tags/form' %>
+		<div id="journals"> 
+			<div class="row">
+				<div class="small-8 columns">
+					<h3>My Journals</h3>
+				</div>
+				<div class="small-4 columns">
+					<%= link_to 'New Journal', '#', class: "add_new_journal button expand" %>
+				</div>
+			</div>
+			<div class="new_journal hide">
+				<%= render 'tags/form' %>
+			</div>
 			<div id="journal_added"></div>
 			<div id="sub-menu">
 				<%= nested_tags @tags %>

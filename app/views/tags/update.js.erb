@@ -1,2 +1,17 @@
-$('form#edit_tag_<%= @tag.id %>').before('<%= j render(@tag) %>');
-$('form#edit_tag_<%= @tag.id %>').remove();
+$('#tag_<%= @tag.parent_id %>').closest('ul').after('<%= j render(@tag) %>');
+$('#tag_<%= @tag.id %>').hide().fadeIn(1300);
+$('form#edit_tag_<%= @tag.id %>').closest('ul').remove();
+$('#tag_<%= @tag.id %>').closest('ul').wrap('<div class="nested_tags"></div>');
+
+var child = $('#tag_<%= @tag.child_ids.first %>').closest('.nested_tags');
+var parent = $('#tag_<%= @tag.id %>').closest('div');
+child.detach();
+child.appendTo(parent)
+$(parent).hide().fadeIn(1300);
+
+<% if @tag.parent_id.nil? %>
+$('div#sub-menu').prepend('<%= j render(@tag) %>');
+$('#tag_<%= @tag.id %>').css('margin-bottom', '-2px')
+$('#tag_<%= @tag.id %>').hide().fadeIn(1300);
+$('#tag_<%= @tag.child_ids.first %>').remove();
+<% end %> 
