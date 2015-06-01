@@ -27,12 +27,15 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn' 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'pg_search'
+
 gem "nokogiri"
 gem 'aws-sdk', '< 2.0'
 gem "figaro"
 gem 'foundation-rails'
 gem "jquery-slick-rails"
-gem "paperclip", "~> 4.2"
+gem "paperclip"
 gem 'paperclip-av-transcoder'
 gem 'delayed_job_active_record'
 gem "daemons"
