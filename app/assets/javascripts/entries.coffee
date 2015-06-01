@@ -4,10 +4,10 @@ $ ->
 
 
 $ ->
-  $('a#edit_journals').click (event) ->
+  $('a#edit_lables').click (event) ->
     event.preventDefault()
     $('#edit_form').toggle()
-    $('#journal_titles').toggle()
+    $('#lable_titles').toggle()
 
 $ ->
 	$('a#add_new').click (event) ->

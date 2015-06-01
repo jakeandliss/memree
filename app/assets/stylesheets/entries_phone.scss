@@ -63,11 +63,11 @@ User Info
 
 /*************************************
 
-Journal Tags
+label Tags
 
 **************************************/
 
-#titles_mobile #journal_titles a {
+#titles_mobile #label_titles a {
   color: #444;
   display:block;
   list-style-type: none;
@@ -75,30 +75,30 @@ Journal Tags
   border-radius: 3px; 
 }
 
-#titles_mobile #journal_titles li {
+#titles_mobile #label_titles li {
   list-style-type: none;  
   border-radius: 3px;
   margin-bottom: .2rem;
 }
 
-#titles_mobile #journal_titles ul {
+#titles_mobile #label_titles ul {
   margin: 1rem 0;
 }
 
 
-#titles_mobile #journal_titles a.opened .fa-caret-down{
+#titles_mobile #label_titles a.opened .fa-caret-down{
   display: inline;
 }
 
-#titles_mobile #journal_titles li.active {
+#titles_mobile #label_titles li.active {
   color: $salmon;
 } 
 
-#titles_mobile #journal_titles a.active{
+#titles_mobile #label_titles a.active{
   background: $salmon !important;
 }
 
-#titles_mobile #journal_titles li.root:nth-child {
+#titles_mobile #label_titles li.root:nth-child {
   background: white;
 }
 

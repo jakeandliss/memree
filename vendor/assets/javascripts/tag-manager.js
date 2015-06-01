@@ -39,6 +39,7 @@ var TagManager = function () {
 		// Build a subtree of the root nodes
 		buildSubtree(wrapperElement, tagStructure)
 		wrapperElement.find(".nested-tags-right").first().find(">li").addClass("root");
+		wrapperElement.find(".nested-tags-right").find(">li").addClass("collapsed");
 
 		// Close all root subtrees on click 
 		$(".root > a").click(function(){
@@ -70,7 +71,7 @@ var TagManager = function () {
 
 		// Open/Close a subtree on button click
 		$('a', parent).click(function(){
-			$(this).parent().toggleClass("expanded");
+			$(this).parent().toggleClass("expanded collapsed");
 		});
 
 		// Recursively build all child subtries

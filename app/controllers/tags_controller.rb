@@ -25,10 +25,10 @@ class TagsController < ApplicationController
   	@tag = current_user.tags.new(tag_params)
   	 respond_to do |format|
       if @tag.save 
-        format.html { redirect_to tags_path, notice: "Journal added successfully." }
+        format.html { redirect_to tags_path, notice: "Label added successfully." }
         format.js
       else
-        flash[:error] = "There was a problem adding your Journal."
+        flash[:error] = "There was a problem adding your label."
         render action: :new
       end
     end
@@ -37,11 +37,11 @@ class TagsController < ApplicationController
   def update
     if @tag.update_attributes(tag_params)
       respond_to do |format|
-        format.html { redirect_to titles_path, notice: "Journal updated successfully." }
+        format.html { redirect_to titles_path, notice: "Label updated successfully." }
         format.js
       end
     else
-      flash[:error] = "Your Journal could not be saved."
+      flash[:error] = "Your label could not be saved."
       render action: :edit
     end
   end

@@ -15,9 +15,9 @@
 
   
   // Highlight active eliments of the tag menu
-  $("#journal_titles .active").removeClass("active");
+  $("#label_titles .active").removeClass("active");
 
-  var activeElement = $('#journal_titles [data-tagname="<%=params[:tag]%>"]');
+  var activeElement = $('#label_titles [data-tagname="<%=params[:tag]%>"]');
   var activeTag = activeElement.parent();
   activeTag.addClass("active");
   activeElement.addClass("active");

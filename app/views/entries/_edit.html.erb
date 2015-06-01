@@ -1,7 +1,7 @@
 <%= form_for @entry, remote: true, html: { multipart: true, data: {dropzone_name: 'entry[image_ids][]'} }, authenticity_token: true  do |f| %>
     <div class="row">
 		<div class="small-6 columns">
-			<%= f.text_field :title, placeholder: "Title", class: "no_background", style: "border-bottom:1px solid #ccc;" %>
+			<%= f.text_field :title, placeholder: "Title this Entry", class: "no_background", style: "border-bottom:1px solid #ccc;" %>
 		</div>
 		<div class="small-6 columns">
 			<div id="current_date">
@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<%= f.text_area :content, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "What would you like to remember?", rows: 3, class: "no_background" %>
-	<%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals (separate with comma)", id: "edit_entry_all_tags" %>
+	<%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Labels", id: "edit_entry_all_tags" %>
 	<div class="edit_images">
 		<% @entry.resources.each do |i| %>
 			<% if i.avatar_content_type.include? "image" %>

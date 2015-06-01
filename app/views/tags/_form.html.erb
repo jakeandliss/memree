@@ -7,12 +7,12 @@
 					</div>
 				</div> -->
 				<div class="medium-8 columns">
-					<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Journal" %></p>
+					<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Label" %></p>
 					<%= f.hidden_field :parent_id %>
 				</div>
 				
 				<div class="action medium-3 columns">
-					<%= f.submit 'Save Journal', class: "button expand", remote: true %>
+					<%= f.submit 'Save Label', class: "button expand", remote: true %>
 					<%= link_to "Cancel", '#', id: "cancel_#{@tag.id}" %>
 				</div>
 			</div>
@@ -22,7 +22,7 @@
 	$('#cancel_<%= @tag.id %>').on('click', function(e) {
                     e.preventDefault()
     $('form#new_tag').remove();
-    $('a.add_new_journal').show();
+    $('a.add_new_label').show();
   	});
 	</script>
 <% end %>

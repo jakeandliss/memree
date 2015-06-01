@@ -19,8 +19,8 @@ class UsersController < ApplicationController
           render  "update_profile"
         when "password"
           render "update_password"
-        when "journals"
-          render "update_journals"
+        when "labels"
+          render "update_labels"
         else
           render :action => :show
         end

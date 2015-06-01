@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 
 
-  get 'journals/new', to: 'tags#new', as: "new_tag"
-  resources :tags, :path => "journals"
+  get 'labels/new', to: 'tags#new', as: "new_label"
+  resources :tags, :path => "labels"
 
   
   get "/login" => "user_sessions#new", as: :login

@@ -5,19 +5,19 @@
 	 		
 	</div>
 	<div class="medium-8 columns white box-shadow">  
-		<div id="journals"> 
+		<div id="labels"> 
 			<div class="row">
 				<div class="small-8 columns">
-					<h3>My Journals</h3>
+					<h3>My MemryBook</h3>
 				</div>
 				<div class="small-4 columns">
-					<%= link_to 'New Journal', '#', class: "add_new_journal button expand" %>
+					<%= link_to 'New Label', '#', class: "add_new_label button expand" %>
 				</div>
 			</div>
-			<div class="new_journal hide">
+			<div class="new_label hide">
 				<%= render 'tags/form' %>
 			</div>
-			<div id="journal_added"></div>
+			<div id="label_added"></div>
 			<div id="sub-menu">
 				<%= nested_tags @tags %>
 			</div>

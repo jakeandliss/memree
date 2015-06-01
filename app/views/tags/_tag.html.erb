@@ -1,13 +1,13 @@
 <% unless tag.id.nil? %>
-	<ul class="clearfix journals">
+	<ul class="clearfix labels">
 		<li id="tag_<%= tag.id %>">
 			<div class="row">
 				<div class="small-9 columns">
 			<h4><%= tag.name %></h4>
 			</div>
 				<div class="small-3 columns">
-					<p><%= link_to '<i class="fa fa-plus-square fa-fw"></i>'.html_safe, new_tag_path(:parent_id => tag), :title => "Add Subjournal", remote: true %>
-					<%= link_to '<i class="fa fa-pencil-square-o fa-fw"></i>'.html_safe, edit_tag_path(tag), remote: true %> <%= link_to '<i class="fa fa-trash-o fa-fw"></i>'.html_safe, tag_path(tag), method: :delete, data: {confirm: 'This will delete this journal and all subjournals. Are you sure you want to delete these items?' }, remote: true %></p>
+					<p><%= link_to '<i class="fa fa-plus-square fa-fw"></i>'.html_safe, new_tag_path(:parent_id => tag), :title => "Add Sublabel", remote: true %>
+					<%= link_to '<i class="fa fa-pencil-square-o fa-fw"></i>'.html_safe, edit_tag_path(tag), remote: true %> <%= link_to '<i class="fa fa-trash-o fa-fw"></i>'.html_safe, tag_path(tag), method: :delete, data: {confirm: 'This will delete this label and all sublabels. Are you sure you want to delete these items?' }, remote: true %></p>
 				</div>
 			</div>
 		</li>

@@ -8,43 +8,43 @@
 
 /********************************
 
-Journals Page
+Labels Page
 
 ********************************/
 
-#journals li {
+#labels li {
     list-style: none;
     background-color: #fff;
     padding: 0 1rem;
     margin:.5rem 0;
 }
 
-#journals ul {
+#labels ul {
     border: 2px solid #eee;
     margin-bottom: 0;
 }
 
-#journals .journals li p {
+#labels .labels li p {
   float: right;
 }
 
-#journals #tag_submit {
+#labels #tag_submit {
 	display: none;
 }
 
-.new_journal form#new_tag  ul, .new_journal form#new_tag li {
+.new_label form#new_tag  ul, .new_label form#new_tag li {
     border: none !important;
     margin-left: 0 !important;
 }
 
-#journals form#new_tag ul {
+#labels form#new_tag ul {
   border-left: 1px dashed #eee;
   margin-top: -2px;
   border-bottom: none;
   border-top: none;
 }
 
-#journals form#new_tag li {
+#labels form#new_tag li {
   border: 2px solid #eee;
   margin: -2px -2px -2px 20px;
 }
@@ -67,21 +67,9 @@ li .nested-tags-right{
 	display: block;
 }
 
-.toggable i {
-  float: right;
-  margin-top: .35rem;
-  transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
-}
 
-a.toggable.active i {
+
+.expanded i {
   float: right;
   margin-top: .35rem;
   transform: rotate(0deg);
@@ -89,6 +77,20 @@ a.toggable.active i {
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.collapsed i {
+  float: right;
+  margin-top: .35rem;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
   -webkit-transition: .25s ease-in-out;
   -moz-transition: .25s ease-in-out;
   -o-transition: .25s ease-in-out;

@@ -1,7 +1,7 @@
 <%= form_for @entry, validate: true, remote: true, html: { multipart: true, data: {dropzone_name: 'entry[resource_ids][]'} }, authenticity_token: true  do |f| %>
 	<div class="row">
 		<div class="small-6 columns">
-			<%= f.text_field :title, placeholder: "Title", class: "no_background" %>
+			<%= f.text_field :title, placeholder: "Title this Entry", class: "no_background" %>
 		</div>
 		<div class="small-6 columns">
 			<div id="current_date">
@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<%= f.text_area :content, id: "wysiwyg", placeholder: "What would you like to remember?", rows: 3, class: "no_background" %>
-	<%= f.text_field :all_tags, class: "typeahead", placeholder: "Journals (separate with comma)", class: "no_background" %>
+	<%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Labels", class: "no_background" %>
 	<div class="row">
 		<div class="click_to_upload pointer medium-8 columns">
 			 <p><i class="fa fa-camera fa-lg fa-fw"></i> <i class="fa fa-video-camera fa-lg fa-fw"></i> <i class="fa fa-music fa-lg fa-fw"></i> <i class="fa fa-file-text fa-lg fa-fw"></i>(Drag or click to upload)</p>

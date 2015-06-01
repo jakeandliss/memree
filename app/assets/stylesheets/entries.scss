@@ -37,18 +37,18 @@ User Info
 
 /*************************************
 
-Journal Tags
+label Tags
 
 **************************************/
 
-#titles #journal_titles {
+#titles #label_titles {
   margin: 5px 0;
   padding: 5px;
   border-radius: 5px;
   text-align: right;
 }
 
-#titles #journal_titles a {
+#titles #label_titles a {
   color: #444;
   display:block;
   list-style-type: none;
@@ -58,24 +58,24 @@ Journal Tags
 
 
 
-#titles #journal_titles a:focus { outline: none !important; }
+#titles #label_titles a:focus { outline: none !important; }
 
-#titles #journal_titles li {
+#titles #label_titles li {
   list-style-type: none;  
   border-radius: 3px;
     margin-bottom: .2rem;
 }
 
 
-#titles #journal_titles a.opened .fa-caret-down{
+#titles #label_titles a.opened .fa-caret-down{
   display: inline;
 }
 
-#titles #journal_titles li.active {
+#titles #label_titles li.active {
   color: $salmon;
 } 
 
-#titles #journal_titles a.active{
+#titles #label_titles a.active{
   background: $salmon !important;
 }
 
@@ -131,7 +131,7 @@ Journal Tags
     border-collapse: separate;
 }
 
-#titles #journal_titles li.root:nth-child {
+#titles #label_titles li.root:nth-child {
   background: #fff;
 }
 

@@ -15,17 +15,17 @@
 
   
   // Highlight active eliments of the tag menu
-  $("#journal_titles .active").removeClass("active");
+  $("#label_titles .active").removeClass("active");
 
-  var activeElement = $('#journal_titles [data-tagname="<%=params[:tag]%>"]');
+  var activeElement = $('#label_titles [data-tagname="<%=params[:tag]%>"]');
   var activeTag = activeElement.parent();
   activeTag.addClass("active");
   activeElement.addClass("active");
 
-  var tagName = '<%=params[:tag] ? params[:tag].downcase : "all journals"%>';
+  var tagName = '<%=params[:tag] ? params[:tag].downcase : "all labels"%>';
 
 
-  if (tagName == "all journals"){
+  if (tagName == "all labels"){
     $("#search .fa-close").hide();
     $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
     $('.bootstrap-tagsinput input[type="text"]').val('').trigger(enter);

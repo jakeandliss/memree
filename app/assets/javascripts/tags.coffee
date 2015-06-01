@@ -1,5 +1,5 @@
 $ ->
-    $('a.add_new_journal').click (event) ->
+    $('a.add_new_label').click (event) ->
     	 event.preventDefault()
-    	 $('.new_journal').show()
-    	 $('a.add_new_journal').hide()
+    	 $('.new_label').toggle()
+    	 $('a.add_new_label').toggle()

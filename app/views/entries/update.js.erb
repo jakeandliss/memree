@@ -4,15 +4,14 @@ $('#entry_<%= @entry.id %>').before('<%= j render(@entry) %>');
 $('#entry_<%= @entry.id %>').hide().fadeIn(1300);
 $("#success").fadeIn(500).html("Entry updated successfully").delay(2000).fadeOut(500);
 
-Dropzone.forElement("#entry_<%= @entry.id %> .dropzone").removeAllPreviewFiles(true);
 
 $('.entry_image_thumbnails').each(function( index ) {
-		$(this).slick({
-		  initialSlide: $(this).find("img").length > 1 ? 0 : -1,
-		  slidesToShow: 1,
-		  centerPadding: "25%",
-		  focusOnSelect: true,
-		  arrows: false,
-		  centerMode: true,
-		});
+	$(this).slick({
+	  initialSlide: $(this).find("img").length > 1 ? 0 : -1,
+	  slidesToShow: 1,
+	  centerPadding: "25%",
+	  focusOnSelect: true,
+	  arrows: false,
+	  centerMode: true,
 	});
+});
