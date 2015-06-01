@@ -7,11 +7,11 @@
 					</div>
 				</div> -->
 				<div class="medium-8 columns">
-					<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Label" %></p>
+					<p><%= f.text_field :name, id: "name_field", placeholder: "Add New Label", class: "no_background" %></p>
 					<%= f.hidden_field :parent_id %>
 				</div>
 				
-				<div class="action medium-3 columns">
+				<div class="action medium-4 columns">
 					<%= f.submit 'Save Label', class: "button expand", remote: true %>
 					<%= link_to "Cancel", '#', id: "cancel_#{@tag.id}" %>
 				</div>

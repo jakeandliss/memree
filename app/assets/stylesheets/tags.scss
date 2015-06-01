@@ -49,6 +49,10 @@ Labels Page
   margin: -2px -2px -2px 20px;
 }
 
+#labels input#tag_name, #labels input#name_field {
+  border-bottom: 2px solid #eee !important;
+}
+
 .nested_tags {
   margin-left: 20px;
   margin-top: -2px;
