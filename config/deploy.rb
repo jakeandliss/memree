@@ -38,9 +38,6 @@ server '104.236.57.97', :web, :app, :db, primary: true , ssh_options: {
     user: 'deployer',
 }
 
-after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
-after 'deploy:restart', 'unicorn:restart'   # app preloaded
-after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
 
 after 'deploy:restart', "figaro:setup"
 after 'deploy:restart', "figaro:finalize"
@@ -56,3 +53,8 @@ namespace :figaro do
     run "ln -sf #{shared_path}/application.yml #{release_path}/config/application.yml"
   end
 end
+
+
+after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
+after 'deploy:restart', 'unicorn:restart'   # app preloaded
+after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
