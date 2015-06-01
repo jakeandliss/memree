@@ -9,7 +9,7 @@
 							<%= image_tag current_user.avatar.url(:avatar) %>
 							<%#= image_tag current_user.gravatar_url %>
 						</div>
-						<div class="medium-7 columns ">
+						<div class="medium-7 columns">
 							<p><%= current_user.full_name  %><br />
 								<%= link_to "Edit Profile", edit_user_path(current_user, form: "profile") %>
 							</p>
@@ -25,9 +25,11 @@
 					<div id="tag-list">
 						
 					</div>
+					
 				</ul>
+				<%= link_to "Edit Labels", tags_path, class: "edit left" %>
+				<%= render 'search' %>
 			</div>
-			<%= render 'search' %>
 			<div id="playing_area"></div>
 		</div>
 		<div class="medium-9 columns">

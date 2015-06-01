@@ -18,7 +18,7 @@ User Info
   float: right;
 }
 
-#titles .avatar a {
+#titles .avatar a, #titles a.edit {
   text-align: left;
   color: #444;
   text-decoration: underline;
@@ -56,6 +56,9 @@ label Tags
   border-radius: 3px; 
 }
 
+#titles #label_titles ul {
+  margin: 0;
+}
 
 
 #titles #label_titles a:focus { outline: none !important; }
@@ -79,11 +82,39 @@ label Tags
   background: $salmon !important;
 }
 
+#titles #label_titles li.root:nth-child {
+  background: #fff;
+}
+
+#tag-list > div > .root > a {
+  background: #fff;
+}
+
+
+
+/*************************************
+
+Search
+
+**************************************/
+
+
+#titles .fa-search:hover {
+
+}
+
+#search-tag {
+  font-weight: bold;
+}
+
+
 .search {
   display: inline-block;
 }
 
-
+#search p {
+  text-align: left;
+}
 
 #search .form-control {
     display: block;
@@ -104,10 +135,8 @@ label Tags
 
 }
 
-
-
-#search p{
-	margin-bottom: 5px;
+#search p {
+  margin-bottom: 5px;
 }
 
 .input-group-addon, .input-group-btn, .input-group .form-control {
@@ -129,31 +158,6 @@ label Tags
     position: relative;
     display: table;
     border-collapse: separate;
-}
-
-#titles #label_titles li.root:nth-child {
-  background: #fff;
-}
-
-#tag-list > div > .root > a{
-  background: #fff;
-}
-
-
-
-/*************************************
-
-Search
-
-**************************************/
-
-
-#titles .fa-search:hover {
-
-}
-
-#search-tag{
-  font-weight: bold;
 }
 
 

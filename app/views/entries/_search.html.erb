@@ -1,4 +1,4 @@
-<i class="fa fa-search right pointer"></i>
+<i class="fa fa-search right pointer" style="padding-top:.3rem;"></i>
 <div class="search hide white box-shadow" id="search">
 	
 	<p> 
@@ -22,7 +22,7 @@
 
 	var tagName = $("#tag-list a.active").data("tagname");
 	if (tagName == undefined){
-		tagName = "all labels";
+		tagName = "all entries";
 		$("#search .fa-close").hide();
 	}
 
@@ -30,7 +30,7 @@
   	{
   		var tag = $("#tag-list a.active").data("tagname");
 
-  		if ($("#search-tag").text() == "all labels"){
+  		if ($("#search-tag").text() == "all entries"){
   			tag = undefined;
   		}
 
@@ -53,7 +53,7 @@
 
 	$("#search .fa-close").click(function(){
 		$("#search .fa-close").hide();
-		$("#search-tag").html("all labels");
+		$("#search-tag").html("all entries");
 		sendData();
 	})
 
