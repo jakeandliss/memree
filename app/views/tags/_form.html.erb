@@ -19,10 +19,11 @@
 		</li>
 	</ul>
 	<script>
-	$('#cancel_<%= @tag.id %>').on('click', function(e) {
-                    e.preventDefault()
-    $('form#new_tag').remove();
-    $('a.add_new_label').show();
-  	});
+		$('#cancel_<%= @tag.id %>').on('click', function(e) {
+	                    e.preventDefault()
+	    $('form#new_tag').remove();
+	    $('a.add_new_label').show();
+	    $('#new_label').removeClass('hide');
+	  	});
 	</script>
 <% end %>

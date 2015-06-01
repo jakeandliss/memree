@@ -1,7 +1,11 @@
 $('form#new_tag').remove();
+<% if params[:parent_id].nil? %>
+$('#label_added').before('<%= j render(partial: 'form') %>');
+$('form#new_tag li').css('margin', '0');
+$('#new_label').addClass('hide');
+<% else %>
 $('#tag_<%= params[:parent_id] %>').closest(".labels").after('<%= j render(partial: 'form') %>');
-$('#add_new_label').show().css('display', 'inline-block');
-
 
 $('select#tag_parent_id').closest('div').show();
 $('a.add_parent').closest('div').hide();
+<% end %>
