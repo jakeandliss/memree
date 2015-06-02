@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        UserMailer.signup_confirmation(@user).deliver
+        ApplicationMailer.signup_confirmation(@user).deliver
         session[:user_id] = @user.id
         format.html { redirect_to titles_path, success: 'Thanks for signing up!' }
         format.json { render action: 'show', status: :created, location: @user }
