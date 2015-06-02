@@ -3,7 +3,7 @@
 		<li id="tag_<%= tag.id %>">
 			<div class="row">
 				<div class="small-7 columns">
-			<h2><%= tag.name %></h2>
+			<h4><%= tag.name %></h4>
 			</div>
 				<div class="small-5 columns">
 					<p><%= link_to '<i class="fa fa-plus-square fa-fw"></i>'.html_safe, new_tag_path(:parent_id => tag), :title => "Add Sublabel", remote: true %>

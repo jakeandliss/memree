@@ -69,7 +69,7 @@ class Resource < ActiveRecord::Base
       }
     elsif is_audio_type?
       { 
-        :original => { :format => 'mp3',
+        :original => { :format => 'aac',
         convert_options: {
             output: { 
               'b:a' => '128k'
