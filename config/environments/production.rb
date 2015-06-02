@@ -1,4 +1,4 @@
-Rails.application.configure do
+dRails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -78,4 +78,5 @@ Rails.application.configure do
 
   # for devise
   config.action_mailer.default_url_options = { host: 'www.memrybook.com' }
+   config.action_mailer.delivery_method = :sendmail
 end
