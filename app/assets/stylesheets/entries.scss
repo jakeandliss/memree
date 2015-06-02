@@ -192,13 +192,13 @@ Entry Form
   margin-bottom: 0;
 }
 
-#titles #new_date {
+#titles #new_date, #titles .new_date  {
   display: none;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 0;
+  padding-left: 0;;
 }
 
-#titles a#change_date {
+#titles a#change_date, #titles a.change_date {
   margin-top: -.5rem;
   color: #ccc;
   float: right;

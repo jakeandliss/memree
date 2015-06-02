@@ -5,9 +5,9 @@
 		</div>
 		<div class="small-6 columns">
 			<div class="current_date">
-				<p><a href="#" class="change_date"><%= Date.today.strftime('%B %e, %Y') %></a></p>
+				<p><a href="#" class="change_date"><%= @entry.title_date.strftime('%B %e, %Y') %></a></p>
 			</div>
-			<div class="new_date columns hide">
+			<div class="new_date">
 				<%= f.date_select :title_date, :order => [:day, :month, :year], :start_year => 1900 %>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 		</div>
 		<div class="action medium-4 columns">
 			 <%= f.submit 'Save Entry', class: "button expand" %>
-			 <%= link_to "Cancel", '#', id: "cancel_#{@entry.id}", class: "right", style: "padding-right:.5rem;" %>
+			 <%= link_to "Cancel", '#', class: "cancel_edit right", style: "padding-right:.5rem;" %>
 		</div>
 	</div>
 	<div class="dropzone dropzone-custom hidden">
@@ -75,8 +75,8 @@
   }
 </script>
 <script>
-$('#cancel_<%= @entry.id %>').on('click', function(e) {
-                    e.preventDefault()
+$('#entry_<%= @entry.id %> .cancel_edit').on('click', function(e) {
+         e.preventDefault()
     $('#entry_<%= @entry.id %> .header').show();
     $('#entry_<%= @entry.id %> .content').show();
     $('#entry_<%= @entry.id %> .footer').show();
@@ -85,7 +85,7 @@ $('#cancel_<%= @entry.id %>').on('click', function(e) {
   })
 </script>
 <script>
-$('.change_date').on('click', function(e) {
+$('#entry_<%= @entry.id %> .change_date').on('click', function(e) {
 	e.preventDefault();
 	$(this).closest('div').next('div').closest('.new_date').toggle();
 	$(this).closest('.current_date').toggle();
