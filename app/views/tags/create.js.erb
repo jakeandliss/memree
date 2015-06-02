@@ -1,4 +1,11 @@
 $('#tag_<%= @tag.parent_id %>').closest('ul').after('<%= j render(@tag) %>');
 $('#tag_<%= @tag.id %>').hide().fadeIn(1300);
-$('form#new_tag')[0].remove();
+$('form#new_tag').remove();
 $('#tag_<%= @tag.id %>').closest('ul').wrap('<div class="nested_tags"></div>');
+
+<% if @tag.parent_id.nil? %>
+$('div#sub-menu').prepend('<%= j render(@tag) %>');
+$('#tag_<%= @tag.id %>').css('margin-bottom', '-2px').hide().fadeIn(1300);
+$('form#new_tag').remove();
+$('#new_label').removeClass('hide');
+<% end %> 
