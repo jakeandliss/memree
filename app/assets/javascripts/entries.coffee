@@ -24,13 +24,12 @@ $ ->
 	  $('#current_date').toggle()
 	  $('#new_date').toggle()
 
-
-
 $ ->
 	$('i.fa-search').click (event) ->
 	  event.preventDefault()
 	  $('i.fa-search').hide()
-	  $('.search').css("display", "inline-block");
+	  $('.search').removeClass('hide')
+	  $('.edit').removeClass('left')
 
 $ -> 
 	$('.playing').click (event) ->

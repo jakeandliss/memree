@@ -16,7 +16,7 @@
 	</div> -->
 	<div class="row small-uncollapse">
 		<div class="columns">
-			<div id="label_titles">
+			<div id="label_titles" class="clearfix">
 				<ul>
 					<li class="<%= 'active' if current_page?(entries_path) %>">
 						<%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Entries'.html_safe, entries_path, remote: true %>
@@ -24,6 +24,9 @@
 					<div id="tag-list">
 						
 					</div>
+					<div class="clearfix"><%= link_to "Edit Labels", tags_path, class: "edit left" %>
+					<%= render 'search' %>
+				</div>
 				</ul>
 			</div>
 			<%#= render 'search' %>

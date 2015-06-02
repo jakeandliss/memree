@@ -42,7 +42,7 @@
 					<% entry.resources.each do |i| %>
 						<% if i.avatar_content_type.present? && (i.avatar_content_type.include? "image") %>
 							<div><%= image_tag i.avatar.url(:thumb) %>
-								<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url, class: "light_#{entry.id} mfp-image" %>
+								<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url(:thumb), class: "light_#{entry.id} mfp-image" %>
 							</div>
 						<% elsif (i.avatar_content_type.present? && (i.avatar_content_type.include? "video") && (i.avatar_content_type.exclude? "image")) %>
 							<div><%= image_tag i.avatar.url(:thumb) %>

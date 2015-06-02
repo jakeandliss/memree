@@ -11,8 +11,8 @@
 				<ul class="right">
 					<% if user_signed_in? %>
 						<li class="active"> <%= link_to 'Entries', entries_path %></li>
-						<li class="active"><%= link_to 'Profile', current_user %>
 						<li class="active"><%= link_to 'Labels', tags_path %></li>
+						<li class="active"><%= link_to 'Profile', current_user %>
 						<li class="active"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
 					<% else %>
 						<li class="active"><a href="/about">About</a></li>

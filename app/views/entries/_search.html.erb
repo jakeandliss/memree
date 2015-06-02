@@ -1,21 +1,20 @@
 <i class="fa fa-search right pointer" style="padding-top:.3rem;"></i>
-<div class="search hide white box-shadow" id="search">
-	
-	<p> 
-		Search in 
-		<span id="search-tag"></span>
-		<i class="fa fa-close"></i>
-	</p>
-	<input name="query" class="form-control" placeholder="Start typing.."></input>
-	<br />
+<div class="search hide white box-shadow">
+	<div id="search">
+		<p> 
+			Search in 
+			<span id="search-tag"></span>
+			<i class="fa fa-close"></i>
+		</p>
+		<input name="query" class="form-control" placeholder="Start typing.."></input>
+		<br />
 
-	<p> Search dates: </p>
-	<div class="input-daterange input-group" id="datepicker">
-	    <input type="text" class="input-sm form-control" name="start" placeholder="Beginning Date:"/>
-	    <input type="text" class="input-sm form-control" name="finish" value="<%=  Date.current.strftime("%d %B %Y") %>"/>
+		<p> Search dates: </p>
+		<div class="input-daterange input-group" id="datepicker">
+		    <input type="text" class="input-sm form-control" name="start" placeholder="Beginning Date:"/>
+		    <input type="text" class="input-sm form-control" name="finish" value="<%=  Date.current.strftime("%d %B %Y") %>"/>
+		</div>
 	</div>
-
-
 </div>
 
 <script>
