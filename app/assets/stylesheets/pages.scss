@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #home {
-  background: url("dad.jpg") center;
+  background: asset_url("dad.jpg") center;
   background-size: cover;
   height: 100%;
 }
@@ -75,16 +75,16 @@
 }
 
 #home li#facebook {
-  background: url("social/facebook.png") no-repeat;
+  background: asset_url("social/facebook.png") no-repeat;
 
 }
 
 #home li#twitter {
-  background: url("social/twitter.png") no-repeat;
+  background: asset_url("social/twitter.png") no-repeat;
 }
 
 #home li#instagram {
-  background: url("social/instagram.png") no-repeat;
+  background: asset_url("social/instagram.png") no-repeat;
 }
 
 #home .popup_title {
