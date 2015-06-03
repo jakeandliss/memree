@@ -45,14 +45,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'memrybook.com' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.smtp_settings = {
-    address: "smtp.zoho.com",
-    port: 465,
-    domain: "memrybook.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "info@memrybook.com"],
-    password: "JandL1023"]
-  }
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.zoho.com",
+  #   port: 465,
+  #   domain: "memrybook.com",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: ENV["info@memrybook.com"],
+  #   password: ENV["JandL1023"]
+  # }
 
 end
