@@ -1,6 +1,8 @@
 class Entry < ActiveRecord::Base
 	belongs_to :user
 	
+	has_many :entry_shareable
+	has_many :shared_users, through: :entry_shareable, source: :user
 	has_many :taggings
 	has_many :tags, -> { uniq }, through: :taggings, :dependent => :destroy
 	has_many :resources, dependent: :destroy
@@ -21,25 +23,37 @@ class Entry < ActiveRecord::Base
 	pg_search_scope :text_search, against: [:title, :content], using: {tsearch: {dictionary: "english"}}
 
 
-	# Add tags for a new title
-	def add_tags(tag_names="")
-		tag_names.split(',').map do |tag_name|
-			if tag = user.tags.find_by(name: tag_name.strip)
-				taggings.find_or_create_by(tag_id: tag.id, entry_id: id)
-			else
-				tags.find_or_create_by(name: tag_name.strip, user_id: user_id)
-			end
-		end
-	end
-	# def add_tags(names)
-	# 	  self.tags = names.split(",").map do |name|
- #      		Tag.where(name: name.strip).first_or_create!
- #      	end
-	# end
-
-	# Get names of all tags related to this title
+	# Get names of all tags related to this entry
 	def all_tags
 		tags.map(&:name).join(", ")
+	end
+
+	# Add tags for a new entry
+	def add_tags(names)
+		  self.tags = names.split(",").map do |name|
+      		Tag.where(name: name.strip).first_or_create!
+      	end
+	end
+		# def add_tags(tag_names="")
+	# 	tag_names.split(',').map do |tag_name|
+	# 		if tag = user.tags.find_by(name: tag_name.strip)
+	# 			taggings.find_or_create_by(tag_id: tag.id, entry_id: id)
+	# 		else
+	# 			tags.find_or_create_by(name: tag_name.strip, user_id: user_id)
+	# 		end
+	# 	end
+	# end
+
+	# Get ids of all users related to this entry
+	def all_users
+		shared_users.map(&:id).join(", ")
+	end
+
+	# Add users for a new entry
+	def add_users(ids)
+		  self.shared_users = ids.split(",").map do |id|
+      		User.where(id: id.strip).first_or_create!
+      	end
 	end
 
 	# Find all titles whish has a specified name

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :entries do
     resources :resources, only: [:create, :destroy]
     get :tag_list, on: :collection
+    get :user_list, on: :collection
   end
   
 

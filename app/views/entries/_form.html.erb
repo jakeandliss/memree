@@ -14,6 +14,7 @@
 	</div>
 	<%= f.text_area :content, id: "wysiwyg", placeholder: "What would you like to remember?", rows: 3, class: "no_background" %>
 	<%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Labels", class: "no_background" %>
+	<%= f.text_field :all_users, class: "typeahead", placeholder: "Share", class: "no_background" %>
 	<div class="row">
 		<div class="click_to_upload pointer medium-8 columns">
 			 <p><i class="fa fa-camera fa-lg fa-fw"></i> <i class="fa fa-video-camera fa-lg fa-fw"></i> <i class="fa fa-music fa-lg fa-fw"></i> <i class="fa fa-file-pdf-o fa-lg fa-fw"></i>(Drag or click to upload)</p>
@@ -35,12 +36,25 @@
 	dropzone.initialize($("#new_entry .dropzone")[0])
 </script>
 <script type="text/javascript">
+// 	$(function(){
+// 		//$("#new_entry .dropzone").dropzone({url: "/resources", paramName: "resource[avatar]"});
+// 		$('#entry_all_tags').tagsinput({
+// 			typeahead: {
+// 				source: function(query) {
+// 					return $.get('<%= tag_list_entries_url %>'+'?text='+query);
+// 				}
+// 			}
+// 		});
+		
+// 	});
+// </script>
+<script type="text/javascript">
 	$(function(){
 		//$("#new_entry .dropzone").dropzone({url: "/resources", paramName: "resource[avatar]"});
-		$('#entry_all_tags').tagsinput({
+		$('#entry_all_users').tagsinput({
 			typeahead: {
 				source: function(query) {
-					return $.get('<%= tag_list_entries_url %>'+'?text='+query);
+					return $.get('<%= user_list_entries_url %>'+'?text='+query);
 				}
 			}
 		});

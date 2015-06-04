@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510181413) do
+ActiveRecord::Schema.define(version: 20150603220520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20150510181413) do
   end
 
   add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
+
+  create_table "entry_shareables", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "entry_id"
+  end
+
+  add_index "entry_shareables", ["entry_id"], name: "index_entry_shareables_on_entry_id", using: :btree
+  add_index "entry_shareables", ["user_id"], name: "index_entry_shareables_on_user_id", using: :btree
 
   create_table "resources", force: :cascade do |t|
     t.integer  "imageable_id"

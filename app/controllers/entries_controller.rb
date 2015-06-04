@@ -4,9 +4,9 @@ class EntriesController < ApplicationController
   before_filter :check_for_mobile, :only => [:index, :edit, :update, :create, :new]
 
   def index
-    @entry = current_user.entries.new(:title_date => Date.today)
+    @entry = current_user.entries.build(:title_date => Date.today)
     @tags = current_user.tags(:parent_id => params[:parent_id])
-    
+    @shared_entry = current_user.entry_shareable.includes(:entry, :user)
     # if parametr "tag" exists retrieve entries with specified tag, otherwise retrieve all tags belonging to current user
     if params[:tag]
       @tag = Tag.find_by(name: params[:tag])
@@ -53,7 +53,7 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.new(entry_params)
     
     respond_to do |format|
-      if @entry.save && @entry.add_tags(params[:entry][:all_tags])
+      if @entry.save && @entry.add_tags(params[:entry][:all_tags]) && @entry.add_users(params[:entry][:all_users])
         format.html { redirect_to entries_path, notice: "Entry was created succesfully" }
         format.js 
       else
@@ -90,6 +90,11 @@ class EntriesController < ApplicationController
 
   def tag_list
     tags = params[:text] ? current_user.tags.where("lower(name) LIKE ?", "%#{params[:text].downcase}%").map(&:name) : current_user.tags.all.map(&:name)
+    render json: tags
+  end
+
+  def user_list
+    tags = params[:text] ? User.where("lower(name) LIKE ?", "%#{params[:text].downcase}%").map(&:name) : User.all.map(&:name)
     render json: tags
   end
 
