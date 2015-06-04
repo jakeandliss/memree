@@ -7,4 +7,9 @@ class ApplicationMailer < ActionMailer::Base
   	mail to: user.email, subject: "Welcome to MemryBook"
   end
 
+  def signup_notification(user)
+  	@user = user
+  	mail to: "info@memrybook.com", subject: "New Memrybook User"
+  end
+
 end

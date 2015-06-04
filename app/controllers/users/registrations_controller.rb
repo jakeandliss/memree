@@ -11,6 +11,8 @@ before_filter :configure_account_update_params, only: [:update]
   def create
     super
      ApplicationMailer.signup_confirmation(@user).deliver_now
+     ApplicationMailer.signup_notification(@user).deliver_now
+
   end
 
   # GET /resource/edit
