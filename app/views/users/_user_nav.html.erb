@@ -1,7 +1,7 @@
 <div id="user_nav">
 	<ul>
-		<li class="active"><%= link_to 'Edit Profile', edit_user_path(current_user, form: "profile") %></li>
-        <li class="active"><%= link_to 'Edit Labels', tags_path %></li>
-         <li class="active"><%= link_to 'Update Password', edit_user_path(current_user, form: "password") %></li>
+		<li class="active"><%= link_to '<i class="fa fa-user"></i>&nbsp; Edit Profile'.html_safe, edit_user_path(current_user, form: "profile") %></li>
+        <li class="active"><%= link_to '<i class="fa fa-tag"></i>&nbsp; Edit Labels'.html_safe, tags_path %></li>
+         <li class="active"><%= link_to '<i class="fa fa-key"></i>&nbsp; Update Password'.html_safe, edit_user_path(current_user, form: "password") %></li>
     </ul>
 </div>

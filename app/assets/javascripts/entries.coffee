@@ -1,36 +1,27 @@
+# show edit and delete buttons on entry on hover
 $ ->
 	$(".entry").hover (event) ->
 		$(this).toggleClass("hover")
 
-
-$ ->
-  $('a#edit_lables').click (event) ->
-    event.preventDefault()
-    $('#edit_form').toggle()
-    $('#lable_titles').toggle()
-
-$ ->
-	$('a#add_new').click (event) ->
-	  event.preventDefault()
-	  $('#title_form').show()
-	
+#loading icon for endless pagination
 $ ->	
-	$('.image-loader').hide()
+	$('#image-loader').hide()
 	autoScrollPagination()
 
+# Show date dropdowns on date click (new entry form only)
 $ ->
-	$('a#change_date').click (event) ->
+	$('#new_entry .change_date').click (event) ->
 	  event.preventDefault()
-	  $('#current_date').toggle()
-	  $('#new_date').toggle()
+	  $(this).closest('.current_date').hide()
+	  $(this).closest('div').next('.new_date').show();
 
+#use search icon to toggle search box
 $ ->
 	$('i.fa-search').click (event) ->
 	  event.preventDefault()
-	  $('i.fa-search').hide()
-	  $('.search').removeClass('hide')
-	  $('.edit').removeClass('left')
+	  $('.search').toggle()
 
+#add id to popout audio
 $ -> 
 	$('.playing').click (event) ->
 		event.preventDefault()
@@ -38,6 +29,8 @@ $ ->
 		$('#playing').appendTo('#titles').removeClass('audio')
 		$('#playing i.playing').remove()
 		$('#playing i.stop').closest('a').show()
+
+#close audio popout on click		
 $ -> 
 	$('.stop').click (event) ->
 		event.preventDefault()

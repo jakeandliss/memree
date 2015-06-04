@@ -14,7 +14,7 @@
 				<div class="title_entry">
 					<% if entry.content.length > 180 %>
 						<div id="entry_truncate_<%= entry.id %>">
-						    <%= truncate_html(entry.content.html_safe, length: 180) %>
+						    <%= truncate(entry.content.html_safe, length: 180) %>
 						    <%= link_to '...Read more', '', class: "read-more-#{entry.id}" %>
 						</div>
 						<div id="entry_long_<%= entry.id %>" style="display:none;">

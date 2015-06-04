@@ -4,10 +4,10 @@
 			<%= f.text_field :title, placeholder: "Title this Entry", class: "no_background" %>
 		</div>
 		<div class="small-6 columns">
-			<div id="current_date">
-				<p><a href="#" id="change_date"><%= Date.current.strftime('%B %e, %Y') %></a></p>
+			<div class="current_date">
+				<p><a href="#" class="change_date"><%= Date.current.strftime('%B %e, %Y') %></a></p>
 			</div>
-			<div id="new_date">
+			<div class="new_date">
 				<%= f.date_select :title_date, :order => [:day, :month, :year], :start_year => 1900 %>
 			</div>
 		</div>
