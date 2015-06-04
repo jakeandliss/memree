@@ -440,7 +440,6 @@ Entry Snippets
 }
 
 #titles #shared_users img {
-  border-radius: 100%;
   width: 33%;
   float: left;
 }
@@ -477,6 +476,18 @@ Entry Snippets
 #titles #entry_media i {
   color: gray;
   padding-left: .5rem;
+}
+
+#titles i.fa.fa-share-alt {
+  color: #bbb;
+}
+
+.shared_entry .title {
+  border-left: 7px solid #A9D5C6;
+}
+
+.shared_entry .delete-x {
+  display: none !important;
 }
 
 /********************************

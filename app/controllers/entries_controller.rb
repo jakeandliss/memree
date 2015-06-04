@@ -6,7 +6,7 @@ class EntriesController < ApplicationController
   def index
     @entry = current_user.entries.build(:title_date => Date.today)
     @tags = current_user.tags(:parent_id => params[:parent_id])
-    @shared_entry = current_user.entry_shareable.includes(:entry, :user)
+
     # if parametr "tag" exists retrieve entries with specified tag, otherwise retrieve all tags belonging to current user
     if params[:tag]
       @tag = Tag.find_by(name: params[:tag])
@@ -16,7 +16,8 @@ class EntriesController < ApplicationController
     end
 
     @entries = @entries.search(params[:query], date_filters) 
-    
+    @shared_entries = current_user.shared_entries
+
     
 
     respond_to do |format|

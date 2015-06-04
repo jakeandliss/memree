@@ -1,4 +1,8 @@
+<% if entry.user_id == current_user.id %>
 <div id="<%= dom_id(entry) %>" class="row">
+<% else %>
+<div id="<%= dom_id(entry) %>" class="row shared_entry">
+<% end %>
 	<div class="medium-9 columns">
 		<div class="white box-shadow title">
 			<div class="header">
@@ -130,10 +134,13 @@
 					</ul>
 				</h5>
 			<% end %>
-			<!-- <div id="shared_users">
-				<%= image_tag current_user.avatar.url(:avatar) %>
-				<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, class: "right" %>
-			</div> -->
+			<% if entry.user_id != current_user.id %>
+			<div id="shared_users">
+				<%= image_tag entry.user.avatar.url(:avatar) %>
+				<% else %>
+					<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id %>
+				<% end %>
+			</div> 
 		</div>
 	</div>
 </div>
