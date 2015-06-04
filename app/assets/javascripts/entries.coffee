@@ -24,7 +24,7 @@ $ ->
 	  $('#current_date').toggle()
 	  $('#new_date').toggle()
 
-$ ->
+$(document).ready ->
 	$('i.fa-search').click (event) ->
 	  event.preventDefault()
 	  $('i.fa-search').hide()
