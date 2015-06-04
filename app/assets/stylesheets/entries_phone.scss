@@ -293,17 +293,6 @@ ENTRY IMAGES
   padding: .25rem;
 }
 
-#titles_mobile i.fa.fa-play-circle {
-  position: absolute;
-  top: 32%;
-  left: 32%;
-  font-size: 7rem;
-  opacity: .75;
-  background: white;
-  line-height: 4.5rem;
-  border-radius: 100%;
-}
-
 #titles_mobile .slick-slide i.fa.fa-external-link-square { 
   display: none;
 }
@@ -317,6 +306,16 @@ ENTRY IMAGES
   border-left: none !important;
 }
 
+#titles_mobile i.fa.fa-play-circle {
+  position: absolute;
+  top: 35%;
+  left: 32%;
+  font-size: 4rem;
+  opacity: .75;
+  background: #fff;
+  line-height: 2.5rem;
+  border-radius: 100%;
+}
 
 /**************************
 
