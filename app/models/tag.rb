@@ -24,9 +24,9 @@ class Tag < ActiveRecord::Base
 	def name_has_to_be_unique
 	   	unless self.user.tags.nil?
 	   		if self.user.tags.where('lower(name) = ?', self.name.downcase).exists?
-	   		errors.add(:name, "already exists")
-	   		false
-	   	end
+	   			errors.add(:name, "already exists")
+	   			false
+	   		end
 	   	end
 	end
 
