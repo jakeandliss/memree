@@ -1,0 +1,7 @@
+<%= form_for @entry do |f| %>
+	<%= f.text_field :all_users, placeholder: "Share", class: "no_background" %>
+	<%= f.hidden_field :id %>
+	<div class="action medium-4 columns">
+		<%= f.submit 'Save Entry', class: "button expand" %>
+	</div>
+	<% end %>
