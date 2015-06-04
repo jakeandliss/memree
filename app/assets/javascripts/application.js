@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require jquery.validationEngine-en
 //= require jquery.validationEngine
 //= require foundation
