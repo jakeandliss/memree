@@ -95,8 +95,8 @@ class EntriesController < ApplicationController
   end
 
   def user_list
-    tags = params[:text] ? User.where("lower(name) LIKE ?", "%#{params[:text].downcase}%").map(&:name) : User.all.map(&:name)
-    render json: tags
+    users = params[:text] ? User.where("lower(email) LIKE ?", "%#{params[:text].downcase}%").map(&:email) : User.all.map(&:email)
+    render json: users
   end
 
   private

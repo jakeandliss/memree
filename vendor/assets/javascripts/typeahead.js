@@ -444,7 +444,7 @@
   , items: 8
   , menu: '<ul class="typeahead dropdown-menu" role="listbox"></ul>'
   , item: '<li><a href="#" role="option"></a></li>'
-  , minLength: 1
+  , minLength: 3
   , scrollHeight: 0
   , autoSelect: true
   , afterSelect: $.noop
