@@ -7,14 +7,14 @@
 						</div>		
 				</div>
 				<h3>
-					<%= truncate(entry.title, length: 63) %>
+					<%= entry.title %>
 				</h3>
 			</div>
 			<div class="content clearfix">
 				<div class="title_entry">
 					<% if entry.content.length > 180 %>
 						<div id="entry_truncate_<%= entry.id %>">
-						    <%= truncate(entry.content.html_safe, length: 180) %>
+						    <%= truncate(entry.content, length: 180) %>
 						    <%= link_to '...Read more', '', class: "read-more-#{entry.id}" %>
 						</div>
 						<div id="entry_long_<%= entry.id %>" style="display:none;">
@@ -22,7 +22,7 @@
 						    <%= link_to '...Read less', '', class: "read-less-#{entry.id}", style: "float:right;" %>
 						</div>
 					<% else %>
-						<%= entry.content.html_safe %>
+						<%= simple_format(entry.content) %>
 					<% end %>
 					<script>
 					  	$('.read-more-<%= entry.id %>').on('click', function(e) {

@@ -23,3 +23,16 @@ window.clearAfterSubmit = true;
 Dropzone.forElement("#new_entry .dropzone").removeAllPreviewFiles(true);
 window.clearAfterSubmit = false;
 
+//read more link 
+$('.read-more-<%= entry.id %>').on('click', function(e) {
+	e.preventDefault()
+	$('#entry_truncate_<%= entry.id %>').toggle();
+	$('#entry_long_<%= entry.id %>').toggle();
+
+
+//read less link
+$('.read-less-<%= entry.id %>').on('click', function(e) {
+	e.preventDefault()
+	$('#entry_truncate_<%= entry.id %>').toggle();
+	$('#entry_long_<%= entry.id %>').toggle();
+

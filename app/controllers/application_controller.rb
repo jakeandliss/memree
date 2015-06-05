@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   add_flash_types :success
   
@@ -30,6 +28,10 @@ class ApplicationController < ActionController::Base
 
   def render_error
     render file: 'public/500.html', status: :internal_server_error, layout: false
+  end
+
+  def render_404
+    render file: 'public/404.html', status: :internal_server_error, layout: false
   end
 
   def after_sign_out_path_for(resource_or_scope)

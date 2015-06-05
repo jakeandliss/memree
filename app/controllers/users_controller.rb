@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  layout "user"
 
   def show
     @tags = current_user.tags(:parent_id => params[:parent_id])
@@ -14,16 +15,6 @@ class UsersController < ApplicationController
     @user = current_user
     @tags = current_user.tags
     @tag = current_user.tags.new
-    case params[:form]
-        when "profile"
-          render  "update_profile"
-        when "password"
-          render "update_password"
-        when "labels"
-          render "update_labels"
-        else
-          render :action => :show
-        end
   end
 
   # POST /users

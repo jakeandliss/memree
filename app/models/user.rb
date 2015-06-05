@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	has_many :resources, :through => :entries
 	validates :first_name, presence: true
 	validates :last_name, presence: true
+	validates :email, presence: true
 
 
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :avatar =>  "150x150#", :thumb => "100x100>" }, :default_url => "blank_avatar.png"
