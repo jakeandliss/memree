@@ -9,8 +9,8 @@ class EntriesController < ApplicationController
     
     # if parametr "tag" exists retrieve entries with specified tag, otherwise retrieve all tags belonging to current user
     if params[:tag]
-      @tag = Tag.find_by(name: params[:tag])
-      @entries = Entry.childrens_of(@tag).paginate(:page => params[:page], :per_page => 10)
+      @tag = current_user.tags.find_by(name: params[:tag])
+      @entries = current_user.entries.childrens_of(@tag).paginate(:page => params[:page], :per_page => 10)
     else
       @entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
     end
