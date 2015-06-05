@@ -15,11 +15,10 @@ class EntriesController < ApplicationController
       @entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
     end
 
-    @entries = @entries.search(params[:query], date_filters) 
+    @entries = @entries.search(params[:query], date_filters)
     @shared_entries = current_user.shared_entries
 
-    
-
+    @all_entries = ((@entries + @shared_entries).sort_by! &:sortable_date).reverse!
     respond_to do |format|
       format.html { render layout: "entries" }
       format.js
@@ -52,13 +51,13 @@ class EntriesController < ApplicationController
 
   def create
     @entry = current_user.entries.new(entry_params)
-    
+
     respond_to do |format|
       if @entry.save && @entry.add_tags(params[:entry][:all_tags]) && @entry.add_users(params[:entry][:all_users])
         format.html { redirect_to entries_path, notice: "Entry was created succesfully" }
-        format.js 
+        format.js
       else
-        format.html { 
+        format.html {
           flash[:error] = "There was a problem adding your entry."
           render action: 'new'
         }
@@ -80,7 +79,7 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-    
+
     if @entry.destroy
       respond_to do |format|
         format.html { redirect_to entries_path, notice: "Entry has been deleted"}

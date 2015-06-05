@@ -1,6 +1,6 @@
 class Entry < ActiveRecord::Base
 	belongs_to :user
-	
+
 	has_many :entry_shareable
 	has_many :shared_users, through: :entry_shareable, source: :user
 	has_many :taggings
@@ -26,6 +26,10 @@ class Entry < ActiveRecord::Base
 	# Get names of all tags related to this entry
 	def all_tags
 		tags.map(&:name).join(", ")
+	end
+
+	def sortable_date
+	  created_at.to_datetime
 	end
 
 	# Add tags for a new entry
@@ -70,7 +74,7 @@ class Entry < ActiveRecord::Base
 
 	   if query && !query.empty?
 	       res = result.text_search(query)
-		   if res.empty? 
+		   if res.empty?
 		     result = result.where("LOWER(content) LIKE :q OR LOWER(title) LIKE :q", q: "%#{query.downcase}%") if query.present?
 		   else
 		   	 result = res
@@ -89,5 +93,5 @@ class Entry < ActiveRecord::Base
 	end
 
 
-	
+
 end
