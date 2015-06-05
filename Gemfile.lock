@@ -131,6 +131,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-slick-rails (1.5.5)
       railties (>= 3.1)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     json (1.8.2)
     kgio (2.9.3)
     libv8 (3.16.14.7)
@@ -304,6 +307,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-slick-rails
+  jquery-turbolinks
   magnific-popup-rails
   nokogiri
   paperclip
