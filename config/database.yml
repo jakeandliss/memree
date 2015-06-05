@@ -5,21 +5,21 @@ development:
   encoding: utf8
   database: memrybook_development
   pool: 5
-  username: jacobtho
-  #password: 
+  username: postgres
+  password: postgres
 
-test: &TEST
-  adapter: postgresql
-  encoding: utf8
-  database: _test
-  pool: 5
-  username: jacobtho
-  password: 
-
-production:
-  adapter: postgresql
-  host: localhost
-  encoding: utf8
-  database: memrybook_production
-  username: memree
-  password: memree123
+# test: &TEST
+#   adapter: postgresql
+#   encoding: utf8
+#   database: _test
+#   pool: 5
+#   username: jacobtho
+#   password:
+#
+# production:
+#   adapter: postgresql
+#   host: localhost
+#   encoding: utf8
+#   database: memrybook_production
+#   username: memree
+#   password: memree123
