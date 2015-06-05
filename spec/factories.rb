@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :image do
+FactoryGirl.define do  factory :admin_user do
+    
+  end
+  factory :image do
     
   end
   factory :tagging do
