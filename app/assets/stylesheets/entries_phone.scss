@@ -46,17 +46,17 @@ User Info
 
 
 
-#titles_mobile .avatar img {
+#entries_mobile.avatar img {
    margin-top: .1rem;
  }
 
-#titles_mobile .avatar a {
+#entries_mobile.avatar a {
   text-align: left;
   color: #444;
   text-decoration: underline;
 }
 
-#titles_mobile .avatar p {
+#entries_mobile.avatar p {
   text-align: left;
   font-size: .9rem;
 }
@@ -67,7 +67,7 @@ label Tags
 
 **************************************/
 
-#titles_mobile #label_titles a {
+#entries_mobile#label_titles a {
   color: #444;
   display:block;
   list-style-type: none;
@@ -75,30 +75,30 @@ label Tags
   border-radius: 3px; 
 }
 
-#titles_mobile #label_titles li {
+#entries_mobile#label_titles li {
   list-style-type: none;  
   border-radius: 3px;
   margin-bottom: .2rem;
 }
 
-#titles_mobile #label_titles ul {
+#entries_mobile#label_titles ul {
   margin: 1rem 0;
 }
 
 
-#titles_mobile #label_titles a.opened .fa-caret-down{
+#entries_mobile#label_titles a.opened .fa-caret-down{
   display: inline;
 }
 
-#titles_mobile #label_titles li.active {
+#entries_mobile#label_titles li.active {
   color: $salmon;
 } 
 
-#titles_mobile #label_titles a.active{
+#entries_mobile#label_titles a.active{
   background: $salmon !important;
 }
 
-#titles_mobile #label_titles li.root:nth-child {
+#entries_mobile#label_titles li.root:nth-child {
   background: white;
 }
 
@@ -114,7 +114,7 @@ Search
 **************************************/
 
 
-#titles_mobile .fa-search {
+#entries_mobile.fa-search {
 }
 
 
@@ -124,49 +124,49 @@ Entry Form
 
 **************************************/
 
-#titles_mobile #entry_title_date_2i {  
+#entries_mobile#entry_title_date_2i {  
   width: 42.6666%;
   margin-right: 1%;
   float: left; 
   margin-bottom: 0;
 }
-#titles_mobile #entry_title_date_3i {  
+#entries_mobile#entry_title_date_3i {  
   width: 22.6666%;
   margin-right: 1%;
   float: left; 
   margin-bottom: 0;
 }
 
-#titles_mobile #entry_title_date_1i {  
+#entries_mobile#entry_title_date_1i {  
   width: 32.6666%;
   margin-right: 0%;
 }
 
 
-#titles_mobile #current_date {
+#entries_mobile#current_date {
   float: right;
   margin: 0;
 }
 
-#titles_mobile .form {
+#entries_mobile.form {
   background: #fff;
   padding: .5rem;
   border-radius: .2rem;
 }
 
-#titles_mobile input#entry_title, #titles_mobile textarea#wysiwyg {
+#entries_mobileinput#entry_title, #entries_mobiletextarea#wysiwyg {
   margin: 0 0 .2rem 0;
   font-size: .9rem;
 }
 
-#titles_mobile .bootstrap-tagsinput{
+#entries_mobile.bootstrap-tagsinput{
   width: 100%;
 }
 
-#titles_mobile .click_to_upload {
+#entries_mobile.click_to_upload {
 }
 
-#titles_mobile .fa-camera {
+#entries_mobile.fa-camera {
   font-size: 1.5rem;
   margin: .5rem 0 0 0;
 }
@@ -180,31 +180,31 @@ Entry Snippets
 
 *****************************/
 
-#titles_mobile .title {
+#entries_mobile.title {
   border-radius: .2rem;
   margin-bottom: 1rem;
 }
 
-#titles_mobile h3 {
+#entries_mobileh3 {
   font-size: 1.2rem;
   margin-bottom: .1rem;
   display: inline;
 }
 
-#titles_mobile h5 a {
+#entries_mobileh5 a {
   color: #241616;
   border-radius: 3px;
 }
 
 
-#titles_mobile .header {
+#entries_mobile.header {
 }
 
-#titles_mobile .content {
+#entries_mobile.content {
   margin-bottom: .5rem;
 }
 
-#titles_mobile .footer {
+#entries_mobile.footer {
   border-top: 2px dashed #eee;
   background: #f7f7f7;
   margin-left: -.5rem;
@@ -212,12 +212,12 @@ Entry Snippets
   padding: 0 .5rem;
 }
 
-#titles_mobile .footer ul {
+#entries_mobile.footer ul {
   margin-left: 0;
   margin-top: .25rem;
 }
 
-#titles_mobile .footer li {
+#entries_mobile.footer li {
   background: #A9D5C6;
   margin: 0 .25rem .25rem .25rem;
   padding: 0 .5rem;
@@ -228,23 +228,23 @@ Entry Snippets
   text-align: center;
 }
 
-#titles_mobile .delete-x {
+#entries_mobile.delete-x {
   opacity: .5;
   margin-bottom: -.5rem;
   font-size: 1.25rem;
 }
 
-#titles_mobile .delete-x a {
+#entries_mobile.delete-x a {
   color: gray;
 }
 
-#titles_mobile #entry_media {
+#entries_mobile#entry_media {
   margin-bottom: -1rem;
   padding: 0;
   text-align: right;
 }
 
-#titles_mobile #entry_media i {
+#entries_mobile#entry_media i {
   color: gray;
   padding-left: .5rem;
 }
@@ -255,25 +255,25 @@ ENTRY IMAGES
 
 ********************************/
 
-#titles_mobile .entry_image_thumbnails {
+#entries_mobile.entry_image_thumbnails {
   float: left;
   width: 100%;
   height: 100%;
 }
 
-#titles_mobile .entry_image_thumbnails img {
+#entries_mobile.entry_image_thumbnails img {
   border-radius: 3px; 
   position: relative;
 }
 
-#titles_mobile .slick-slide {
+#entries_mobile.slick-slide {
   transform: scale(.92);
   -webkit-transform: scale(.92);
   -moz-transform: scale(.92);
   -ms-transform: scale(.92);
 }
 
-#titles_mobile .slick-slide.slick-center {
+#entries_mobile.slick-slide.slick-center {
   transform: scale(1);
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -283,7 +283,7 @@ ENTRY IMAGES
   -moz-transition: all .4s ease-in-out;
 }
 
-#titles_mobile i.fa.fa-external-link-square {
+#entries_mobilei.fa.fa-external-link-square {
   position: absolute;
   z-index: 1000000;
   top: 2%;
@@ -293,20 +293,20 @@ ENTRY IMAGES
   padding: .25rem;
 }
 
-#titles_mobile .slick-slide i.fa.fa-external-link-square { 
+#entries_mobile.slick-slide i.fa.fa-external-link-square { 
   display: none;
 }
 
-#titles_mobile .slick-slide.slick-center:hover i.fa.fa-external-link-square { 
+#entries_mobile.slick-slide.slick-center:hover i.fa.fa-external-link-square { 
   display: inherit;
 }
 
-#titles_mobile .mfp-arrow-left:before, .mfp-arrow-right:before {
+#entries_mobile.mfp-arrow-left:before, .mfp-arrow-right:before {
   border-right: none !important;
   border-left: none !important;
 }
 
-#titles_mobile i.fa.fa-play-circle {
+#entries_mobilei.fa.fa-play-circle {
   position: absolute;
   top: 35%;
   left: 32%;
@@ -323,11 +323,11 @@ Edit Entries
 
 **************************/
 
-#titles_mobile .edit_images {
+#entries_mobile.edit_images {
   margin-bottom: 1rem;
 }
 
-#titles_mobile .image_remove {
+#entries_mobile.image_remove {
   position: relative;
   display: inline-block;
   margin-right: -.5%;
@@ -335,7 +335,7 @@ Edit Entries
   width: 25%;
 }
 
-#titles_mobile .image_remove img {
+#entries_mobile.image_remove img {
   object-fit: cover;
   width: 100%;
   height: 6rem;
@@ -343,7 +343,7 @@ Edit Entries
 
 
 
-#titles_mobile .image_remove span a {
+#entries_mobile.image_remove span a {
   cursor: pointer;
   display: inherit;
   position: absolute;
@@ -352,7 +352,7 @@ Edit Entries
   width: 50%;
 }
 
-#titles_mobile .image_remove span img {
+#entries_mobile.image_remove span img {
   width: 100%;
   height: 100%;
 }
@@ -363,25 +363,25 @@ Entry Audio
 
 **************************/
 
-#titles_mobile .audio audio {
+#entries_mobile.audio audio {
   width: 95%;
 }
 
-#titles_mobile .audio {
+#entries_mobile.audio {
   text-align: center;
   position: relative;
 }
 
 
-#titles_mobile i.fa.fa-external-link-square.playing {
+#entries_mobilei.fa.fa-external-link-square.playing {
   font-size: 1rem !important;
 }
 
-#titles_mobile div#playing span {
+#entries_mobilediv#playing span {
   color: white;
 }
 
-#titles_mobile div#playing {
+#entries_mobilediv#playing {
   position: fixed;
   bottom: 8%;
   left: 0;
@@ -393,7 +393,7 @@ Entry Audio
   overflow: hidden;
 }
 
-#titles_mobile #playing i.fa.fa-times.stop {
+#entries_mobile#playing i.fa.fa-times.stop {
   position: absolute;
   top: 0;
   right: 5%;
@@ -410,7 +410,7 @@ Entry Validation
 **************************/
 
 
-#titles_mobile label.message {
+#entries_mobilelabel.message {
   background: $evendarker;
   color: white;
   padding: .2rem;
@@ -426,13 +426,13 @@ Entry Files
 **************************/
 
 
-#titles_mobile .application {
+#entries_mobile.application {
     width: 50%;
     float: left;
     padding: 1rem;
 }
 
-#titles_mobile .entry_application_thumbnails {
+#entries_mobile.entry_application_thumbnails {
     margin-left: -.5rem;
     margin-right: -.5rem;
     margin-top: .5rem;
@@ -446,11 +446,11 @@ Calendar
 
 **************************************/
 
-#titles_mobile .date {
+#entries_mobile.date {
   float: right;
 }
 
-#titles_mobile .calendar {
+#entries_mobile.calendar {
   padding: .8rem;
   background: #A9D5C6;
   border-radius: 100%;
@@ -459,7 +459,7 @@ Calendar
   text-align: center;
 }
 
-#titles_mobile .calendar month {
+#entries_mobile.calendar month {
   display: block;
   color: #000;
   line-height: 0;
@@ -468,7 +468,7 @@ Calendar
   font-size: .8rem;
 }
 
-#titles_mobile .calendar day {
+#entries_mobile.calendar day {
   display: block;
   font-size: 1.5rem;
   font-weight: bold;
@@ -478,7 +478,7 @@ Calendar
   margin-top: .25rem;
 }
 
-#titles_mobile .calendar year {
+#entries_mobile.calendar year {
   color: black;
   line-height: 0rem;
   font-size: .8rem;
@@ -490,11 +490,11 @@ Other
 
 **************************************/
 
-#titles_mobile .scroll-pagination{
+#entries_mobile.scroll-pagination{
   display: none;
 }
 
-#titles_mobile #success {
+#entries_mobile#success {
   display: none;
   position: fixed;
   background: #444;
@@ -510,12 +510,12 @@ Other
   font-size: 1rem;
 }
 
-#titles_mobile .white {
+#entries_mobile.white {
   padding: .5rem;
   padding-bottom: 0;
 }
 
-#titles_mobile p {
+#entries_mobilep {
   font-size: .85rem;
 }   
 

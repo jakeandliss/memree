@@ -1,30 +1,37 @@
-   $stationery  : #EBE5CD;
-   $greendew    : #A9D5C6;
-   $evendarker  : #241616;
-   $sun         : #F2EAAB;
-   $salmon      : #FD9781;
+/*************************************
+
+Sass
+
+**************************************/
+
+$stationery  : #EBE5CD;
+$greendew    : #A9D5C6;
+$evendarker  : #241616;
+$sun         : #F2EAAB;
+$salmon      : #FD9781;
+
 /*************************************
 
 User Info
 
 **************************************/
 
-#titles .user_info {
+#entries .user_info {
   padding-top: 1rem;
 }
 
-#titles .avatar img {
+#entries .avatar img {
   max-height: 5rem;
   float: right;
 }
 
-#titles .avatar a, #titles a.edit {
+#entries .avatar a, #entries a.edit {
   text-align: left;
   color: #444;
   text-decoration: underline;
 }
 
-#titles .avatar p {
+#entries .avatar p {
   text-align: left;
   margin: 1rem;
   font-size: .9rem;
@@ -41,14 +48,14 @@ label Tags
 
 **************************************/
 
-#titles #label_titles {
+#entries #label_titles {
   margin: 5px 0;
   padding: 5px;
   border-radius: 5px;
   text-align: right;
 }
 
-#titles #label_titles a {
+#entries #label_titles a {
   color: #444;
   display:block;
   list-style-type: none;
@@ -56,33 +63,33 @@ label Tags
   border-radius: 3px; 
 }
 
-#titles #label_titles ul {
+#entries #label_titles ul {
   margin: 0;
 }
 
 
-#titles #label_titles a:focus { outline: none !important; }
+#entries #label_titles a:focus { outline: none !important; }
 
-#titles #label_titles li {
+#entries #label_titles li {
   list-style-type: none;  
   border-radius: 3px;
     margin-bottom: .2rem;
 }
 
 
-#titles #label_titles a.opened .fa-caret-down{
+#entries #label_titles a.opened .fa-caret-down{
   display: inline;
 }
 
-#titles #label_titles li.active {
+#entries #label_titles li.active {
   color: $salmon;
 } 
 
-#titles #label_titles a.active{
+#entries #label_titles a.active{
   background: $salmon !important;
 }
 
-#titles #label_titles li.root:nth-child {
+#entries #label_titles li.root:nth-child {
   background: #fff;
 }
 
@@ -99,7 +106,7 @@ Search
 **************************************/
 
 
-#titles .fa-search:hover {
+#entries .fa-search:hover {
 
 }
 
@@ -173,32 +180,32 @@ Entry Form
 
 **************************************/
 
-#titles #entry_title_date_2i {  
+#entries #entry_title_date_2i {  
   width: 42.6666%;
   margin-right: 1%;
   float: left; 
   margin-bottom: 0;
 }
-#titles #entry_title_date_3i {  
+#entries #entry_title_date_3i {  
   width: 22.6666%;
   margin-right: 1%;
   float: left; 
   margin-bottom: 0;
 }
 
-#titles #entry_title_date_1i {  
+#entries #entry_title_date_1i {  
 	width: 32.6666%;
   margin-right: 0%;
   margin-bottom: 0;
 }
 
-#titles #new_date, #titles .new_date  {
+#entries #new_date, #entries .new_date  {
   display: none;
   padding-right: 0;
   padding-left: 0;;
 }
 
-#titles a.change_date, #titles a.change_date {
+#entries a.change_date, #entries a.change_date {
   margin-top: -.5rem;
   color: #ccc;
   float: right;
@@ -206,11 +213,11 @@ Entry Form
   font-size: .9rem;
 }
 
-#titles label.right {
+#entries label.right {
 	padding-right: 5rem; 
 }
 
-#titles .form {
+#entries .form {
   background: #fff;
   padding: .5rem 1rem;
   border-radius: .2rem;
@@ -218,27 +225,27 @@ Entry Form
   margin: 1rem 0;
 }
 
-#titles ::-webkit-input-placeholder {
+#entries ::-webkit-input-placeholder {
    color: #888;
 }
 
-#titles :-moz-placeholder { /* Firefox 18- */
+#entries :-moz-placeholder { /* Firefox 18- */
    color: #888;
 }
 
-#titles ::-moz-placeholder {  /* Firefox 19+ */
+#entries ::-moz-placeholder {  /* Firefox 19+ */
    color: #888;
 }
 
-#titles :-ms-input-placeholder {  
+#entries :-ms-input-placeholder {  
    color: #888; 
 }
 
-#titles .click_to_upload {
+#entries .click_to_upload {
   color: #ccc;
 }
 
-#titles .click_to_upload p {
+#entries .click_to_upload p {
   margin-bottom: 0;
   border: 1.5px dashed;
   padding: .4rem;
@@ -293,11 +300,11 @@ textarea#wysiwyg {
 }
 
 
-#titles .bootstrap-tagsinput{
+#entries .bootstrap-tagsinput{
   
 }
 
-#titles .bootstrap-tagsinput input {
+#entries .bootstrap-tagsinput input {
   background: #fff;
   box-shadow: none;
   border: 0;
@@ -387,28 +394,28 @@ Entry Snippets
 
 *****************************/
 
-#titles .title {
+#entries .title {
   border-radius: .2rem;
   margin-bottom: 1rem;
 }
 
-#titles h3 {
+#entries h3 {
   font-size: 1.2rem;
   margin-bottom: .1rem;
   display: inline;
 }
 
-#titles h5 a {
+#entries h5 a {
   color: #241616;
   border-radius: 3px;
 }
 
-#titles .footer ul {
+#entries .footer ul {
   margin-left: 0;
   margin-bottom: 0;
 }
 
-#titles .footer li {
+#entries .footer li {
   background: $greendew ;
   width: 100%;
   margin-bottom: .5rem;  
@@ -416,65 +423,65 @@ Entry Snippets
   list-style-type: none;
 }
 
-#titles h6 {
+#entries h6 {
   margin-bottom: 0;
   margin-right: 1rem;
 }
 
-#titles .header {
+#entries .header {
 }
 
-#titles.footer {
+#entries.footer {
   margin-left: -1rem;
 }
 
-#titles .title_entry {
+#entries .title_entry {
 }
 
 
-#titles #wrapper {
+#entries #wrapper {
   position: absolute;
   overflow: hidden;
   width: 100%;
   height: 8rem;
 }
 
-#titles #shared_users img {
+#entries #shared_users img {
   border-radius: 100%;
   width: 33%;
   float: left;
 }
 
-#titles #shared_users {
+#entries #shared_users {
   display: inline-block;
 }
 
-#titles .delete-x {
+#entries .delete-x {
   position: absolute;
   left: 1.5rem;
   bottom: 1rem;
   opacity: .5;
 }
 
-#titles .delete-x a {
+#entries .delete-x a {
   color: gray;
 }
 
-#titles .delete-x {
+#entries .delete-x {
   display:none;
 }
 
-#titles .title:hover .delete-x {
+#entries .title:hover .delete-x {
   display: inherit;
 }
 
-#titles #entry_media {
+#entries #entry_media {
   margin-bottom: -1rem;
   padding: 0;
   text-align: right;
 }
 
-#titles #entry_media i {
+#entries #entry_media i {
   color: gray;
   padding-left: .5rem;
 }
@@ -485,25 +492,25 @@ ENTRY IMAGES
 
 ********************************/
 
-#titles .entry_image_thumbnails {
+#entries .entry_image_thumbnails {
   float: left;
   width: 100%;
   height: 100%;
 }
 
-#titles .entry_image_thumbnails img {
+#entries .entry_image_thumbnails img {
   border-radius: 3px; 
   position: relative;
 }
 
-#titles .slick-slide {
+#entries .slick-slide {
   transform: scale(.92);
   -webkit-transform: scale(.92);
   -moz-transform: scale(.92);
   -ms-transform: scale(.92);
 }
 
-#titles .slick-slide.slick-center {
+#entries .slick-slide.slick-center {
   transform: scale(1);
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -514,7 +521,7 @@ ENTRY IMAGES
   -o-transition: all .4s ease-in-out;
 }
 
-#titles i.fa.fa-external-link-square {
+#entries i.fa.fa-external-link-square {
   position: absolute;
   z-index: 1000000;
   top: 2%;
@@ -524,7 +531,7 @@ ENTRY IMAGES
   padding: .25rem;
 }
 
-#titles i.fa.fa-play-circle {
+#entries i.fa.fa-play-circle {
   position: absolute;
   top: 32%;
   left: 32%;
@@ -535,15 +542,15 @@ ENTRY IMAGES
   border-radius: 100%;
 }
 
-#titles .slick-slide i.fa.fa-external-link-square { 
+#entries .slick-slide i.fa.fa-external-link-square { 
   display: none;
 }
 
-#titles .slick-slide.slick-center:hover i.fa.fa-external-link-square { 
+#entries .slick-slide.slick-center:hover i.fa.fa-external-link-square { 
   display: inherit;
 }
 
-#titles .mfp-arrow-left:before, .mfp-arrow-right:before {
+#entries .mfp-arrow-left:before, .mfp-arrow-right:before {
   border-right: none !important;
   border-left: none !important;
 }
@@ -555,11 +562,11 @@ Edit Entries
 
 **************************/
 
-#titles .edit_images {
+#entries .edit_images {
   margin-bottom: 1rem;
 }
 
-#titles .image_remove {
+#entries .image_remove {
   position: relative;
   display: inline-block;
   margin-right: -.25%;
@@ -567,17 +574,17 @@ Edit Entries
   width: 25%;
 }
 
-#titles .image_remove img {
+#entries .image_remove img {
   object-fit: cover;
   width: 100%;
   height: 8rem;
 }
 
-#titles .image_remove span a {
+#entries .image_remove span a {
   display: none
 }
 
-#titles .image_remove:hover span a {
+#entries .image_remove:hover span a {
   cursor: pointer;
   display: inherit;
   position: absolute;
@@ -586,7 +593,7 @@ Edit Entries
   width: 50%;
 }
 
-#titles .image_remove span img {
+#entries .image_remove span img {
   width: 100%;
   height: 100%;
 }
@@ -597,11 +604,11 @@ Entry Audio
 
 **************************/
 
-#titles .audio audio {
+#entries .audio audio {
   width: 95%;
 }
 
-#titles .audio {
+#entries .audio {
   width: 50%;
   text-align: center;
   float: left;
@@ -610,14 +617,14 @@ Entry Audio
   margin-bottom: 1rem;
 }
 
-#titles .audio span {
+#entries .audio span {
 }
 
-#titles i.fa.fa-external-link-square.playing {
+#entries i.fa.fa-external-link-square.playing {
   font-size: 1rem !important;
 }
 
-#titles div#playing {
+#entries div#playing {
   position: fixed;
   bottom: 8%;
   background: #444;
@@ -626,22 +633,22 @@ Entry Audio
   text-align: center;
 }
 
-#titles div#playing span {
+#entries div#playing span {
   color: white;
 }
 
-#titles div#playing {
+#entries div#playing {
   position: fixed;
   bottom: 1rem; 
   left: 1rem;
   width: 25%;
 }
 
-#titles div#playing audio {
+#entries div#playing audio {
   width: 100%;
 }
 
-#titles #playing i.fa.fa-times.stop {
+#entries #playing i.fa.fa-times.stop {
   position: absolute;
   top: 0;
   right: 0;
@@ -657,7 +664,7 @@ Entry Validation
 **************************/
 
 
-#titles label.message {
+#entries label.message {
   background: $evendarker;
   color: #fff;
   padding: .2rem;
@@ -673,13 +680,13 @@ Entry Files
 **************************/
 
 
-#titles .application {
+#entries .application {
     width: 50%;
     float: left;
     padding: 1rem;
 }
 
-#titles .entry_application_thumbnails {
+#entries .entry_application_thumbnails {
     /* border: 2px dashed #aaa; */
     margin-bottom: -1rem;
     margin-left: -1rem;
@@ -695,14 +702,14 @@ Calendar
 
 **************************************/
 
-#titles .date {
+#entries .date {
   float: right;
   margin-right: -.5rem;
   margin-top: -.5rem;  
   margin-bottom: .5rem;
 }
 
-#titles .calendar {
+#entries .calendar {
   padding: 1rem;
   background: #A9D5C6;
   border-radius: 100%;
@@ -711,7 +718,7 @@ Calendar
   text-align: center;
 }
 
-#titles .calendar month {
+#entries .calendar month {
   display: block;
   color: #000;
   line-height: 0;
@@ -719,7 +726,7 @@ Calendar
   text-transform: uppercase;
 }
 
-#titles .calendar day {
+#entries .calendar day {
   display: block;
   font-size: 2rem;
   font-weight: bold;
@@ -729,7 +736,7 @@ Calendar
   margin-top: .25rem;
 }
 
-#titles .calendar year {
+#entries .calendar year {
   color: black;
   line-height: 0rem;
 }
@@ -740,11 +747,11 @@ Other
 
 **************************************/
 
-#titles .scroll-pagination{
+#entries .scroll-pagination{
   display: none;
 }
 
-#titles #success {
+#entries #success {
   display: none;
   position: fixed;
   background: #444;

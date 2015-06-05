@@ -1,16 +1,15 @@
-
-  // Show titles with specified tags
+// Show titles with specified tags
 
 <% if params[:page].present? %>
   
 
-  $('#titles-wrapper').append('<%= j render partial: "entries" %>').fadeIn(1300);
+  $('#entries-wrapper').append('<%= j render partial: "entries" %>').fadeIn(1300);
   <% unless @entries.next_page %>
     $('.scroll-pagination').remove();
-    $(".image-loader").remove();
+    $("#image-loader").remove();
   <% end %>
 <% else %>
-  $('#titles-wrapper').html('<%= j render partial: "entries" %>').fadeIn(1300);
+  $('#entries-wrapper').html('<%= j render partial: "entries" %>').fadeIn(1300);
 <% end %>
 
   
@@ -23,7 +22,7 @@
   activeElement.addClass("active");
 
   var tagName = '<%=params[:tag] ? params[:tag].downcase : "all labels"%>';
-
+  var tag = '<%=params[:tag] ? params[:tag]: "all labels"%>';
 
   if (tagName == "all labels"){
     $("#search .fa-close").hide();
@@ -33,7 +32,7 @@
   else {
     $("#search .fa-close").show();
     $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
-    $('.bootstrap-tagsinput input[type="text"]').val(tagName);
+    $('.bootstrap-tagsinput input[type="text"]').val(tag);
   }
 
   $("#search-tag").html(tagName);
