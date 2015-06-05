@@ -59,7 +59,7 @@ class TagsController < ApplicationController
   private 
 
   def fetch_tag
-    @tag = Tag.find(params[:id]) 
+    @tag = current_user.tags.find(params[:id]) 
   end
 
   def tag_params

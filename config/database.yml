@@ -5,8 +5,8 @@ development:
   encoding: utf8
   database: memrybook_development
   pool: 5
-  username: postgres
-  password: postgres
+  username: jacobtho
+  password:
 
 # test: &TEST
 #   adapter: postgresql

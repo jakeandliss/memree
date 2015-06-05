@@ -8,6 +8,7 @@ class Entry < ActiveRecord::Base
 	has_many :resources, dependent: :destroy
 
 	default_scope { order('title_date DESC', 'created_at DESC') }
+  	
   	validates_presence_of :title
 
  	#  validate :at_least_one
@@ -29,16 +30,17 @@ class Entry < ActiveRecord::Base
 	end
 
 	def sortable_date
-	  created_at.to_datetime
+	  title_date.to_datetime
 	end
 
 	# Add tags for a new entry
 	def add_tags(names)
 		  self.tags = names.split(",").map do |name|
-      		Tag.where(name: name.strip).first_or_create!
+      		User.find_by(:id => user.id).tags.where(name: name.strip).first_or_create!
       	end
 	end
-		# def add_tags(tag_names="")
+	
+	# def add_tags(tag_names="")
 	# 	tag_names.split(',').map do |tag_name|
 	# 		if tag = user.tags.find_by(name: tag_name.strip)
 	# 			taggings.find_or_create_by(tag_id: tag.id, entry_id: id)
