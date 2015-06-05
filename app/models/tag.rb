@@ -3,8 +3,6 @@ class Tag < ActiveRecord::Base
 	has_many :taggings, :dependent => :destroy
 	has_many :entries, -> { uniq }, through: :taggings
 
-	validate :name_has_to_be_unique, on: :create
-
 	default_scope { order('created_at DESC') } 
 	validates_presence_of :name
 	has_ancestry
@@ -18,17 +16,6 @@ class Tag < ActiveRecord::Base
 
 	end
 
-
 	private
-	
-	def name_has_to_be_unique
-	   	unless self.user.tags.nil?
-	   		if self.user.tags.where('lower(name) = ?', self.name.downcase).exists?
-	   			errors.add(:name, "already exists")
-	   			false
-	   		end
-	   	end
-	end
-
 
 end

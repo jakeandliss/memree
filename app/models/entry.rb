@@ -8,32 +8,14 @@ class Entry < ActiveRecord::Base
 	default_scope { order('title_date DESC', 'created_at DESC') }
   	validates_presence_of :title
 
- 	#  validate :at_least_one
-
-	# def at_least_one
-	#   if [self.resource_ids, self.content].reject(&:blank?).size == 0
- 	#   errors.add(:message, 'You need at least one field.')
-	#   end
-	# end
-
 	include PgSearch
 
 	pg_search_scope :text_search, against: [:title, :content], using: {tsearch: {dictionary: "english"}}
 
-
-	# Add tags for a new title
-	# def add_tags(tag_names="")
-	# 	tag_names.split(',').map do |tag_name|
-	# 		if tag = user.tags.find_by(name: tag_name.strip)
-	# 			taggings.find_or_create_by(tag_id: tag.id, entry_id: id)
-	# 		else
-	# 			tags.find_or_create_by(name: tag_name.strip, user_id: user_id)
-	# 		end
-	# 	end
-	# end
+	#add or create tags 
 	def add_tags(names)
 		  self.tags = names.split(",").map do |name|
-      		Tag.where(name: name.strip, user_id: user_id).first_or_create!
+      		self.user.tags.where(name: name.strip, user_id: user_id).first_or_create!
       	end
 	end
 
@@ -41,12 +23,6 @@ class Entry < ActiveRecord::Base
 	def all_tags
 		tags.map(&:name).join(", ")
 	end
-
-	# Find all titles whish has a specified name
-	def self.tagged_with(name)
-		Tag.find_by_name!(name).titles
-	end
-
 
 	def self.search(query = nil, dates = {})
 		dates[:finish] ||= Date.current
