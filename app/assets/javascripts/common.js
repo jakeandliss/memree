@@ -15,8 +15,8 @@ function autoScrollPagination(){
 		});
 		return $(window).scroll();
 	}
-
 }
+
 // Flash Messages
 $('document').ready(function() {
 	setTimeout(function() {
