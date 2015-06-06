@@ -51,6 +51,6 @@
 	// Load all tags and put them on sidebar
 	// TagManager class is located in app/assets/tag-manager.js
 	var tagManager = new TagManager();
-	tagManager.initialize('<%= current_user.tags.hierarchy_tree.html_safe  %>', $("#tag-list"));
+	tagManager.initialize('<%= j current_user.tags.hierarchy_tree.html_safe  %>', $("#tag-list"));
 
 </script>
