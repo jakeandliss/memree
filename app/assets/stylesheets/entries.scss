@@ -199,7 +199,7 @@ Entry Form
   margin-bottom: 0;
 }
 
-#entries #new_date, #entries .new_date  {
+#entries .new_date {
   display: none;
   padding-right: 0;
   padding-left: 0;;
@@ -305,11 +305,11 @@ textarea#wysiwyg {
 }
 
 #entries .bootstrap-tagsinput input {
-  background: #fff;
-  box-shadow: none;
-  border: 0;
-  margin-bottom: 0;
-  padding-top: 0;
+  background: #fff !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 
 .bootstrap-tagsinput .tag {

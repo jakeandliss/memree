@@ -167,9 +167,6 @@ Entry Form
   width: 100%;
 }
 
-#entries_mobile .click_to_upload {
-}
-
 #entries_mobile .fa-camera {
   font-size: 1.5rem;
   margin: .5rem 0 0 0;
@@ -359,6 +356,10 @@ Edit Entries
 #entries_mobile .image_remove span img {
   width: 100%;
   height: 100%;
+}
+
+#entries_mobile #entries .click_to_upload p {
+  margin-bottom: .5rem;
 }
 
 /**************************
