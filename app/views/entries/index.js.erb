@@ -11,26 +11,19 @@
 <% end %>
 
 
-  // Highlight active eliments of the tag menu
-  $("#label_titles .active").removeClass("active");
-
-  var activeElement = $('#label_titles [data-tagname="<%=params[:tag]%>"]');
-  var activeTag = activeElement.parent();
-  activeTag.addClass("active");
-  activeElement.addClass("active");
+  // add tagName to search with option to remove and search all entries
 
   var tagName = '<%=params[:tag] ? params[:tag].downcase : "all entries"%>';
-  var tag = '<%=params[:tag] ? params[:tag]: "all entries"%>';
 
   if (tagName == "all entries"){
     $("#search .fa-close").hide();
-    $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
-    $('.bootstrap-tagsinput input[type="text"]').val('');
+    // $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
+    // $('.bootstrap-tagsinput input[type="text"]').val('');
   }
   else {
     $("#search .fa-close").show();
-    $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
-    $('.bootstrap-tagsinput input[type="text"]').val(tag);
+    // $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
+    // $('.bootstrap-tagsinput input[type="text"]').val(tag);
   }
 
   $("#search-tag").html(tagName);

@@ -38,7 +38,8 @@ $ ->
 
 #on click add "active" class
 $ -> 
-	$('#entries #label_titles a').click (event) ->
+	$('#label_titles a').click (event) ->
 		event.preventDefault
+		$('.active').removeClass('active')
 		$(this).addClass('active')
 
