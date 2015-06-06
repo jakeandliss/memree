@@ -1,5 +1,4 @@
-// Show titles with specified tags
-
+//load endless pagination for entries
 <% if params[:page].present? %> 
  	$('#entries-wrapper').append('<%= j render(@entries) %>');
 	$('.pagination').replaceWith('<%= j will_paginate(@entries) %>');

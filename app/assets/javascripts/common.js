@@ -1,3 +1,4 @@
+//detects if bottom of page has been reached and triggers next page href
 function autoScrollPagination(){
 	var ajaxRunning = true;
 	if ($('.pagination').length) {
