@@ -1,16 +1,13 @@
-
-  // Show titles with specified tags
-
-<% if params[:page].present? %>
-  
-
-  $('#titles-wrapper').append('<%= j render partial: "entries" %>').fadeIn(1300);
+//load endless pagination for entries
+<% if params[:page].present? %> 
+  $('#entries-wrapper').append('<%= j render(@entries) %>');
+  $('.pagination').replaceWith('<%= j will_paginate(@entries) %>');
   <% unless @entries.next_page %>
-    $('.scroll-pagination').remove();
-    $(".image-loader").remove();
+    $('.pagination').remove();
+    $("#image-loader").remove();
   <% end %>
 <% else %>
-  $('#titles-wrapper').html('<%= j render partial: "entries" %>').fadeIn(1300);
+  $('#entries-wrapper').html('<%= j render partial: "entries" %>');
 <% end %>
 
   

@@ -3,7 +3,7 @@
  	$('#entries-wrapper').append('<%= j render(@entries) %>');
 	$('.pagination').replaceWith('<%= j will_paginate(@entries) %>');
   <% unless @entries.next_page %>
-    $('.scroll-pagination').remove();
+    $('.pagination').remove();
     $("#image-loader").remove();
   <% end %>
 <% else %>
@@ -43,7 +43,7 @@
   
 
 <% if @entries.blank? %>
-  $('.scroll-pagination').detach();
+  $('.pagination').detach();
 <% end %>
 
 $('#image-loader').hide();
