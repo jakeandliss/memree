@@ -37,11 +37,12 @@
 			<div class="form clearfix" id="title_form">
 				<%= render 'form' %>
 			</div>
-			<div id="entries-wrapper">
-				<%= render partial: "entries" %>
-			</div>
-			<div class="scroll-pagination">
-				<%= will_paginate @entries %>
+
+				<%= render partial: 'entries' %>
+			
+					
+		
+			
 			</div>
 			<div id="image-loader">
 				<center><i class="fa fa-refresh fa-spin"></i></center>

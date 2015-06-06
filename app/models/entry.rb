@@ -26,7 +26,7 @@ class Entry < ActiveRecord::Base
 
 	def self.search(query = nil, dates = {})
 		dates[:finish] ||= Date.current
-		dates[:start] ||= Date.current - 200.years
+		dates[:start] ||= Date.current - 2000.years
 
 	   result = where(:title_date => dates[:start].beginning_of_day..dates[:finish].end_of_day)
 

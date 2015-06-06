@@ -22,8 +22,8 @@ var DropzoneManager = function () {
     self.dropzone = new Dropzone(element, options());
 
 
-    $("#titles").on('dragenter', dragEnterHandler);
-  	$("#titles").on('dragleave', dragLeaveHandler);
+    $("#entries").on('dragenter', dragEnterHandler);
+  	$("#entries").on('dragleave', dragLeaveHandler);
 
 
     $(form).find(".click_to_upload").on('click touchstart', function(event) {

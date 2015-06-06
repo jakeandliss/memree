@@ -1,18 +1,17 @@
 // Show titles with specified tags
 
-<% if params[:page].present? %>
-  
-
-  $('#entries-wrapper').append('<%= j render partial: "entries" %>').fadeIn(1300);
+<% if params[:page].present? %> 
+ 	$('#entries-wrapper').append('<%= j render(@entries) %>');
+	$('.pagination').replaceWith('<%= j will_paginate(@entries) %>');
   <% unless @entries.next_page %>
     $('.scroll-pagination').remove();
     $("#image-loader").remove();
   <% end %>
 <% else %>
-  $('#entries-wrapper').html('<%= j render partial: "entries" %>').fadeIn(1300);
+  $('#entries-wrapper').html('<%= j render partial: "entries" %>');
 <% end %>
 
-  
+
   // Highlight active eliments of the tag menu
   $("#label_titles .active").removeClass("active");
 
@@ -21,10 +20,10 @@
   activeTag.addClass("active");
   activeElement.addClass("active");
 
-  var tagName = '<%=params[:tag] ? params[:tag].downcase : "all labels"%>';
-  var tag = '<%=params[:tag] ? params[:tag]: "all labels"%>';
+  var tagName = '<%=params[:tag] ? params[:tag].downcase : "all entries"%>';
+  var tag = '<%=params[:tag] ? params[:tag]: "all entries"%>';
 
-  if (tagName == "all labels"){
+  if (tagName == "all entries"){
     $("#search .fa-close").hide();
     $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
     $('.bootstrap-tagsinput input[type="text"]').val('');
@@ -45,7 +44,7 @@
   
 
 <% if @entries.blank? %>
-  $('.pagination').detach();
+  $('.scroll-pagination').detach();
 <% end %>
 
-$('.image-loader').hide();
+$('#image-loader').hide();

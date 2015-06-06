@@ -3,7 +3,7 @@ $('#new_entry')[0].reset();
 $('#current_date').show();
 $('#new_date').hide();
 $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
-$('#title_added').prepend('<%= j render(@entry) %>')
+$('#entries-wrapper').prepend('<%= j render(@entry) %>')
 $('#entry_<%= @entry.id %>').hide().fadeIn(1300);
 $("#success").fadeIn(500).html("Entry created successfully").delay(2000).fadeOut(500);
 
@@ -22,17 +22,3 @@ $('.entry_image_thumbnails').each(function( index ) {
 window.clearAfterSubmit = true;
 Dropzone.forElement("#new_entry .dropzone").removeAllPreviewFiles(true);
 window.clearAfterSubmit = false;
-
-//read more link 
-$('.read-more-<%= entry.id %>').on('click', function(e) {
-	e.preventDefault()
-	$('#entry_truncate_<%= entry.id %>').toggle();
-	$('#entry_long_<%= entry.id %>').toggle();
-
-
-//read less link
-$('.read-less-<%= entry.id %>').on('click', function(e) {
-	e.preventDefault()
-	$('#entry_truncate_<%= entry.id %>').toggle();
-	$('#entry_long_<%= entry.id %>').toggle();
-

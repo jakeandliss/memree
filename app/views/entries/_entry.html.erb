@@ -11,34 +11,32 @@
 				</h3>
 			</div>
 			<div class="content clearfix">
-				<div class="title_entry">
-					<% if entry.content.length > 180 %>
-						<div id="entry_truncate_<%= entry.id %>">
-						    <%= truncate(entry.content, length: 180) %>
-						    <%= link_to '...Read more', '', class: "read-more-#{entry.id}" %>
-						</div>
-						<div id="entry_long_<%= entry.id %>" style="display:none;">
-						    <%= simple_format(entry.content) %>
-						    <%= link_to '...Read less', '', class: "read-less-#{entry.id}", style: "float:right;" %>
-						</div>
-					<% else %>
-						<%= simple_format(entry.content) %>
-					<% end %>
-					<script>
-					  	$('.read-more-<%= entry.id %>').on('click', function(e) {
-					    e.preventDefault()
-					    $('#entry_truncate_<%= entry.id %>').toggle();
-					    $('#entry_long_<%= entry.id %>').toggle();
-					})
-					</script>
-					<script>
-					  	$('.read-less-<%= entry.id %>').on('click', function(e) {
-					    e.preventDefault()
-					    $('#entry_truncate_<%= entry.id %>').toggle();
-					    $('#entry_long_<%= entry.id %>').toggle();
-					  })
-					</script>
-				</div>
+				<% if entry.content.length > 180 %>
+					<div id="entry_truncate_<%= entry.id %>">
+					    <%= truncate(entry.content, length: 180) %>
+					    <%= link_to '...Read more', '', class: "read-more-#{entry.id}" %>
+					</div>
+					<div id="entry_long_<%= entry.id %>" style="display:none;">
+					    <%= simple_format(entry.content) %>
+					    <%= link_to '...Read less', '', class: "read-less-#{entry.id}", style: "float:right;" %>
+					</div>
+				<% else %>
+					<%= simple_format(entry.content) %>
+				<% end %>
+				<script>
+				  	$('.read-more-<%= entry.id %>').on('click', function(e) {
+				    e.preventDefault()
+				    $('#entry_truncate_<%= entry.id %>').toggle();
+				    $('#entry_long_<%= entry.id %>').toggle();
+				})
+				</script>
+				<script>
+				  	$('.read-less-<%= entry.id %>').on('click', function(e) {
+				    e.preventDefault()
+				    $('#entry_truncate_<%= entry.id %>').toggle();
+				    $('#entry_long_<%= entry.id %>').toggle();
+				  })
+				</script>
 				<div id="entry_<%= entry.id %>_thumbnails" class="entry_image_thumbnails">
 					<% entry.resources.each do |i| %>
 						<% if i.avatar_content_type.present? && (i.avatar_content_type.include? "image") %>
@@ -137,3 +135,15 @@
 		</div>
 	</div>
 </div>
+<script>
+	$('.entry_image_thumbnails').each(function( index ) {
+		$(this).slick({
+			initialSlide: $(this).find("img").length > 1 ? 0 : -1,
+			slidesToShow: 1,
+			centerPadding: "25%",
+			focusOnSelect: true,
+			arrows: false,
+			centerMode: true,
+		});
+	});
+</script>

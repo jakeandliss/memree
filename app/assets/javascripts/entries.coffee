@@ -1,3 +1,11 @@
+
+# $ ->
+# 	$(window).scroll ->
+# 		url= $('.pagination .next_page').attr('href')
+# 		if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+# 			$('.pagination').text("pagination stuff")
+# 			$.getScript(url)
+
 # show edit and delete buttons on entry on hover
 $ ->
 	$(".entry").hover (event) ->

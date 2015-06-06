@@ -1,6 +1,10 @@
-<div id="title_added">
+<div id="entries-wrapper">
 	<%= render @entries %>
 </div>	
+<div class="scroll-pagination">
+	<%= will_paginate @entries %>
+</div>
+
 <script>
 	$('.entry_image_thumbnails').each(function( index ) {
 		$(this).slick({
