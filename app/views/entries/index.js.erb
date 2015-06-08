@@ -17,6 +17,8 @@
 
   if (tagName == "all entries"){
     $("#search .fa-close").hide();
+    $('.root a').removeClass('active');
+    $('.root .nested-tags-right').hide();
     // $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
     // $('.bootstrap-tagsinput input[type="text"]').val('');
   }
@@ -29,9 +31,9 @@
   $("#search-tag").html(tagName);
 
 
-  if (!activeElement.is(":visible")){
-    activeElement.parents("li").addClass("expanded");
-  }
+  // if (!activeElement.is(":visible")){
+  //   activeElement.parents("li").addClass("expanded");
+  // }
  
   
 

@@ -36,10 +36,17 @@ $ ->
 		event.preventDefault()
 		$(this).closest('#playing').remove()
 
-#on click add "active" class
+
+#on click add "active" class and slidetoggle open
 $ -> 
-	$('#label_titles a').click (event) ->
+	$('#label_titles .root a').click (event) ->
 		event.preventDefault
-		$('.active').removeClass('active')
+		$('#label_titles .root .active').removeClass('active')
 		$(this).addClass('active')
+		$('.root .nested-tags-right').not($(this).closest('.root').find('.nested-tags-right')).hide().removeClass('expanded')
+		$(this).next('.nested-tags-right').find('.nested-tags-right').hide()
+		$(this).closest('li').siblings().find('.nested-tags-right').hide()
+		$(this).next('.nested-tags-right').hide().slideToggle('fast')
+		
+
 

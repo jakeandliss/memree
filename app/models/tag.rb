@@ -3,7 +3,6 @@ class Tag < ActiveRecord::Base
 	has_many :taggings, :dependent => :destroy
 	has_many :entries, -> { uniq }, through: :taggings
 
-	default_scope { order('created_at DESC') } 
 	validates_presence_of :name
 	has_ancestry
 

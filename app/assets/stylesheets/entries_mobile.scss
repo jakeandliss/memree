@@ -71,12 +71,29 @@ label Tags
 
 **************************************/
 
+#entries_mobile #label_titles {
+  text-align: right;
+}
+
 #entries_mobile #label_titles a {
   color: #444;
   display:block;
-  list-style-type: none;
   padding: 3px 7px;
   border-radius: 3px; 
+}
+
+#entries_mobile #label_titles .root a {
+  background: #fff;
+  margin-top: 3px;
+}
+
+#entries_mobile #label_titles ul {
+  margin: 0;
+}
+
+
+#entries_mobile #label_titles a:focus { 
+  outline: none !important; 
 }
 
 #entries_mobile #label_titles li {
@@ -85,12 +102,8 @@ label Tags
   margin-bottom: .2rem;
 }
 
-#entries_mobile #label_titles ul {
-  margin: 1rem 0;
-}
 
-
-#entries_mobile #label_titles a.opened .fa-caret-down{
+#entries_mobile #label_titles a.opened .fa-caret-down {
   display: inline;
 }
 
@@ -100,15 +113,42 @@ label Tags
 
 #entries_mobile #label_titles a.active{
   background: $salmon !important;
+  color: white;
 }
 
-#entries_mobile #label_titles li.root:nth-child {
-  background: white;
+#tag-list .root .nested-tags-right {
+  display: none;
+  margin-right: .5rem;
 }
 
-#tag-list > div > .root > a{
-  background: white;
+#tag-list .root i.fa-caret-down {
+  float: right;
+  margin-top: .35rem;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
 }
+
+#tag-list .root .active i {
+  float: right;
+  margin-top: .35rem;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
 
 
 /*************************************

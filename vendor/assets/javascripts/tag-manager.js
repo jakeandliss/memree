@@ -39,40 +39,16 @@ var TagManager = function () {
 		// Build a subtree of the root nodes
 		buildSubtree(wrapperElement, tagStructure)
 		wrapperElement.find(".nested-tags-right").first().find(">li").addClass("root");
-		wrapperElement.find(".nested-tags-right").find(">li").addClass("collapsed");
-
-		// Close all root subtrees on click 
-		$(".root > a").click(function(){
-			$(".expanded").not($(this).parent()).removeClass("expanded");
-		});
-
-		$(".root > a").on('touchstart', function(){
-    		$(".expanded").not($(this).parent()).removeClass("expanded");
-		});
-
-		// Remove all subtries on the 'journals' link click
-		wrapperElement.parent().find("> li > a").click(function(){
-			$(".toggable").parent().removeClass("expanded");
-		});
-
-		wrapperElement.parent().find("> li > a").on('touchstart', function(){
-    		$(".toggable").parent().removeClass("expanded");
-		});		
-
 	}
 
 	// Build a tree consisted of children an attach it to parent node.
 	function buildSubtree(parent, children){
 		var subtree = $('<div class="nested-tags-right"></div>');
 
-		$('a', parent).addClass("toggable");
+		// $('a', parent).addClass("toggable");
 		$('a', parent).append("&nbsp;");
 		$('a', parent).append($('<i class="fa fa-caret-down">'));
 
-		// Open/Close a subtree on button click
-		$('a', parent).click(function(){
-			$(this).parent().toggleClass("expanded collapsed");
-		});
 
 		// Recursively build all child subtries
 		$.each(children, function( index, tag ) {
