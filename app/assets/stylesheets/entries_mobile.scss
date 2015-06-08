@@ -590,7 +590,7 @@ New Entry Form
 }
 
 
-#new_title_form #current_date {
+#new_title_form .current_date {
   float: right;
   margin: 0;
 }
@@ -676,7 +676,7 @@ body#new_title_form {
   border-radius: 0;
 }
 
-#new_title_form a#change_date {
+#new_title_form a.change_date {
   margin-top: .5rem;
   color: #ccc;
   float: right;

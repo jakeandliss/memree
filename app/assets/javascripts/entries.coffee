@@ -12,8 +12,8 @@ $ ->
 $ ->
 	$('#new_entry .change_date').click (event) ->
 	  event.preventDefault()
-	  $(this).closest('.current_date').hide()
-	  $(this).closest('div').next('.new_date').show();
+	  $('.current_date').hide()
+	  $('.new_date').show();
 
 #use search icon to toggle search box
 $ ->
