@@ -29,7 +29,6 @@
 				</ul>
 				<div class="clearfix"><%= link_to "Edit Labels", tags_path, class: "edit left" %>
 				<i class="fa fa-search right pointer" style="padding-top:.3rem;"></i></div>
-				<%= render 'search' %>
 			</div>
 			<div id="playing_area"></div>
 		</div>
@@ -37,11 +36,8 @@
 			<div class="form clearfix" id="title_form">
 				<%= render 'form' %>
 			</div>
-
+				<%= render 'search' %>
 				<%= render partial: 'entries' %>
-			
-					
-		
 			
 			</div>
 			<div id="image-loader">
