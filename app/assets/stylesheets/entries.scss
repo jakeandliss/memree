@@ -354,6 +354,7 @@ textarea#wysiwyg {
 .bootstrap-tagsinput .tag [data-role="remove"] {
   margin-left: 8px;
   cursor: pointer;
+  display: inline-block;
 }
 
 .bootstrap-tagsinput .tag [data-role="remove"]:after {
