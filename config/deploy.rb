@@ -19,7 +19,7 @@ set :scm, :git
 set :branch, "master"
 set :deploy_via, :copy
 set :shallow_clone, 1
-
+set :keep_releases, 5
 
 
 # Define where to put your application code
@@ -27,7 +27,6 @@ set :application, "memree"
 set :rails_env, "production"
 set :repository, "."
 set :deploy_to, "/home/#{user}/#{application}" #path to your app on the production server 
-
 
 
 
@@ -41,6 +40,7 @@ server '104.236.57.97', :web, :app, :db, primary: true , ssh_options: {
 
 after 'deploy:restart', "figaro:setup"
 after 'deploy:restart', "figaro:finalize"
+after "deploy:update", "deploy:cleanup" 
 
 namespace :figaro do
   desc "SCP transfer figaro configuration to the shared folder"
@@ -58,3 +58,4 @@ end
 after 'deploy:restart', 'unicorn:reload'    # app IS NOT preloaded
 after 'deploy:restart', 'unicorn:restart'   # app preloaded
 after 'deploy:restart', 'unicorn:duplicate' # before_fork hook implemented (zero downtime deployments)
+
