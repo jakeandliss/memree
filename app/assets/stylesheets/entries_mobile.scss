@@ -116,12 +116,7 @@ label Tags
   color: white;
 }
 
-#tag-list .root .nested-tags-right {
-  display: none;
-  margin-right: .5rem;
-}
-
-#tag-list .root i.fa-caret-down {
+#entries_mobile  #tag-list .root i.fa-caret-down {
   float: right;
   margin-top: .35rem;
   transform: rotate(-90deg);
@@ -135,7 +130,7 @@ label Tags
   transition: .25s ease-in-out;
 }
 
-#tag-list .root .active i {
+#entries_mobile #tag-list .root .active i {
   float: right;
   margin-top: .35rem;
   transform: rotate(0deg);
