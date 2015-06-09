@@ -47,6 +47,4 @@ $ ->
 		$(this).next('.nested-tags-right').find('.nested-tags-right').hide()
 		$(this).closest('li').siblings().find('.nested-tags-right').hide()
 		$(this).next('.nested-tags-right').hide().slideToggle('fast')
-		
-
 

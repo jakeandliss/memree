@@ -421,7 +421,7 @@ Entry Snippets
 
 *****************************/
 
-#entries .title {
+#entries .entry {
   border-radius: .2rem;
   margin-bottom: 1rem;
 }
@@ -483,7 +483,7 @@ Entry Snippets
   display:none;
 }
 
-#entries .title:hover .delete-x {
+#entries .entry:hover .delete-x {
   display: inherit;
 }
 
@@ -504,13 +504,13 @@ ENTRY IMAGES
 
 ********************************/
 
-#entries .entry_image_thumbnails {
+#entries .entry .thumbnails.iv {
   float: left;
   width: 100%;
   height: 100%;
 }
 
-#entries .entry_image_thumbnails img {
+#entries .entry .thumbnails.iv img {
   border-radius: 3px; 
   position: relative;
 }
@@ -574,29 +574,29 @@ Edit Entries
 
 **************************/
 
-#entries .edit_images {
-  margin-bottom: 1rem;
+#entries .entry .edit {
+  margin-bottom: .5rem;
 }
 
-#entries .image_remove {
+#entries .entry .edit .image, #entries .entry .edit .video {
   position: relative;
   display: inline-block;
   margin-right: -.25%;
   margin-left: -.3%;
   width: 25%;
+  float: left;
 }
 
-#entries .image_remove img {
-  object-fit: cover;
+#entries .entry .edit .image img, #entries .entry .edit .video img {
   width: 100%;
   height: 8rem;
 }
 
-#entries .image_remove span a {
-  display: none
+#entries .entry .edit .image span a, #entries .entry .edit .video span a  {
+  display: none;
 }
 
-#entries .image_remove:hover span a {
+#entries .entry .edit .image:hover span a, #entries .entry .edit .video:hover span a {
   cursor: pointer;
   display: inherit;
   position: absolute;
@@ -605,9 +605,26 @@ Edit Entries
   width: 50%;
 }
 
-#entries .image_remove span img {
+#entries .entry .edit .image span img, #entries .entry .edit .video span img {
   width: 100%;
   height: 100%;
+}
+
+#entries .entry .edit .audio, #entries .entry .edit .app {
+    width: 50%;
+    padding: .5rem;
+    margin-bottom: .5rem;
+    float: left;
+}
+
+#entries .entry .edit.remove .audio p, #entries .entry .edit.remove .app p {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+#entries .edit.no_margin {
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 /**************************
@@ -692,13 +709,13 @@ Entry Files
 **************************/
 
 
-#entries .application {
+#entries .app {
     width: 50%;
     float: left;
     padding: 1rem;
 }
 
-#entries .entry_application_thumbnails {
+#entries .aa {
     /* border: 2px dashed #aaa; */
     margin-bottom: -1rem;
     margin-left: -1rem;

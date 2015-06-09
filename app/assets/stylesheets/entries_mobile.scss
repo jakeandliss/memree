@@ -359,27 +359,29 @@ Edit Entries
 
 **************************/
 
-#entries_mobile .edit_images {
-  margin-bottom: 1rem;
+#entries .edit.entry {
+  margin-bottom: .5rem;
 }
 
-#entries_mobile .image_remove {
+#entries .edit.entry  .image, #entries .edit.entry  .video {
   position: relative;
   display: inline-block;
-  margin-right: -.5%;
-  margin-left: -0.5%;
+  margin-right: -.25%;
+  margin-left: -.3%;
   width: 25%;
+  float: left;
 }
 
-#entries_mobile .image_remove img {
-  object-fit: cover;
+#entries .edit.entry  .image img, #entries .edit.entry  .video img {
   width: 100%;
-  height: 6rem;
+  height: 8rem;
 }
 
+#entries .edit.entry  .image span a, #entries .edit.entry  .video span a  {
+  display: none;
+}
 
-
-#entries_mobile .image_remove span a {
+#entries .edit.entry  .image:hover span a, #entries .edit.entry  .video:hover span a {
   cursor: pointer;
   display: inherit;
   position: absolute;
@@ -388,13 +390,26 @@ Edit Entries
   width: 50%;
 }
 
-#entries_mobile .image_remove span img {
+#entries .edit.entry  .image span img, #entries .edit.entry  .video span img {
   width: 100%;
   height: 100%;
 }
 
-#entries_mobile #entries .click_to_upload p {
-  margin-bottom: .5rem;
+#entries .edit.entry  .audio, #entries .edit.entry  .app {
+    width: 50%;
+    padding: .5rem;
+    margin-bottom: .5rem;
+    float: left;
+}
+
+#entries .edit.entry .remove .audio p, #entries .edit.entry .remove .app p {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+#entries .edit.no_margin {
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 /**************************
