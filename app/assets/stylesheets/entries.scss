@@ -48,10 +48,6 @@ label Tags
 
 **************************************/
 
-#entries #label_titles {
-  text-align: right;
-}
-
 #entries #label_titles a {
   color: #444;
   display:block;
@@ -95,7 +91,7 @@ label Tags
 
 #tag-list .root .nested-tags-right {
   display: none;
-  margin-right: .5rem;
+  margin-left: .5rem;
 }
 
 #tag-list .root i.fa-caret-down {
