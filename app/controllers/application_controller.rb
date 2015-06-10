@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActiveSupport::MessageVerifier::InvalidSignature, with: :render_error
   
+  #view, edit, create, update, destroy blogs in active admin with friendly_id
+  ActiveAdmin::ResourceController.class_eval do
+    def find_resource
+      resource_class.is_a?(FriendlyId) ? scoped_collection.where(slug: params[:id]).first! : scoped_collection.where(id: params[:id]).first!
+    end
+  end
+
   private
 
   def check_for_mobile

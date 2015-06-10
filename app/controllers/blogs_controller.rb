@@ -5,7 +5,7 @@ class BlogsController < InheritedResources::Base
 	end
 
 	def show
-		@blog = Blog.find(params[:id])
+		@blog = Blog.friendly.find(params[:id])
 	end
 
 end

@@ -68,6 +68,8 @@ gem 'magnific-popup-rails'
 
 gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations", branch: "4-2-stable"
 
+gem 'friendly_id'
+
 group :production do
 
   gem "unicorn-rails"
