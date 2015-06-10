@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :admin_user do
+FactoryGirl.define do  factory :blog do
+    
+  end
+  factory :admin_user do
     
   end
   factory :image do
