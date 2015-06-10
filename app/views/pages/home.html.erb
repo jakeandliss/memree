@@ -49,6 +49,26 @@
 	
 </div> 
 
+<% unless mobile_device? %>
+<div id="big-video-wrap">
+<script type="text/javascript">
+$(function() {
+    var BV = new $.BigVideo();
+    BV.init();
+    BV.show("<%= asset_url('coloring.mp4') %>", "<%= asset_url('coloring.mp4') %>", "<%= asset_url('coloring.mp4') %>",{ambient:true});
+    BV.getPlayer().on('durationchange',function(){
+    $('#big-video-wrap').fadeIn();
+});
+});
+</script>
+<style>
+#home {
+	background: none;
+}
+</style>
+</div>
+<% end %>
+
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -105,7 +125,5 @@
 		});
 
 	});
-
-
 
 </script>
