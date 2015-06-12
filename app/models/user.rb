@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 	has_many :shared_entries, through: :entry_shareable, source: :entry
 	has_many :tags, :dependent => :destroy
 	has_many :resources, :through => :entries
+	has_many :taggings, dependent: :destroy
 
 	validates :first_name, presence: true
 	validates :last_name, presence: true

@@ -8,7 +8,7 @@ class Entry < ActiveRecord::Base
 	has_many :resources, dependent: :destroy
 
 	default_scope { order('title_date DESC', 'created_at DESC') }
-  	
+
   	validates_presence_of :title
 
  	#  validate :at_least_one
@@ -58,8 +58,8 @@ class Entry < ActiveRecord::Base
 	# Add users for a new entry
 	def add_users(ids)
 		  self.shared_users = ids.split(",").map do |id|
-      		User.where(id: id.strip).first_or_create!
-      	end
+      		User.where(email: id.strip).first_or_create!
+      end
 	end
 
 	# Find all titles whish has a specified name
