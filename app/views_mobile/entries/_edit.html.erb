@@ -15,7 +15,7 @@
     </div>
   </div>
   <%= f.text_area :content, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "What would you like to remember?", rows: 3, class: "no_background" %>
-  <%= f.text_field :all_tags, class: "typeahead", placeholder: "Add labels  ", id: "edit_entry_all_tags" %>
+  <%= f.text_field :all_tags, value: @entry.all_tags(current_user.id), class: "typeahead", placeholder: "Add labels  ", id: "edit_entry_all_tags" %>
   <div class="edit_images">
     <% @entry.resources.each do |i| %>
       <% if i.avatar_content_type.include? "image" %>

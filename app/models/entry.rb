@@ -25,8 +25,8 @@ class Entry < ActiveRecord::Base
 
 
 	# Get names of all tags related to this entry
-	def all_tags
-		tags.map(&:name).join(", ")
+	def all_tags(user_id)
+		tags.where(user_id: user_id).map(&:name).join(", ")
 	end
 
 	def sortable_date
@@ -38,6 +38,19 @@ class Entry < ActiveRecord::Base
 		  self.tags = names.split(",").map do |name|
       		User.find_by(:id => user.id).tags.where(name: name.strip).first_or_create!
       	end
+	end
+	
+	def update_tags_for_user(names, c_user)
+		mul_tags = names.split(",")
+		new_tags = []
+		new_taggings = []
+		mul_tags.each do |name|
+			tag = c_user.tags.find_or_create_by name: name
+			new_tags.push tag
+			new_taggings.push taggings.find_or_create_by(tag_id: tag.id)
+		end
+		(taggings.where(user_id: c_user.id) - new_taggings).map(&:destroy)
+		new_tags
 	end
 	
 	# def add_tags(tag_names="")

@@ -1,0 +1,20 @@
+<%= form_for @entry, url: update_tags_entry_path(@entry), method: :put, validate: true, remote: true, authenticity_token: true, html: {id: "form-edit-tags"}  do |f| %>
+	<%= f.text_field :all_tags, value: @tags.map(&:name).join(", "), class: "typeahead", placeholder: "Add Tags", class: "no_background edit-tags" %>
+	<div class="row">
+		<div class="action medium-6 columns">
+			<%= f.submit 'Save', class: "button expand" %>
+		</div>
+	</div>
+<% end %>
+
+<script type="text/javascript">
+  $(function(){
+    $('input.edit-tags').tagsinput({
+      typeahead: {
+        source: function(query) {
+          return $.get('<%= tag_list_entries_url %>'+'?text='+query);
+        }
+      }
+    });
+  });
+</script>

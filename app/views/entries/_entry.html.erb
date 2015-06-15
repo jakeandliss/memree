@@ -125,7 +125,6 @@
 				<h5>
 					<ul>
 						<ul>
-							
 							<% entry.tags.where(user_id: current_user.id).each do |tag| %>
 								<li> 
 									<%= link_to tag.name, entries_path(tag: tag.name), remote: true, :data => {:tagname=>tag.name} %>
@@ -137,6 +136,7 @@
 			<% end %>
 			<% if entry.user_id != current_user.id %>
 				<div id="shared_users">
+					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_tags_entry_path(entry.id), :title_id => entry.id, remote: true %>
 					<%= image_tag entry.user.avatar.url(:avatar) %>
 				</div> 
 			<% else %>

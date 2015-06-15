@@ -1,0 +1,13 @@
+<% if @tags.present? %>
+	<h5>
+		<ul>
+			<ul>
+				<% @tags.each do |tag| %>
+					<li> 
+						<%= link_to tag.name, entries_path(tag: tag.name), remote: true, :data => {:tagname=>tag.name} %>
+					</li>
+				<% end %>
+			</ul>
+		</ul>
+	</h5>
+<% end %>

@@ -17,7 +17,7 @@ class EntriesController < ApplicationController
 
     @entries = @entries.search(params[:query], date_filters)
     @shared_entries = current_user.shared_entries
-    @all_entries = ((@entries + @shared_entries).sort_by! &:sortable_date).reverse!
+    @all_entries = ((@entries + @shared_entries).sort_by!(&:sortable_date)).reverse!
     
     respond_to do |format|
       format.html { render layout: "entries" }
@@ -94,8 +94,18 @@ class EntriesController < ApplicationController
   end
 
   def user_list
-    users = params[:text] ? User.where("lower(email) LIKE ?", "%#{params[:text].downcase}%").map(&:email) : User.all.map(&:email)
+    users = params[:text] ? User.where("lower(email) LIKE ? and id <> ?", "%#{params[:text].downcase}%", current_user.id).map(&:email) : User.all.map(&:email)
     render json: users
+  end
+
+  def edit_tags
+    @entry = Entry.find(params[:id])
+    @tags = @entry.tags.where(user_id: current_user.id)
+  end
+
+  def update_tags
+    @entry = Entry.find(params[:id])
+    @tags = @entry.update_tags_for_user(params[:entry][:all_tags], current_user)
   end
 
   private
