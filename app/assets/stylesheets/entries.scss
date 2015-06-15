@@ -403,12 +403,12 @@ Entry Snippets
   border-radius: 3px;
 }
 
-#titles .footer ul {
+#titles .tags ul {
   margin-left: 0;
   margin-bottom: 0;
 }
 
-#titles .footer li {
+#titles .tags li {
   background: $greendew ;
   width: 100%;
   margin-bottom: .5rem;  
@@ -424,7 +424,7 @@ Entry Snippets
 #titles .header {
 }
 
-#titles.footer {
+#titles.tags {
   margin-left: -1rem;
 }
 
@@ -439,13 +439,27 @@ Entry Snippets
   height: 8rem;
 }
 
-#titles #shared_users img {
-  width: 33%;
+#titles .shared_users img {
+  width: 2.5rem;
   float: left;
+  margin-right: .5rem;
 }
 
-#titles #shared_users {
-  display: inline-block;
+#titles .shared_users .header {
+  margin-top: -.5rem;
+  margin-left: -.5rem;
+}
+
+#titles .shared_users h3 {
+  font-size: 1.2rem;
+  margin-bottom: -.2rem;
+  display: inherit;
+}
+
+#titles .shared_users p {
+  font-size: .8rem;
+  margin-bottom: 0;
+  color: #ccc;
 }
 
 #titles .delete-x {
