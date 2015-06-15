@@ -67,7 +67,7 @@ class EntriesController < ApplicationController
   end
 
   def update
-    if @entry.update_attributes!(entry_params) && @entry.add_tags(params[:entry][:all_tags])
+    if @entry.update_attributes!(entry_params) && @entry.update_tags_for_user(params[:entry][:all_tags], current_user)
       respond_to do |format|
         format.html { redirect_to entries_path, notice: "Entry was updated succesfully" }
         format.js
