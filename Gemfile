@@ -70,6 +70,8 @@ gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations"
 
 gem 'friendly_id'
 
+gem 'mail_form'
+
 group :production do
 
   gem "unicorn-rails"

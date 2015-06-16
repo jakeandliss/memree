@@ -53,3 +53,12 @@ $ ->
     $('#entries .question').click (event) ->
     	 event.preventDefault()
     	 $('#entries .intro').toggle()
+
+#toggle feedback form and button
+$ ->
+    $('#feedback .toggle').click (event) ->
+    	 event.preventDefault()
+    	 $('#feedback .buttn').toggle()
+    	 $('#feedback .form').toggle()
+
+

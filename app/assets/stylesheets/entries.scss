@@ -786,7 +786,7 @@ Feedback Button
 
 #feedback .buttn a {
   display: block;
-  background: #0099CC;
+  background: $salmon;
   height: 1.5em;
   width: 5.5rem;
   padding-left: .5rem;
@@ -796,6 +796,18 @@ Feedback Button
   border-left: solid 1px #fff;
   border-radius: 3px;
 }
+
+#feedback .form {
+  position: fixed;
+  width: 20%;
+  bottom: 0;
+  right: 0;
+}
+
+#feedback .form input, #feedback .form textarea {
+  font-size: .8rem;
+}
+
 
 /*************************************
 
