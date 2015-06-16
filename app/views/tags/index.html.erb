@@ -8,8 +8,8 @@
 		 		<%= render 'users/user_sidebar' %>
 		 		
 		</div>
-		<div class="medium-8 columns white box-shadow">  
-			<div id="labels"> 
+		<div id="labels" class="medium-8 columns">  
+			<div class="white box-shadow"> 
 				<div class="row">
 					<div class="medium-8 columns">
 						<h3>My MemryBook</h3>
@@ -25,7 +25,36 @@
 				<div id="sub-menu">
 					<%= nested_tags @tags %>
 				</div>
+				<div class="question clearfix">
+					<i class="fa fa-question-circle right pointer"></i>
+				</div>
 			</div>
+			<% if @tags.present? %>
+					<div class="intro hide white box-shadow">
+				<% else %>
+					<div class="intro white box-shadow">
+				<% end %>
+					<h2><i class="fa fa-arrow-circle-o-up fa-3x"></i> <span>Create your first label, it's easy...</span></h2>
+					<p>Labels are awesome. They give you unlimited organization for your entries. Here's how you make one:
+						
+						<p>1. Click "New Label". </p>
+						<p>2. Create a name for  your label.</p>
+						<p>3. Click "Save Label".</p>
+						<p>Or you can just type in the name of label when you create an entry and it will make it automatically.</p>
+					
+					<p>Now you can label your entries and keep everything nice and tidy.</p>
+					
+						<b><u>A couple things to keep in mind to make labels super helpful:</u></b>
+						<br />
+						<br />
+						<p><i class="fa fa-circle"></i> Labels can have sub-labels, meaning you can nest them under each other. So you can have a family label, then create a sub-label for family vacations. You'll find this really nice.
+						</p>
+						<p><i class="fa fa-circle"></i> They're unlimited. You can have as many as you want. Get crazy!
+						</p>
+						<p><i class="fa fa-circle"></i> You can change them as you go. You can edit, move, or delete them at any time, so don't worry about getting it perfect the first time. You'll find what works best for you as you go.
+						</p>
+						<p>Go give it try!</p>
+					</div>
 		</div>
 	</div> 
 

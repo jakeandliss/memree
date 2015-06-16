@@ -48,3 +48,8 @@ $ ->
 		$(this).closest('li').siblings().find('.nested-tags-right').hide()
 		$(this).next('.nested-tags-right').hide().slideToggle('fast')
 
+#show help on entries index on question icon click
+$ ->
+    $('#entries .question').click (event) ->
+    	 event.preventDefault()
+    	 $('#entries .intro').toggle()

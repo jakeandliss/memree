@@ -19,6 +19,7 @@ Sitewide Styling
 .bg_dark_gray {
   background-color: #ccc;
 }
+
 .flash {
   position: fixed;
   background: #444;
@@ -69,4 +70,12 @@ Sitewide Styling
   background: #fff !important;
   border: 0 !important;
   box-shadow: none !important;
+}
+
+.gray {
+  color: #ccc;
+}
+
+.underline {
+  text-decoration: underline;
 }

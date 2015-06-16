@@ -4,3 +4,24 @@
 <div class="scroll-pagination">
 	<%= will_paginate @entries %>
 </div>
+<div class="question clearfix">
+	<i class="fa fa-question-circle right pointer"></i>
+</div>
+<% if @entries.present? %>
+	<div class="intro hide">
+<% else %>
+	<div class="intro">
+<% end %>
+	<h2><i class="fa fa-arrow-circle-o-up fa-3x"></i> <span>Create your first entry, it's easy...</span></h2>
+	<ol>
+		<li>Give it a quick title. </li>
+		<li>Write something you'd like to remember.</li>
+		<li>Add a label so you can easily find it later (more about labels <%= link_to "here", tags_path, class: "underline" %>)</li>
+	</ol>
+	<ul>
+		<b><u>A couple more options to make your experience even better:</u></b>
+		<li>Change the date if you'd like (just click on it)</li>
+		<li>Add some media. Add images, video, audio, and pdf documents (just click or drag).</li>
+		<li>Click the <i class="fa fa-search"></i> on the sidebar to access the search feature. You'll find it's quite useful.</li>
+	</ul>
+</div>
