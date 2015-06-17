@@ -10,9 +10,19 @@
 						<div class="calendar"><month><%= entry.title_date.to_date.strftime('%b') if entry.title_date.present? %></month><day><%= entry.title_date.to_date.strftime('%e') if entry.title_date.present? %></day><year><%= entry.title_date.to_date.strftime('%Y') if entry.title_date.present? %></year>
 						</div>		
 				</div>
+				<% if entry.user_id != current_user.id %>
+				<div class="shared_users">
+					<%= image_tag entry.user.avatar.url(:avatar) %>
+					<h3>
+					<%= truncate(entry.title, length: 63) %>
+					</h3>
+				<p>shared by <%= entry.user.full_name %></p>
+				</div> 
+				<% else %>
 				<h3>
 					<%= truncate(entry.title, length: 63) %>
 				</h3>
+				<% end %>
 			</div>
 			<div class="content clearfix">
 				<div class="title_entry">
@@ -120,7 +130,7 @@
 		</div>
 	</div>
 	<div class="medium-3 columns" style="padding-left:0;">
-		<div class="footer">
+		<div class="tags">
 			<% if entry.tags.present? %>
 				<h5>
 					<ul>
@@ -135,9 +145,8 @@
 				</h5>
 			<% end %>
 			<% if entry.user_id != current_user.id %>
-				<div id="shared_users">
-					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_tags_entry_path(entry.id), :title_id => entry.id, remote: true %>
-					<%= image_tag entry.user.avatar.url(:avatar) %>
+				<div class="edit">
+					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_tags_entry_path(entry.id), remote: true %>
 				</div> 
 			<% else %>
 					<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, :"data-reveal-id"=>"share-modal-#{entry.id}" %>

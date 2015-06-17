@@ -1,10 +1,10 @@
-<%= form_for @entry, url: update_tags_entry_path(@entry), method: :put, validate: true, remote: true, authenticity_token: true, html: {id: "form-edit-tags"}  do |f| %>
+
+  <%= form_for @entry, url: update_tags_entry_path(@entry), method: :put, validate: true, remote: true, authenticity_token: true, html: {id: "form-edit-tags"}  do |f| %>
+<div style="margin-bottom:2rem;">
 	<%= f.text_field :all_tags, value: @tags.map(&:name).join(", "), class: "typeahead", placeholder: "Add Tags", class: "no_background edit-tags" %>
-	<div class="row">
-		<div class="action medium-6 columns">
-			<%= f.submit 'Save', class: "button expand" %>
-		</div>
-	</div>
+			<%= f.submit 'Save', class: "no_background right pointer" %>
+       <%= link_to "Cancel", '#', class: "cancel left grey", style: "padding-right:.5rem;" %>
+</div>
 <% end %>
 
 <script type="text/javascript">
@@ -16,5 +16,12 @@
         }
       }
     });
+  });
+$('#entry_<%= @entry.id %> .tags .cancel').on('click', function(e) {
+         e.preventDefault();
+$('#entry_<%= @entry.id %> form#form-edit-tags').replaceWith('<%= j render("entry_tags") %>');
+    $('#entry_<%= @entry.id %> .tags .edit i.fa.fa-pencil-square-o').show();
+
+
   });
 </script>

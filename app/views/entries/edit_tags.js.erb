@@ -1,1 +1,2 @@
-$('#<%= dom_id(@entry) %> div.footer h5').replaceWith('<%= j render("tags_form") %>');
+$('#entry_<%= @entry.id %> .tags h5').replaceWith('<%= j render("tags_form") %>');
+$('#entry_<%= @entry.id %> .tags .edit i.fa.fa-pencil-square-o').hide();
