@@ -1,2 +1,2 @@
 $('#<%= dom_id(@entry) %> form#form-edit-tags').replaceWith('<%= j render("entry_tags") %>');
-$('#entry_<%= @entry.id %> #shared_users').show();
+$('#entry_<%= @entry.id %> .tags .edit i.fa.fa-pencil-square-o').show();

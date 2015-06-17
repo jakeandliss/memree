@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActiveSupport::MessageVerifier::InvalidSignature, with: :render_error
+
+  before_filter :configure_permitted_parameters, if: :devise_controller?
   
   private
 
@@ -43,5 +45,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  protected
+
+  def configure_permitted_parameters
+    # Only add some parameters
+    devise_parameter_sanitizer.for(:accept_invitation).concat [:first_name, :last_name]
+  end
 
 end

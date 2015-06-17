@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   	# Include default devise modules. Others available are:
   	# :confirmable, :lockable, :timeoutable and :omniauthable
-  	devise :database_authenticatable, :registerable,
+  	devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :entries, :dependent => :destroy
@@ -11,8 +11,7 @@ class User < ActiveRecord::Base
 	has_many :resources, :through => :entries
 	has_many :taggings, dependent: :destroy
 
-	validates :first_name, presence: true
-	validates :last_name, presence: true
+	validates :first_name, :last_name, presence: true
 
 
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :avatar =>  "150x150#", :thumb => "100x100>" }, :default_url => "blank_avatar.png"

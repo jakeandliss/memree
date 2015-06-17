@@ -46,6 +46,7 @@ gem "font-awesome-rails"
 gem 'jQuery-Validation-Engine-rails'
 gem 'devise'
 gem 'will_paginate'
+gem 'devise_invitable'
 # heroku
 #gem 'rails_12factor', group: :production
 gem 'pg'
