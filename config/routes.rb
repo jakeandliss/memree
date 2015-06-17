@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get :user_list, on: :collection
     get :edit_tags, on: :member
     put :update_tags, on: :member
+    put :share, on: :member
   end
   
 

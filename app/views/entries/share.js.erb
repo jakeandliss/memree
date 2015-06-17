@@ -1,0 +1,3 @@
+$('#share-modal-<%= @entry.id %>').foundation('reveal', 'close');
+$('div#<%= dom_id(@entry) %>').replaceWith('<%= j render(@entry) %>')
+$("#success").fadeIn(500).html("Entry shared successfully").delay(2000).fadeOut(500);

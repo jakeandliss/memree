@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :fetch_entry, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_entry, only: [:show, :edit, :update, :destroy, :share]
   before_filter :check_for_mobile, :only => [:index, :edit, :update, :create, :new]
 
   def index
@@ -106,6 +106,10 @@ class EntriesController < ApplicationController
   def update_tags
     @entry = Entry.find(params[:id])
     @tags = @entry.update_tags_for_user(params[:entry][:all_tags], current_user)
+  end
+
+  def share
+    @entry.add_users(params[:entry][:all_users])
   end
 
   private

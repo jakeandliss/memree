@@ -1,1 +1,1 @@
-$('form#form-edit-tags').replaceWith('<%= j render("entry_tags") %>');
+$('#<%= dom_id(@entry) %> form#form-edit-tags').replaceWith('<%= j render("entry_tags") %>');
