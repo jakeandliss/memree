@@ -25,6 +25,7 @@ public/system
 
 /config/database.yml
 /config/secrets.yml
+/config/deploy.rb
 # Ignore application configuration
 /config/application.yml
 /public/*
