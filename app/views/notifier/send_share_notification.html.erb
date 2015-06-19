@@ -1,13 +1,17 @@
 <p>Hi</p>
 
-<p><%= @origin_user.full_name %> has shared an entry with you on MemryBook.</p>
+Here's what <p><%= @origin_user.first_name %> wanted to share with you.</p>
+
+You can view the entire entry by <%= link_to "clicking here", entries_url %></p>
 
 <% if @target_user.invitee? %>
 	<h3><%= @entry.title %></h3>
-	<p><%= @entry.content %></p>
-	<p>To view the full details, <%= link_to "Click here", entry_url(@entry, token: @target_user.invitation_token) %></p>
+	<p><%= truncate(@entry.content, length: 250) %></p>
+	<p>You can view the entire entry by <%= link_to "Clicking here", entry_url(@entry, token: @target_user.invitation_token) %></p>
 <% @target_user.invite!{|u| u.skip_invitation = true} %>
-	<p>You can also join MemryBook and can see all your shared Entries. <%= link_to "Join Now", accept_user_invitation_url(invitation_token: @target_user.raw_invitation_token) %></p>
+	<p>If you'd like to sign up for a free account on Memrybook, <%= link_to "click here to join now", accept_user_invitation_url(invitation_token: @target_user.raw_invitation_token) %>. You'll be able to see any and all entries that have been shared with you.</p>
 <% else %>
-	<p>To view the details, <%= link_to "Click here", entries_url %></p>
+	<h3><%= @entry.title %></h3>
+	<p><%= truncate(@entry.content, length: 250) %></p>
+	<p>You can view the entire entry by <%= link_to "clicking here", entries_url %></p>
 <% end %>
