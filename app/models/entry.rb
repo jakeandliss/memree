@@ -71,7 +71,7 @@ class Entry < ActiveRecord::Base
 	# Add users for a new entry
 	def add_users(ids)
 		  self.shared_users = ids.split(",").map do |id|
-      		User.where(email: id.strip).first || User.invite!(email: id.strip)
+      		User.where(email: id.strip).first || User.invite!(email: id.strip){|u| u.skip_invitation = true }
       end
 	end
 

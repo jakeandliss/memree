@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :fetch_entry, only: [:show, :edit, :update, :destroy, :share]
+  skip_before_action :authenticate_user!, only: :show
+  before_action :fetch_entry, only: [:edit, :update, :destroy, :share]
   before_filter :check_for_mobile, :only => [:index, :edit, :update, :create, :new]
 
   def index
@@ -116,6 +117,17 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
     @entry_shareable = @entry.entry_shareable.where(user: current_user).first
     @entry_shareable.update(is_hidden: true) if @entry_shareable
+  end
+
+  def show
+    @user = User.find_by(invitation_token: params[:token])
+    if @user
+      @entry = @user.shared_entries.find_by(id: params[:id])
+      redirect_to(root_path, flash: { error: "Entry not found" }) unless @entry
+    else
+      redirect_to(root_path, flash: { error: "Invalid Token" })
+    end
+    puts
   end
 
   private

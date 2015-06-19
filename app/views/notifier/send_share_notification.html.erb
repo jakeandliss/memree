@@ -3,9 +3,11 @@
 <p><%= @origin_user.full_name %> has shared an entry with you on MemryBook.</p>
 
 <% if @target_user.invitee? %>
-<h3><%= @entry.title %></h3>
-<p><%= @entry.content %></p>
-<p>To view the full details, <%= link_to "Click here", "#" %></p>
+	<h3><%= @entry.title %></h3>
+	<p><%= @entry.content %></p>
+	<p>To view the full details, <%= link_to "Click here", entry_url(@entry, token: @target_user.invitation_token) %></p>
+<% @target_user.invite!{|u| u.skip_invitation = true} %>
+	<p>You can also join MemryBook and can see all your shared Entries. <%= link_to "Join Now", accept_user_invitation_url(invitation_token: @target_user.raw_invitation_token) %></p>
 <% else %>
-<p>To view the details, <%= link_to "Click here", entries_url %></p>
+	<p>To view the details, <%= link_to "Click here", entries_url %></p>
 <% end %>
