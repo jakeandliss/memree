@@ -112,6 +112,12 @@ class EntriesController < ApplicationController
     @entry.add_users(params[:entry][:all_users])
   end
 
+  def hide
+    @entry = Entry.find(params[:id])
+    @entry_shareable = @entry.entry_shareable.where(user: current_user).first
+    @entry_shareable.update(is_hidden: true) if @entry_shareable
+  end
+
   private
 
   def fetch_entry

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get :edit_tags, on: :member
     put :update_tags, on: :member
     put :share, on: :member
+    get :hide, on: :member
   end
   
 

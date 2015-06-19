@@ -147,6 +147,9 @@
 			<% if entry.user_id != current_user.id %>
 				<div class="edit">
 					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_tags_entry_path(entry.id), remote: true %>
+					<% unless entry.is_hidden_for?(current_user) %>
+						<%= link_to "<i class=\"fa fa-eye-slash\"></i>".html_safe, hide_entry_path(entry.id), remote: true %>
+					<% end %>
 				</div> 
 			<% else %>
 					<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, :"data-reveal-id"=>"share-modal-#{entry.id}" %>

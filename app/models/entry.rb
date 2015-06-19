@@ -107,6 +107,8 @@ class Entry < ActiveRecord::Base
 		Entry.where(id: title_ids.uniq)
 	end
 
-
+	def is_hidden_for?(user)
+		entry_shareable.where(user: user).first.try(:is_hidden?)
+	end
 
 end
