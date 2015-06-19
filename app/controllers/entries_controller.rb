@@ -53,7 +53,7 @@ class EntriesController < ApplicationController
     @entry = current_user.entries.new(entry_params)
 
     respond_to do |format|
-      if @entry.save && @entry.add_tags(params[:entry][:all_tags]) && @entry.add_users(params[:entry][:all_users])
+      if @entry.save && @entry.update_tags_for_user(params[:entry][:all_tags], current_user) && @entry.add_users(params[:entry][:all_users])
         format.html { redirect_to entries_path, notice: "Entry was created succesfully" }
         format.js
       else

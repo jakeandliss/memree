@@ -34,5 +34,9 @@ class User < ActiveRecord::Base
 		"http://gravatar.com/avatar/#{hash}"
 	end
 
+  def invitee?
+    !encrypted_password.present?
+  end
+
 end
 
