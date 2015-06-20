@@ -156,7 +156,7 @@
 					<div id="share-modal-<%= entry.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 						<h2 id="modalTitle">Share Entry with</h2>
 						<%= form_for entry, url: share_entry_path(entry), method: :put, validate: true, remote: true, html: {}, authenticity_token: true  do |f| %>
-							<%= f.text_field :all_users, value: entry.shared_users.map(&:email), class: "typeahead", placeholder: "Share", class: "no_background", id: "share_entry_#{entry.id}" %>
+							<%= f.text_field :all_users, value: entry.shared_users.unscope(where: :is_hidden).map(&:email), class: "typeahead", placeholder: "Share", class: "no_background", id: "share_entry_#{entry.id}" %>
 							<div class="row">
 								<div class="action medium-4 columns" style="float:right;">
 									<%= f.submit 'Share', class: "button expand" %>
