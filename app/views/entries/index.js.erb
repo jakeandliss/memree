@@ -1,6 +1,6 @@
 //load endless pagination for entries
-<% if params[:page].present? %> 
- 	$('#entries-wrapper').append('<%= j render(@entries) %>');
+<% if params[:page].present? %>
+ 	$('#entries-wrapper').append('<%= j render partial: "entries" %>');
 	$('.pagination').replaceWith('<%= j will_paginate(@entries) %>');
   <% unless @entries.next_page %>
     $('.pagination').remove();
@@ -41,5 +41,3 @@
 <% end %>
 
 $('#image-loader').hide();
-
-
