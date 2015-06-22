@@ -385,3 +385,6 @@ DEPENDENCIES
   unicorn-rails
   web-console (~> 2.0)
   will_paginate
+
+BUNDLED WITH
+   1.10.4
