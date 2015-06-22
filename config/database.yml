@@ -5,7 +5,7 @@ development:
   encoding: utf8
   database: memrybook_development
   pool: 5
-  username: jacobtho
+  username: jakeandliss
   password:
 
 # test: &TEST
