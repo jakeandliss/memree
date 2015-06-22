@@ -23,7 +23,7 @@ public/system
 .ruby-gemset
 
 
-/config/database.yml
+
 /config/secrets.yml
 /config/deploy.rb
 # Ignore application configuration
