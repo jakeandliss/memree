@@ -1,0 +1,43 @@
+//load endless pagination for entries
+<% if params[:page].present? %>
+ 	$('#entries-wrapper').append('<%= j render partial: "entries" %>');
+	$('.pagination').replaceWith('<%= j will_paginate(@entries) %>');
+  <% unless @entries.next_page %>
+    $('.pagination').remove();
+    $("#image-loader").remove();
+  <% end %>
+<% else %>
+  $('#entries-wrapper').html('<%= j render partial: "entries" %>');
+<% end %>
+
+
+  // add tagName to search with option to remove and search all entries
+
+  var tagName = '<%=params[:tag] ? params[:tag].downcase : "all entries"%>';
+
+  if (tagName == "all entries"){
+    $("#search .fa-close").hide();
+    $('.root a').removeClass('active');
+    $('.root .nested-tags-right').hide();
+    // $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
+    // $('.bootstrap-tagsinput input[type="text"]').val('');
+  }
+  else {
+    $("#search .fa-close").show();
+    // $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
+    // $('.bootstrap-tagsinput input[type="text"]').val(tag);
+  }
+
+  $("#search-tag").html(tagName);
+
+
+  // if (!activeElement.is(":visible")){
+  //   activeElement.parents("li").addClass("expanded");
+  // }
+
+
+<% if @entries.blank? %>
+  $('.pagination').detach();
+<% end %>
+
+$('#image-loader').hide();

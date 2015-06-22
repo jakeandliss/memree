@@ -1,0 +1,10 @@
+$(document).on 'click', 'form .add_entry', (event) ->
+	time = new Date().getTime()
+	regexp = new RegExp($(this).data('id'), 'g')
+	$(this).before($(this).data('entries').replace(regex, time))
+	event.preventDefault()
+
+<% @title.entries.each do |e| %>
+	<h3><%= e.entry %></h3>
+	<%= link_to 'Edit Entry', edit_title_entries_path(e) %> 
+	<% end %>

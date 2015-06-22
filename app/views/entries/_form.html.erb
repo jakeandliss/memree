@@ -1,0 +1,63 @@
+<%= form_for @entry, validate: true, remote: true, html: { multipart: true, data: {dropzone_name: 'entry[resource_ids][]'} }, authenticity_token: true  do |f| %>
+	<div class="row">
+		<div class="small-6 columns">
+			<%= f.text_field :title, placeholder: "Title this Entry", class: "no_background" %>
+		</div>
+		<div class="small-6 columns">
+			<div class="current_date">
+				<p><a href="#" class="change_date"><%= Date.current.strftime('%B %e, %Y') %></a></p>
+			</div>
+			<div class="new_date">
+				<%= f.date_select :title_date, :order => [:day, :month, :year], :start_year => 1900 %>
+			</div>
+		</div>
+	</div>
+	<%= f.text_area :content, id: "wysiwyg", placeholder: "What would you like to remember?", rows: 3, class: "no_background" %>
+	<%= f.text_field :all_tags, class: "typeahead", placeholder: "Add Labels", class: "no_background edit_tags" %>
+	<div class="row">
+		<div class="click_to_upload pointer medium-8 columns">
+			 <p><i class="fa fa-camera fa-lg fa-fw"></i> <i class="fa fa-video-camera fa-lg fa-fw"></i> <i class="fa fa-music fa-lg fa-fw"></i> <i class="fa fa-file-pdf-o fa-lg fa-fw"></i>(Drag or click to upload)</p>
+		</div>
+		<div class="action medium-4 columns">
+			<%= f.submit 'Save Entry', class: "button expand" %>
+		</div>
+	</div>
+	<div class="dropzone dropzone-custom hidden">
+		<div class="dz-default dz-message">
+			<span>Drop files here to upload</span>
+		</div>
+	</div>
+<% end %>
+
+
+<script>
+	var dropzone = new DropzoneManager();
+	dropzone.initialize($("#new_entry .dropzone")[0])
+</script>
+<script type="text/javascript">
+	$(function(){
+		//$("#new_entry .dropzone").dropzone({url: "/resources", paramName: "resource[avatar]"});
+		$('.edit_tags').tagsinput({
+			typeahead: {
+				source: function(query) {
+					return $.get('<%= tag_list_entries_url(:protocol => "https") %>'+'?text='+query);
+				}
+			}
+		});
+		
+	});
+</script>
+<script>
+	window.onbeforeunload = function(){
+		var inputs = document.getElementById('wysiwyg').value;
+		var unfinished = 'false';
+		for (var i=0; i<inputs.length; ++i) {
+			if ( inputs[i].value != '' ) {
+				unfinished = 'true';
+			}
+		}
+		if ( unfinished == 'true' ) {
+			return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave?';
+		}
+	}
+</script>

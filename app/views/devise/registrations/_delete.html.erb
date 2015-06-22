@@ -1,0 +1,10 @@
+<h3>Delete My Account</h3>
+
+	<p>We never recommend deleting your account, but this is your private information and we respect your choice to delete it if you'd like.</p>
+
+	<p>By deleting your account, everything you've created will be permanently deleted.</p>
+
+	<%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "This will delete your user account and all your entries. Are you sure you want to delete your account?" }, method: :delete, class: "button" %>
+
+
+</div>

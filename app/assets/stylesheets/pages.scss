@@ -1,0 +1,98 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#home {
+  background: asset_url("dad.jpg") center;
+  background-size: cover;
+  height: 100%;
+}
+
+#home #user_nav {
+  padding: .5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#home .wrapper {
+  margin-left: auto ;
+  margin-right: auto ;
+  margin-top: 10%;
+  margin-bottom: auto;
+  border-radius: 8px;
+}
+
+#home .wrapper .header {
+  background:#FD9781;
+  opacity:.87; 
+  padding: 1.5em;
+}
+
+#home .wrapper .header h1 {
+  text-align: center;
+  color: #fff;
+  margin: 0;
+}
+
+#home .wrapper .content {
+  text-align: center;
+  background: #fff;
+  padding: 1.5em;
+  opacity: .92; 
+}
+
+#home .wrapper .footer {
+  text-align: center;
+  background: #EBE5CD;
+  padding: 1em;
+  opacity:.92; 
+}
+
+#home .social {
+  margin: 0;
+  margin-bottom: .2rem;
+  padding: 0;
+  list-style: none;
+}
+
+#home .social li {   
+  margin: 2px 0 6px 0; 
+  padding: 15px;
+  font-weight: bold;
+  background-position: 0 50%;
+  display: inline;
+  opacity: .8;
+
+}
+
+#home .social li:hover {
+    opacity: 1;
+}
+
+
+#home .social li a {
+  padding-left: 30px;
+}
+
+#home li#facebook {
+  background: asset_url("social/facebook.png") no-repeat;
+
+}
+
+#home li#twitter {
+  background: asset_url("social/twitter.png") no-repeat;
+}
+
+#home li#instagram {
+  background: asset_url("social/instagram.png") no-repeat;
+}
+
+#home .popup_title {
+  border-bottom:1px solid #eee;
+  margin-bottom:.7rem;
+  color:#FD9781;
+}
+
+#big-video-wrap {
+  display: none;
+}

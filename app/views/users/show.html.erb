@@ -1,0 +1,23 @@
+
+<h3>Hey <%= current_user.first_name %>, Here's your profile page. You can change or update anything at any time.</h3>
+<p>
+  <strong>First name:</strong>
+  <%= current_user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= current_user.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= current_user.email %>
+</p>
+<%= link_to 'Edit Profile', edit_user_path(current_user), class: "button" %>
+	
+
+	    
+
+
+			

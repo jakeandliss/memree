@@ -1,0 +1,61 @@
+
+<!-- Mobile Version -->
+<% if mobile_device? %>
+	<% unless @new_action %>
+		<nav class="top-bar" data-topbar role="navigation">
+			<ul class="title-area">
+				<li class="name"><h1><%= link_to "MemryBook", entries_path %></h1></li>
+				<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+			</ul>
+			<section class="top-bar-section">
+				<ul class="right">
+					<% if user_signed_in? %>
+						<li class="active"> <%= link_to 'Entries', entries_path %></li>
+						<li class="active"><%= link_to 'Labels', tags_path %></li>
+						<li class="active"><%= link_to 'Profile', current_user %>
+						<li class="active"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+					<% else %>
+						<li class="active"><a href="/about">About</a></li>
+						<li class="active"><%= link_to "Log In", new_user_session_path %></li>
+						<li class="active"><%= link_to "Register", new_user_registration_path %></li>
+					<% end %>
+				</ul>
+			</section>
+		</nav>
+	<% end %>
+	<div class="sticky-bottom">
+		<nav class="top-bar" data-topbar role="navigation">
+			<ul class="icons title-area">
+				<% if user_signed_in? %>
+					<li><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, new_entry_path  %></li>
+					<li><%= link_to '<i class="fa fa-book"></i>'.html_safe, entries_path %>
+					</li>
+					<li><%= link_to '<i class="fa fa-tag"></i>'.html_safe, tags_path %>
+					</li>
+				<% end %>
+			</ul>
+		</nav>
+	</div>
+<% else %>
+<!-- Desktop Version -->
+	<nav class="top-bar" data-topbar role="navigation">
+		<ul class="title-area">
+			<li class="name"><h1><%= link_to "MemryBook", root_path %></h1></li>
+			<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+		</ul>
+		<section class="top-bar-section">
+			<ul class="right">
+				<% if user_signed_in? %>
+					<li class="active"> <%= link_to 'Entries', entries_path %></li>
+					<li class="active"><%= link_to 'Labels', tags_path %></li>
+					<li class="active"><%= link_to 'Profile', current_user %>
+					<li class="active"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+				<% else %>
+					<li class="active"><a href="/about">About</a></li>
+					<li class="active"><%= link_to "Log In", new_user_session_path %></li>
+					<li class="active"><%= link_to "Register", new_user_registration_path %></li>
+				<% end %>
+			</ul>
+		</section>
+	</nav>
+<% end %>

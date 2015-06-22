@@ -1,0 +1,141 @@
+<div id="entry_<%= entry.id %>" class="row">
+	<div class="medium-9 columns">
+		<div class="white box-shadow entry">
+			<div class="header">
+				<div class="date">
+					<div class="calendar">
+						<month><%= entry.title_date.to_date.strftime('%b') if entry.title_date.present? %></month>
+						<day><%= entry.title_date.to_date.strftime('%e') if entry.title_date.present? %></day>
+						<year><%= entry.title_date.to_date.strftime('%Y') if entry.title_date.present? %></year>
+					</div>		
+				</div>
+				<h3>
+					<%= entry.title %>
+				</h3>
+			</div>
+			<div class="content clearfix">
+				<% if entry.content.length > 180 %>
+					<div class="truncate">
+					    <p><%= truncate(entry.content, length: 180) %>
+					    <%= link_to '...Read more', '', class: "read_more" %></p>
+					</div>
+					<div class="no_truncate hide">
+					    <p><%= simple_format(entry.content) %>
+					    <%= link_to '...Read less', '', class: "read_less right" %></p>
+					</div>
+				<% else %>
+					<%= simple_format(entry.content) %>
+				<% end %>
+				<div class="thumbnails iv">
+					<% entry.resources.each do |i| %>
+						<% if i.avatar_content_type.present? && (i.avatar_content_type.include? "image") %>
+							<div><%= image_tag i.avatar.url(:thumb) %>
+								<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url(:original), class: "light_#{entry.id} mfp-image" %>
+							</div>
+						<% elsif (i.avatar_content_type.present? && (i.avatar_content_type.include? "video") && (i.avatar_content_type.exclude? "image")) %>
+							<div><%= image_tag i.avatar.url(:thumb) %>
+								<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url(:original), class: "light_#{entry.id} mfp-iframe" %>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+				<div class="delete-x">
+					<%= link_to '<i class="fa fa-pencil-square-o"></i>'.html_safe, edit_entry_path(entry), remote: true %>
+					<%= link_to '<i class="fa fa-trash-o"></i>'.html_safe, entry_path(entry), method: :delete, data: {confirm: 'Are you sure?' }, remote: true %>
+				</div>
+				<% entry.resources.each do |i| %>
+					<% if i.avatar_content_type.include? "application" %>
+						<i class="fa fa-file-pdf-o pointer app_toggle" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
+						<% break %>
+					<% end %>
+				<% end %>
+				<% entry.resources.each do |i| %>
+					<% if i.avatar_content_type.include? "audio" %>
+						<i class="fa fa-music pointer audio_toggle" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
+						<% break %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="aa clearfix">
+				<div class="app" style="display:none;">
+					<% entry.resources.each do |i| %>
+						<% if i.avatar_content_type.include? "application" %>
+							<div class="application">
+								<%= link_to '<i class="fa fa-file-text"></i>'.html_safe, i.avatar.url %>
+								<span><%= truncate(i.avatar_file_name, length: 25) %></span>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+				<div class="audio" style="display:none;">
+					<% entry.resources.each do |i| %>
+						<% if i.avatar_content_type.include? "audio" %>
+								<span><%= i.avatar_file_name %></span>
+								<%= audio_tag i.avatar.url(:original), controls: true %>
+								<%= link_to '<i class="fa fa-external-link-square playing"></i>'.html_safe, '#', alt: "Click to play in sidebar", class: "playing" %>
+								<%= link_to '<i class="fa fa-times stop"></i>'.html_safe, '#', class: "hide" %>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="medium-3 columns" style="padding-left:0;">
+		<div class="footer">
+			<% if entry.tags.present? %>
+				<h5>
+					<ul>
+						<ul>
+							<% entry.tags.each do |tag| %>
+								<li> 
+									<%= link_to tag.name, entries_path(tag: tag.name), remote: true, :data => {:tagname => tag.name} %>
+								</li>
+							<% end %>
+						</ul>
+					</ul>
+				</h5>
+			<% end %>
+			<!-- <div id="shared_users">
+				<%= image_tag current_user.avatar.url(:avatar) %>
+				<%= link_to '<i class="fa fa-share-alt"></i>'.html_safe, "#", :title_id => entry.id, class: "right" %>
+			</div> -->
+		</div>
+	</div>
+</div>
+<script>
+	$('.entry .thumbnails.iv').each(function( index ) {
+		$(this).slick({
+			initialSlide: $(this).find("img").length > 1 ? 0 : -1,
+			slidesToShow: 1,
+			centerPadding: "25%",
+			focusOnSelect: true,
+			arrows: false,
+			centerMode: true,
+		});
+	});
+  	$('#entry_<%= entry.id %> .read_more').on('click', function(e) {
+	    e.preventDefault();
+	    $(this).closest('.truncate').toggle();
+			$(this).closest('.truncate').next('.no_truncate').toggle();
+	});
+  	$('#entry_<%= entry.id %> .read_less').on('click', function(e) {
+	    e.preventDefault();
+	    $(this).closest('.no_truncate').toggle();
+			$(this).closest('.no_truncate').prev('.truncate').toggle();
+	});
+	$('.light_<%= entry.id %>').magnificPopup({
+		gallery: {
+			enabled: true
+		}
+	});
+	$('#entry_<%= entry.id %> .audio_toggle').on ('click', function(e) {
+		e.preventDefault()
+		$('#entry_<%= entry.id %> .aa .audio').slideToggle("fast");
+		$('#entry_<%= entry.id %> .aa .app').slideUp("fast");
+	})	
+	$('#entry_<%= entry.id %> .app_toggle').on ('click', function(e) {
+		e.preventDefault()
+		$('#entry_<%= entry.id %> .aa .app ').slideToggle("fast");
+		$('#entry_<%= entry.id %> .aa .audio').slideUp("fast");
+	})
+</script>

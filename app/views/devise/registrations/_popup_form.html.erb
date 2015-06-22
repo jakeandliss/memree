@@ -1,0 +1,50 @@
+<div class="popup_title">Memrybook Signup</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+<div id="form_first">
+  	<div class="field">
+	    	<%= f.label :first_name, "First Name" %>
+	    	<%= f.text_field :first_name, :class=>"validate[required]" %>
+	</div>
+
+	<div class="field hide" id="user_last_name">
+	    	<%= f.label :last_name, "Last Name" %>
+	    	<%= f.text_field :last_name, :class=>"validate[required]" %>
+	</div>
+
+	<div class="field">
+	    <%= f.label :email %>
+	    <%= f.email_field :email, autofocus: true, :class=> "validate[required, custom[email]]"  %>
+	</div>
+	
+	<div class="field" id="pass">
+	    <%= f.label :password, "Password <em>(6 characters minimum)</em>".html_safe %>
+	    <%= f.password_field :password, autocomplete: "off", :class=>"validate[required]" %>
+	</div>
+
+	<!-- <div class="field" id="pass">
+	    <%= f.label :password, "Password" %>
+	    <% if @validatable %>
+	    <em>(<%= @minimum_password_length %> characters minimum)</em>
+	    <% end %>
+	    <%= f.password_field :password, autocomplete: "off", :class=>"validate[required]" %>
+	</div> -->
+
+	<div class="field" id="pass_confirm" >
+	    <%= f.label :password_confirmation %>
+	    <%= f.password_field :password_confirmation, autocomplete: "off", :class=>"validate[required,equals[user_password]]" %>
+	</div>
+ </div>
+ <div id="form_second">  
+	<div class="field" id="avatar">
+    	<%= f.label :avatar, "Add Profile Photo" %>
+    	<%= image_tag('blank_avatar.png') %>
+   	</div>
+    	<%= f.file_field :avatar, id: "avatar_upload", class: "hide" %> 
+  	
+
+  	<%= f.submit "Register", class: "button expand", :id =>"form_submit" %>
+ </div>
+<% end %>
