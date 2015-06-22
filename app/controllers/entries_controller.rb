@@ -11,14 +11,16 @@ class EntriesController < ApplicationController
     # if parametr "tag" exists retrieve entries with specified tag, otherwise retrieve all tags belonging to current user
     if params[:tag]
       @tag = current_user.tags.find_by(name: params[:tag])
-      @entries = current_user.entries.childrens_of(@tag).paginate(:page => params[:page], :per_page => 10)
+      @entries = current_user.entries.childrens_of(@tag)
+      @shared_entries = params[:tag] == "Shared" ? current_user.shared_entries : []
     else
-      @entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
+      @entries = current_user.entries
+      @shared_entries = current_user.shared_entries
     end
 
     @entries = @entries.search(params[:query], date_filters)
-    @shared_entries = current_user.shared_entries
     @all_entries = ((@entries + @shared_entries).sort_by!(&:sortable_date)).reverse!
+    @all_entries = @all_entries.paginate(:page => params[:page], :per_page => 10)
     
     respond_to do |format|
       format.html { render layout: "entries" }

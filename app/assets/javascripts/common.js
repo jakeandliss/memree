@@ -8,7 +8,7 @@ function autoScrollPagination(){
         $('.image-loader').show();
         $.when(
           $.getScript(url)
-          ).done(function(){
+          ).always(function(){
             ajaxRunning = true;
         });
       }
