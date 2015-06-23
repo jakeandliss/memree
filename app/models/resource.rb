@@ -64,7 +64,7 @@ class Resource < ActiveRecord::Base
         #       # :output => {'c:v' => 'libx264', vprofile: 'high', preset: 'medium', 'b:v' => '750k', maxrate: '750k', bufsize: '1500k', pix_fmt: 'yuv420p', flags: '+mv4+aic', threads: 'auto', 'b:a' => '128k', strict: '-2'}
         #     }
         #   }
-        },
+        # },
          :original => {:geometry => "1024x576>", :format => 'mp4',
           convert_options: {
             output: {
