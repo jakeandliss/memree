@@ -22,7 +22,8 @@ Rails.application.routes.draw do
     put :share, on: :member
     get :hide, on: :member
   end
-  
+
+  resources :groups
 
   %w[home about].each do |page|
     get page, controller: "pages", action: page
