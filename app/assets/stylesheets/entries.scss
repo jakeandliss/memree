@@ -53,7 +53,7 @@ label Tags
   display:block;
   list-style-type: none;
   padding: 3px 7px;
-  border-radius: 3px; 
+  border-radius: 3px;
 }
 
 #titles #label_titles ul {
@@ -64,7 +64,7 @@ label Tags
 #titles #label_titles a:focus { outline: none !important; }
 
 #titles #label_titles li {
-  list-style-type: none;  
+  list-style-type: none;
   border-radius: 3px;
     margin-bottom: .2rem;
 }
@@ -76,7 +76,7 @@ label Tags
 
 #titles #label_titles li.active {
   color: $salmon;
-} 
+}
 
 #titles #label_titles a.active{
   background: $salmon !important;
@@ -173,20 +173,20 @@ Entry Form
 
 **************************************/
 
-#titles #entry_title_date_2i {  
+#titles #entry_title_date_2i {
   width: 42.6666%;
   margin-right: 1%;
-  float: left; 
+  float: left;
   margin-bottom: 0;
 }
-#titles #entry_title_date_3i {  
+#titles #entry_title_date_3i {
   width: 22.6666%;
   margin-right: 1%;
-  float: left; 
+  float: left;
   margin-bottom: 0;
 }
 
-#titles #entry_title_date_1i {  
+#titles #entry_title_date_1i {
 	width: 32.6666%;
   margin-right: 0%;
   margin-bottom: 0;
@@ -207,7 +207,7 @@ Entry Form
 }
 
 #titles label.right {
-	padding-right: 5rem; 
+	padding-right: 5rem;
 }
 
 #titles .form {
@@ -230,8 +230,8 @@ Entry Form
    color: #888;
 }
 
-#titles :-ms-input-placeholder {  
-   color: #888; 
+#titles :-ms-input-placeholder {
+   color: #888;
 }
 
 #titles .click_to_upload {
@@ -294,7 +294,7 @@ textarea#wysiwyg {
 
 
 #titles .bootstrap-tagsinput{
-  
+
 }
 
 #titles .bootstrap-tagsinput input {
@@ -345,7 +345,7 @@ DROPZONE
 .dropzone-custom {
   border: none !important;
   padding: 1rem !important;
-  margin-bottom: .5rem; 
+  margin-bottom: .5rem;
 }
 
 .dropzone-custom .dz-preview.dz-image-preview {
@@ -353,8 +353,8 @@ DROPZONE
 }
 
 .dropzone-custom .dz-message {
-  background: #444 !important; 
-  color: #fff; 
+  background: #444 !important;
+  color: #fff;
 }
 
 .dropzone-custom.dz-clickable .dz-message {
@@ -411,8 +411,8 @@ Entry Snippets
 #titles .tags li {
   background: $greendew ;
   width: 100%;
-  margin-bottom: .5rem;  
-  padding: 0.2rem .5rem;  
+  margin-bottom: .5rem;
+  padding: 0.2rem .5rem;
   list-style-type: none;
 }
 
@@ -517,7 +517,7 @@ ENTRY IMAGES
 }
 
 #titles .entry_image_thumbnails img {
-  border-radius: 3px; 
+  border-radius: 3px;
   position: relative;
 }
 
@@ -560,11 +560,11 @@ ENTRY IMAGES
   border-radius: 100%;
 }
 
-#titles .slick-slide i.fa.fa-external-link-square { 
+#titles .slick-slide i.fa.fa-external-link-square {
   display: none;
 }
 
-#titles .slick-slide.slick-center:hover i.fa.fa-external-link-square { 
+#titles .slick-slide.slick-center:hover i.fa.fa-external-link-square {
   display: inherit;
 }
 
@@ -657,7 +657,7 @@ Entry Audio
 
 #titles div#playing {
   position: fixed;
-  bottom: 1rem; 
+  bottom: 1rem;
   left: 1rem;
   width: 25%;
 }
@@ -723,7 +723,7 @@ Calendar
 #titles .date {
   float: right;
   margin-right: -.5rem;
-  margin-top: -.5rem;  
+  margin-top: -.5rem;
   margin-bottom: .5rem;
 }
 
@@ -784,4 +784,25 @@ Other
   color: #fff;
   border-radius: .3rem;
   font-size: 1.1rem;
+}
+
+.popup_title .header {
+  border-bottom:1px solid #eee;
+  margin-bottom:.7rem;
+  color:#FD9781;
+}
+
+.popup_title .bootstrap-tagsinput .tag {
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: .3rem;
+  min-width: 15%;
+  margin: .2rem 0.1rem .5rem 0.1rem;
+  background: #241616;
+  display: block;
+  float: none;
+}
+
+.popup_title .bootstrap-tagsinput  input[type="text"] {
+  width: 100% !important;
 }

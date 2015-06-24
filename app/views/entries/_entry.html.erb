@@ -8,7 +8,7 @@
 			<div class="header">
 				<div class="date">
 						<div class="calendar"><month><%= entry.title_date.to_date.strftime('%b') if entry.title_date.present? %></month><day><%= entry.title_date.to_date.strftime('%e') if entry.title_date.present? %></day><year><%= entry.title_date.to_date.strftime('%Y') if entry.title_date.present? %></year>
-						</div>		
+						</div>
 				</div>
 				<% if entry.user_id != current_user.id %>
 				<div class="shared_users">
@@ -17,7 +17,7 @@
 					<%= truncate(entry.title, length: 63) %>
 					</h3>
 				<p>shared by <%= entry.user.full_name %></p>
-				</div> 
+				</div>
 				<% else %>
 				<h3>
 					<%= truncate(entry.title, length: 63) %>
@@ -118,7 +118,7 @@
 				e.preventDefault()
 				$('#entry_<%= entry.id %>_application').slideToggle("fast");
 				$('#entry_<%= entry.id %>_audio').slideUp("fast");
-			})	
+			})
 			</script>
 			<script>
 			$('i#audio_icon_<%= entry.id %>').on ('click', function(e) {
@@ -136,7 +136,7 @@
 					<ul>
 						<ul>
 							<% entry.tags.where(user_id: current_user.id).each do |tag| %>
-								<li> 
+								<li>
 									<%= link_to tag.name, entries_path(tag: tag.name), remote: true, :data => {:tagname=>tag.name} %>
 								</li>
 							<% end %>
@@ -150,23 +150,20 @@
 					<% unless entry.is_hidden_for?(current_user) %>
 						<%= link_to "<i class=\"fa fa-eye-slash\"></i>".html_safe, hide_entry_path(entry.id), remote: true %>
 					<% end %>
-				</div> 
+				</div>
 			<% else %>
 					<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, :"data-reveal-id"=>"share-modal-#{entry.id}" %>
-					<div id="share-modal-<%= entry.id %>" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-						<h2 id="modalTitle">Share Entry with</h2>
+					<div id="share-modal-<%= entry.id %>" class="popup_title reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+						<div class="header">Share this Entry</div>
+						<p>Who would you like to share this entry with?</p>
 						<%= form_for entry, url: share_entry_path(entry), method: :put, validate: true, remote: true, html: {}, authenticity_token: true  do |f| %>
-							<%= f.text_field :all_users, value: entry.shared_users.unscope(where: :is_hidden).map(&:email), class: "typeahead", placeholder: "Share", class: "no_background", id: "share_entry_#{entry.id}" %>
-							<div class="row">
-								<div class="action medium-4 columns" style="float:right;">
-									<%= f.submit 'Share', class: "button expand" %>
-								</div>
-							</div>
+							<%= f.text_field :all_users, value: entry.shared_users.unscope(where: :is_hidden).map(&:email).join(', '), class: "typeahead", placeholder: "Enter email address", class: "no_background", id: "share_entry_#{entry.id}" %>
+							<%= f.submit 'Share', class: "button expand" %>
 						<% end %>
 						<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 					</div>
 			<% end %>
-			
+
 		</div>
 	</div>
 </div>
