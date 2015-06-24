@@ -15,7 +15,6 @@ class Tag < ActiveRecord::Base
 
 	def self.hierarchy_tree
 		self.arrange_serializable.to_json(:only => ["id","name", "children"])
-
 	end
 
 

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 	has_many :tags, :dependent => :destroy
 	has_many :resources, :through => :entries
 	has_many :taggings, dependent: :destroy
+	has_many :groups
+	has_many :group_members
 
 	validates :first_name, :last_name, presence: true
 
@@ -36,6 +38,12 @@ class User < ActiveRecord::Base
 
   def invitee?
     !encrypted_password.present?
+  end
+
+  def associated_members
+    members = []
+    groups.map {|g| members += g.members }
+    members.uniq!
   end
 
 end

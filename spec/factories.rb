@@ -1,4 +1,12 @@
-FactoryGirl.define do  factory :entry_shareable do
+FactoryGirl.define do  factory :group_member do
+    group nil
+user nil
+  end
+  factory :group do
+    name "MyString"
+user nil
+  end
+  factory :entry_shareable do
     
   end
   factory :image do
