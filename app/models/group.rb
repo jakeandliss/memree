@@ -1,5 +1,8 @@
 class Group < ActiveRecord::Base
 
+  # Scopes (Custom Queries)
+  default_scope { order('created_at DESC') } 
+
   # Associations
   belongs_to :user
   has_many :group_members

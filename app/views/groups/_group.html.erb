@@ -1,0 +1,35 @@
+<div class="white box-shadow title" id="group_<%= group.id %>">
+	<div class="header">
+		<h3><%= group.name %></h3>
+		<%= link_to "Add Member", '#', class: 'button tiny right'%>
+	</div>
+	<br />
+	<table>
+		<thead>
+			<tr>
+				<th width="10%">Avatar</th>
+				<th width="35%">Email</th>
+				<th width="35%">Name</th>
+				<th width="20%">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if group.members.blank? %>
+				<tr>
+					<td colspan="4">
+						<p class="text-center">You don't have any members in this group yet.</p>
+					</td>
+				</tr>
+			<% else %>
+				<% group.members.each do |member| %>
+					<tr>
+						<td><span class="avatar"><%= image_tag member.avatar.url(:thumb), style: "height:40px;" %></span></td>
+						<td><%= member.email %></td>
+					 	<td><%= member.full_name %></td>
+						<td><%= link_to "Remove", "#"%></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,21 @@
+<div id="groupModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	<h3 id="modalTitle"><%= @group.new_record? ? "New Group" : "Edit Group" %></h3>
+	<hr />
+
+	<%= form_for @group, remote: true, authenticity_token: true do |f| %>
+		<div class="row">
+			<div class="small-3 columns">
+				<%= f.label :name, class: 'right inline' %>
+			</div>
+			<div class="small-9 columns">
+				<%= f.text_field :name, placeholder: "Name of Group", required: true %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 columns">
+				<%= f.submit "Save", class: "button right" %>
+			</div>
+		</div>
+		<a class="close-reveal-modal" aria-label="Cancel">&#215;</a>
+	<% end %>
+</div>

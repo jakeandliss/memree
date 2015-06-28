@@ -19,34 +19,36 @@
 			<div id="label_titles">
 				<ul>
 					<li class="">
-						All Groups
+						<i class="fa fa-users"> All Groups</i>
 					</li>
 					<div id="tag-list">
 						<div class="nested-tags-right">
 							<% @groups.each do |group| %>
-								<li class="root collapsed">
-									<%= link_to group.name, "#" %>
+								<li class="root collapsed <%= params[:g_id] == group.id.to_s ? 'active' : '' %>">
+									<%= link_to group.name, groups_path(g_id: group.id), class: params[:g_id] == group.id.to_s ? 'active' : '' %>
 								</li>
 							<% end %>
 						</div>
 					</div>
-					
 				</ul>
 			</div>
 			<div id="playing_area"></div>
 		</div>
 		<div class="medium-9 columns">
-	
-			<div class="form clearfix" id="title_form">
+			<div class="white box-shadow title">
+				<div class="header">
+					<h3>Groups</h3>
+					<%= link_to "Add New Group", new_group_path, class: "button small right", remote: true %>
+				</div>
 			</div>
-			<div id="titles-wrapper">
+			<div id="groups-area">
+				<% grp = params[:g_id] && current_user.groups.find(params[:g_id]) %>
+				<% if grp %>
+					<%= render 'group', group: grp %>
+				<% else %>
+					<%= render @groups %>
+				<% end %>
 			</div>
-			<div class="scroll-pagination">
-			</div>
-			<div class="image-loader">
-				<center><i class="fa fa-refresh fa-spin"></i></center>
-			</div>
-
 		</div>
 	</div>
 </div>
