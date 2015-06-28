@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
 
-  resources :users 
+  resources :users do
+    get :get_user, on: :collection
+  end
   resources :resources, only: [:create, :destroy]
 
   resources :entries do
@@ -23,7 +25,11 @@ Rails.application.routes.draw do
     get :hide, on: :member
   end
 
-  resources :groups
+  resources :groups do
+    get :new_member, on: :member
+    post :create_member, on: :member
+    get :remove_member, on: :member
+  end
 
   %w[home about].each do |page|
     get page, controller: "pages", action: page

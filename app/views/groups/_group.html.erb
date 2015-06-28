@@ -1,7 +1,7 @@
 <div class="white box-shadow title" id="group_<%= group.id %>">
 	<div class="header">
 		<h3><%= group.name %></h3>
-		<%= link_to "Add Member", '#', class: 'button tiny right'%>
+		<%= link_to "Add Member", new_member_group_path(group), class: 'button tiny right', remote: true %>
 	</div>
 	<br />
 	<table>
@@ -26,7 +26,7 @@
 						<td><span class="avatar"><%= image_tag member.avatar.url(:thumb), style: "height:40px;" %></span></td>
 						<td><%= member.email %></td>
 					 	<td><%= member.full_name %></td>
-						<td><%= link_to "Remove", "#"%></td>
+						<td><%= link_to "Remove", remove_member_group_path(group, user_id: member.id), remote: true %></td>
 					</tr>
 				<% end %>
 			<% end %>

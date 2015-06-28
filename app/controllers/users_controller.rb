@@ -69,6 +69,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_user
+    user = User.find_by(email: params[:email])
+    if user
+      render json: {success: true, email: user.email, first_name: user.first_name, last_name: user.last_name, image_path: user.avatar.present? ? user.avatar.url(:thumb) : ActionController::Base.helpers.image_path('blank_avatar.png')}
+    else
+      render json: {success: false}
+    end
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params

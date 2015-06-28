@@ -1,0 +1,42 @@
+<div id="groupMemberModal" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	<h3 id="modalTitle">Add Member</h3>
+	<hr />
+
+	<%= form_tag create_member_group_path(@group), remote: true, authenticity_token: true do %>
+		<div class="row">
+			<div class="small-2 columns">
+				<%= label_tag :avatar, "", class: 'inline center' %>
+			</div>
+			<div class="small-4 columns">
+				<%= label_tag :email, "Email", class: 'inline' %>
+			</div>
+			<div class="small-3 columns">
+				<%= label_tag :first_name, "First Name", class: 'inline' %>
+			</div>
+			<div class="small-3 columns">
+				<%= label_tag :last_name, "Last Name", class: 'inline' %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-2 columns avatar">
+			</div>
+			<div class="small-4 columns">
+				<%= text_field_tag :email, nil, class: 'inline', required: true %>
+			</div>
+			<div class="small-3 columns">
+				<%= text_field_tag :first_name, nil, class: 'inline', required: true %>
+			</div>
+			<div class="small-3 columns">
+				<%= text_field_tag :last_name, nil, class: 'inline', required: true %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 columns">
+				<%= submit_tag "Save", class: "button right" %>
+			</div>
+		</div>
+		<a class="close-reveal-modal" aria-label="Cancel">&#215;</a>
+	<% end %>
+</div>

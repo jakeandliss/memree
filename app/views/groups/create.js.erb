@@ -1,2 +1,3 @@
 $('#groupModal').foundation('reveal', 'close');
 $('#groups-area').prepend('<%= j render("group", group: @group) %>');
+$("#success").fadeIn(500).html("Group created successfully").delay(2000).fadeOut(500);

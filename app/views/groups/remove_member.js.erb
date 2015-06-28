@@ -1,0 +1,2 @@
+$('#groups-area #group_<%= @group.id %>').replaceWith('<%= j render("group", group: @group) %>');
+$("#success").fadeIn(500).html("Member removed successfully").delay(2000).fadeOut(500);
