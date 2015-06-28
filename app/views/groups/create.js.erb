@@ -1,3 +1,4 @@
 $('#groupModal').foundation('reveal', 'close');
 $('#groups-area').prepend('<%= j render("group", group: @group) %>');
+$('.nested-tags-right').prepend('<%= j content_tag(:li, link_to(@group.name, groups_path(g_id: @group.id)), class: "root collapsed") %>');
 $("#success").fadeIn(500).html("Group created successfully").delay(2000).fadeOut(500);
