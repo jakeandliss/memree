@@ -153,15 +153,7 @@
 				</div>
 			<% else %>
 					<%= link_to "<i class=\"fa fa-share-alt\"></i>".html_safe, "#", :title_id => entry.id, :"data-reveal-id"=>"share-modal-#{entry.id}" %>
-					<div id="share-modal-<%= entry.id %>" class="popup_title reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-						<div class="header">Share this Entry</div>
-						<p>Who would you like to share this entry with?</p>
-						<%= form_for entry, url: share_entry_path(entry), method: :put, validate: true, remote: true, html: {}, authenticity_token: true  do |f| %>
-							<%= f.text_field :all_users, value: entry.shared_users.unscope(where: :is_hidden).map(&:email).join(', '), class: "typeahead", placeholder: "Enter email address", class: "no_background", id: "share_entry_#{entry.id}" %>
-							<%= f.submit 'Share', class: "button expand" %>
-						<% end %>
-						<a class="close-reveal-modal" aria-label="Close">&#215;</a>
-					</div>
+					<%= render 'share_form', entry: entry %>
 			<% end %>
 
 		</div>

@@ -1,7 +1,45 @@
-<%= form_for @entry do |f| %>
-	<%= f.text_field :all_users, placeholder: "Share", class: "no_background" %>
-	<%= f.hidden_field :id %>
-	<div class="action medium-4 columns">
-		<%= f.submit 'Save Entry', class: "button expand" %>
+<div id="share-modal-<%= entry.id %>" class="popup_title reveal-modal large modal-share-entry" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	<div class="header">Share this Entry</div>
+	<p>Who would you like to share this entry with?</p>
+
+	<div class="row">
+		<div class="small-1 columns">
+			<%= label_tag :avatar, "", class: 'inline center' %>
+		</div>
+		<div class="small-4 columns">
+			<%= label_tag :email, "Email", class: 'inline' %>
+		</div>
+		<div class="small-3 columns">
+			<%= label_tag :first_name, "First Name", class: 'inline' %>
+		</div>
+		<div class="small-3 columns">
+			<%= label_tag :last_name, "Last Name", class: 'inline' %>
+		</div>
+		<div class="small-1 columns">
+
+		</div>
 	</div>
+	<div id="list-of-users">
+	</div>
+
+	<%= form_for entry, url: share_entry_path(entry), method: :put, validate: true, remote: true, html: {}, authenticity_token: true  do |f| %>	
+		<div class="row">
+			<div class="small-1 columns avatar">
+			</div>
+			<div class="small-4 columns">
+				<%= text_field_tag :email, nil, class: 'inline', required: true %>
+			</div>
+			<div class="small-3 columns">
+				<%= text_field_tag :first_name, nil, class: 'inline', required: true %>
+			</div>
+			<div class="small-3 columns">
+				<%= text_field_tag :last_name, nil, class: 'inline', required: true %>
+			</div>
+			<div class="small-1 columns">
+				<%= button_tag 'Add', class: "button small", id: "add-user-to-list" %>
+			</div>
+		</div>
+		<%= f.submit 'Share', class: "button expand" %>
 	<% end %>
+	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
