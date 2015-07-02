@@ -39,7 +39,18 @@
 				<%= button_tag 'Add', class: "button small", id: "add-user-to-list" %>
 			</div>
 		</div>
-		<%= f.submit 'Share', class: "button expand" %>
+		<%#= f.submit 'Share', class: "button expand" %>
 	<% end %>
 	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+
+	<% groups = current_user.groups %>
+
+	<% if groups.any? %>
+		<hr />
+		<p>Do you like to share your entry with group of users?</p>
+		<% groups.each do |grp| %>
+			<%= check_box_tag grp.name %><%= label_tag grp.name, grp.name %>
+		<% end %>
+	<% end %>
+	<%= button_tag 'Share', class: "button expand" %>
 </div>

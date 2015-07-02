@@ -61,6 +61,7 @@ $ ->
 						$form.find('input#last_name').val ''
 		false
 
+$ ->
 	$(document).on 'click', 'button#add-user-to-list', ->
 		img = $(this).parents('div.row').find('img').attr('src')
 		email = $(this).parents('div.row').find('input#email').val()
@@ -72,7 +73,7 @@ $ ->
 		if email == '' || first_name == '' || last_name == ''
 			alert "Please fill all the fields."
 		else
-			if $.inArray(email, $emails) == 0
+			if $.inArray(email, $emails) > -1
 				$(this).parents('div.row').find('div.avatar').html('')
 				$(this).parents('form').find('input[type=text]').val('')
 				alert "Email already added to share list"
