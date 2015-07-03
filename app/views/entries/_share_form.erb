@@ -20,9 +20,28 @@
 		</div>
 	</div>
 	<div id="list-of-users">
+		<% entry.shared_users.each do |user| %>
+			<div class="row">
+				<div class="small-1 columns avatar">
+					<%= image_tag user.avatar.url, width: '40px' %>
+				</div>
+				<div class="small-4 columns email-col">
+					<%= user.email %>
+				</div>
+				<div class="small-3 columns">
+					<%= user.first_name %>
+				</div>
+				<div class="small-3 columns">
+					<%= user.last_name %>
+				</div>
+				<div class="small-1 columns">
+					<%= link_to content_tag(:i, nil, class: 'fa fa-remove'), remove_user_entry_path(entry, user_id: user.id), class: "rem-user-from-list" %>
+				</div>
+			</div>
+		<% end %>
 	</div>
 
-	<%= form_for entry, url: share_entry_path(entry), method: :put, validate: true, remote: true, html: {}, authenticity_token: true  do |f| %>	
+	<%= form_for entry, url: share_entry_path(entry), method: :put, remote: true, html: {entry_id: entry.id}, authenticity_token: true  do |f| %>	
 		<div class="row">
 			<div class="small-1 columns avatar">
 			</div>
@@ -48,9 +67,10 @@
 	<% if groups.any? %>
 		<hr />
 		<p>Do you like to share your entry with group of users?</p>
+		<% sg = entry.shared_groups %>
 		<% groups.each do |grp| %>
-			<%= check_box_tag grp.name %><%= label_tag grp.name, grp.name %>
+			<%= check_box_tag grp.name, grp.id, sg.include?(grp), class: 'toggle-grp-sharing' %><%= label_tag grp.name, grp.name %>
 		<% end %>
 	<% end %>
-	<%= button_tag 'Share', class: "button expand" %>
+	<%= button_tag 'Share', class: "button expand", onclick: "$('#share-modal-#{entry.id}').foundation('reveal', 'close');" %>
 </div>

@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     put :update_tags, on: :member
     put :share, on: :member
     get :hide, on: :member
+    put :share_with_user, on: :member
+    put :remove_user, on: :member
+    put :share_with_group, on: :member
+    put :remove_from_group, on: :member
   end
 
   resources :groups do

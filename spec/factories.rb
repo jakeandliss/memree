@@ -1,4 +1,8 @@
-FactoryGirl.define do  factory :group_member do
+FactoryGirl.define do  factory :group_shareable do
+    entry nil
+group nil
+  end
+  factory :group_member do
     group nil
 user nil
   end

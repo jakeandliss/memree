@@ -1,8 +1,10 @@
 class Entry < ActiveRecord::Base
 	belongs_to :user
 
-	has_many :entry_shareable
+	has_many :entry_shareable, dependent: :destroy
 	has_many :shared_users, through: :entry_shareable, source: :user
+	has_many :group_shareables, dependent: :destroy
+	has_many :shared_groups, through: :group_shareables, source: :group
 	has_many :taggings
 	has_many :tags, -> { uniq }, through: :taggings, :dependent => :destroy
 	has_many :resources, dependent: :destroy
@@ -73,6 +75,14 @@ class Entry < ActiveRecord::Base
 		  self.shared_users = ids.split(",").map do |id|
       		User.where(email: id.strip).first || User.invite!(email: id.strip){|u| u.skip_invitation = true }
       end
+	end
+
+	# Add users for a new entry
+	def add_user(user_params)
+		user = User.find_by_email(user_params[:email])
+		user ||= User.invite!(user_params){|u| u.skip_invitation = true }
+		self.shared_users << user unless user.id == user_id
+		user
 	end
 
 	# Find all titles whish has a specified name

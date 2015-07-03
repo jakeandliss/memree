@@ -1,7 +1,8 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: :show
-  before_action :fetch_entry, only: [:edit, :update, :destroy, :share]
+  before_action :fetch_entry, only: [:edit, :update, :destroy, :share, :share_with_user, :remove_user,
+                                     :share_with_group, :remove_from_group]
   before_filter :check_for_mobile, :only => [:index, :edit, :update, :create, :new]
 
   def index
@@ -130,6 +131,29 @@ class EntriesController < ApplicationController
       redirect_to(root_path, flash: { error: "Invalid Token" })
     end
     puts
+  end
+
+  def share_with_user
+    user = @entry.add_user(params[:user])
+    render json: {success: true, rem_path: remove_user_entry_path(@entry, user_id: user.id)}
+  end
+
+  def remove_user
+    user = User.find_by(id: params[:user_id])
+    @entry.shared_users.delete(user) if user
+    render json: {success: @entry.shared_users.exclude?(user)}
+  end
+
+  def share_with_group
+    group = Group.find_by(id: params[:group_id])
+    @entry.shared_groups << group if group
+    render json: {success: @entry.shared_groups.include?(group)}
+  end
+
+  def remove_from_group
+    group = Group.find_by(id: params[:group_id])
+    @entry.shared_groups.delete group if group
+    render json: {success: @entry.shared_groups.exclude?(group)}
   end
 
   private

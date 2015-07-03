@@ -78,17 +78,60 @@ $ ->
 				$(this).parents('form').find('input[type=text]').val('')
 				alert "Email already added to share list"
 			else
-				element = '<div class=\'row\'><div class=\'small-1 columns avatar\'>'
-				element += '<img src=\'' + img + '\' width=\'40px\' /></div>'
-				element += '<div class=\'small-4 columns email-col\'>' + email + '</div>'
-				element += '<div class=\'small-3 columns\'>' + first_name + '</div>'
-				element += '<div class=\'small-3 columns\'>' + last_name + '</div>'
-				element += '<div class=\'small-1 columns\'><a class=\'rem-user-from-list\'><i class=\'fa fa-remove\'></i></a></div>'
-				$(this).parents('div.row').find('div.avatar').html('')
-				$(this).parents('form').find('input[type=text]').val('')
-				$(this).parents('div.modal-share-entry').find('div#list-of-users').append element
+				e_id = $(this).parents('form').attr("entry_id")
+				$element = $(this)
+				$.ajax
+					url: '/entries/' + e_id + '/share_with_user'
+					type: 'PUT'
+					data: JSON.stringify(user:
+						email: email
+						first_name: first_name
+						last_name: last_name)
+					dataType: 'json'
+					contentType: 'application/json; charset=utf-8'
+					success: (data) ->
+						element = '<div class=\'row\'><div class=\'small-1 columns avatar\'>'
+						element += '<img src=\'' + img + '\' width=\'40px\' /></div>'
+						element += '<div class=\'small-4 columns email-col\'>' + email + '</div>'
+						element += '<div class=\'small-3 columns\'>' + first_name + '</div>'
+						element += '<div class=\'small-3 columns\'>' + last_name + '</div>'
+						element += '<div class=\'small-1 columns\'><a class=\'rem-user-from-list\' href=\''+ data.rem_path + '\'><i class=\'fa fa-remove\'></i></a></div>'
+						$element.parents('div.row').find('div.avatar').html('')
+						$element.parents('form').find('input[type=text]').val('')
+						$element.parents('div.modal-share-entry').find('div#list-of-users').append element
+					error: (e) ->
+						alert "Unable to add user to shared list"
 		$(this).parents('div.row').find('input#email').focus()
 		false
 
 	$(document).on 'click', 'a.rem-user-from-list', ->
-		$(this).parents('div.row').remove()
+		$element = $(this)
+		$.ajax
+			url: $(this).attr('href')
+			type: 'PUT'
+			dataType: 'json'
+			contentType: 'application/json; charset=utf-8'
+			success: (data) ->
+				$element.parents('div.row').remove()
+			error: (e) ->
+				alert "Unable to remove user from shared list"
+		false
+
+	$(document).on 'change', 'input.toggle-grp-sharing', ->
+		e_id = $(this).parents('div.modal-share-entry').find('form').attr('entry_id')
+		state = $(this).is(":checked")
+		g_id = $(this).val()
+		if state
+			path = "/share_with_group?group_id="
+		else
+			path = "/remove_from_group?group_id="
+		$.ajax
+			url: "/entries/" + e_id + path + g_id
+			type: 'PUT'
+			dataType: 'json'
+			contentType: 'application/json; charset=utf-8'
+			success: (data) ->
+				console.log data.success
+			error: (e) ->
+				alert "Unable to perform action"
+		false
