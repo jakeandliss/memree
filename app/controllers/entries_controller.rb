@@ -152,7 +152,7 @@ class EntriesController < ApplicationController
 
   def remove_from_group
     group = Group.find_by(id: params[:group_id])
-    @entry.shared_groups.delete group if group
+    @entry.group_shareables.find_by(group_id: group.id).try(:destroy) if group
     render json: {success: @entry.shared_groups.exclude?(group)}
   end
 

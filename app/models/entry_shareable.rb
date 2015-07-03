@@ -5,7 +5,7 @@ class EntryShareable < ActiveRecord::Base
 	after_create :create_share_tag
 	after_create :send_notification_to_user
 
-	default_scope { where(is_hidden: false) }
+	default_scope { where(is_hidden: false, is_group_shared: false) }
 
 	private
 	def create_share_tag
