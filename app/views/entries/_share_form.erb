@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div id="list-of-users">
-		<% entry.shared_users.each do |user| %>
+		<% entry.shared_users.indivisual.each do |user| %>
 			<div class="row">
 				<div class="small-1 columns avatar">
 					<%= image_tag user.avatar.url, width: '40px' %>

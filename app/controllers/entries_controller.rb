@@ -13,10 +13,10 @@ class EntriesController < ApplicationController
     if params[:tag]
       @tag = current_user.tags.find_by(name: params[:tag])
       @entries = current_user.entries.childrens_of(@tag)
-      @shared_entries = params[:tag] == "Shared" ? current_user.shared_entries : []
+      @shared_entries = params[:tag] == "Shared" ? current_user.shared_entries.active : []
     else
       @entries = current_user.entries
-      @shared_entries = current_user.shared_entries
+      @shared_entries = current_user.shared_entries.active
     end
 
     @entries = @entries.search(params[:query], date_filters)
@@ -135,7 +135,9 @@ class EntriesController < ApplicationController
 
   def share_with_user
     user = @entry.add_user(params[:user])
-    render json: {success: true, rem_path: remove_user_entry_path(@entry, user_id: user.id)}
+    render json: {success: true, rem_path: remove_user_entry_path(@entry, user_id: user.id),
+
+                  image_path: user.avatar.url(:thumb)}
   end
 
   def remove_user

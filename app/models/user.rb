@@ -6,12 +6,16 @@ class User < ActiveRecord::Base
 
 	has_many :entries, :dependent => :destroy
 	has_many :entry_shareable
-	has_many :shared_entries, through: :entry_shareable, source: :entry
+	has_many :shared_entries, through: :entry_shareable, source: :entry  do
+		def active
+			where("entry_shareables.is_hidden = ?", false)
+		end
+	end
 	has_many :tags, :dependent => :destroy
 	has_many :resources, :through => :entries
 	has_many :taggings, dependent: :destroy
-	has_many :groups
-	has_many :group_members
+	has_many :groups, dependent: :destroy
+	has_many :group_members, dependent: :destroy
 
 	validates :first_name, :last_name, presence: true
 

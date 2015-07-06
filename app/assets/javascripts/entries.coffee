@@ -90,6 +90,8 @@ $ ->
 					dataType: 'json'
 					contentType: 'application/json; charset=utf-8'
 					success: (data) ->
+						if data.image_path == 'blank_avatar.png'
+							img = '/assets/blank_avatar.png'
 						element = '<div class=\'row\'><div class=\'small-1 columns avatar\'>'
 						element += '<img src=\'' + img + '\' width=\'40px\' /></div>'
 						element += '<div class=\'small-4 columns email-col\'>' + email + '</div>'

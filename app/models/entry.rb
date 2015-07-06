@@ -2,7 +2,14 @@ class Entry < ActiveRecord::Base
 	belongs_to :user
 
 	has_many :entry_shareable, dependent: :destroy
-	has_many :shared_users, through: :entry_shareable, source: :user
+	has_many :shared_users, through: :entry_shareable, source: :user   do
+		def indivisual
+			where("entry_shareables.is_group_shared = ?", false)
+		end
+		def group
+			where("entry_shareables.is_group_shared = ?", true)
+		end
+	end
 	has_many :group_shareables, dependent: :destroy
 	has_many :shared_groups, through: :group_shareables, source: :group
 	has_many :taggings
@@ -80,7 +87,7 @@ class Entry < ActiveRecord::Base
 	# Add users for a new entry
 	def add_user(user_params)
 		user = User.find_by_email(user_params[:email])
-		user ||= User.invite!(user_params){|u| u.skip_invitation = true }
+		user ||= User.invite!(user_params.permit(:email, :first_name, :last_name)){|u| u.skip_invitation = true }
 		self.shared_users << user unless user.id == user_id
 		user
 	end
