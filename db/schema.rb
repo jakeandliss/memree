@@ -156,14 +156,6 @@ ActiveRecord::Schema.define(version: 20150703064900) do
   add_index "resources", ["avatar_content_type"], name: "index_resources_on_avatar_content_type", using: :btree
   add_index "resources", ["entry_id"], name: "index_resources_on_entry_id", using: :btree
 
-  create_table "simple_hashtag_hashtags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "simple_hashtag_hashtags", ["name"], name: "index_simple_hashtag_hashtags_on_name", using: :btree
-
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.datetime "created_at", null: false
