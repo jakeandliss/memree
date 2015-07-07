@@ -1,17 +1,3 @@
-<div id="title_added">
+<div id="entry_added">
 	<%= render @all_entries %>
 </div>
-
-
-<script>
-	$('.entry_image_thumbnails').each(function( index ) {
-		$(this).slick({
-		  initialSlide: $(this).find("img").length > 1 ? 0 : -1,
-		  slidesToShow: 1,
-		  centerPadding: "25%",
-		  focusOnSelect: true,
-		  arrows: false,
-		  centerMode: true,
-		});
-	});
-</script>

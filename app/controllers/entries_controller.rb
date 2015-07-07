@@ -20,9 +20,9 @@ class EntriesController < ApplicationController
     end
 
     @entries = @entries.search(params[:query], date_filters)
-    @all_entries = ((@entries + @shared_entries).sort_by!(&:sortable_date)).reverse!
+    @all_entries = ((@entries + @shared_entries).sort_by!(&:created_at).sort_by!(&:title_date)).reverse!
     @all_entries = @all_entries.paginate(:page => params[:page], :per_page => 10)
-    
+
     respond_to do |format|
       format.html { render layout: "entries" }
       format.js

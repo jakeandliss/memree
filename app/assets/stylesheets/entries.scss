@@ -65,11 +65,11 @@ label Tags
 }
 
 
-#entries #label_titles a:focus { 
-  outline: none !important; 
+#entries #label_titles a:focus {
+  outline: none !important;
 }
 
-#titles #label_titles li {
+#entries #label_titles li {
   list-style-type: none;
   border-radius: 3px;
   margin-bottom: .2rem;
@@ -206,20 +206,20 @@ Entry Form
 
 **************************************/
 
-#titles #entry_title_date_2i {
+#entries #entry_title_date_2i {
   width: 42.6666%;
   margin-right: 1%;
   float: left;
   margin-bottom: 0;
 }
-#titles #entry_title_date_3i {
+#entries #entry_title_date_3i {
   width: 22.6666%;
   margin-right: 1%;
   float: left;
   margin-bottom: 0;
 }
 
-#titles #entry_title_date_1i {
+#entries #entry_title_date_1i {
 	width: 32.6666%;
   margin-right: 0%;
   margin-bottom: 0;
@@ -239,7 +239,7 @@ Entry Form
   font-size: .9rem;
 }
 
-#titles label.right {
+#entries label.right {
 	padding-right: 5rem;
 }
 
@@ -263,7 +263,7 @@ Entry Form
    color: #888;
 }
 
-#titles :-ms-input-placeholder {
+#entries :-ms-input-placeholder {
    color: #888;
 }
 
@@ -326,7 +326,7 @@ textarea#wysiwyg {
 }
 
 
-#titles .bootstrap-tagsinput{
+#entries .bootstrap-tagsinput{
 
 }
 
@@ -437,12 +437,12 @@ Entry Snippets
   border-radius: 3px;
 }
 
-#titles .tags ul {
+#entries .tags ul {
   margin-left: 0;
   margin-bottom: 0;
 }
 
-#titles .tags li {
+#entries .tags li {
   background: $greendew ;
   width: 100%;
   margin-bottom: .5rem;
@@ -454,39 +454,39 @@ Entry Snippets
 #entries .header {
 }
 
-#titles.tags {
+#entries.tags {
   margin-left: -1rem;
 }
 
-#titles .title_entry {
+#entries .title_entry {
 }
 
 
-#titles #wrapper {
+#entries #wrapper {
   position: absolute;
   overflow: hidden;
   width: 100%;
   height: 8rem;
 }
 
-#titles .shared_users img {
+#entries .shared_users img {
   width: 2.5rem;
   float: left;
   margin-right: .5rem;
 }
 
-#titles .shared_users .header {
+#entries .shared_users .header {
   margin-top: -.5rem;
   margin-left: -.5rem;
 }
 
-#titles .shared_users h3 {
+#entries .shared_users h3 {
   font-size: 1.2rem;
   margin-bottom: -.2rem;
   display: inherit;
 }
 
-#titles .shared_users p {
+#entries .shared_users p {
   font-size: .8rem;
   margin-bottom: 0;
   color: #ccc;
@@ -522,11 +522,11 @@ Entry Snippets
   padding-left: .5rem;
 }
 
-#titles i.fa.fa-share-alt {
+#entries i.fa.fa-share-alt {
   color: #bbb;
 }
 
-.shared_entry .title {
+.shared_entry .entry {
   border-left: 7px solid #A9D5C6;
 }
 
@@ -546,7 +546,7 @@ ENTRY IMAGES
   height: 100%;
 }
 
-#titles .entry_image_thumbnails img {
+#entries .entry_image_thumbnails img {
   border-radius: 3px;
   position: relative;
 }
@@ -590,11 +590,11 @@ ENTRY IMAGES
   border-radius: 100%;
 }
 
-#titles .slick-slide i.fa.fa-external-link-square {
+#entries .slick-slide i.fa.fa-external-link-square {
   display: none;
 }
 
-#titles .slick-slide.slick-center:hover i.fa.fa-external-link-square {
+#entries .slick-slide.slick-center:hover i.fa.fa-external-link-square {
   display: inherit;
 }
 
@@ -812,8 +812,8 @@ Feedback Button
 
 **************************************/
 
-#feedback .buttn { 
-  display: block; 
+#feedback .buttn {
+  display: block;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -895,4 +895,20 @@ Other
 
 .modal-share-entry label {
   margin-bottom: 0px !important;
+}
+
+
+
+/***********************
+
+Shared Entries and tags
+
+***********************/
+
+.shared_entry .tags input {
+    width: 100% !important;
+}
+
+.shared_entry tag.tag.label.label-info {
+    width: 100%;
 }

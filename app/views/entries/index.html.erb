@@ -33,20 +33,45 @@
 			<div id="playing_area"></div>
 		</div>
 		<div class="medium-9 columns">
-	
+
 			<div class="form clearfix" id="title_form">
 				<%= render 'form' %>
 			</div>
-			<div id="titles-wrapper">
+			<%= render 'search' %>
+			<div id="entries-wrapper">
 				<%= render partial: "entries" %>
 			</div>
 			<div class="scroll-pagination">
 				<%= will_paginate @all_entries %>
 			</div>
-			<div class="image-loader">
-				<center><i class="fa fa-refresh fa-spin"></i></center>
+			<div class="question clearfix" style="padding-bottom:2rem;">
+				<i class="fa fa-question-circle right pointer"></i>
 			</div>
-
+			<% if @entries.present? %>
+				<div class="intro hide">
+			<% else %>
+				<div class="intro">
+			<% end %>
+				<h2><i class="fa fa-arrow-circle-o-up fa-3x"></i> <span>Create your first entry, it's easy...</span></h2>
+				<ol>
+					<li>Give it a quick title. </li>
+					<li>Write something you'd like to remember.</li>
+					<li>Add a label so you can easily find it later (more about labels <%= link_to "here", tags_path, class: "underline" %>)</li>
+				</ol>
+				<ul>
+					<b><u>A couple more options to make your experience even better:</u></b>
+					<li>Change the date if you'd like (just click on it)</li>
+					<li>Add some media. Add images, video, audio, and pdf documents (just click or drag).</li>
+					<li>Click the <i class="fa fa-search"></i> on the sidebar to access the search feature. You'll find it's quite useful.</li>
+				</ul>
+			</div>
+			<div class="row">
+				<div class="medium-9 column">
+					<div class="image-loader">
+						<center><i class="fa fa-refresh fa-spin"></i></center>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<%= render "contact_form/feedback" %>

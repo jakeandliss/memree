@@ -22,7 +22,7 @@
 						<%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Entries'.html_safe, entries_path, remote: true %>
 					</li>
 					<div id="tag-list">
-						
+
 					</div>
 					<div class="clearfix"><%= link_to "Edit Labels", tags_path, class: "edit left" %>
 					<%= render 'search' %>
@@ -32,7 +32,7 @@
 			<%#= render 'search' %>
 			<div id="playing_area"></div>
 
-			<div id="titles-wrapper">
+			<div id="entries-wrapper">
 				<%= render partial: "entries" %>
 			</div>
 			<div class="scroll-pagination">
@@ -47,7 +47,7 @@
 
 <script>
 
-	
+
 	// Load all tags and put them on sidebar
 	// TagManager class is located in app/assets/tag-manager.js
 	var tagManager = new TagManager();

@@ -32,11 +32,11 @@
 		<% @entry.resources.each do |i| %>
 			<div class="remove">
 				<% if i.avatar_content_type.include? "audio" %>
-					<div class="audio"><p><span><%= link_to '<i class="fa fa-times"></i>'.html_safe, i, method: :delete, data: {confirm: 'Are you sure?' }, id: "resource_#{i.id}", controller: :resources, remote: true %></span> 
+					<div class="audio"><p><span><%= link_to '<i class="fa fa-times"></i>'.html_safe, i, method: :delete, data: {confirm: 'Are you sure?' }, id: "resource_#{i.id}", controller: :resources, remote: true %></span>
 						<i class="fa fa-fw fa-music"></i><%= truncate(i.avatar_file_name, length: 25) %>
 					</div>
 				<% elsif i.avatar_content_type.include? "application" %>
-					<div class="app"><p><span><%= link_to '<i class="fa fa-times"></i>'.html_safe, i, method: :delete, data: {confirm: 'Are you sure?' }, id: "resource_#{i.id}", controller: :resources, remote: true %></span> 
+					<div class="app"><p><span><%= link_to '<i class="fa fa-times"></i>'.html_safe, i, method: :delete, data: {confirm: 'Are you sure?' }, id: "resource_#{i.id}", controller: :resources, remote: true %></span>
 						<i class="fa fa-fw fa-file-text"></i><%= truncate(i.avatar_file_name, length: 25) %>
 					</div>
 				<% end %>
@@ -64,7 +64,7 @@
     $('.edit_tags').tagsinput({
       typeahead: {
         source: function(query) {
-          return $.get('<%= tag_list_entries_url(:protocol => "https") %>'+'?text='+query);
+          return $.get('<%= tag_list_entries_url %>'+'?text='+query);
         }
       }
     });
