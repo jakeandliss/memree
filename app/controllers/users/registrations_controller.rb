@@ -1,3 +1,4 @@
+
 class Users::RegistrationsController < Devise::RegistrationsController
 before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
@@ -9,8 +10,37 @@ before_filter :configure_account_update_params, only: [:update]
 
   # POST /resource
   def create
-    super
-     ApplicationMailer.signup_confirmation(@user).deliver_now
+    resource = User.find_by(email: sign_up_params[:email])
+    if resource && resource.invitee?
+      @user = resource
+      resource_name = User
+      if resource.update(sign_up_params.delete_if {|key, value| key == "email" })
+        set_flash_message :notice, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        ApplicationMailer.signup_confirmation(@user).deliver_later
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        clean_up_passwords resource
+        respond_with resource
+      end
+    else
+      resource = User.new(sign_up_params)
+      resource.save
+      @user = resource
+      resource_name = User
+
+      yield resource if block_given?
+      if resource.persisted?
+        set_flash_message :notice, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        ApplicationMailer.signup_confirmation(@user).deliver_later
+        respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        clean_up_passwords resource
+        respond_with resource
+      end
+    end
+
   end
 
   # GET /resource/edit
