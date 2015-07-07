@@ -20,14 +20,6 @@ class Entry < ActiveRecord::Base
 
   	validates_presence_of :title
 
- 	#  validate :at_least_one
-
-	# def at_least_one
-	#   if [self.resource_ids, self.content].reject(&:blank?).size == 0
- 	#   errors.add(:message, 'You need at least one field.')
-	#   end
-	# end
-
 	include PgSearch
 
 	pg_search_scope :text_search, against: [:title, :content], using: {tsearch: {dictionary: "english"}}
@@ -92,15 +84,9 @@ class Entry < ActiveRecord::Base
 		user
 	end
 
-	# Find all titles whish has a specified name
-	def self.tagged_with(name)
-		Tag.find_by_name!(name).titles
-	end
-
-
 	def self.search(query = nil, dates = {})
 		dates[:finish] ||= Date.current
-		dates[:start] ||= Date.current - 200.years
+		dates[:start] ||= Date.current - 2000.years
 
 	   result = where(:title_date => dates[:start].beginning_of_day..dates[:finish].end_of_day)
 

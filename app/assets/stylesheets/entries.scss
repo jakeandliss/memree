@@ -1,30 +1,37 @@
-   $stationery  : #EBE5CD;
-   $greendew    : #A9D5C6;
-   $evendarker  : #241616;
-   $sun         : #F2EAAB;
-   $salmon      : #FD9781;
+/*************************************
+
+Sass
+
+**************************************/
+
+$stationery  : #EBE5CD;
+$greendew    : #A9D5C6;
+$evendarker  : #241616;
+$sun         : #F2EAAB;
+$salmon      : #FD9781;
+
 /*************************************
 
 User Info
 
 **************************************/
 
-#titles .user_info {
+#entries .user_info {
   padding-top: 1rem;
 }
 
-#titles .avatar img {
+#entries .avatar img {
   max-height: 5rem;
   float: right;
 }
 
-#titles .avatar a, #titles a.edit {
+#entries .avatar a, #entries a.edit {
   text-align: left;
   color: #444;
   text-decoration: underline;
 }
 
-#titles .avatar p {
+#entries .avatar p {
   text-align: left;
   margin: 1rem;
   font-size: .9rem;
@@ -41,53 +48,78 @@ label Tags
 
 **************************************/
 
-#titles #label_titles {
-  margin: 5px 0;
-  padding: 5px;
-  border-radius: 5px;
-  text-align: right;
-}
-
-#titles #label_titles a {
+#entries #label_titles a {
   color: #444;
   display:block;
-  list-style-type: none;
   padding: 3px 7px;
   border-radius: 3px;
 }
 
-#titles #label_titles ul {
+#entries #label_titles .root a {
+  background: #fff;
+  margin-top: 3px;
+}
+
+#entries #label_titles ul {
   margin: 0;
 }
 
 
-#titles #label_titles a:focus { outline: none !important; }
+#entries #label_titles a:focus { 
+  outline: none !important; 
+}
 
 #titles #label_titles li {
   list-style-type: none;
   border-radius: 3px;
-    margin-bottom: .2rem;
+  margin-bottom: .2rem;
 }
 
 
-#titles #label_titles a.opened .fa-caret-down{
+#entries #label_titles a.opened .fa-caret-down {
   display: inline;
 }
 
-#titles #label_titles li.active {
+#entries #label_titles li.active {
   color: $salmon;
 }
 
-#titles #label_titles a.active{
+#entries #label_titles a.active{
   background: $salmon !important;
+  color: white;
 }
 
-#titles #label_titles li.root:nth-child {
-  background: #fff;
+#tag-list .root .nested-tags-right {
+  display: none;
+  margin-left: .7rem;
 }
 
-#tag-list > div > .root > a {
-  background: #fff;
+#tag-list .root i.fa-caret-down {
+  float: right;
+  margin-top: .35rem;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+#tag-list .root .active i {
+  float: right;
+  margin-top: .35rem;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
 }
 
 
@@ -99,7 +131,7 @@ Search
 **************************************/
 
 
-#titles .fa-search:hover {
+#entries .fa-search:hover {
 
 }
 
@@ -133,7 +165,8 @@ Search
     vertical-align: middle;
     background-color: #FFF;
     background-image: none;
-    border: 1px solid #CCC;
+    border: none;
+    border-bottom: 1px solid #ccc;
     border-radius: 0;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
@@ -192,13 +225,13 @@ Entry Form
   margin-bottom: 0;
 }
 
-#titles #new_date, #titles .new_date  {
+#entries .new_date {
   display: none;
   padding-right: 0;
   padding-left: 0;;
 }
 
-#titles a#change_date, #titles a.change_date {
+#entries a.change_date, #entries a.change_date {
   margin-top: -.5rem;
   color: #ccc;
   float: right;
@@ -210,7 +243,7 @@ Entry Form
 	padding-right: 5rem;
 }
 
-#titles .form {
+#entries .form {
   background: #fff;
   padding: .5rem 1rem;
   border-radius: .2rem;
@@ -218,15 +251,15 @@ Entry Form
   margin: 1rem 0;
 }
 
-#titles ::-webkit-input-placeholder {
+#entries ::-webkit-input-placeholder {
    color: #888;
 }
 
-#titles :-moz-placeholder { /* Firefox 18- */
+#entries :-moz-placeholder { /* Firefox 18- */
    color: #888;
 }
 
-#titles ::-moz-placeholder {  /* Firefox 19+ */
+#entries ::-moz-placeholder {  /* Firefox 19+ */
    color: #888;
 }
 
@@ -234,11 +267,11 @@ Entry Form
    color: #888;
 }
 
-#titles .click_to_upload {
+#entries .click_to_upload {
   color: #ccc;
 }
 
-#titles .click_to_upload p {
+#entries .click_to_upload p {
   margin-bottom: 0;
   border: 1.5px dashed;
   padding: .4rem;
@@ -297,12 +330,12 @@ textarea#wysiwyg {
 
 }
 
-#titles .bootstrap-tagsinput input {
-  background: #fff;
-  box-shadow: none;
-  border: 0;
-  margin-bottom: 0;
-  padding-top: 0;
+#entries .bootstrap-tagsinput input {
+  background: #fff !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 
 .bootstrap-tagsinput .tag {
@@ -318,6 +351,7 @@ textarea#wysiwyg {
 .bootstrap-tagsinput .tag [data-role="remove"] {
   margin-left: 8px;
   cursor: pointer;
+  display: inline-block;
 }
 
 .bootstrap-tagsinput .tag [data-role="remove"]:after {
@@ -387,18 +421,18 @@ Entry Snippets
 
 *****************************/
 
-#titles .title {
+#entries .entry {
   border-radius: .2rem;
   margin-bottom: 1rem;
 }
 
-#titles h3 {
+#entries h3 {
   font-size: 1.2rem;
   margin-bottom: .1rem;
   display: inline;
 }
 
-#titles h5 a {
+#entries h5 a {
   color: #241616;
   border-radius: 3px;
 }
@@ -416,12 +450,8 @@ Entry Snippets
   list-style-type: none;
 }
 
-#titles h6 {
-  margin-bottom: 0;
-  margin-right: 1rem;
-}
 
-#titles .header {
+#entries .header {
 }
 
 #titles.tags {
@@ -462,32 +492,32 @@ Entry Snippets
   color: #ccc;
 }
 
-#titles .delete-x {
+#entries .delete-x {
   position: absolute;
   left: 1.5rem;
   bottom: 1rem;
   opacity: .5;
 }
 
-#titles .delete-x a {
+#entries .delete-x a {
   color: gray;
 }
 
-#titles .delete-x {
+#entries .delete-x {
   display:none;
 }
 
-#titles .title:hover .delete-x {
+#entries .entry:hover .delete-x {
   display: inherit;
 }
 
-#titles #entry_media {
+#entries #entry_media {
   margin-bottom: -1rem;
   padding: 0;
   text-align: right;
 }
 
-#titles #entry_media i {
+#entries #entry_media i {
   color: gray;
   padding-left: .5rem;
 }
@@ -510,7 +540,7 @@ ENTRY IMAGES
 
 ********************************/
 
-#titles .entry_image_thumbnails {
+#entries .entry .thumbnails.iv {
   float: left;
   width: 100%;
   height: 100%;
@@ -521,14 +551,14 @@ ENTRY IMAGES
   position: relative;
 }
 
-#titles .slick-slide {
+#entries .slick-slide {
   transform: scale(.92);
   -webkit-transform: scale(.92);
   -moz-transform: scale(.92);
   -ms-transform: scale(.92);
 }
 
-#titles .slick-slide.slick-center {
+#entries .slick-slide.slick-center {
   transform: scale(1);
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -539,7 +569,7 @@ ENTRY IMAGES
   -o-transition: all .4s ease-in-out;
 }
 
-#titles i.fa.fa-external-link-square {
+#entries i.fa.fa-external-link-square {
   position: absolute;
   z-index: 1000000;
   top: 2%;
@@ -549,7 +579,7 @@ ENTRY IMAGES
   padding: .25rem;
 }
 
-#titles i.fa.fa-play-circle {
+#entries i.fa.fa-play-circle {
   position: absolute;
   top: 32%;
   left: 32%;
@@ -568,7 +598,7 @@ ENTRY IMAGES
   display: inherit;
 }
 
-#titles .mfp-arrow-left:before, .mfp-arrow-right:before {
+#entries .mfp-arrow-left:before, .mfp-arrow-right:before {
   border-right: none !important;
   border-left: none !important;
 }
@@ -580,29 +610,29 @@ Edit Entries
 
 **************************/
 
-#titles .edit_images {
-  margin-bottom: 1rem;
+#entries .entry .edit {
+  margin-bottom: .5rem;
 }
 
-#titles .image_remove {
+#entries .entry .edit .image, #entries .entry .edit .video {
   position: relative;
   display: inline-block;
   margin-right: -.25%;
   margin-left: -.3%;
   width: 25%;
+  float: left;
 }
 
-#titles .image_remove img {
-  object-fit: cover;
+#entries .entry .edit .image img, #entries .entry .edit .video img {
   width: 100%;
   height: 8rem;
 }
 
-#titles .image_remove span a {
-  display: none
+#entries .entry .edit .image span a, #entries .entry .edit .video span a  {
+  display: none;
 }
 
-#titles .image_remove:hover span a {
+#entries .entry .edit .image:hover span a, #entries .entry .edit .video:hover span a {
   cursor: pointer;
   display: inherit;
   position: absolute;
@@ -611,9 +641,26 @@ Edit Entries
   width: 50%;
 }
 
-#titles .image_remove span img {
+#entries .entry .edit .image span img, #entries .entry .edit .video span img {
   width: 100%;
   height: 100%;
+}
+
+#entries .entry .edit .audio, #entries .entry .edit .app {
+    width: 50%;
+    padding: .5rem;
+    margin-bottom: .5rem;
+    float: left;
+}
+
+#entries .entry .edit.remove .audio p, #entries .entry .edit.remove .app p {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+#entries .edit.no_margin {
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 /**************************
@@ -622,11 +669,11 @@ Entry Audio
 
 **************************/
 
-#titles .audio audio {
+#entries .audio audio {
   width: 95%;
 }
 
-#titles .audio {
+#entries .audio {
   width: 50%;
   text-align: center;
   float: left;
@@ -635,14 +682,14 @@ Entry Audio
   margin-bottom: 1rem;
 }
 
-#titles .audio span {
+#entries .audio span {
 }
 
-#titles i.fa.fa-external-link-square.playing {
+#entries i.fa.fa-external-link-square.playing {
   font-size: 1rem !important;
 }
 
-#titles div#playing {
+#entries div#playing {
   position: fixed;
   bottom: 8%;
   background: #444;
@@ -651,22 +698,22 @@ Entry Audio
   text-align: center;
 }
 
-#titles div#playing span {
+#entries div#playing span {
   color: white;
 }
 
-#titles div#playing {
+#entries div#playing {
   position: fixed;
   bottom: 1rem;
   left: 1rem;
   width: 25%;
 }
 
-#titles div#playing audio {
+#entries div#playing audio {
   width: 100%;
 }
 
-#titles #playing i.fa.fa-times.stop {
+#entries #playing i.fa.fa-times.stop {
   position: absolute;
   top: 0;
   right: 0;
@@ -682,7 +729,7 @@ Entry Validation
 **************************/
 
 
-#titles label.message {
+#entries label.message {
   background: $evendarker;
   color: #fff;
   padding: .2rem;
@@ -698,13 +745,13 @@ Entry Files
 **************************/
 
 
-#titles .application {
+#entries .app {
     width: 50%;
     float: left;
     padding: 1rem;
 }
 
-#titles .entry_application_thumbnails {
+#entries .aa {
     /* border: 2px dashed #aaa; */
     margin-bottom: -1rem;
     margin-left: -1rem;
@@ -720,14 +767,14 @@ Calendar
 
 **************************************/
 
-#titles .date {
+#entries .date {
   float: right;
   margin-right: -.5rem;
   margin-top: -.5rem;
   margin-bottom: .5rem;
 }
 
-#titles .calendar {
+#entries .calendar {
   padding: 1rem;
   background: #A9D5C6;
   border-radius: 100%;
@@ -736,7 +783,7 @@ Calendar
   text-align: center;
 }
 
-#titles .calendar month {
+#entries .calendar month {
   display: block;
   color: #000;
   line-height: 0;
@@ -744,7 +791,7 @@ Calendar
   text-transform: uppercase;
 }
 
-#titles .calendar day {
+#entries .calendar day {
   display: block;
   font-size: 2rem;
   font-weight: bold;
@@ -754,10 +801,49 @@ Calendar
   margin-top: .25rem;
 }
 
-#titles .calendar year {
+#entries .calendar year {
   color: black;
   line-height: 0rem;
 }
+
+/*************************************
+
+Feedback Button
+
+**************************************/
+
+#feedback .buttn { 
+  display: block; 
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+}
+
+#feedback .buttn a {
+  display: block;
+  background: $salmon;
+  height: 1.5em;
+  width: 5.5rem;
+  padding-left: .5rem;
+  color: #fff;
+  font-weight: bold;
+  border-top: solid 1px#fff;
+  border-left: solid 1px #fff;
+  border-radius: 3px;
+}
+
+#feedback .form {
+  position: fixed;
+  width: 20%;
+  bottom: 0;
+  right: 0;
+}
+
+#feedback .form input, #feedback .form textarea {
+  font-size: .8rem;
+}
+
 
 /*************************************
 
@@ -765,11 +851,11 @@ Other
 
 **************************************/
 
-#titles .scroll-pagination{
+#entries .scroll-pagination{
   display: none;
 }
 
-#titles #success {
+#entries #success {
   display: none;
   position: fixed;
   background: #444;

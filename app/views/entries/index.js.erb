@@ -14,22 +14,17 @@
   $('.scroll-pagination').html('<%= j will_paginate @all_entries %>')
 <% end %>
 
-  
-  // Highlight active eliments of the tag menu
-  $("#label_titles .active").removeClass("active");
 
-  var activeElement = $('#label_titles [data-tagname="<%=params[:tag]%>"]');
-  var activeTag = activeElement.parent();
-  activeTag.addClass("active");
-  activeElement.addClass("active");
+  // add tagName to search with option to remove and search all entries
 
-  var tagName = '<%=params[:tag] ? params[:tag].downcase : "all labels"%>';
+  var tagName = '<%=params[:tag] ? params[:tag].downcase : "all entries"%>';
 
-
-  if (tagName == "all labels"){
+  if (tagName == "all entries"){
     $("#search .fa-close").hide();
-    $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
-    $('.bootstrap-tagsinput input[type="text"]').val('').trigger(enter);
+    $('.root a').removeClass('active');
+    $('.root .nested-tags-right').hide();
+    // $('.bootstrap-tagsinput .tag [data-role="remove"]').trigger('click');
+    // $('.bootstrap-tagsinput input[type="text"]').val('');
   }
   else {
     $("#search .fa-close").show();
@@ -42,14 +37,13 @@
   $("#search-tag").html(tagName);
 
 
-  if (!activeElement.is(":visible")){
-    activeElement.parents("li").addClass("expanded");
-  }
- 
-  
+  // if (!activeElement.is(":visible")){
+  //   activeElement.parents("li").addClass("expanded");
+  // }
+
 
 <% if @all_entries.blank? %>
   $('.pagination').detach();
 <% end %>
 
-$('.image-loader').hide();
+$('#image-loader').hide();

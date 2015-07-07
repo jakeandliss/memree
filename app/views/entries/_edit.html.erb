@@ -1,5 +1,5 @@
 <%= form_for @entry, remote: true, html: { multipart: true, data: {dropzone_name: 'entry[image_ids][]'} }, authenticity_token: true  do |f| %>
-    <div class="row">
+    <div class="row entry">
 		<div class="small-6 columns">
 			<%= f.text_field :title, placeholder: "Title this Entry", class: "no_background", style: "border-bottom:1px solid #ccc;" %>
 		</div>
@@ -12,17 +12,35 @@
 			</div>
 		</div>
 	</div>
-	<%= f.text_area :content, id: "wysiwyg", :ckeditor => { :toolbar => 'simple' }, placeholder: "What would you like to remember?", rows: 3, class: "no_background" %>
-	<%= f.text_field :all_tags, value: @entry.all_tags(current_user.id), class: "typeahead", placeholder: "Add Labels", id: "edit_entry_all_tags" %>
-	<div class="edit_images">
+	<%= f.text_area :content, id: "wysiwyg", placeholder: "What would you like to remember?", rows: 4, class: "no_background" %>
+	<%= f.text_field :all_tags, class: "typeahead edit_tags", placeholder: "Add Labels" %>
+	<div class="edit clearfix">
 		<% @entry.resources.each do |i| %>
-			<% if i.avatar_content_type.include? "image" %>
-				<div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :resources, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>
-		</div>
-			<% elsif i.avatar_content_type.include? "video" %>
-					<div class="image_remove"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "image_#{i.id}", controller: :resources, remote: true %><i class="fa fa-play-circle" style="font-size:3rem;line-height:2rem;"></i><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>
-				</div>
-			<% end %>
+			<div class="remove">
+				<% if i.avatar_content_type.include? "image" %>
+					<div class="image"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "resource_#{i.id}", controller: :resources, remote: true %><span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>
+					</div>
+				<% elsif i.avatar_content_type.include? "video" %>
+					<div class="video"><%= link_to image_tag(i.avatar.url(:thumb)), i, method: :delete, data: {confirm: 'Are you sure?' }, id: "resource_#{i.id}", controller: :resources, remote: true %><i class="fa fa-play-circle" style="font-size:3rem;line-height:2rem;"></i>
+						<span><%= link_to image_tag('remove.png'), i, method: :delete, data: {confirm: 'Are you sure?' },controller: :resources, remote: true %></span>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+	<div class="edit no_margin bg_dark_gray clearfix">
+		<% @entry.resources.each do |i| %>
+			<div class="remove">
+				<% if i.avatar_content_type.include? "audio" %>
+					<div class="audio"><p><span><%= link_to '<i class="fa fa-times"></i>'.html_safe, i, method: :delete, data: {confirm: 'Are you sure?' }, id: "resource_#{i.id}", controller: :resources, remote: true %></span> 
+						<i class="fa fa-fw fa-music"></i><%= truncate(i.avatar_file_name, length: 25) %>
+					</div>
+				<% elsif i.avatar_content_type.include? "application" %>
+					<div class="app"><p><span><%= link_to '<i class="fa fa-times"></i>'.html_safe, i, method: :delete, data: {confirm: 'Are you sure?' }, id: "resource_#{i.id}", controller: :resources, remote: true %></span> 
+						<i class="fa fa-fw fa-file-text"></i><%= truncate(i.avatar_file_name, length: 25) %>
+					</div>
+				<% end %>
+			</div>
 		<% end %>
 	</div>
 	<div class="row">
@@ -40,27 +58,17 @@
 		</div>
 	</div>
 <% end %>
+
 <script type="text/javascript">
   $(function(){
-
-    
-        
-    $('#edit_entry_all_tags').tagsinput({
+    $('.edit_tags').tagsinput({
       typeahead: {
         source: function(query) {
-          return $.get('<%= tag_list_entries_url %>'+'?text='+query);
+          return $.get('<%= tag_list_entries_url(:protocol => "https") %>'+'?text='+query);
         }
       }
     });
-    
   });
-
-</script>
-<script>
-
-
-    
-
   window.onbeforeunload = function(){
     var inputs = document.getElementById('wysiwyg').value;
     var unfinished = 'false';
@@ -73,21 +81,18 @@
       return 'Looks like you\'ve started an entry. Are you sure you\'d like to leave';
     }
   }
-</script>
-<script>
-$('#entry_<%= @entry.id %> .cancel_edit').on('click', function(e) {
-         e.preventDefault()
-    $('#entry_<%= @entry.id %> .header').show();
-    $('#entry_<%= @entry.id %> .content').show();
-    $('#entry_<%= @entry.id %> .footer').show();
-    $('#entry_<%= @entry.id %> .title:hover .delete-x').show();
-    $('form#edit_entry_<%= @entry.id %>').remove();
-  })
-</script>
-<script>
-$('#entry_<%= @entry.id %> .change_date').on('click', function(e) {
-	e.preventDefault();
-	$(this).closest('div').next('div').closest('.new_date').toggle();
-	$(this).closest('.current_date').toggle();
-});
+	$('#entry_<%= @entry.id %> .cancel_edit').on('click', function(e) {
+	         e.preventDefault()
+	    $('#entry_<%= @entry.id %> .header').show();
+	    $('#entry_<%= @entry.id %> .content').show();
+	    $('#entry_<%= @entry.id %> .footer').show();
+	    $('#entry_<%= @entry.id %> .title:hover .delete-x').show();
+	    $('form#edit_entry_<%= @entry.id %>').remove();
+	  })
+	//Show date dropdowns on date click
+	$('#entry_<%= @entry.id %> .change_date').on('click', function(e) {
+		e.preventDefault();
+		$(this).closest('.current_date').hide();
+		$(this).closest('div').next('.new_date').show();
+	});
 </script>

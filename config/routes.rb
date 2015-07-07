@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
  
+  get 'contact_form/new'
+
+  get 'contact_form/create'
+
+  resources :blogs, only: [:index, :show]
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 
 
@@ -34,6 +42,8 @@ Rails.application.routes.draw do
     post :create_member, on: :member
     get :remove_member, on: :member
   end
+  
+  resources :contact_forms, only: [:new, :create]
 
   %w[home about].each do |page|
     get page, controller: "pages", action: page

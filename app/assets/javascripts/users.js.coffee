@@ -1,8 +1,4 @@
-$ ->
-  	$('#name_field').on 'change keyup paste', (event) ->
-    	event.preventDefault()
-    	$('#tag_submit').show()
-
+#click image to upload new photo on profile edit page
 $ ->
     $('li#image_click').click ->
     	$('#image_upload').trigger 'click'

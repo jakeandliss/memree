@@ -1,36 +1,21 @@
-<div class="row pages">
-	<div class="medium-4 columns">
-		<div class="avatar">
-		 	<%= image_tag current_user.avatar.url(:avatar) %>
-		 </div>
-		 <div style="text-align:center;">
-		 	<h3>
-		 		<%= current_user.full_name %>
-			</h3>
-		 </div>	 
-	</div>	 
-	<div class="medium-8 columns">
-		<div class="white box-shadow">	
-			<h3>Hey <%= current_user.first_name %>, Here's your profile page. You can change or update anything at any time.</h3>
-			<p>
-			  <strong>First name:</strong>
-			  <%= current_user.first_name %>
-			</p>
 
-			<p>
-			  <strong>Last name:</strong>
-			  <%= current_user.last_name %>
-			</p>
+<h3>Hey <%= current_user.first_name %>, Here's your profile page. You can change or update anything at any time.</h3>
+<p>
+  <strong>First name:</strong>
+  <%= current_user.first_name %>
+</p>
 
-			<p>
-			  <strong>Email:</strong>
-			  <%= current_user.email %>
-			</p>
-			<%= link_to 'Edit Profile', edit_user_path(current_user, form: "profile"), class: "button" %>
-		</div>
-	</div>
-</div>
+<p>
+  <strong>Last name:</strong>
+  <%= current_user.last_name %>
+</p>
 
+<p>
+  <strong>Email:</strong>
+  <%= current_user.email %>
+</p>
+<%= link_to 'Edit Profile', edit_user_path(current_user), class: "button" %>
+	
 
 	    
 

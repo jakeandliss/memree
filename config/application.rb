@@ -18,6 +18,7 @@ module Journalesk
     # aws_access_key_id: "YOURACCESSKEYID"
     # aws_secret_access_key: "YOURSECRERACCESSKEY"
     config.paperclip_defaults = {
+        :s3_protocol => :https,
         :storage => :s3,
         :s3_host_name => 's3.amazonaws.com',
         :s3_credentials => {

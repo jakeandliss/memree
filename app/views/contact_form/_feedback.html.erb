@@ -1,0 +1,14 @@
+<div id="feedback">
+	<div class="buttn toggle">
+		<a href="#">feedback</a>
+	</div>
+	<div class="form white box-shadow hide">
+		<%= form_for @contact_form, validate: true do |f| %>
+		<i class="fa fa-times right clearfix gray toggle pointer"></i>
+		<%= f.text_field :name, placeholder: "Name" %>
+		<%= f.email_field :email, placeholder: "Email" %>
+		<%= f.text_area :message, placeholder: "Message" %>
+		<%= f.submit "Send Feedback", class: "button expand" %>
+		<% end %>
+	</div>
+</div>

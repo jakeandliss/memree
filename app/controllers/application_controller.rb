@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   add_flash_types :success
   
@@ -9,6 +7,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   
+  #view, edit, create, update, destroy blogs in active admin with friendly_id
+  ActiveAdmin::ResourceController.class_eval do
+    def find_resource
+      resource_class.is_a?(FriendlyId) ? scoped_collection.where(slug: params[:id]).first! : scoped_collection.where(id: params[:id]).first!
+    end
+  end
+
   private
 
   def check_for_mobile
@@ -32,6 +37,10 @@ class ApplicationController < ActionController::Base
 
   def render_error
     render file: 'public/500.html', status: :internal_server_error, layout: false
+  end
+
+  def render_404
+    render file: 'public/404.html', status: :internal_server_error, layout: false
   end
 
   def after_sign_out_path_for(resource_or_scope)

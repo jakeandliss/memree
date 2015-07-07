@@ -1,9 +1,9 @@
 <body id="home">
 	<div id="user_nav">
-				<% if user_signed_in? %>
-				<%= link_to 'Entries', entries_path %> | 
+				<p><% if user_signed_in? %>
+				<%= link_to 'Entries', entries_path %> |    
 				<%= link_to 'Edit Profile', edit_user_registration_path %> | 
-				<%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+				<%= link_to "Logout", destroy_user_session_path, :method => :delete %></p>
 			<% else %>
 					<%= link_to "Sign Up", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'} %> | 
 					<%= link_to "Login",  'javascript:void(0);', data: {:'reveal-id' => 'loginModal'} %>
@@ -15,19 +15,16 @@
 				<h1>MemryBook</h1>
 			</div>
 			<div class="content">
-				<p>Because we <i>want</i> to remember.</p> 
-				
-				<!-- <input type="button" id="" value="Get Started" class="button round" /> -->
-				<p><%#= link_to_modal "Get Started", "#registration-form", class: "button round" %>
-					<%= link_to "Get Started", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'}, class: "button round" %>
-				</p>
+				<p>Live. Love. <i>Remember</i>.</p> 
+				<p><%= link_to "Get Started", 'javascript:void(0);', data: {:'reveal-id' => 'signupModal'}, class: "button round" %></p>
+				<p style="font-size:.7rem;color:#aaa;">*MemryBook is in Alpha (which means it has not launched an offical version). Accounts are free, and we ask for patience as we work out the last issues. You can help us by providing feedback on your experience. Thanks and enjoy!</p>
 			</div>
 		 	<div class="footer">
 				<p>All rights reserved.</p> 
 				<ul class="social">
-					<li id="facebook"><a href="http://facebook.com/" target="_blank"></a></li>
-					<li id="twitter"><a href="http://twitter.com/" target="_blank"></a></li>
-					<li id="instagram"><a href="http://instagram.com/" target="_blank"></a></li>
+					<li id="facebook"><a href="https://facebook.com/" target="_blank"></a></li>
+					<li id="twitter"><a href="https://twitter.com/" target="_blank"></a></li>
+					<li id="instagram"><a href="https://instagram.com/" target="_blank"></a></li>
 				</ul>
 			</div>
 		</div>
@@ -51,6 +48,26 @@
 	<a class="close-reveal-modal">&#215;</a>
 	
 </div> 
+
+<% unless mobile_device? %>
+<div id="big-video-wrap">
+<script type="text/javascript">
+$(function() {
+    var BV = new $.BigVideo();
+    BV.init();
+    BV.show("<%= asset_url('coloring.mp4') %>", "<%= asset_url('coloring.mp4') %>", "<%= asset_url('coloring.mp4') %>",{ambient:true});
+    BV.getPlayer().on('durationchange',function(){
+    $('#big-video-wrap').fadeIn();
+});
+});
+</script>
+<style>
+#home {
+	background: none;
+}
+</style>
+</div>
+<% end %>
 
 <script type="text/javascript">
 
@@ -108,7 +125,5 @@
 		});
 
 	});
-
-
 
 </script>

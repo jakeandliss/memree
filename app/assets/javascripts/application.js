@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require video
+//= require bigvideo
 //= require turbolinks
+//= require jquery.turbolinks
 //= require jquery.validationEngine-en
 //= require jquery.validationEngine
 //= require foundation
@@ -25,6 +28,7 @@
 //= require bootstrap-datepicker.min.js
 //= require magnific-popup
 //= require rails.validations
+
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

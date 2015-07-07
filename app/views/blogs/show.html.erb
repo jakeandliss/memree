@@ -1,0 +1,12 @@
+ <div id="blog" class="row">
+	<div class="medium-8 columns">
+
+	<%= link_to 'Back', blogs_path %>
+		<h2><%= link_to_unless_current @blog.title, @blog %></h2>
+
+		<%= simple_format @blog.body %>
+	</div>
+	<div class="medium-4 columns">
+		<%= render "sidebar" %>
+	</div>
+</div>

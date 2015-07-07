@@ -1,16 +1,21 @@
-FactoryGirl.define do  factory :group_shareable do
+FactoryGirl.define do
+  factory :group_shareable do
     entry nil
-group nil
+    group nil
   end
   factory :group_member do
     group nil
-user nil
+    user nil
   end
   factory :group do
     name "MyString"
-user nil
+    user nil
   end
   factory :entry_shareable do
+  end
+  factory :blog do
+  end
+  factory :admin_user do
     
   end
   factory :image do
@@ -18,7 +23,7 @@ user nil
   end
   factory :tagging do
     title nil
-tag nil
+    tag nil
   end
   factory :tag do
     name "MyString"
@@ -34,12 +39,12 @@ tag nil
 
 	factory :title do
 		title "I love My Journal"
-  		association :user
-  	end
+    association :user
+  end
 
-  	factory :entry do
-  		entry "My New Entry Here"
-  		title
-  		user
-  	end
+	factory :entry do
+ 		entry "My New Entry Here"
+ 		title
+ 		user
+ 	end
 end

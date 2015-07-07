@@ -1,4 +1,4 @@
-<div id="titles">
+<div id="entries">
 	<div id="success"></div>
 	<div class="row wrapper">
 		<div class="medium-3 columns">
@@ -23,12 +23,12 @@
 						<%= link_to '<i class="fa fa-bookmark"></i>&nbsp All Entries'.html_safe, entries_path, remote: true %>
 					</li>
 					<div id="tag-list">
-						
+
 					</div>
-					
+
 				</ul>
-				<%= link_to "Edit Labels", tags_path, class: "edit left" %>
-				<%= render 'search' %>
+				<div class="clearfix"><%= link_to "Edit Labels", tags_path, class: "edit left" %>
+				<i class="fa fa-search right pointer" style="padding-top:.3rem;"></i></div>
 			</div>
 			<div id="playing_area"></div>
 		</div>
@@ -49,11 +49,12 @@
 
 		</div>
 	</div>
+	<%= render "contact_form/feedback" %>
 </div>
 
 <script>
 
-	
+
 	// Load all tags and put them on sidebar
 	// TagManager class is located in app/vendor/assets/tag-manager.js
 	var tagManager = new TagManager();

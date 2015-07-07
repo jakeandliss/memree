@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
   def index
     @entry = current_user.entries.build(:title_date => Date.today)
     @tags = current_user.tags(:parent_id => params[:parent_id])
-
+    @contact_form = ContactForm.new
     # if parametr "tag" exists retrieve entries with specified tag, otherwise retrieve all tags belonging to current user
     if params[:tag]
       @tag = current_user.tags.find_by(name: params[:tag])

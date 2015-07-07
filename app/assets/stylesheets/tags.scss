@@ -1,10 +1,14 @@
-   $stationery	: #EBE5CD;
-   $greendew 	: #A9D5C6;
-   $evendarker	: #241616;
-   $sun 		: #F2EAAB;
-   $salmon	 	: #FD9781;
+/*************************************
 
- 
+Sass
+
+**************************************/
+
+$stationery  : #EBE5CD;
+$greendew    : #A9D5C6;
+$evendarker  : #241616;
+$sun         : #F2EAAB;
+$salmon      : #FD9781;
 
 /********************************
 
@@ -63,45 +67,15 @@ div#sub-menu {
   margin-top: 1rem;
 }
 
-li .nested-tags-right{
-	display: none
-}
-
-.expanded > .nested-tags-right{
-	display: block;
-}
-
-
-
-.expanded i {
-  float: right;
-  margin-top: .35rem;
-  transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
-}
-
-.collapsed i {
-  float: right;
-  margin-top: .35rem;
-  transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out;
-}
-
 
 .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags .nested_tags {
   margin-left: 0;
+}
+
+#labels .intro {
+  margin-top: 1rem !important;
+}
+
+#labels .question {
+  padding-top: .5rem;
 }
