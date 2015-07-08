@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<%= f.text_area :content, id: "wysiwyg", placeholder: "What would you like to remember?", rows: 4, class: "no_background" %>
-	<%= f.text_field :all_tags, class: "typeahead edit_tags", placeholder: "Add Labels" %>
+	<%= f.text_field :all_tags, value: @entry.all_tags(current_user.id), class: "typeahead edit_tags", placeholder: "Add Labels" %>
 	<div class="edit clearfix">
 		<% @entry.resources.each do |i| %>
 			<div class="remove">

@@ -124,7 +124,7 @@
 				<div class="edit">
 					<%= link_to "<i class=\"fa fa-pencil-square-o\"></i>".html_safe, edit_tags_entry_path(entry.id), remote: true %>
 					<% unless entry.is_hidden_for?(current_user) %>
-						<%= link_to "<i class=\"fa fa-eye-slash\"></i>".html_safe, hide_entry_path(entry.id), remote: true %>
+						<%= link_to "<i class=\"fa fa-eye-slash\"></i>".html_safe, hide_entry_path(entry.id), remote: true, data: {confirm: "Are you sure you'd like to remove this entry?"} %>
 					<% end %>
 				</div>
 			<% else %>

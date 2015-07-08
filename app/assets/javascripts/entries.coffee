@@ -5,7 +5,7 @@ $ ->
 
 #loading icon for endless pagination
 $ ->	
-	$('#image-loader').hide()
+	$('.image-loader').hide()
 	autoScrollPagination()
 
 # Show date dropdowns on date click (new entry form only)
@@ -56,20 +56,24 @@ $ ->
 
 $ ->
 	$(document).on 'click', 'button#add-user-to-list', ->
+		$btn = $(this)
 		img = $(this).parents('div.row').find('img').attr('src')
 		email = $(this).parents('div.row').find('input#email').val()
 		first_name = $(this).parents('div.row').find('input#first_name').val()
 		last_name = $(this).parents('div.row').find('input#last_name').val()
 		$emails = $(this).parents('div.modal-share-entry').find('div.email-col').map(->
-			$(this).html()
+			$(this).attr('email')
 		).get()
+		$btn.attr('disabled', 'disabled')
 		if email == '' || first_name == '' || last_name == ''
 			alert "Please fill all the fields."
+			$btn.removeAttr('disabled')
 		else
 			if $.inArray(email, $emails) > -1
 				$(this).parents('div.row').find('div.avatar').html('')
 				$(this).parents('form').find('input[type=text]').val('')
 				alert "Email already added to share list"
+				$btn.removeAttr('disabled')
 			else
 				e_id = $(this).parents('form').attr("entry_id")
 				$element = $(this)
@@ -80,6 +84,7 @@ $ ->
 						email: email
 						first_name: first_name
 						last_name: last_name)
+					async: false
 					dataType: 'json'
 					contentType: 'application/json; charset=utf-8'
 					success: (data) ->
@@ -87,15 +92,17 @@ $ ->
 							img = '/assets/blank_avatar.png'
 						element = '<div class=\'row\'><div class=\'small-1 columns avatar\'>'
 						element += '<img src=\'' + img + '\' width=\'40px\' /></div>'
-						element += '<div class=\'small-4 columns email-col\'>' + email + '</div>'
+						element += '<div class=\'small-4 columns email-col\' email=\''+ email + '\'>' + email + '</div>'
 						element += '<div class=\'small-3 columns\'>' + first_name + '</div>'
 						element += '<div class=\'small-3 columns\'>' + last_name + '</div>'
 						element += '<div class=\'small-1 columns\'><a class=\'rem-user-from-list\' href=\''+ data.rem_path + '\'><i class=\'fa fa-remove\'></i></a></div>'
 						$element.parents('div.row').find('div.avatar').html('')
 						$element.parents('form').find('input[type=text]').val('')
 						$element.parents('div.modal-share-entry').find('div#list-of-users').append element
+						$btn.removeAttr('disabled')
 					error: (e) ->
 						alert "Unable to add user to shared list"
+						$btn.removeAttr('disabled')
 		$(this).parents('div.row').find('input#email').focus()
 		false
 

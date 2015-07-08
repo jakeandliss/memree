@@ -6,7 +6,7 @@ function autoScrollPagination(){
 			var url = $('.pagination .next_page').attr('href');
 			if (ajaxRunning && url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
 				ajaxRunning = false;
-				$('#image-loader').show();
+				$('.image-loader').show();
 				$.when(
 					$.getScript(url)
 					).done(function(){
