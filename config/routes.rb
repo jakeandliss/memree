@@ -54,4 +54,7 @@ Rails.application.routes.draw do
   
   get 'user_root' => 'entries#index'
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

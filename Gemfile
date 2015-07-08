@@ -100,6 +100,10 @@ group :development, :test do
   gem 'capistrano'
 
   gem 'rvm-capistrano',  require: false
+
+  gem 'letter_opener'
+
+  gem 'letter_opener_web'
 end
 
 group :test do
