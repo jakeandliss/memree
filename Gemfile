@@ -70,7 +70,6 @@ gem 'client_side_validations', github: "DavyJonesLocker/client_side_validations"
 
 gem 'friendly_id'
 
-gem 'mail_form'
 
 group :production do
 
@@ -83,7 +82,7 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
 
   gem 'capistrano-unicorn', :require => false
-  
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring',  '~> 1.3.5'
 

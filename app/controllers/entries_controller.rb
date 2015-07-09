@@ -6,7 +6,7 @@ class EntriesController < ApplicationController
 	def index
 		@entry = current_user.entries.new(:title_date => Date.today)
 		@tags = current_user.tags(:parent_id => params[:parent_id])
-		@contact_form = ContactForm.new 
+		# @contact_form = ContactForm.new 
 		# if parameter "tag" exists retrieve entries with specified tag, otherwise retrieve all tags belonging to current user
 		if params[:tag]
 			@tag = current_user.tags.find_by(name: params[:tag])
@@ -15,8 +15,8 @@ class EntriesController < ApplicationController
 			@entries = current_user.entries.paginate(:page => params[:page], :per_page => 10)
 		end
 
-		@entries = @entries.search(params[:query], date_filters) 
-		
+		@entries = @entries.search(params[:query], date_filters)
+
 		respond_to do |format|
 			format.html { render layout: "entries" }
 			format.js
@@ -48,13 +48,13 @@ class EntriesController < ApplicationController
 
 	def create
 		@entry = current_user.entries.new(entry_params)
-		
+
 		respond_to do |format|
 			if @entry.save && @entry.add_tags(params[:entry][:all_tags])
 				format.html { redirect_to entries_path, notice: "Entry was created succesfully" }
-				format.js 
+				format.js
 			else
-				format.html { 
+				format.html {
 					flash[:error] = "There was a problem adding your entry."
 					render action: 'new'
 				}
@@ -76,7 +76,7 @@ class EntriesController < ApplicationController
 	end
 
 	def destroy
-		
+
 		if @entry.destroy
 			respond_to do |format|
 				format.html { redirect_to entries_path, notice: "Entry has been deleted"}
