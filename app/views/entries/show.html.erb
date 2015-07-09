@@ -1,134 +1,136 @@
 <% current_user = @user %>
 <% entry = @entry %>
-<% if entry.user_id == current_user.id %>
-<div id="<%= dom_id(entry) %>" class="row">
-<% else %>
-<div id="<%= dom_id(entry) %>" class="row shared_entry">
-<% end %>
-	<div class="medium-9 columns">
-		<div class="white box-shadow title">
-			<div class="header">
-				<div class="date">
-						<div class="calendar"><month><%= entry.title_date.to_date.strftime('%b') if entry.title_date.present? %></month><day><%= entry.title_date.to_date.strftime('%e') if entry.title_date.present? %></day><year><%= entry.title_date.to_date.strftime('%Y') if entry.title_date.present? %></year>
-						</div>		
-				</div>
-				<% if entry.user_id != current_user.id %>
-				<div class="shared_users">
-					<%= image_tag entry.user.avatar.url(:avatar) %>
-					<h3>
-					<%= truncate(entry.title, length: 63) %>
-					</h3>
-				<p>shared by <%= entry.user.full_name %></p>
-				</div> 
-				<% else %>
-				<h3>
-					<%= truncate(entry.title, length: 63) %>
-				</h3>
-				<% end %>
-			</div>
-			<div class="content clearfix">
-				<div class="title_entry">
-					<% if entry.content.length > 180 %>
-						<div id="entry_truncate_<%= entry.id %>">
-						    <%= truncate_html(entry.content.html_safe, length: 180) %>
-						    <%= link_to '...Read more', '', class: "read-more-#{entry.id}" %>
-						</div>
-						<div id="entry_long_<%= entry.id %>" style="display:none;">
-						    <%= simple_format(entry.content) %>
-						    <%= link_to '...Read less', '', class: "read-less-#{entry.id}", style: "float:right;" %>
-						</div>
-					<% else %>
-						<%= entry.content.html_safe %>
-					<% end %>
-					<script>
-					  	$('.read-more-<%= entry.id %>').on('click', function(e) {
-					    e.preventDefault()
-					    $('#entry_truncate_<%= entry.id %>').toggle();
-					    $('#entry_long_<%= entry.id %>').toggle();
-					})
-					</script>
-					<script>
-					  	$('.read-less-<%= entry.id %>').on('click', function(e) {
-					    e.preventDefault()
-					    $('#entry_truncate_<%= entry.id %>').toggle();
-					    $('#entry_long_<%= entry.id %>').toggle();
-					  })
-					</script>
-				</div>
-				<div id="entry_<%= entry.id %>_thumbnails" class="entry_image_thumbnails">
-					<% entry.resources.each do |i| %>
-						<% if i.avatar_content_type.present? && (i.avatar_content_type.include? "image") %>
-							<div><%= image_tag i.avatar.url(:thumb) %>
-								<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url, class: "light_#{entry.id} mfp-image" %>
+<div id="entries" style="padding-top:1rem;">
+	<% if entry.user_id == current_user.id %>
+	<div id="<%= dom_id(entry) %>" class="row">
+	<% else %>
+	<div id="<%= dom_id(entry) %>" class="row shared_entry">
+	<% end %>
+		<div class="medium-9 columns">
+			<div class="white box-shadow entry">
+				<div class="header">
+					<div class="date">
+							<div class="calendar"><month><%= entry.title_date.to_date.strftime('%b') if entry.title_date.present? %></month><day><%= entry.title_date.to_date.strftime('%e') if entry.title_date.present? %></day><year><%= entry.title_date.to_date.strftime('%Y') if entry.title_date.present? %></year>
 							</div>
-						<% elsif (i.avatar_content_type.present? && (i.avatar_content_type.include? "video") && (i.avatar_content_type.exclude? "image")) %>
-							<div><%= image_tag i.avatar.url(:thumb) %>
-								<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url(:original), class: "light_#{entry.id} mfp-iframe" %>
+					</div>
+					<% if entry.user_id != current_user.id %>
+					<div class="shared_users">
+						<%= image_tag entry.user.avatar.url(:avatar) %>
+						<h3>
+						<%= truncate(entry.title, length: 63) %>
+						</h3>
+					<p>shared by <%= entry.user.full_name %></p>
+					</div>
+					<% else %>
+					<h3>
+						<%= truncate(entry.title, length: 63) %>
+					</h3>
+					<% end %>
+				</div>
+				<div class="content clearfix">
+					<div class="title_entry">
+						<% if entry.content.length > 180 %>
+							<div id="entry_truncate_<%= entry.id %>">
+							    <%= truncate_html(entry.content.html_safe, length: 180) %>
+							    <%= link_to '...Read more', '', class: "read-more-#{entry.id}" %>
+							</div>
+							<div id="entry_long_<%= entry.id %>" style="display:none;">
+							    <%= simple_format(entry.content) %>
+							    <%= link_to '...Read less', '', class: "read-less-#{entry.id}", style: "float:right;" %>
+							</div>
+						<% else %>
+							<%= entry.content.html_safe %>
+						<% end %>
+						<script>
+						  	$('.read-more-<%= entry.id %>').on('click', function(e) {
+						    e.preventDefault()
+						    $('#entry_truncate_<%= entry.id %>').toggle();
+						    $('#entry_long_<%= entry.id %>').toggle();
+						})
+						</script>
+						<script>
+						  	$('.read-less-<%= entry.id %>').on('click', function(e) {
+						    e.preventDefault()
+						    $('#entry_truncate_<%= entry.id %>').toggle();
+						    $('#entry_long_<%= entry.id %>').toggle();
+						  })
+						</script>
+					</div>
+					<div id="entry_<%= entry.id %>_thumbnails" class="entry_image_thumbnails">
+						<% entry.resources.each do |i| %>
+							<% if i.avatar_content_type.present? && (i.avatar_content_type.include? "image") %>
+								<div><%= image_tag i.avatar.url(:thumb) %>
+									<%= link_to '<i class="fa fa-external-link-square"></i>'.html_safe, i.avatar.url, class: "light_#{entry.id} mfp-image" %>
+								</div>
+							<% elsif (i.avatar_content_type.present? && (i.avatar_content_type.include? "video") && (i.avatar_content_type.exclude? "image")) %>
+								<div><%= image_tag i.avatar.url(:thumb) %>
+									<%= link_to '<i class="fa fa-external-link-square"></i><i class="fa fa-play-circle"></i>'.html_safe, i.avatar.url(:original), class: "light_#{entry.id} mfp-iframe" %>
+								</div>
+							<% end %>
+						<% end %>
+					</div>
+						<script>
+						$('.light_<%= entry.id %>').magnificPopup({
+							gallery: {
+								enabled: true
+							}
+						});
+						</script>
+
+					<% entry.resources.each do |i| %>
+						<% if i.avatar_content_type.include? "application" %>
+							<i class="fa fa-file-pdf-o pointer" id="application_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
+							<% break %>
+						<% end %>
+					<% end %>
+					<% entry.resources.each do |i| %>
+						<% if i.avatar_content_type.include? "audio" %>
+							<i class="fa fa-music pointer" id="audio_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
+							<% break %>
+						<% end %>
+					<% end %>
+				</div>
+				<div id="entry_<%= entry.id %>_application" class="entry_application_thumbnails clearfix hide">
+					<% entry.resources.each do |i| %>
+						<% if i.avatar_content_type.include? "application" %>
+							<div class="application">
+								<%= link_to '<i class="fa fa-file-text"></i>'.html_safe, i.avatar.url, class: "light_#{entry.id}_application mfp-iframe" %>
+								<span><%= truncate(i.avatar_file_name, length: 27) %></span>
 							</div>
 						<% end %>
 					<% end %>
 				</div>
-					<script>
-					$('.light_<%= entry.id %>').magnificPopup({
-						gallery: {
-							enabled: true
-						}
-					});
-					</script>
-
-				<% entry.resources.each do |i| %>
-					<% if i.avatar_content_type.include? "application" %>
-						<i class="fa fa-file-pdf-o pointer" id="application_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
-						<% break %>
+				<div id="entry_<%= entry.id %>_audio" class="entry_application_thumbnails clearfix hide">
+					<% entry.resources.each do |i| %>
+						<% if i.avatar_content_type.include? "audio" %>
+							<div class="audio">
+								<span><%= i.avatar_file_name %></span>
+								<%= audio_tag i.avatar.url(:original), controls: true %>
+								<%= link_to '<i class="fa fa-external-link-square playing"></i>'.html_safe, '#', alt: "Click to play in sidebar", class: "playing" %>
+								<%= link_to '<i class="fa fa-times stop"></i>'.html_safe, '#', class: "hide" %>
+							</div>
+						<% end %>
 					<% end %>
-				<% end %>
-				<% entry.resources.each do |i| %>
-					<% if i.avatar_content_type.include? "audio" %>
-						<i class="fa fa-music pointer" id="audio_icon_<%= entry.id %>" style="float:right;font-size:1.5rem;padding-left:.5rem;"></i>
-						<% break %>
-					<% end %>
-				<% end %>
+				</div>
+				<script>
+				$('i#application_icon_<%= entry.id %>').on ('click', function(e) {
+					e.preventDefault()
+					$('#entry_<%= entry.id %>_application').slideToggle("fast");
+					$('#entry_<%= entry.id %>_audio').slideUp("fast");
+				})
+				</script>
+				<script>
+				$('i#audio_icon_<%= entry.id %>').on ('click', function(e) {
+					e.preventDefault()
+					$('#entry_<%= entry.id %>_audio').slideToggle("fast");
+					$('#entry_<%= entry.id %>_application').slideUp("fast");
+				})
+				</script>
 			</div>
-			<div id="entry_<%= entry.id %>_application" class="entry_application_thumbnails clearfix hide">
-				<% entry.resources.each do |i| %>
-					<% if i.avatar_content_type.include? "application" %>
-						<div class="application">
-							<%= link_to '<i class="fa fa-file-text"></i>'.html_safe, i.avatar.url, class: "light_#{entry.id}_application mfp-iframe" %>
-							<span><%= truncate(i.avatar_file_name, length: 27) %></span>
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-			<div id="entry_<%= entry.id %>_audio" class="entry_application_thumbnails clearfix hide">
-				<% entry.resources.each do |i| %>
-					<% if i.avatar_content_type.include? "audio" %>
-						<div class="audio">
-							<span><%= i.avatar_file_name %></span>
-							<%= audio_tag i.avatar.url(:original), controls: true %>
-							<%= link_to '<i class="fa fa-external-link-square playing"></i>'.html_safe, '#', alt: "Click to play in sidebar", class: "playing" %>
-							<%= link_to '<i class="fa fa-times stop"></i>'.html_safe, '#', class: "hide" %>
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-			<script>
-			$('i#application_icon_<%= entry.id %>').on ('click', function(e) {
-				e.preventDefault()
-				$('#entry_<%= entry.id %>_application').slideToggle("fast");
-				$('#entry_<%= entry.id %>_audio').slideUp("fast");
-			})	
-			</script>
-			<script>
-			$('i#audio_icon_<%= entry.id %>').on ('click', function(e) {
-				e.preventDefault()
-				$('#entry_<%= entry.id %>_audio').slideToggle("fast");
-				$('#entry_<%= entry.id %>_application').slideUp("fast");
-			})
-			</script>
 		</div>
-	</div>
-	<div class="medium-3 columns" style="padding-left:0;">
-		<div class="tags">
+		<div class="medium-3 columns" style="padding-left:0;">
+			<div class="tags">
+			</div>
 		</div>
 	</div>
 </div>
