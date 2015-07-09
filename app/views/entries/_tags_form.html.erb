@@ -12,7 +12,7 @@
     $('input.edit-tags').tagsinput({
       typeahead: {
         source: function(query) {
-          return $.get('<%= tag_list_entries_url %>'+'?text='+query);
+          return $.get('<%= tag_list_entries_url(:protocol => "https") %>'+'?text='+query);
         }
       }
     });

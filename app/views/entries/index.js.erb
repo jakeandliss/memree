@@ -28,10 +28,6 @@
   }
   else {
     $("#search .fa-close").show();
-    <% unless params[:page] %>
-      $('.bootstrap-tagsinput:first .tag [data-role="remove"]').trigger('click');
-      $('.bootstrap-tagsinput:first input[type="text"]').val(tagName).trigger( "keypress", { which: 13 } );
-    <% end %>
   }
 
   $("#search-tag").html(tagName);
